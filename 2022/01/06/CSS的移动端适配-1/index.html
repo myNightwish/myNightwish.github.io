@@ -1,0 +1,653 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>移动端适配 | Nightwishのblog</title><meta name="keywords" content="移动端适配"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="移动端适配方案及基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端适配">
+<meta property="og:url" content="https://mynightwish.top/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/index.html">
+<meta property="og:site_name" content="Nightwishのblog">
+<meta property="og:description" content="移动端适配方案及基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.unsplash.com/photo-1638914130169-5bd5240f6ea2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80">
+<meta property="article:published_time" content="2022-01-06T05:37:26.087Z">
+<meta property="article:modified_time" content="2022-01-06T05:37:26.087Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="移动端适配">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1638914130169-5bd5240f6ea2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mynightwish.top/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '移动端适配',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-06 05:37:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script><link rel="stylesheet" href="/css/custom/fixed_comment.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/background.css"  media="defer" onload="this.media='all'"><style type="text/css">#toggle-sidebar {left:100px}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://th.bing.com/th/id/OIP.-i9W7XGah8cf44a1DaBbmgAAAA?pid=ImgDet&amp;rs=1" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">85</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 时光机</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-heart"></i><span> 图册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-comments"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1638914130169-5bd5240f6ea2?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 时光机</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-heart"></i><span> 图册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-comments"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">移动端适配</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-06T05:37:26.087Z" title="发表于 2022-01-06 05:37:26">2022-01-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-06T05:37:26.087Z" title="更新于 2022-01-06 05:37:26">2022-01-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CSS/">CSS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="移动端适配"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="移动端适配"><a href="#移动端适配" class="headerlink" title="移动端适配"></a>移动端适配</h2><h3 id="1、媒体查询"><a href="#1、媒体查询" class="headerlink" title="1、媒体查询"></a>1、媒体查询</h3><ul>
+<li><p>使用媒体查询的方式：</p>
+<ol>
+<li>可以使用 <strong>link 与 style</strong> 中定义媒体查询</li>
+<li>也可以用 <code>@import url(screen.css) screen</code> 形式媒体使用的样式</li>
+</ol>
+<p>可以用逗号分隔同时支持多个媒体设备，未指定媒体设备时等同于all</p>
+</li>
+</ul>
+<h4 id="1、style"><a href="#1、style" class="headerlink" title="1、style"></a>1、style</h4><ul>
+<li><p>常用的：一般并不会写media=”screen”，其实是默认了media=”all”</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;style media=&quot;screen&quot;&gt;  //可以指定别的设备</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">3em</span>;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2、link"><a href="#2、link" class="headerlink" title="2、link"></a>2、link</h4><ul>
+<li><p>在 <code>link</code> 标签中通过 <code>media</code> 属性可以设置样式使用的媒体设备。</p>
+</li>
+<li><p>要写很多link标签，不太方便。不推荐使用</p>
+</li>
+<li><p>此外我们更多的时候是针对页面中某块区域，来单独写个样式控制其响应</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;common<span class="selector-class">.css</span>&quot;&gt; //没有指定媒体所以全局应用</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;screen<span class="selector-class">.css</span>&quot; media=&quot;screen&quot;&gt; //在屏幕设备</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;print<span class="selector-class">.css</span>&quot; media=&quot;print&quot;&gt; //在打印设备</span><br><span class="line"> <span class="comment">/* 多设备支持，逗号分隔 */</span></span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;screen<span class="selector-class">.css</span>&quot; media=&quot;screen,print&quot;&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="3、-import"><a href="#3、-import" class="headerlink" title="3、@import"></a>3、@import</h4><ul>
+<li><p>相比于link，我们更多的时候是针对页面中某块区域，来单独写个样式控制其响应</p>
+</li>
+<li><p>此时就可以在文件中<strong>引入一个样式文件</strong>，在这个文件中<strong>再引入其他媒体的样式文件。</strong>用<code>@import</code> ，引入指定设备的样式规则。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;style<span class="selector-class">.css</span>&quot;&gt;  //这样就可以只有一个link了</span><br></pre></td></tr></table></figure>
+
+<p><strong>style.css</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(screen.css) screen;</span><br><span class="line"><span class="keyword">@import</span> url(print.css) print;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(screen.css) screen,print; <span class="comment">/* 多设备支持，逗号分隔 */</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="4、-media"><a href="#4、-media" class="headerlink" title="4、@media"></a>4、@media</h4><ul>
+<li> <code>@media</code> 可以做到更细的控制，即<strong>在一个样式表中为多个媒体设备定义样式</strong></li>
+</ul>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> mediatype 关键字 (media feature)  &#123;...&#125;</span><br><span class="line"><span class="keyword">@media</span> screen,print &#123;...&#125;  <span class="comment">/* 多设备支持，逗号分隔 */</span></span><br><span class="line"></span><br><span class="line">media (<span class="attribute">min-width</span>: <span class="number">500px</span>), (max-width: <span class="number">700px</span>) &#123;....&#125;</span><br><span class="line">media only screen and (<span class="attribute">min-width</span>: <span class="number">500px</span>) and (max-width: <span class="number">700px</span>) &#123;....&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>mediatype：常用媒体类型还是screen</p>
+<ul>
+<li>all：所有媒体类型</li>
+<li>screen：电脑屏幕，平板电脑，智能手机等</li>
+<li>print：打印设备</li>
+<li>speech：屏幕阅读器等发声设备</li>
+</ul>
+</li>
+<li><p>and|or|not|only：关键字，实际使用3选1</p>
+<ul>
+<li>not：必须将not写在查询的最前面，表示不应用样式，即所有条件<strong>都满足</strong>时<strong>不应用</strong>样式</li>
+<li>only：用来排除不支持媒体查询的浏览器<ul>
+<li>only 和 not 一样只能出现在媒体查询的开始</li>
+<li>对支持媒体查询的设备，正常调用样式，此时就当only不存在</li>
+<li>对不支持媒体查询的设备不使用样式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>media feature：width、min-width、max-width（布局视口的宽度、最小宽度…）</p>
+</li>
+<li><p>断点：样式切换的分界点，常用断点</p>
+<ul>
+<li>小于768 超小屏幕     大于768 小屏幕   大于992 中型屏幕    大于1200 大屏幕</li>
+</ul>
+</li>
+</ul>
+<h4 id="5、查询条件"><a href="#5、查询条件" class="headerlink" title="5、查询条件"></a>5、查询条件</h4><ul>
+<li><p>可以使用不同条件限制使用的样式，条件表达式需要放在<strong>扩号</strong>中</p>
+</li>
+<li><p>style：设置查询条件的媒体查询：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;style media=&quot;screen and (<span class="attribute">min-width</span>: <span class="number">768px</span>),screen and (orientation:landscape)<span class="string">&quot;&gt;</span></span><br><span class="line"><span class="string">/*  orientation 属性可以定义设备的方向 */</span></span><br><span class="line"><span class="string">/* portrait	竖屏设备即高度大于宽度    landscape	横屏设备即宽度大于高度*/</span></span><br><span class="line"><span class="string">  body &#123;</span></span><br><span class="line"><span class="string">    color: blue;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&lt;/style&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>@media：设置查询条件的媒体查询：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">orientation</span>: landscape) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">600px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#8e44ad</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2、rem布局"><a href="#2、rem布局" class="headerlink" title="2、rem布局"></a>2、rem布局</h3><ul>
+<li>作用：当设备尺寸发生改变的时候，等比例适配当前设备</li>
+<li>rem计算：1rem = HTML的font-size  也是:root的font-size<ul>
+<li>HTML的font-size：屏幕宽度 / 划分的份数</li>
+</ul>
+</li>
+<li>做法：<ul>
+<li>不同的媒体查询方式，不同的设备设置不同的HTML的font-size</li>
+<li>然后页面元素用rem做尺寸单位</li>
+<li>当html字体大小变化，元素尺寸也会发生变化，从而达到等比缩放的效果</li>
+</ul>
+</li>
+</ul>
+<h3 id="3、vw适配"><a href="#3、vw适配" class="headerlink" title="3、vw适配"></a>3、vw适配</h3><ul>
+<li><p><code>vh、vw</code>方案即将视觉视口宽度 <code>window.innerWidth</code>和视觉视口高度 <code>window.innerHeight</code> 等分为 100 份。</p>
+<ul>
+<li><code>1vw</code>等于视觉视口的<code>1%</code>，<code>1vh</code> 为视觉视口高度的<code>1%</code></li>
+<li><code>vmin</code> : <code>vw</code> 和 <code>vh</code> 中的较小值、较大值</li>
+<li>如果视觉视口为<code>375px</code>，那么<code>1vw = 3.75px</code>，这时<code>UI</code>给定一个元素的宽为<code>75px</code>（设备独立像素），我们只需要将它设置为<code>75 / 3.75 = 20vw</code></li>
+</ul>
+</li>
+<li><p>缺陷：</p>
+<ul>
+<li><code>px</code>转换成<code>vw</code>不一定能完全整除，因此有一定的像素差。</li>
+<li>比如当容器使用<code>vw</code>，<code>margin</code>采用<code>px</code>时，很容易造成整体宽度超过<code>100vw</code>，从而影响布局效果。当然我们也是可以避免的，例如使用<code>padding</code>代替<code>margin</code>，结合<code>calc()</code>函数使用等等…</li>
+</ul>
+</li>
+</ul>
+<h3 id="4、视口"><a href="#4、视口" class="headerlink" title="4、视口"></a>4、视口</h3><h4 id="1、viewport的概念"><a href="#1、viewport的概念" class="headerlink" title="1、viewport的概念"></a>1、viewport的概念</h4><ul>
+<li><p>通俗的讲，移动设备上的viewport：就是设备的<strong>屏幕上能用来显示网页的那块区域：</strong></p>
+</li>
+<li><p>但viewport又不局限于浏览器可视区域的大小，它可能比浏览器的可视区域大或小；</p>
+</li>
+<li><p>默认情况下，一般来讲，移动设备上的viewport都是要大于浏览器可视区域的：</p>
+<ul>
+<li>因为考虑到移动设备的分辨率相对于桌面来说都较小；</li>
+<li>所以为了能在移动设备上正常显示为传统的为桌面设计的网站；</li>
+<li>移动设备上的浏览器都会把自己默认的viewport设为980px或其他值</li>
+<li>但后果就是浏<strong>览器会出现横向滚动条</strong>，因为浏览器可视区域的宽度是比这个默认的viewport的宽度要小的。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/18030682-a963ada3b9aed8fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/653/format/webp" alt="img"></p>
+<h4 id="2、css的1px-设备1px"><a href="#2、css的1px-设备1px" class="headerlink" title="2、css的1px !== 设备1px"></a>2、css的1px !== 设备1px</h4><p>css中的像素只是一个抽象单位，在不同的设备或环境中<strong>，css中的1px代表的设备物理像素是不同的</strong></p>
+<ul>
+<li><p>css中一般使用px作为单位，对应电脑浏览器就是1px，一个物理像素；</p>
+</li>
+<li><p>但<strong>移动设备</strong>中并非如此：</p>
+<ul>
+<li>早期设备，屏幕像素比低。iphone3分辨率为320x480，一个css像素等于一个屏幕物理像素</li>
+<li>但后期苹果推出了Retina屏，分辨率提高了一倍，变成640x960，但屏幕尺寸却没变化：<ul>
+<li>这意味着，同样大小的屏幕上，像素却多了一倍，这时，一个css像素是等于两个物理像素的；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>用户缩放行为：</strong></p>
+<ul>
+<li>当用户把页面放大一倍，那么css中1px所代表的物理像素也会增加一倍；</li>
+<li>反之把页面缩小一倍，css中1px所代表的物理像素也会减少一倍</li>
+</ul>
+</li>
+<li><p>**devicePixelRatio(设备像素比)**属性：window对象的</p>
+<ul>
+<li>设备物理像素和设备独立像素的比例，也就是 <strong>dpr = dp/ dips</strong>：<ul>
+<li> <strong>dp(device pixels)：</strong>设备物理像素        css中的px</li>
+<li> <strong>dips(device-independent pixels)：</strong>设备独立像素，dips = css像素/scale（缩放比例），所以dpr=(dp/css像素)*scale</li>
+</ul>
+</li>
+<li>因此，通过devicePixelRatio可以知道该设备上一个css像素代表多少个物理像素。</li>
+<li>但注意的是，devicePixelRatio在不同的浏览器中还存在些许的兼容性问题</li>
+</ul>
+</li>
+</ul>
+<h4 id="3、布局视口"><a href="#3、布局视口" class="headerlink" title="3、布局视口"></a>3、布局视口</h4><img src="https:////upload-images.jianshu.io/upload_images/18030682-07a1ff787499c9f2.png?imageMogr2/auto-orient/strip|imageView2/2/w/497/format/webp" alt="img" style="zoom:50%;" />
+
+<ul>
+<li><p>出现的目的：</p>
+<p>浏览器默认情况下把viewport设为一个较宽的值，比如980px，这样的话即使是那些为桌面设计的网站也能在移动浏览器上正常显示了。</p>
+<ol>
+<li>首先，移动设备上的浏览器认为自己必须能让所有的网站都正常显示，即便不是专为移动设备设计的网页</li>
+<li>但移动设备的屏幕都不是很宽，如果以浏览器的可视区域作为viewport的话，那些为桌面浏览器设计的网站放到移动设备上显示时，必然会因为移动设备的viewport太窄，而挤作一团</li>
+<li>因此，。。。</li>
+</ol>
+</li>
+<li><p>ppk把这个浏览器默认的viewport叫做<strong>layout viewport(布局视口)</strong></p>
+</li>
+<li><p>获取：<code>document.documentElement.clientWidth / clientHeight</code></p>
+</li>
+</ul>
+<h4 id="4、视觉视口"><a href="#4、视觉视口" class="headerlink" title="4、视觉视口"></a>4、视觉视口</h4><img src="https:////upload-images.jianshu.io/upload_images/18030682-d92903bf680a85cd.png?imageMogr2/auto-orient/strip|imageView2/2/w/500/format/webp" alt="img" style="zoom:50%;" />
+
+<ul>
+<li>layout viewport 的宽度是大于浏览器可视区域的宽度的，所以我们还需要一个viewport来代表 <strong>浏览器可视区域的大小</strong>：<strong>视觉视口</strong></li>
+<li>用户可以缩放来查看网站的内容。<ul>
+<li>缩小网站，看到的网站区域将变大，此时视觉视口也变大了，反之亦然</li>
+<li>不管用户如何缩放，都不会影响到布局视口的宽度</li>
+</ul>
+</li>
+<li>调用<code>window.innerWidth / innerHeight</code>来获取</li>
+</ul>
+<h4 id="5、理想视口"><a href="#5、理想视口" class="headerlink" title="5、理想视口"></a>5、理想视口</h4><ul>
+<li><p>现在主流网站会为移动设备单独的设计，所以必须还要有一个能完美适配移动设备的viewport</p>
+</li>
+<li><p>完美适配指的是：</p>
+<ol>
+<li>不需要用户缩放和横向滚动条就能正常的查看网站的所有内容；</li>
+<li>显示的文字（图片等）的大小是合适，比如一段14px大小的文字，不会因为在一个高密度像素的屏幕里显示得太小而无法看清</li>
+<li>理想的情况是这段14px的文字无论是在何种密度屏，何种分辨率，显示出来的都差不多的</li>
+</ol>
+</li>
+<li><p><code>window.screen.width / height</code>来获取</p>
+</li>
+<li><p>ideal viewport 并没有固定的尺寸，不同的设备有不同的 ideal viewport：</p>
+<ul>
+<li><p>所有的 iphone 的 ideal viewport 宽度都是 320px，无论它的屏幕宽度是 320 还是 640</p>
+</li>
+<li><p>也就是说，在 iphone 中，css 中的 320px 就代表 iphone 屏幕的宽度。</p>
+<img src="https:////upload-images.jianshu.io/upload_images/18030682-8a400bd06174edfa.png?imageMogr2/auto-orient/strip|imageView2/2/w/270/format/webp" alt="img" style="zoom:33%;" /></li>
+</ul>
+</li>
+<li><p>这3类视口， ideal viewport 是最适合移动设备的viewport：只要在css中把某一元素的宽度设为ideal viewport的宽度(单位用px)，那么这个元素的宽度就是设备屏幕的宽度了，也就是宽度为100%的效果。</p>
+</li>
+<li><p>ideal viewport 的意义：</p>
+<p>无论在何种分辨率的屏幕下，那些针对ideal viewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。</p>
+</li>
+</ul>
+<h3 id="5、meta标签"><a href="#5、meta标签" class="headerlink" title="5、meta标签"></a>5、meta标签</h3><h4 id="标准写法："><a href="#标准写法：" class="headerlink" title="标准写法："></a>标准写法：</h4><ul>
+<li><p>移动设备<strong>默认的viewport是layout viewport</strong>，也就是那个比屏幕要宽的viewport，但在进行移动设备网站的开发时，我们需要的是ideal viewport，常见的作法：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>该meta标签的作用：</p>
+<p>让当前viewport的宽度等于设备的宽度，同时不允许用户手动缩放。如果你不这样的设定的话，那就会使用那个比屏幕宽的默认viewport，也就是说会出现横向滚动条。</p>
+</li>
+<li><p>meta viewport 标签：在苹果的规范中，meta viewport 有6个属性</p>
+<p>安卓还支持 target-densitydpi 私有属性，表示目标设备的密度等级，作用是决定css中的1px代表多少物理像素，即将废弃。</p>
+<img src="https:////upload-images.jianshu.io/upload_images/18030682-839f41e5291f76f8.png?imageMogr2/auto-orient/strip|imageView2/2/w/549/format/webp" alt="img" style="zoom:50%;" />
+
+<p><img src="https://upload-images.jianshu.io/upload_images/18030682-76c58332c2eefc4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/657/format/webp" alt="img"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="不同的写法："><a href="#不同的写法：" class="headerlink" title="不同的写法："></a>不同的写法：</h4><ol>
+<li> 这样写也能达到同样的效果：为什么？</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;initial-scale=1&quot;</span>&gt;</span></span><br><span class="line">  // IE 会横竖屏不分</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>因为这里的缩放值是1，也就是没缩放，但却达到了 ideal viewport 的效果；</li>
+<li>因为缩放是相对于 ideal viewport来进行缩放的，当对ideal viewport进行100%的缩放，也就是缩放值为1的时候，不就得到了 ideal viewport吗</li>
+</ul>
+<ol start="2">
+<li><strong>但如果 width 和 initial-scale=1 同时出现，并且还出现了冲突呢？</strong>比如：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=400, initial-scale=1&quot;</span>&gt;</span></span><br><span class="line">  // iphone、ipad会横竖屏不分</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>width=400：把当前viewport的宽度设为400px</p>
+</li>
+<li><p>initial-scale=1：把当前viewport的宽度设为ideal viewport的宽度，<code>= 理想视口宽度 / 视觉视口宽度</code></p>
+</li>
+<li><p><strong>当遇到这种情况时，浏览器会取它们两个中较大的那个值</strong>：</p>
+<p>ideal viewport的宽度为320时，取的是400；当width=400， ideal viewport的宽度为480时，取的是ideal viewport的宽度</p>
+</li>
+</ul>
+<h4 id="用户缩放："><a href="#用户缩放：" class="headerlink" title="用户缩放："></a>用户缩放：</h4><p><code>initial-scale= 理想视口宽度 / 视觉视口宽度</code></p>
+<ul>
+<li><p>缩放是相对于ideal viewport来缩放的，缩放值越大，当前viewport的宽度就会越小，反之亦然。</p>
+<p>例如在iphone中，ideal viewport的宽度是320px，如果我们设置 initial-scale=2 ，此时viewport的宽度会变为只有160px了</p>
+<ul>
+<li>原来1px的东西变成2px了，但是1px变为2px并不是把原来的320px变为640px了，而是在实际宽度不变的情况下，1px变得跟原来的2px的长度一样了，所以放大2倍后原来需要320px才能填满的宽度现在只需要160px就做到了</li>
+</ul>
+</li>
+<li><p>另一点，initial-scale：在iphone和ipad上，无论你给viewport设的宽的是多少，如果没有指定默认的缩放值，则iphone和ipad会自动计算这个缩放值，以达到当前页面不会出现横向滚动条(或者说viewport的宽度就是屏幕的宽度)的目的。</p>
+</li>
+</ul>
+<h3 id="6、rem、em、vm"><a href="#6、rem、em、vm" class="headerlink" title="6、rem、em、vm"></a>6、rem、em、vm</h3><ul>
+<li><p>px：像素，固定</p>
+</li>
+<li><p>em：</p>
+<ul>
+<li>相对于自己的字体大小；有继承的属性</li>
+<li>如果自己没有，<strong>相对于父元素字体大小</strong></li>
+</ul>
+</li>
+<li><p>rem：相对于<strong>根元素的字体font-size大小</strong>,任意浏览器默认字体都是16px</p>
+<ul>
+<li>html根元素的获取方式 <code>document.getElementsByTagName(&#39;html&#39;)[0]</code></li>
+<li>Htmlfont-size：屏幕宽度 / 划分的份数</li>
+<li>页面元素的rem值：页面元素值（px）/（屏幕宽度 / 划分的份数）</li>
+</ul>
+</li>
+<li><p>百分比：</p>
+<ul>
+<li>用在字体中，相对于<strong>父元素</strong>字体大小</li>
+<li>用在尺寸中，相对于父元素的width和height</li>
+</ul>
+</li>
+<li><p>vm、vh</p>
+<ul>
+<li><code>1vw</code>等于视觉视口的<code>1%</code>，<code>1vh</code> 为视觉视口高度的<code>1%</code></li>
+<li>如果视觉视口为<code>375px</code>，那么<code>1vw = 3.75px</code>，这时<code>UI</code>给定一个元素的宽为<code>75px</code>（设备独立像素），我们只需要将它设置为<code>75 / 3.75 = 20vw</code></li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">飞儿</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mynightwish.top" target="_blank">Nightwishのblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/">移动端适配</a></div><div class="post_share"><div class="social-share" data-image="https://images.unsplash.com/photo-1638914130169-5bd5240f6ea2?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/01/02/%E6%83%B3%E7%8E%A9%E7%9A%84%E4%B8%9C%E8%A5%BF/"><img class="next-cover" src="https://images.unsplash.com/photo-1639005747853-ab4b8e22b35a?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">想玩的东西</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/09/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" title="移动端适配"><img class="cover" src="https://images.unsplash.com/photo-1638914130169-5bd5240f6ea2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-09</div><div class="title">移动端适配</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://th.bing.com/th/id/OIP.-i9W7XGah8cf44a1DaBbmgAAAA?pid=ImgDet&amp;rs=1" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">85</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/myNightwish" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zml_byr@bupt.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">保持理智，相信明天</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D"><span class="toc-text">移动端适配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2"><span class="toc-text">1、媒体查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81style"><span class="toc-text">1、style</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81link"><span class="toc-text">2、link</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81-import"><span class="toc-text">3、@import</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81-media"><span class="toc-text">4、@media</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6"><span class="toc-text">5、查询条件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81rem%E5%B8%83%E5%B1%80"><span class="toc-text">2、rem布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81vw%E9%80%82%E9%85%8D"><span class="toc-text">3、vw适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E8%A7%86%E5%8F%A3"><span class="toc-text">4、视口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81viewport%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">1、viewport的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81css%E7%9A%841px-%E8%AE%BE%E5%A4%871px"><span class="toc-text">2、css的1px !&#x3D;&#x3D; 设备1px</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E5%B8%83%E5%B1%80%E8%A7%86%E5%8F%A3"><span class="toc-text">3、布局视口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E8%A7%86%E8%A7%89%E8%A7%86%E5%8F%A3"><span class="toc-text">4、视觉视口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E7%90%86%E6%83%B3%E8%A7%86%E5%8F%A3"><span class="toc-text">5、理想视口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81meta%E6%A0%87%E7%AD%BE"><span class="toc-text">5、meta标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%86%99%E6%B3%95%EF%BC%9A"><span class="toc-text">标准写法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E5%86%99%E6%B3%95%EF%BC%9A"><span class="toc-text">不同的写法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BC%A9%E6%94%BE%EF%BC%9A"><span class="toc-text">用户缩放：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81rem%E3%80%81em%E3%80%81vm"><span class="toc-text">6、rem、em、vm</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/" title="移动端适配"><img src="https://images.unsplash.com/photo-1638914130169-5bd5240f6ea2?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动端适配"/></a><div class="content"><a class="title" href="/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/" title="移动端适配">移动端适配</a><time datetime="2022-01-06T05:37:26.087Z" title="发表于 2022-01-06 05:37:26">2022-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/02/%E6%83%B3%E7%8E%A9%E7%9A%84%E4%B8%9C%E8%A5%BF/" title="想玩的东西"><img src="https://images.unsplash.com/photo-1639005747853-ab4b8e22b35a?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="想玩的东西"/></a><div class="content"><a class="title" href="/2022/01/02/%E6%83%B3%E7%8E%A9%E7%9A%84%E4%B8%9C%E8%A5%BF/" title="想玩的东西">想玩的东西</a><time datetime="2022-01-02T23:36:58.000Z" title="发表于 2022-01-02 23:36:58">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E8%BD%AC%E6%8D%A2/" title="驼峰命名转换"><img src="https://images.unsplash.com/photo-1638984849684-e646e7d9659c?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="驼峰命名转换"/></a><div class="content"><a class="title" href="/2021/12/29/%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E8%BD%AC%E6%8D%A2/" title="驼峰命名转换">驼峰命名转换</a><time datetime="2021-12-29T22:58:36.000Z" title="发表于 2021-12-29 22:58:36">2021-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/ES6%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" title="ES6的新特性"><img src="https://images.unsplash.com/photo-1639111503666-56295742ed85?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=871&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ES6的新特性"/></a><div class="content"><a class="title" href="/2021/12/29/ES6%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" title="ES6的新特性">ES6的新特性</a><time datetime="2021-12-29T22:54:26.000Z" title="发表于 2021-12-29 22:54:26">2021-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/%E8%99%BE%E7%9A%AE%E4%B8%80%E9%9D%A2%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="虾皮一面中的数组去重"><img src="https://images.unsplash.com/photo-1638957773782-f9614ba79d81?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=580&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虾皮一面中的数组去重"/></a><div class="content"><a class="title" href="/2021/12/29/%E8%99%BE%E7%9A%AE%E4%B8%80%E9%9D%A2%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="虾皮一面中的数组去重">虾皮一面中的数组去重</a><time datetime="2021-12-29T22:44:55.000Z" title="发表于 2021-12-29 22:44:55">2021-12-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 飞儿</div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://mynightwish.top/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/'
+    this.page.identifier = '2022/01/06/CSS的移动端适配-1/'
+    this.page.title = '移动端适配'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Valine' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script data-pjax defer src="/js/custom/fixed_comment.js"></script><script async src="/js/newAdd.js"></script><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/12/11/JS的异步解决方案/" alt=""><img width="48" height="48" src="https://images.unsplash.com/photo-1594616389213-f3c7ce522896?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" alt="" onerror="this.src=https://cdn.jsdelivr.net/npm/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="2021/12/11/JS的异步解决方案/" alt="">JS的异步解决方案</a><div class="blog-slider__text">从回调-&gt;promise-&gt;async+await，漫长的前端异步之路</div><a class="blog-slider__button" href="2021/12/11/JS的异步解决方案/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/12/11/JS的异步运行机制/" alt=""><img width="48" height="48" src="https://images.unsplash.com/photo-1555930254-f837962bc58f?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="" onerror="this.src=https://cdn.jsdelivr.net/npm/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="2021/12/11/JS的异步运行机制/" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" href="2021/12/11/JS的异步运行机制/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>

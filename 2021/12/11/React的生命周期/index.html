@@ -1,0 +1,674 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>React的生命周期 | Nightwishのblog</title><meta name="keywords" content="生命周期"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="生命周期是什么，与库本身的关系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React的生命周期">
+<meta property="og:url" content="https://mynightwish.top/2021/12/11/React%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
+<meta property="og:site_name" content="Nightwishのblog">
+<meta property="og:description" content="生命周期是什么，与库本身的关系">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.unsplash.com/photo-1637401608113-4d17d2dad2f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80">
+<meta property="article:published_time" content="2021-12-11T22:55:07.000Z">
+<meta property="article:modified_time" content="2022-01-06T05:37:26.091Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="生命周期">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1637401608113-4d17d2dad2f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mynightwish.top/2021/12/11/React%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'React的生命周期',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-06 05:37:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script><link rel="stylesheet" href="/css/custom/fixed_comment.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/background.css"  media="defer" onload="this.media='all'"><style type="text/css">#toggle-sidebar {left:100px}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://th.bing.com/th/id/OIP.-i9W7XGah8cf44a1DaBbmgAAAA?pid=ImgDet&amp;rs=1" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">85</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 时光机</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-heart"></i><span> 图册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-comments"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1637401608113-4d17d2dad2f8?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 时光机</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-heart"></i><span> 图册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-comments"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">React的生命周期</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T22:55:07.000Z" title="发表于 2021-12-11 22:55:07">2021-12-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-06T05:37:26.091Z" title="更新于 2022-01-06 05:37:26">2022-01-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/React-Vue/">React&amp;&amp;Vue</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="React的生命周期"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="React生命周期"><a href="#React生命周期" class="headerlink" title="React生命周期"></a>React生命周期</h2><h3 id="1、组件与虚拟DOM"><a href="#1、组件与虚拟DOM" class="headerlink" title="1、组件与虚拟DOM"></a>1、组件与虚拟DOM</h3><h4 id="虚拟DOM："><a href="#虚拟DOM：" class="headerlink" title="虚拟DOM："></a>虚拟DOM：</h4><ul>
+<li><strong>组件初始化时：</strong><ul>
+<li>调用render方法 — 生成虚拟DOM —再通过ReactDom.render()—生成真实Dom</li>
+</ul>
+</li>
+<li><strong>组件更新时：</strong><ul>
+<li>通过render方法 —– 生成新的虚拟DOM——借助diff算法——-定位出两次虚拟Dom的差异</li>
+</ul>
+</li>
+</ul>
+<h4 id="组件化："><a href="#组件化：" class="headerlink" title="组件化："></a>组件化：</h4><p>React中所有可见、不可见的都可以被抽象为组件，每个组件既是“封闭”的，也是“开放”的；</p>
+<p><strong>封闭</strong>：针对渲染工作流而言</p>
+<ul>
+<li>在每个组件自身的渲染工作流中，每个组件都只处理它内部的逻辑，各自为政</li>
+<li><strong>渲染工作流：</strong>组件数据改变到组件实际更新发生的过程</li>
+</ul>
+<p><strong>开放</strong>：针对组件通信而言</p>
+<ul>
+<li>React允许开发者基于“单向数据流”的原则完成组件的通信</li>
+<li>而组件之间的通信又将改变通信双方/某一方内部的数据流，进而对渲染结果构成影响；</li>
+</ul>
+<h4 id="组件的分类"><a href="#组件的分类" class="headerlink" title="组件的分类"></a>组件的分类</h4><ul>
+<li>这些概念有很多重叠，但是他们最主要是关注数据逻辑和UI展示的分离：<ul>
+<li>函数组件、无状态组件、UI组件主要关注UI的展示;</li>
+<li>类组件、有状态组件、容器组件主要关注数据逻辑</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-无状态、有状态组件"><a href="#1-无状态、有状态组件" class="headerlink" title="1. 无状态、有状态组件"></a>1. 无状态、有状态组件</h5><p>根据组件内部是否有状态需要维护</p>
+<ul>
+<li><h5 id="无状态组件："><a href="#无状态组件：" class="headerlink" title="无状态组件："></a>无状态组件：</h5><ol>
+<li><p>是一个函数，组件中只有一个render函数，会接受一个props，返回组件，只负责展示，例如函数组件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloComponent</span>(<span class="params">props</span>) </span>&#123;    </span><br><span class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;props.data&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>优点：简单清晰，容易理解，可读性较好；</p>
+<p>缺点：满足不了复杂的应用，往往需要结合<strong>高阶组件</strong>使用，利用高阶组件托管所需状态数据；</p>
+</li>
+<li><p>举例：例如redux中就是将组件分为<strong>容器组件</strong>和<strong>ui组件</strong></p>
+<p>容器组件作为一个高阶组件，<strong>提供数据和行为给ui组件或者其他的容器组件</strong>，负责调用action，并作为回调给展示组件，因此容器组件通常是有状态的，往往作为数据源；</p>
+<p>而ui组件关心组件的展示，通过props接收数据和回调很少有它们自己的state，有也是UI状态而不是数据</p>
+</li>
+</ol>
+</li>
+<li><h5 id="有状态组件"><a href="#有状态组件" class="headerlink" title="有状态组件"></a>有状态组件</h5><ol>
+<li><p><strong>特点：</strong>组件内部包含状态，并且状态随着事件或者外部的消息而发生改变，这就构成了有状态组件。使用有状态组件通常会结合react的生命周期钩子控制组件状态更新的时机</p>
+</li>
+<li><p>react中，有两种更新组件的方式：props和state。</p>
+<p>props是只读的，只能由父组件控制；而state是由组件内部维护的。</p>
+<p>无状态组件通常只通过props来存储数据，而有状态组件使用state来存储数据</p>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="2-UI-容器组件"><a href="#2-UI-容器组件" class="headerlink" title="2. UI/容器组件"></a>2. UI/容器组件</h5><ul>
+<li><h5 id="UI组件"><a href="#UI组件" class="headerlink" title="UI组件"></a>UI组件</h5><p>负责页面的渲染，将todolist关于页面渲染相关的内容全部放到ToDoListUI.js文件中，只负责页面的显示而不是逻辑，所以也叫傻瓜组件</p>
+</li>
+<li><h5 id="容器组件"><a href="#容器组件" class="headerlink" title="容器组件"></a>容器组件</h5><p>负责业务逻辑的代码，而不是组件的页面。所以也叫聪明组件，ToDoList组件</p>
+</li>
+</ul>
+<h5 id="3-函数组件-类组件"><a href="#3-函数组件-类组件" class="headerlink" title="3. 函数组件/类组件"></a>3. 函数组件/类组件</h5><ul>
+<li><h5 id="函数组件"><a href="#函数组件" class="headerlink" title="函数组件"></a>函数组件</h5><ol>
+<li>本质是JS函数，只是return的内容是描述页面展示内容的React元素</li>
+<li>也会被更新并挂载，但是没有生命周期函数;可以通过hooks来模拟一些生命周期</li>
+<li>没有this(组件实例);</li>
+<li>没有内部状态(state); </li>
+</ol>
+</li>
+<li><h5 id="类组件"><a href="#类组件" class="headerlink" title="类组件"></a>类组件</h5><ol>
+<li>必须实现render函数， class 组件中唯一必须实现的方法</li>
+<li>constructor：可选，常用来初始化数据</li>
+</ol>
+</li>
+</ul>
+<h5 id="4-受控-非受控组件"><a href="#4-受控-非受控组件" class="headerlink" title="4.  受控/非受控组件"></a>4.  受控/非受控组件</h5><ul>
+<li><h5 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h5><ol>
+<li><p><strong>可变状态</strong>通常保存在组件的状态属性中，并且只能使用 setState() 更新；</p>
+</li>
+<li><p>而包裹着受控表单组件的React父组件控制着在后续用户输入时该表单中发生的情况；</p>
+</li>
+<li><p>以这种<strong>由React控制的输入表单元素而改变其值的方式</strong>，称为：“受控组件”。</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="built_in">this</span>.state.value /&gt;;</span><br></pre></td></tr></table></figure></li>
+<li><h5 id="非受控组件"><a href="#非受控组件" class="headerlink" title="非受控组件"></a>非受控组件</h5><ul>
+<li><p>受控与非受控，关键在于站在哪个视角去看，</p>
+</li>
+<li><p>对于一组包含关系的父子组件，如果子组件的状态不受父组件控制，而是子组件在其内部维护了自己的状态state，对于父组件来说，子组件就是一个非受控组件。</p>
+</li>
+<li><p>相反的，如果父组件可以通过props控制子组件的展示状态，那他就是一个受控组件。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2、生命周期的本质：render方法为react组件的“灵魂“；"><a href="#2、生命周期的本质：render方法为react组件的“灵魂“；" class="headerlink" title="2、生命周期的本质：render方法为react组件的“灵魂“；"></a>2、生命周期的本质：render方法为react组件的“灵魂“；</h3><ul>
+<li><p>虚拟DOM、组件化这两个概念，都在围绕这render方法，虚拟DOM的生成需要render、而组件化中跟的渲染工作流这个过程同样离不开render；</p>
+</li>
+<li><p>如果将render方法比喻为灵魂，render之外的生命周期可以理解为组件的躯干</p>
+</li>
+<li><p>躯干和灵魂共同构成了完整而不可分割的生命时间轴</p>
+</li>
+</ul>
+<h3 id="3、15生命周期"><a href="#3、15生命周期" class="headerlink" title="3、15生命周期"></a>3、15生命周期</h3><img src="https://img-blog.csdnimg.cn/20210713213159633.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BhZ256b25n,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" style="zoom:50%;" />
+
+<h4 id="1-初始化：初次渲染阶段"><a href="#1-初始化：初次渲染阶段" class="headerlink" title="1. 初始化：初次渲染阶段"></a>1. 初始化：初次渲染阶段</h4><ol>
+<li><p><code>constructor</code> 构造函数：主要2件事</p>
+<ul>
+<li>给 this.state 赋值对象来初始化内部的state;</li>
+<li>为事件绑定实例(this);</li>
+</ul>
+<ul>
+<li>如果不初始化 state 或不进行方法绑定，则不需要为 React 组件实现构造函数</li>
+</ul>
+</li>
+<li><p><code>componentWillMount</code> 组件初始化渲染前调用1次</p>
+</li>
+<li><p><strong><code>render</code> 组件渲染</strong>                 <strong>重要 高频</strong></p>
+<ul>
+<li>注意：render在执行过程中并不会真实操作Dom，它的工作是把需要渲染的内容返回出来</li>
+<li>真实的Dom渲染工作在初始化阶段是由ReactDOM.render()干的；</li>
+</ul>
+</li>
+<li><p><strong><code>componentDidMount</code> 组件挂载到 <code>DOM</code> 后调用</strong>                      <strong>高频</strong></p>
+<ul>
+<li><strong>只执行1次，后续修改数据，不会执行</strong>,可做的操作：<ul>
+<li>依赖于DOM的操作、开启定时器、发送网络请求、订阅消息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-更新阶段"><a href="#2-更新阶段" class="headerlink" title="2. 更新阶段"></a>2. 更新阶段</h4><ul>
+<li><h5 id="情况1：state触发更新的流程：-状态更新-this-state"><a href="#情况1：state触发更新的流程：-状态更新-this-state" class="headerlink" title="情况1：state触发更新的流程： 状态更新   this.state"></a>情况1：state触发更新的流程： 状态更新   this.state</h5><ol>
+<li><p><code>shouldComponentUpdate</code> 组件是否需要更新</p>
+</li>
+<li><p><code>componentWillUpdate</code> 组件更新前调用：</p>
+</li>
+<li><p><code>render</code> 组件渲染                                             <strong>重要 高频</strong></p>
+</li>
+<li><p><code>componentDidUpdate</code> 组件更新后调用：</p>
+</li>
+</ol>
+</li>
+<li><h5 id="情况2：父组件render触发的更新流程：-父组件更新"><a href="#情况2：父组件render触发的更新流程：-父组件更新" class="headerlink" title="情况2：父组件render触发的更新流程： 父组件更新"></a>情况2：父组件render触发的更新流程： 父组件更新</h5><ol>
+<li><p><code>componentWillReceiveProps</code> ：</p>
+<p>注意：如果父组件导致组件重新渲染，即使props没有更改，也会调用此方法；如果只是想处理更改，请确保进行当前值与变更值的比较；（官网）</p>
+<ul>
+<li>所以这个钩子的触发并不是props更新触发的，而是父组件触发的。即使props并没有更新</li>
+</ul>
+</li>
+<li><p><code>shouldComponentUpdate</code> 组件是否需要更新：                 <strong>性能优化</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shouldComponentUpdate(nextProps, nextState)</span><br><span class="line">* 返回值：默认true；并且只要写了这个钩子，就必须写true/false，不允许你不写</span><br><span class="line">* 如果这个函数返回fasle，类比于阀门关闭，后面的所有流程都不往下走</span><br></pre></td></tr></table></figure></li>
+<li><p><code>componentWillUpdate</code> 组件更新前调用</p>
+</li>
+<li><p><code>render</code> 组件渲染                                                <strong>重要 高频</strong></p>
+</li>
+<li><p><code>componentDidUpdate</code> 组件更新后调用</p>
+</li>
+</ol>
+</li>
+<li><h5 id="情况3：forceUpdate触发更新的流程：强制更新"><a href="#情况3：forceUpdate触发更新的流程：强制更新" class="headerlink" title="情况3：forceUpdate触发更新的流程：强制更新"></a>情况3：forceUpdate触发更新的流程：强制更新</h5><p>通过调用<code>this.forceUpdate()</code>，不更改任何数据，强制更新</p>
+<ol>
+<li><code>componentWillUpdate</code> 组件更新前调用</li>
+<li><code>render</code> 组件渲染                                                <strong>重要 高频</strong></li>
+<li><code>componentDidUpdate</code> 组件更新后调用：<ul>
+<li>基于组件更新后的Dom操作</li>
+<li>基于props的更新，来进行新的网络请求</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="3、卸载"><a href="#3、卸载" class="headerlink" title="3、卸载"></a>3、卸载</h4><ul>
+<li><code>componentWillUnmount</code> 组件卸载前调用：             <strong>高频</strong></li>
+<li>调用场景：<ol>
+<li>组件在父组件中被移除了</li>
+<li>组件中设置了key属性，父组件在render的过程中，发现key和上一次不一致</li>
+<li>清除 timer、取消网络请求或清除、取消在 componentDidMount() 中创建的订阅</li>
+</ol>
+</li>
+</ul>
+<h3 id="4、生命周期16-3"><a href="#4、生命周期16-3" class="headerlink" title="4、生命周期16.3"></a>4、生命周期16.3</h3><img src="https://img-blog.csdnimg.cn/2021071322465195.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BhZ256b25n,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" style="zoom: 50%;" />
+
+<h4 id="1、初始化阶段"><a href="#1、初始化阶段" class="headerlink" title="1、初始化阶段"></a>1、初始化阶段</h4><p>对比15：</p>
+<ol>
+<li><p>将<code>componentWillMount</code>替换为<code>getDerivedStateFromProps</code>：但只是工作流程的废弃，而不是替代。</p>
+<p><code>getDerivedStateFromProps</code>：只有一个用途，使用props来更新/派生state。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">getDerivedStateFromProps(props, state)</span><br><span class="line"><span class="comment">// 1. 当前组件接收到的来自父组件的props,自身的 state；</span></span><br><span class="line"><span class="number">2.</span> 需要一个对象格式的返回值，否则会警告。因为react需要这个返回值更新组件的state；因此当你不需要派生state时，最好不要写这钩子，否则<span class="keyword">return</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>挂载、更新</strong>的两个阶段都会调用；</p>
+</li>
+<li><p>是一个静态方法，不是实例调用的，是类自身调用的，static；在这个组件内部访问不到this，否则报错</p>
+</li>
+<li><p>必须返回值</p>
+<p>返回null则说明不需要更新 <code>state</code> ；返回状态对象（对象，且必须得和state里面对应）</p>
+</li>
+<li><p>该方法对state的更新动作并非“覆盖”式的更新，而是针对某个属性的定向更新；更新后，原属性与更新属性并存；</p>
+</li>
+<li><p>从接收到的props中，得到一个派生的状态：每次接收新的props之后都会返回一个对象作为新的 <code>state</code> 。<strong>你的状态state什么时候都会完全取决于props</strong>，初始化之类的不起作用</p>
+</li>
+</ul>
+</li>
+<li><p>render方法改进：</p>
+<p>16之前render方法必须返回单个元素，而16允许返回元素数组和字符串</p>
+</li>
+</ol>
+<h4 id="2、更新阶段"><a href="#2、更新阶段" class="headerlink" title="2、更新阶段"></a>2、更新阶段</h4><p>对比15：</p>
+<ol>
+<li><p>废弃了<code>componentWillReceivePorps</code>，增加了<code>getDerivedStateFromProps</code></p>
+</li>
+<li><p>废弃了<code>componentWillUpdate</code>，新增了<code>getSnapshotBeforeUpdate</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getSnapshotBeforeUpdate（参数1， 参数2）</span><br><span class="line">参数1：是之前的props；</span><br><span class="line">参数2：是之前的state，都不是最新的；</span><br><span class="line">返回值：必须有，否则警告。返回null</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>触发时间: 在 <code>render</code> 之后，在真实 <code>dom</code> 渲染之前</p>
+</li>
+<li><p>返回值会传递给下个钩子：<code>componentDidUpdat</code>的第三个参数</p>
+</li>
+<li><p>使用的场景：可以用于获取前后更新的dom的某些状态，例如高度、滚动高度等等</p>
+<p>实现一个内容会发生变化的滚动列表，要求根据滚动列表的内容是否发生变化来决定是否要记录滚动条的当前位置</p>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="3、卸载：相同"><a href="#3、卸载：相同" class="headerlink" title="3、卸载：相同"></a>3、卸载：相同</h5><h4 id="5、为什么废弃某些钩子？"><a href="#5、为什么废弃某些钩子？" class="headerlink" title="5、为什么废弃某些钩子？"></a>5、为什么废弃某些钩子？</h4><ol>
+<li><p>废弃了componentWillMount</p>
+</li>
+<li><p>getDerivedStateFromProps代替了componentWillUpdate</p>
+</li>
+</ol>
+<p>与componentWillUpdate一起，这个新生命周期涵盖过时componentWillReceivePorps的所有用例。</p>
+<ul>
+<li><p>getDerivedStateFromProps代替了componentWillReceivePorps，但不是百分之百cover到</p>
+</li>
+<li><p>为啥不能完全cover住呢？</p>
+<p>它做一件事：实现基于props派生state；</p>
+<p>这个方法被封装为静态方法，使得你不能直接获取this，所以也无法操作this.state这类可能产生副作用的工作，因此这个钩子替换是react强制推行getDerivedStateFromProps，使用props到state的映射，再确保生命周期函数的行为更加可控，帮开发者避免不合理的编程方式，同时也是在为新的fiber架构铺路；</p>
+</li>
+</ul>
+<p><code>componentWillMount</code>的存在鸡肋且危险，因此它不值得被替代，应该废弃；为什么呢？</p>
+<ul>
+<li><p>与fiber有关，出于render阶段，因此都可能被反复执行；另一方面，这些钩子常年被滥用的过程中，存在风险</p>
+</li>
+<li><p>比如某些骚操作：</p>
+<ol>
+<li>setState()：</li>
+<li>发起异步请求</li>
+<li>操作真实Dom</li>
+</ol>
+</li>
+<li><p>不合理的原因：</p>
+<ol>
+<li><p>完全可以转移到其他生命周期里去做：</p>
+<p>比如发起异步请求，会有人错认为这样就可以让异步请求早点回来，避免渲染白屏；</p>
+<p>但异步请求再怎么快也快不过同步的生命周期，componentwillmount结束后，render会迅速的触发，首次渲染依然会在数据返回之前执行；</p>
+<p>这样做，不仅达不到预想的目的，还会造成服务端的冗余请求等额外问题，得不偿失；</p>
+</li>
+<li><p>fiber带来的异步渲染机制下，可能会导致非常严重bug：</p>
+<p>假如你在这个钩子里发了个付款请求：</p>
+<p>由于render阶段的生命周期都可以重复执行，在componentwill***被打断+重启多次后，就会发出多个付款请求。</p>
+<p>假如商品只要10元，用户也只点了一次付款，却因为钩子的打断重启，导致接口频繁调用，导致多付了钱；</p>
+<p>再比如，在componentWillReceivePorps里操作Dom，若该钩子执行了2次，可能会删除两个符合某特征的元素</p>
+</li>
+<li><p>getDerivedStateFromProps封装设计</p>
+<p>这个方法被封装为静态方法，使得你不能直接获取this，所以也无法操作this.state这类可能产生副作用的工作，因此这个钩子替换是react强制推行getDerivedStateFromProps，使用props到state的映射，再确保生命周期函数的行为更加可控，帮开发者避免不合理的编程方式，同时也是在为新的fiber架构铺路；</p>
+</li>
+<li><p>即使你没有开启异步，15下也能把自己玩死</p>
+<p><strong>16改造的主要动机是为了配合Fiber架构带来的异步渲染机制；</strong></p>
+<p>比如：componentWillReceivePorps、componentWillUpdate里重复滥用state导致死循环</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="6、Fiber"><a href="#6、Fiber" class="headerlink" title="6、Fiber"></a>6、Fiber</h4><p>fiber是16对核心算法的一次重写：会使原本的同步的渲染过程变成异步的；</p>
+<ul>
+<li><p>在16之前，每当触发react的更新，react都会重新生成一个虚拟DOM树，通过与之前的diff，通过递归的方式实现定向更新；</p>
+<p>同步渲染的递归调用栈很深，只有最底层的返回，才会开始逐层返回；这个漫长且不可打断的过程将会一直占有渲染线程，浏览器此期间处于不能做别的事情，用户体验也不好；</p>
+</li>
+<li><p>16的架构：将一个大的更新任务拆分为几个小任务，每当执行完一个小任务时，都会把主线程交换，让更高优先级的执行，<strong>实行可中断的更新</strong>，避免卡顿；</p>
+</li>
+</ul>
+<h4 id="7、同步、与异步如何影响生命周期？"><a href="#7、同步、与异步如何影响生命周期？" class="headerlink" title="7、同步、与异步如何影响生命周期？"></a>7、同步、与异步如何影响生命周期？</h4><p>Fiber架构的重要特征就是可被打断的异步渲染模式；根据“能否被打断”这一标准，16的生命周期分为了render、commit两个阶段：</p>
+<ul>
+<li><p>render阶段：render及以前：纯净且无副作用，可能会被暂停、终止、重新启动</p>
+<ol>
+<li>因此，该阶段可能打断，为什么呢？</li>
+</ol>
+<p>render阶段的操作对用户来说是不可见的，即使打断再重启，也是0感知；</p>
+<ol start="2">
+<li><p>被暂停的细节：</p>
+<p>当执行该任务抢回执行的线程时，任务重启的方式并不是从之前暂停的地方执行，而是重新执行该任务，这就导致render阶段的生命周期都是有可能被重复执行的；</p>
+<p><strong>按照这个结论，为什么react打算废弃那几个钩子呢？</strong></p>
+</li>
+</ol>
+</li>
+<li><p>pre-commit阶段：可以读取Dom</p>
+</li>
+<li><p>conmit阶段：可以使用Dom运行副作用、安排更新；</p>
+<p>该阶段总是同步执行的，为什么这样设计呢？</p>
+<p>因为commit阶段涉及到真实Dom渲染，带来视图的更改，求稳</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">飞儿</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mynightwish.top" target="_blank">Nightwishのblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">生命周期</a></div><div class="post_share"><div class="social-share" data-image="https://images.unsplash.com/photo-1637401608113-4d17d2dad2f8?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/11/Vue%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"><img class="prev-cover" src="https://images.unsplash.com/photo-1633040245231-1ae5f7f51392?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vue的生命周期</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/11/CSS%E7%9A%84%E5%8A%A8%E7%94%BB/"><img class="next-cover" src="https://images.unsplash.com/photo-1640386595378-84a63264fe50?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CSS的过渡transition</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/11/Vue%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue的生命周期"><img class="cover" src="https://images.unsplash.com/photo-1633040245231-1ae5f7f51392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-11</div><div class="title">Vue的生命周期</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://th.bing.com/th/id/OIP.-i9W7XGah8cf44a1DaBbmgAAAA?pid=ImgDet&amp;rs=1" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">85</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/myNightwish" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zml_byr@bupt.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">保持理智，相信明天</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">React生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%BB%84%E4%BB%B6%E4%B8%8E%E8%99%9A%E6%8B%9FDOM"><span class="toc-text">1、组件与虚拟DOM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E6%8B%9FDOM%EF%BC%9A"><span class="toc-text">虚拟DOM：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%8C%96%EF%BC%9A"><span class="toc-text">组件化：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">组件的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%97%A0%E7%8A%B6%E6%80%81%E3%80%81%E6%9C%89%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6"><span class="toc-text">1. 无状态、有状态组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A0%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6%EF%BC%9A"><span class="toc-text">无状态组件：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%89%E7%8A%B6%E6%80%81%E7%BB%84%E4%BB%B6"><span class="toc-text">有状态组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-UI-%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6"><span class="toc-text">2. UI&#x2F;容器组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#UI%E7%BB%84%E4%BB%B6"><span class="toc-text">UI组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6"><span class="toc-text">容器组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6-%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="toc-text">3. 函数组件&#x2F;类组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6"><span class="toc-text">函数组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="toc-text">类组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%8F%97%E6%8E%A7-%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6"><span class="toc-text">4.  受控&#x2F;非受控组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6"><span class="toc-text">受控组件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6"><span class="toc-text">非受控组件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9Arender%E6%96%B9%E6%B3%95%E4%B8%BAreact%E7%BB%84%E4%BB%B6%E7%9A%84%E2%80%9C%E7%81%B5%E9%AD%82%E2%80%9C%EF%BC%9B"><span class="toc-text">2、生命周期的本质：render方法为react组件的“灵魂“；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%8115%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">3、15生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9A%E5%88%9D%E6%AC%A1%E6%B8%B2%E6%9F%93%E9%98%B6%E6%AE%B5"><span class="toc-text">1. 初始化：初次渲染阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9B%B4%E6%96%B0%E9%98%B6%E6%AE%B5"><span class="toc-text">2. 更新阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%83%85%E5%86%B51%EF%BC%9Astate%E8%A7%A6%E5%8F%91%E6%9B%B4%E6%96%B0%E7%9A%84%E6%B5%81%E7%A8%8B%EF%BC%9A-%E7%8A%B6%E6%80%81%E6%9B%B4%E6%96%B0-this-state"><span class="toc-text">情况1：state触发更新的流程： 状态更新   this.state</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%83%85%E5%86%B52%EF%BC%9A%E7%88%B6%E7%BB%84%E4%BB%B6render%E8%A7%A6%E5%8F%91%E7%9A%84%E6%9B%B4%E6%96%B0%E6%B5%81%E7%A8%8B%EF%BC%9A-%E7%88%B6%E7%BB%84%E4%BB%B6%E6%9B%B4%E6%96%B0"><span class="toc-text">情况2：父组件render触发的更新流程： 父组件更新</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%83%85%E5%86%B53%EF%BC%9AforceUpdate%E8%A7%A6%E5%8F%91%E6%9B%B4%E6%96%B0%E7%9A%84%E6%B5%81%E7%A8%8B%EF%BC%9A%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0"><span class="toc-text">情况3：forceUpdate触发更新的流程：强制更新</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E5%8D%B8%E8%BD%BD"><span class="toc-text">3、卸载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F16-3"><span class="toc-text">4、生命周期16.3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%B6%E6%AE%B5"><span class="toc-text">1、初始化阶段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E6%9B%B4%E6%96%B0%E9%98%B6%E6%AE%B5"><span class="toc-text">2、更新阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E5%8D%B8%E8%BD%BD%EF%BC%9A%E7%9B%B8%E5%90%8C"><span class="toc-text">3、卸载：相同</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BA%9F%E5%BC%83%E6%9F%90%E4%BA%9B%E9%92%A9%E5%AD%90%EF%BC%9F"><span class="toc-text">5、为什么废弃某些钩子？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81Fiber"><span class="toc-text">6、Fiber</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81%E5%90%8C%E6%AD%A5%E3%80%81%E4%B8%8E%E5%BC%82%E6%AD%A5%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8D%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%9F"><span class="toc-text">7、同步、与异步如何影响生命周期？</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/" title="移动端适配"><img src="https://images.unsplash.com/photo-1638914130169-5bd5240f6ea2?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动端适配"/></a><div class="content"><a class="title" href="/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/" title="移动端适配">移动端适配</a><time datetime="2022-01-06T05:37:26.087Z" title="发表于 2022-01-06 05:37:26">2022-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/02/%E6%83%B3%E7%8E%A9%E7%9A%84%E4%B8%9C%E8%A5%BF/" title="想玩的东西"><img src="https://images.unsplash.com/photo-1639005747853-ab4b8e22b35a?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="想玩的东西"/></a><div class="content"><a class="title" href="/2022/01/02/%E6%83%B3%E7%8E%A9%E7%9A%84%E4%B8%9C%E8%A5%BF/" title="想玩的东西">想玩的东西</a><time datetime="2022-01-02T23:36:58.000Z" title="发表于 2022-01-02 23:36:58">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E8%BD%AC%E6%8D%A2/" title="驼峰命名转换"><img src="https://images.unsplash.com/photo-1638984849684-e646e7d9659c?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="驼峰命名转换"/></a><div class="content"><a class="title" href="/2021/12/29/%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E8%BD%AC%E6%8D%A2/" title="驼峰命名转换">驼峰命名转换</a><time datetime="2021-12-29T22:58:36.000Z" title="发表于 2021-12-29 22:58:36">2021-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/ES6%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" title="ES6的新特性"><img src="https://images.unsplash.com/photo-1639111503666-56295742ed85?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=871&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ES6的新特性"/></a><div class="content"><a class="title" href="/2021/12/29/ES6%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" title="ES6的新特性">ES6的新特性</a><time datetime="2021-12-29T22:54:26.000Z" title="发表于 2021-12-29 22:54:26">2021-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/%E8%99%BE%E7%9A%AE%E4%B8%80%E9%9D%A2%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="虾皮一面中的数组去重"><img src="https://images.unsplash.com/photo-1638957773782-f9614ba79d81?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=580&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虾皮一面中的数组去重"/></a><div class="content"><a class="title" href="/2021/12/29/%E8%99%BE%E7%9A%AE%E4%B8%80%E9%9D%A2%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="虾皮一面中的数组去重">虾皮一面中的数组去重</a><time datetime="2021-12-29T22:44:55.000Z" title="发表于 2021-12-29 22:44:55">2021-12-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 飞儿</div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://mynightwish.top/2021/12/11/React%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/'
+    this.page.identifier = '2021/12/11/React的生命周期/'
+    this.page.title = 'React的生命周期'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Valine' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script data-pjax defer src="/js/custom/fixed_comment.js"></script><script async src="/js/newAdd.js"></script><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/12/11/JS的异步解决方案/" alt=""><img width="48" height="48" src="https://images.unsplash.com/photo-1594616389213-f3c7ce522896?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" alt="" onerror="this.src=https://cdn.jsdelivr.net/npm/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="2021/12/11/JS的异步解决方案/" alt="">JS的异步解决方案</a><div class="blog-slider__text">从回调-&gt;promise-&gt;async+await，漫长的前端异步之路</div><a class="blog-slider__button" href="2021/12/11/JS的异步解决方案/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/12/11/JS的异步运行机制/" alt=""><img width="48" height="48" src="https://images.unsplash.com/photo-1555930254-f837962bc58f?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="" onerror="this.src=https://cdn.jsdelivr.net/npm/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="2021/12/11/JS的异步运行机制/" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" href="2021/12/11/JS的异步运行机制/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>

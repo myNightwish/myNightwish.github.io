@@ -1,0 +1,506 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vue&amp;&amp;React的路由管理 | Nightwishのblog</title><meta name="keywords" content="路由管理"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="路由到底是什么，主流实现思路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue&amp;&amp;React的路由管理">
+<meta property="og:url" content="https://mynightwish.top/2021/12/11/Vue-React%E7%9A%84%E8%B7%AF%E7%94%B1%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="Nightwishのblog">
+<meta property="og:description" content="路由到底是什么，主流实现思路">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.unsplash.com/photo-1638518716535-955899d18a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=363&q=80">
+<meta property="article:published_time" content="2021-12-11T22:55:57.000Z">
+<meta property="article:modified_time" content="2022-01-06T05:37:26.091Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="路由管理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1638518716535-955899d18a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=363&q=80"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mynightwish.top/2021/12/11/Vue-React%E7%9A%84%E8%B7%AF%E7%94%B1%E7%AE%A1%E7%90%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vue&&React的路由管理',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-06 05:37:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script><link rel="stylesheet" href="/css/custom/fixed_comment.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/background.css"  media="defer" onload="this.media='all'"><style type="text/css">#toggle-sidebar {left:100px}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://th.bing.com/th/id/OIP.-i9W7XGah8cf44a1DaBbmgAAAA?pid=ImgDet&amp;rs=1" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">85</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 时光机</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-heart"></i><span> 图册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-comments"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1638518716535-955899d18a19?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=363&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 时光机</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-heart"></i><span> 图册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-comments"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Vue&amp;&amp;React的路由管理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T22:55:57.000Z" title="发表于 2021-12-11 22:55:57">2021-12-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-06T05:37:26.091Z" title="更新于 2022-01-06 05:37:26">2022-01-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/React-Vue/">React&amp;&amp;Vue</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vue&amp;&amp;React的路由管理"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="react-router"><a href="#react-router" class="headerlink" title="react-router"></a>react-router</h2><p>最基本、核心的能力：路由跳转；3个重要部分：</p>
+<ul>
+<li><strong>路由器</strong>：BrowserRouter、HashRouter。根据Route定义的映射关系，为新路径匹配它对应的逻辑</li>
+<li>路由：Route、switch。负责定义路径与组件之间的映射关系</li>
+<li>导航：Link、NavLink、Redirect。负责触发路径的改变</li>
+</ul>
+<h3 id="1、路由器简介"><a href="#1、路由器简介" class="headerlink" title="1、路由器简介"></a>1、路由器简介</h3><p>路由器是整个路由系统中最终重要功能。它负责感知路由的变化并作出反应。react-roter中支持两种路由器：BrowserRouter、HashRouter</p>
+<p>两种路由器的不同仅在于调用的history不同。这两个API源码中</p>
+<ul>
+<li>BrowserRouter在浏览器中使用H5的history API来控制路由跳转：</li>
+<li>HashRouter通过控制URL的hash属性来控制路由跳转的。</li>
+</ul>
+<h3 id="2、为什么需要路由？产生背景"><a href="#2、为什么需要路由？产生背景" class="headerlink" title="2、为什么需要路由？产生背景"></a>2、为什么需要路由？产生背景</h3><p>什么是路由、它能解决什么问题</p>
+<h4 id="1-后端路由时代："><a href="#1-后端路由时代：" class="headerlink" title="1. 后端路由时代："></a>1. 后端路由时代：</h4><ul>
+<li><p>在前后端不分离时代，一个url对应一个页面。</p>
+</li>
+<li><p>由<strong>后端来控制路由</strong>，当接收到客户端发来的   <code>HTTP</code> 请求，就会<strong>根据所请求的相应 <code>URL</code>，来找到相应的映射函数</strong>，然后执行该函数，并将函数的返回值发送给客户端</p>
+</li>
+<li><p>举例：请求页面：<code>http://www.xxx.com/login</code>，大致流程：</p>
+<ol>
+<li>浏览器发出请求</li>
+<li>服务器监听到80端口（或443）有请求过来，并解析url路径</li>
+<li>根据服务器的路由配置，返回相应信息（可以是 html 字串，也可以是 json 数据，图片等）</li>
+<li>浏览器根据数据包的 Content-Type 来决定如何解析数据</li>
+</ol>
+<img src="http://www.conardli.top/img/wl/wlqq_1.png" alt="image" style="zoom: 67%;" />
+
+<ul>
+<li><p><strong>好处：安全性好，<code>SEO</code> 好；</strong></p>
+</li>
+<li><p><strong>缺点：</strong></p>
+<ol>
+<li>加大服务器的压力</li>
+<li>任何和服务器的交互都需要刷新页面，<strong>用户体验</strong>非常差     <strong>Ajax解决了它</strong></li>
+<li>代码冗合不好维护；</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-前后端分离时代"><a href="#2-前后端分离时代" class="headerlink" title="2. 前后端分离时代"></a>2. 前后端分离时代</h4><ul>
+<li><p><strong>Ajax：</strong></p>
+<p>概念：<code>Async JavaScript And XML</code>，浏览器的<code>XMLHttpRequest</code>是实现<code>Ajax</code>最重要的对象，通过XHR对象获取数据后，可以使用DOM方法将数据插入到网页中</p>
+</li>
+<li><p><strong>最大优势特点</strong>：页面<strong>不刷新</strong>的情况下与服务器通信，异步交互体验好</p>
+</li>
+<li><p><strong>缺点：</strong></p>
+<ol>
+<li>没有浏览历史，不能回退</li>
+<li>存在跨域问题（同源策略限制）</li>
+<li>SEO不友好</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-SPA"><a href="#3-SPA" class="headerlink" title="3. SPA"></a>3. SPA</h4><p>在ajax的背景下，出现了SPA</p>
+<ul>
+<li><p>SPA 允许页面在不刷新的情况下更新页面内容，内容的切换更流畅</p>
+</li>
+<li><p>但SPA的问题：定位的问题</p>
+<p>页面切换前后，页面的url都是一样的，这就导致了两个问题</p>
+<ol>
+<li>SPA并不知道：当前页面当前页面“进展到哪一步”，刷新页面之后，你必须重复之前的操作，才可以重新对内容进行定位，SPA并不会记住你的操作。</li>
+<li>SPA有且仅有一个URL给页面做映射，这对SEO并不友好</li>
+</ol>
+</li>
+</ul>
+<h4 id="4-前端路由"><a href="#4-前端路由" class="headerlink" title="4. 前端路由"></a>4. 前端路由</h4><p>它解决了SPA的什么问题呢？</p>
+<ul>
+<li><p>它可以帮助我们在仅有一个页面的情况下，<strong>记住用户走到了哪一步？</strong></p>
+</li>
+<li><p>它为各个SPA中的各个视图匹配唯一标识，这时候用户前进后退触发的新内容都映射到URL上去，此时即便刷新页面，当前的URL也可以标识出它所在的位置，因此内容也不会丢失</p>
+</li>
+</ul>
+<p>是如何解决的呢？</p>
+<ul>
+<li><p><strong>解决问题1：</strong>在SPA中，当用户刷新页面时，浏览器会默认根据当前的URL对资源进行重新定位（发送请求）。这个动作对SPA是不必要的。</p>
+<p>因为SPA作为单页面，无论如何也只有一个页面与之对应；此时若走正常的请求刷新流程，反而会使用户的前进、后退流程无法被记录</p>
+</li>
+<li><p><strong>解决问题2：</strong>单页面应用对服务器来说就是一个URL、一套资源，那么如何做到用不同的URL来映射不同的视图内容呢？</p>
+</li>
+</ul>
+<p><strong>此时服务端已经无法解决SPA的场景了。前端自己解决：</strong></p>
+<p><strong>提供解决思路：</strong>拦截用户的刷新操作，避免服务器盲目响应，返回不符合预期的资源内容。把刷新这个动作完全放到前端逻辑里消化掉，感知URL的变化，这里并不是改造URL，给他做一些处理，这些处理并不会影响其本身的性质，也不会影响服务器对它的识别。</p>
+<p>一旦感知到它的变化，根据JS生成不同的页面。</p>
+<h3 id="3、前端路由实践思路"><a href="#3、前端路由实践思路" class="headerlink" title="3、前端路由实践思路"></a>3、前端路由实践思路</h3><h4 id="1、hash模式"><a href="#1、hash模式" class="headerlink" title="1、hash模式"></a>1、hash模式</h4><ul>
+<li><strong>#后面 hash 值的变化，不会导致浏览器向服务器发请求，浏览器不发请求，就不会刷新页面</strong></li>
+<li>每次 hash 值的变化，还会触发 <strong>hashchange 这个事件</strong>，通过这个事件可知道 hash 值发生了哪些变化。便可以监听 hashchange 来实现更新页面部分内容的操作：</li>
+</ul>
+<h5 id="hash值改变的方式："><a href="#hash值改变的方式：" class="headerlink" title="hash值改变的方式："></a>hash值改变的方式：</h5><ul>
+<li><p><strong>方式1：</strong>通过 <code>a</code> 标签，并设置 <code>href</code> 属性，当用户点击这个标签后，<code>URL</code> 就会发生改变，也就会触发 <code>hashchange</code> 事件了：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;#search&quot;</span>&gt;search&lt;/a&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>方式2：</strong>直接使用 <code>Js</code>来对 <code>loaction.hash</code> 进行赋值，从而改变 <code>URL</code>，触发 <code>hashchange</code> 事件：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">location.hash=<span class="string">&quot;#search&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="感知hash的方式：-hashChange事件"><a href="#感知hash的方式：-hashChange事件" class="headerlink" title="感知hash的方式： hashChange事件"></a>感知hash的方式： hashChange事件</h5><ul>
+<li><p><code>hashchange</code> 事件来监听 <code>hash</code> 的变化：可以在回调中执行展示和隐藏不同UI显示的功能</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">window.addEventListener(&#x27;hashChange&#x27;, () =&gt; &#123;&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="Hash的特点："><a href="#Hash的特点：" class="headerlink" title="Hash的特点："></a>Hash的特点：</h5><ul>
+<li><p><strong>HTTP请求中不包括#及其后面的部分</strong>，都不会被发送到服务器端</p>
+<p>所以，hash 虽然出现在 URL 中，<strong>但不会被包括在 HTTP 请求中，对后端完全没有影响</strong>，因此改变 hash 不会重新加载页面</p>
+<p>对于后端来说，即使没有做到对路由的全覆盖，也<strong>不会返回 404 错误</strong></p>
+</li>
+<li><p><strong>改变#后面的内容不触发网页重载</strong>，浏览器只会滚动到相应位置</p>
+<p>#代表网页中的一个位置。其右面的字符，就是该位置的标识符：<a target="_blank" rel="noopener" href="http://www.example.com/index.html#print%EF%BC%8C%E5%B0%B1%E4%BB%A3%E8%A1%A8%E7%BD%91%E9%A1%B5index.html%E7%9A%84print%E4%BD%8D%E7%BD%AE%E3%80%82%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%BB%E5%8F%96%E8%BF%99%E4%B8%AAURL%E5%90%8E%EF%BC%8C%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%B0%86print%E4%BD%8D%E7%BD%AE%E6%BB%9A%E5%8A%A8%E8%87%B3%E5%8F%AF%E8%A7%86%E5%8C%BA%E5%9F%9F">http://www.example.com/index.html#print，就代表网页index.html的print位置。浏览器读取这个URL后，会自动将print位置滚动至可视区域</a></p>
+</li>
+</ul>
+<h4 id="2、history模式"><a href="#2、history模式" class="headerlink" title="2、history模式"></a>2、history模式</h4><p>通过浏览器的回退、前进按钮控制，就可以实现页面跳转，这是通过API来实现的。浏览器的History API所赋予的。但H4只能切换，而不能改变。H5后增加了pushState、replaceState。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 新增一个历史记录，所以会相应地启用“后退”按钮</span></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>,一个新状态的标题，path);</span><br><span class="line"></span><br><span class="line"><span class="comment">//直接替换当前的历史记录</span></span><br><span class="line"><span class="comment">// 要确保每个“假”URL 背后都对应着服务器上一个真实的物理 URL。否则，单击“刷新”按钮会导致 404 错误</span></span><br><span class="line"><span class="built_in">window</span>.history.replaceState(<span class="literal">null</span>, <span class="literal">null</span>, path);</span><br></pre></td></tr></table></figure>
+
+<p>在hsitory模式下，可以通过监听 <code>popstate</code> 事件，达到目的：</p>
+<ul>
+<li><p>每当浏览记录发生变化， <code>popstate</code> 事件就会触发，go、forward、back等调用确实会触发popState、但<code>pushState()</code> 或 <code>replaceState()</code> 不会触发 <code>popstate</code> 事件。</p>
+</li>
+<li><p>但我们可以通过手动触发来实现。</p>
+</li>
+</ul>
+<h3 id="4、404-错误"><a href="#4、404-错误" class="headerlink" title="4、404 错误"></a>4、404 错误</h3><p>history 模式下，前端的 URL 必须和实际向后端发起请求的 URL 一致，如 <a target="_blank" rel="noopener" href="http://www.abc.com/book/id">http://www.abc.com/book/id</a> 如果后端缺少对 /book/id 的子路由处理，将返回 404 错误</p>
+<h4 id="为什么histroy需要额外配置？"><a href="#为什么histroy需要额外配置？" class="headerlink" title="为什么histroy需要额外配置？"></a>为什么histroy需要额外配置？</h4><ul>
+<li><p>假设应用地址为<code>abc.com</code>，服务端不加额外的配置。当通过<code>abc.com</code>来访问时，是没有问题的，可以正常加载到html文件</p>
+</li>
+<li><p>之后通过route-link或router.api来跳转也不会有问题，因为之后都不会刷新页面请求html，只是通过<code>history.pushState</code>或者<code>history.replaceState</code>改变history记录，修改地址栏地址而已；</p>
+</li>
+<li><p>但如果是<strong>直接访问子路由<code>abc.com/test</code>时就会有问题</strong>，<code>/test</code>是子路由名，但是服务器中并不存在该目录，就无法索引到html文件，此种情况下就会出现404，所以不管是访问什么路径，都应该加载根目录的html文件，因为<code>/xxx/yyy</code>对我们应用来讲是子路由路径而已</p>
+</li>
+<li><p><strong>处理：</strong></p>
+<p>在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 index.html 页面，这个页面就是你 app 依赖的页面。一般需要后端将所有页面都配置重定向到首页路由</p>
+</li>
+</ul>
+<h4 id="为什么hash不需要？"><a href="#为什么hash不需要？" class="headerlink" title="为什么hash不需要？"></a>为什么hash不需要？</h4><ul>
+<li>hash 虽然出现在 URL 中，<strong>但不会被包括在 HTTP 请求中，对后端完全没有影响</strong>，因此改变 hash 不会重新加载页面</li>
+<li>对于后端来说，即使没有做到对路由的全覆盖，也<strong>不会返回 404 错误</strong></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">飞儿</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mynightwish.top" target="_blank">Nightwishのblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%B7%AF%E7%94%B1%E7%AE%A1%E7%90%86/">路由管理</a></div><div class="post_share"><div class="social-share" data-image="https://images.unsplash.com/photo-1638518716535-955899d18a19?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=363&amp;q=80" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/11/Vue-React%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B5%81%E7%AE%A1%E7%90%86/"><img class="prev-cover" src="https://images.unsplash.com/photo-1638935754569-4d29b8579389?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vue&amp;&amp;React的数据流管理</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/11/React-Hook%E7%9A%84%E5%87%BA%E7%8E%B0/"><img class="next-cover" src="https://images.unsplash.com/photo-1638936020382-143f464e0a8c?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">React-Hook的出现</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://th.bing.com/th/id/OIP.-i9W7XGah8cf44a1DaBbmgAAAA?pid=ImgDet&amp;rs=1" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">85</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/myNightwish" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zml_byr@bupt.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">保持理智，相信明天</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#react-router"><span class="toc-text">react-router</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AE%80%E4%BB%8B"><span class="toc-text">1、路由器简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%B7%AF%E7%94%B1%EF%BC%9F%E4%BA%A7%E7%94%9F%E8%83%8C%E6%99%AF"><span class="toc-text">2、为什么需要路由？产生背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1%E6%97%B6%E4%BB%A3%EF%BC%9A"><span class="toc-text">1. 后端路由时代：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E6%97%B6%E4%BB%A3"><span class="toc-text">2. 前后端分离时代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-SPA"><span class="toc-text">3. SPA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="toc-text">4. 前端路由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%E5%AE%9E%E8%B7%B5%E6%80%9D%E8%B7%AF"><span class="toc-text">3、前端路由实践思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81hash%E6%A8%A1%E5%BC%8F"><span class="toc-text">1、hash模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#hash%E5%80%BC%E6%94%B9%E5%8F%98%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="toc-text">hash值改变的方式：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%84%9F%E7%9F%A5hash%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A-hashChange%E4%BA%8B%E4%BB%B6"><span class="toc-text">感知hash的方式： hashChange事件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Hash%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="toc-text">Hash的特点：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81history%E6%A8%A1%E5%BC%8F"><span class="toc-text">2、history模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81404-%E9%94%99%E8%AF%AF"><span class="toc-text">4、404 错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88histroy%E9%9C%80%E8%A6%81%E9%A2%9D%E5%A4%96%E9%85%8D%E7%BD%AE%EF%BC%9F"><span class="toc-text">为什么histroy需要额外配置？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88hash%E4%B8%8D%E9%9C%80%E8%A6%81%EF%BC%9F"><span class="toc-text">为什么hash不需要？</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/" title="移动端适配"><img src="https://images.unsplash.com/photo-1638914130169-5bd5240f6ea2?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动端适配"/></a><div class="content"><a class="title" href="/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/" title="移动端适配">移动端适配</a><time datetime="2022-01-06T05:37:26.087Z" title="发表于 2022-01-06 05:37:26">2022-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/02/%E6%83%B3%E7%8E%A9%E7%9A%84%E4%B8%9C%E8%A5%BF/" title="想玩的东西"><img src="https://images.unsplash.com/photo-1639005747853-ab4b8e22b35a?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="想玩的东西"/></a><div class="content"><a class="title" href="/2022/01/02/%E6%83%B3%E7%8E%A9%E7%9A%84%E4%B8%9C%E8%A5%BF/" title="想玩的东西">想玩的东西</a><time datetime="2022-01-02T23:36:58.000Z" title="发表于 2022-01-02 23:36:58">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E8%BD%AC%E6%8D%A2/" title="驼峰命名转换"><img src="https://images.unsplash.com/photo-1638984849684-e646e7d9659c?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="驼峰命名转换"/></a><div class="content"><a class="title" href="/2021/12/29/%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E8%BD%AC%E6%8D%A2/" title="驼峰命名转换">驼峰命名转换</a><time datetime="2021-12-29T22:58:36.000Z" title="发表于 2021-12-29 22:58:36">2021-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/ES6%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" title="ES6的新特性"><img src="https://images.unsplash.com/photo-1639111503666-56295742ed85?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=871&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ES6的新特性"/></a><div class="content"><a class="title" href="/2021/12/29/ES6%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" title="ES6的新特性">ES6的新特性</a><time datetime="2021-12-29T22:54:26.000Z" title="发表于 2021-12-29 22:54:26">2021-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/%E8%99%BE%E7%9A%AE%E4%B8%80%E9%9D%A2%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="虾皮一面中的数组去重"><img src="https://images.unsplash.com/photo-1638957773782-f9614ba79d81?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=580&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虾皮一面中的数组去重"/></a><div class="content"><a class="title" href="/2021/12/29/%E8%99%BE%E7%9A%AE%E4%B8%80%E9%9D%A2%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="虾皮一面中的数组去重">虾皮一面中的数组去重</a><time datetime="2021-12-29T22:44:55.000Z" title="发表于 2021-12-29 22:44:55">2021-12-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 飞儿</div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://mynightwish.top/2021/12/11/Vue-React%E7%9A%84%E8%B7%AF%E7%94%B1%E7%AE%A1%E7%90%86/'
+    this.page.identifier = '2021/12/11/Vue-React的路由管理/'
+    this.page.title = 'Vue&&React的路由管理'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Valine' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script data-pjax defer src="/js/custom/fixed_comment.js"></script><script async src="/js/newAdd.js"></script><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/12/11/JS的异步解决方案/" alt=""><img width="48" height="48" src="https://images.unsplash.com/photo-1594616389213-f3c7ce522896?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" alt="" onerror="this.src=https://cdn.jsdelivr.net/npm/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="2021/12/11/JS的异步解决方案/" alt="">JS的异步解决方案</a><div class="blog-slider__text">从回调-&gt;promise-&gt;async+await，漫长的前端异步之路</div><a class="blog-slider__button" href="2021/12/11/JS的异步解决方案/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/12/11/JS的异步运行机制/" alt=""><img width="48" height="48" src="https://images.unsplash.com/photo-1555930254-f837962bc58f?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="" onerror="this.src=https://cdn.jsdelivr.net/npm/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="2021/12/11/JS的异步运行机制/" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" href="2021/12/11/JS的异步运行机制/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>

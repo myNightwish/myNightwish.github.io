@@ -1,0 +1,477 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>transform动画基本使用 | Nightwishのblog</title><meta name="keywords" content="CSS动画"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="CSS动画2：transform基本使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="transform动画基本使用">
+<meta property="og:url" content="https://mynightwish.top/2021/12/25/CSS%E7%9A%84%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB/index.html">
+<meta property="og:site_name" content="Nightwishのblog">
+<meta property="og:description" content="CSS动画2：transform基本使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.unsplash.com/photo-1640398251733-33c23a4c36f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80">
+<meta property="article:published_time" content="2021-12-25T23:10:48.000Z">
+<meta property="article:modified_time" content="2022-01-06T05:37:26.087Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="CSS动画">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1640398251733-33c23a4c36f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://mynightwish.top/2021/12/25/CSS%E7%9A%84%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'transform动画基本使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-06 05:37:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script><link rel="stylesheet" href="/css/custom/fixed_comment.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/background.css"  media="defer" onload="this.media='all'"><style type="text/css">#toggle-sidebar {left:100px}</style><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://th.bing.com/th/id/OIP.-i9W7XGah8cf44a1DaBbmgAAAA?pid=ImgDet&amp;rs=1" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">85</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 时光机</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-heart"></i><span> 图册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-comments"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1640398251733-33c23a4c36f1?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=388&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 时光机</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-heart"></i><span> 图册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-comments"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">transform动画基本使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-25T23:10:48.000Z" title="发表于 2021-12-25 23:10:48">2021-12-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-06T05:37:26.087Z" title="更新于 2022-01-06 05:37:26">2022-01-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CSS/">CSS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="transform动画基本使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="transform-C3新增"><a href="#transform-C3新增" class="headerlink" title="transform  C3新增"></a>transform  C3新增</h3><p>使用 <code>transform</code> 规则控制元素的变形操作，包括控制移动translate、旋转rotate、缩放scale、倾斜skew、3D转换等</p>
+<h4 id="1、translate位移"><a href="#1、translate位移" class="headerlink" title="1、translate位移"></a>1、translate位移</h4><h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><ul>
+<li><p>改变元素形状或位置，不会影响页面布局（<strong>不脱标</strong>，也不会对别的元素影响，比如挤别的盒子）</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">transform</span>: <span class="built_in">translate</span>(x,y)	 // 定义 <span class="number">2</span>D 转换， 同时控制x, y  不定宽高时，实现水平垂直居中</span><br><span class="line">transform: <span class="built_in">translate3d</span>(x, y, z)  // <span class="number">3</span>d效果 同时控制X/Y/Z轴的移动，三个值必须输入如果某个轴不需要移动时设置为零</span><br><span class="line"></span><br><span class="line">transform: <span class="built_in">translateX</span>() 延 X 轴平移  +： 向右、向下        -： 向左、向上</span><br><span class="line">transform: <span class="built_in">translateY</span>() 延 Y 轴平移 </span><br><span class="line">transform: <span class="built_in">translateZ</span>() 延 Z 轴平移</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="遵守的规则："><a href="#遵守的规则：" class="headerlink" title="遵守的规则："></a>遵守的规则：</h5><ol>
+<li><p>重复设置变形操作时只在原形态上操作，同时设置多个，只有最后一个生效；除非，伪类上在原有基础上，再进行这样的位移，这样的可以生效</p>
+</li>
+<li><p>设置该属性的元素，相对于自己原位置来改变，<strong>不脱标</strong></p>
+</li>
+<li><p>位移时，<strong>默认原点</strong>是元素的中心位置；</p>
+</li>
+<li><p>在平移元素时，可以是具体像素或百分比，百分比是相对于自身计算</p>
+</li>
+<li><p>行内元素不产生变形效果，将其转为 <code>inline-block</code> 或 <code>block</code> 以及弹性元素时都可以产生变化效果</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">span</span>&gt;算法大多数&lt;/<span class="selector-tag">span</span>&gt;</span><br><span class="line"><span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">transition</span>: <span class="number">2s</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">100px</span>) <span class="built_in">translateX</span>(<span class="number">50px</span>);</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#9b59b6</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">span</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: <span class="number">2s</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">100px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="translateZ："><a href="#translateZ：" class="headerlink" title="translateZ："></a>translateZ：</h5><ul>
+<li><p>控制Z轴移动，正向外、负向里移动。因为Z轴是透视轴没有像X/Y一样的固定尺寸，so不能用百分数</p>
+</li>
+<li><p>如果想体现纵向的视觉效果：需要设置perspective，加了后才有近大远小的效果；</p>
+<img src="https://doc.houdunren.com/assets/img/Untitled-7827784.63fc4fc8.gif" alt="Untitled" style="zoom:25%;" /></li>
+</ul>
+<h4 id="2、scale缩放"><a href="#2、scale缩放" class="headerlink" title="2、scale缩放"></a>2、scale缩放</h4><ul>
+<li><p>对元素进行等比例缩放：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">transform</span>: <span class="built_in">scale</span>(x, y)  按n倍缩放  n&gt;<span class="number">1</span>放大效果，&lt;<span class="number">1</span> 缩小效果</span><br><span class="line">transform: <span class="built_in">scale3d</span>(x, y, z) 沿X/Y/Z三个轴绽放元素</span><br><span class="line"></span><br><span class="line">transform: <span class="built_in">scaleX</span>() </span><br><span class="line">transform: <span class="built_in">scaleY</span>()</span><br><span class="line">transform: <span class="built_in">scaleZ</span>() // 沿Z轴缩放元素，需要有<span class="number">3</span>D透视才可以查看到效果</span><br></pre></td></tr></table></figure></li>
+<li><p>应用场景：</p>
+<p><strong>菜单缩放：</strong></p>
+<ul>
+<li>效果：鼠标放上去，子菜单显示；不放上去，不显示子菜单；</li>
+<li>实现：<ul>
+<li>没放上去时：缩放transform：scale（0）</li>
+<li>放上去后，再显示出来：scale（1）</li>
+<li>默认缩放原点是中心，如果想左上方式： transform-origin：left top;</li>
+</ul>
+</li>
+</ul>
+<p><strong>图片放大</strong></p>
+</li>
+</ul>
+<h4 id="3、rotate旋转"><a href="#3、rotate旋转" class="headerlink" title="3、rotate旋转"></a>3、rotate旋转</h4><ul>
+<li><p>默认绕着中心位置旋转</p>
+</li>
+<li><p>一般不会单独使用，会结合keyframes关键帧使用 或者与 translate 连用，先后位置影响视觉效果</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">transform</span>: <span class="built_in">rotate</span>()// 在X与Y轴平面旋转，效果与使用 rotateZ 相同</span><br><span class="line"> - x, y 一样时，沿着对角线旋转</span><br><span class="line"> - 谁大，转的时候偏那边的较多</span><br><span class="line"><span class="built_in">rotate3d</span>(tx,ty,tz,angle) //  同时设置X/Y/Z轴的旋转向量值来控制元素的旋转</span><br><span class="line"></span><br><span class="line">transform: <span class="built_in">rotateX</span>(<span class="number">0</span>-<span class="number">360</span>度) // rotateX（<span class="number">30deg</span>）</span><br><span class="line">transform: <span class="built_in">rotateY</span>()</span><br><span class="line">transform: <span class="built_in">rotateZ</span>()  // 沿Z轴旋转元素，效果就是沿 X/Y轴的平面 旋转</span><br></pre></td></tr></table></figure></li>
+<li><p>旋转90deg不可见；旋转89deg，只会看到一条线</p>
+</li>
+<li><p>父级透视：当X旋转90度后无法看到元素，这时可以控制父级旋转从上看子元素。</p>
+</li>
+<li><p>只旋转x轴：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">main</span> &#123;</span><br><span class="line">  <span class="attribute">perspective</span>: <span class="number">600px</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">perspective</span>(<span class="number">600px</span>) <span class="built_in">rotateY</span>(<span class="number">35deg</span>);</span><br><span class="line">  <span class="attribute">transition</span>: <span class="number">2s</span>;</span><br><span class="line">&#125;</span><br><span class="line">// 只旋转x轴：</span><br><span class="line"><span class="selector-tag">body</span><span class="selector-pseudo">:hover</span> <span class="selector-tag">main</span> &#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">perspective</span>(<span class="number">600px</span>) <span class="built_in">rotateY</span>(<span class="number">35deg</span>) <span class="built_in">rotate3d</span>(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, -<span class="number">645deg</span>);</span><br><span class="line">&#125;</span><br><span class="line">// 只旋转y轴</span><br><span class="line"><span class="selector-tag">body</span><span class="selector-pseudo">:hover</span> <span class="selector-tag">main</span> &#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">perspective</span>(<span class="number">600px</span>) <span class="built_in">rotateY</span>(-<span class="number">645deg</span>);</span><br><span class="line">&#125;</span><br><span class="line">// xy旋转</span><br><span class="line"><span class="selector-tag">body</span><span class="selector-pseudo">:hover</span> <span class="selector-tag">main</span> &#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">perspective</span>(<span class="number">600px</span>) <span class="built_in">rotateY</span>(<span class="number">35deg</span>) <span class="built_in">rotate3d</span>(<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">645deg</span>);</span><br><span class="line">&#125;</span><br><span class="line">// xz旋转：加入适当的Z向量值，可增加元素沿Z轴旋转的力度。</span><br><span class="line"><span class="selector-tag">body</span><span class="selector-pseudo">:hover</span> <span class="selector-tag">main</span> &#123;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">perspective</span>(<span class="number">600px</span>) <span class="built_in">rotateY</span>(<span class="number">35deg</span>) <span class="built_in">rotate3d</span>(<span class="number">1</span>, <span class="number">0</span>, .<span class="number">5</span>, -<span class="number">245deg</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="4、skew倾斜变换"><a href="#4、skew倾斜变换" class="headerlink" title="4、skew倾斜变换"></a>4、skew倾斜变换</h4><ul>
+<li><p>对元素进行倾斜：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">transform</span>: <span class="built_in">skew</span>(x, y);  // x、y轴的同时倾斜角度</span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">skewX</span>();</span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">skewY</span>();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="5、旋转点transform-origin"><a href="#5、旋转点transform-origin" class="headerlink" title="5、旋转点transform-origin"></a>5、旋转点transform-origin</h4><ul>
+<li><p>变化的起点：默认 center，用<strong>transform-origin</strong> 可以改变变形的起始点</p>
+</li>
+<li><p>元素移动不受变形基点所影响：基点是元素原始空间位，而不是translate移动后的空间位</p>
+</li>
+<li><p>rotate、skew都可以</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">transform-origin</span>: left/right  center/bottom;</span><br><span class="line"><span class="attribute">transform-origin</span>: left top;   === <span class="number">0</span> <span class="number">0</span>;  左上角  <span class="number">1</span>, <span class="number">1</span>  中心原点  </span><br><span class="line"><span class="attribute">transform-origin</span>: <span class="number">100%</span>， <span class="number">100%</span>;  右下角  === <span class="attribute">right</span> <span class="attribute">bottom</span></span><br><span class="line"><span class="attribute">transform-origin</span>: <span class="number">200%</span> <span class="number">200%</span>;  <span class="comment">/* 可以在外部，也可以在内部*/</span>  也可以是具体像素位置</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="6、透视perspective："><a href="#6、透视perspective：" class="headerlink" title="6、透视perspective："></a>6、透视perspective：</h4><h5 id="1、perspective"><a href="#1、perspective" class="headerlink" title="1、perspective"></a>1、perspective</h5><ul>
+<li><p>视觉效果上：近大远小</p>
+</li>
+<li><p>舞台透视：</p>
+<ul>
+<li><code>perspective</code> 规则用于<strong>将父级整个做为透视元素</strong>，会造成里面的每个子元素的透视是不一样的。就像现实中摆一排杯子，是使用统一透视的，每个杯子的透视不一样，造成有大有小。</li>
+</ul>
+</li>
+<li><p>单独透视：</p>
+<ul>
+<li><code>perspective</code> 函数用于为元素设置单独透视，每个元素的透视效果是一样的</li>
+</ul>
+</li>
+<li><p>3D透视：transform-style用于控制3d透视</p>
+<ul>
+<li><p>应用于舞台即变形元素的父级元素</p>
+</li>
+<li><p>设置 <code>overflow:visible</code> 时 <code>preserve-3d</code> 才无效</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">flat	<span class="number">2</span>D平面舞台</span><br><span class="line">preserve-<span class="number">3</span>d	<span class="number">3</span>D透视舞台</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h5 id="2、视角perspective-origin"><a href="#2、视角perspective-origin" class="headerlink" title="2、视角perspective-origin"></a>2、视角perspective-origin</h5><ol>
+<li><p><code>perspective-origin</code>用于控制视线的落点，就像我们眼睛看物体时的聚焦点。</p>
+</li>
+<li><p>可以理解眼镜看物体的位置，比如看一台汽车，是在看车头左边看还是车头右边看。</p>
+<ul>
+<li><p>需要设置 <code>perspective</code> 透视后才可以看到效果。</p>
+</li>
+<li><p>一般设置在舞台元素上来控制子元素</p>
+</li>
+</ul>
+</li>
+<li><p>使用规则：</p>
+<ul>
+<li>x-axis：定义该视图在 x 轴上的位置。默认值：50%。可值：left、center、right、length、%</li>
+<li>y-axis：定义该视图在 y 轴上的位置。默认值：50%。可值：top、center、bottom、length、%</li>
+</ul>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">飞儿</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://mynightwish.top" target="_blank">Nightwishのblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSS%E5%8A%A8%E7%94%BB/">CSS动画</a></div><div class="post_share"><div class="social-share" data-image="https://images.unsplash.com/photo-1640398251733-33c23a4c36f1?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=388&amp;q=80" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/25/CSS%E7%9A%84%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BBdemo/"><img class="prev-cover" src="https://images.unsplash.com/photo-1640398251733-33c23a4c36f1?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=388&amp;q=80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">transform动画的demo</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/23/%E5%AF%92%E5%81%87%E8%BF%9B%E9%98%B6%E8%AE%A1%E5%88%92/"><img class="next-cover" src="https://images.unsplash.com/photo-1640191826083-61fba2dc62d5?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">寒假进阶计划</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/25/CSS%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A8%E7%94%BBanimation/" title="animation动画基本使用"><img class="cover" src="https://images.unsplash.com/photo-1640404880570-2b61bf155ebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-25</div><div class="title">animation动画基本使用</div></div></a></div><div><a href="/2021/12/25/CSS%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8A%A8%E7%94%BBanimation-demo/" title="animation动画的demo"><img class="cover" src="https://images.unsplash.com/photo-1640404880570-2b61bf155ebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-25</div><div class="title">animation动画的demo</div></div></a></div><div><a href="/2021/12/25/CSS%E7%9A%84%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BBdemo/" title="transform动画的demo"><img class="cover" src="https://images.unsplash.com/photo-1640398251733-33c23a4c36f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-25</div><div class="title">transform动画的demo</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://th.bing.com/th/id/OIP.-i9W7XGah8cf44a1DaBbmgAAAA?pid=ImgDet&amp;rs=1" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">85</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">68</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/myNightwish" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zml_byr@bupt.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">保持理智，相信明天</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#transform-C3%E6%96%B0%E5%A2%9E"><span class="toc-text">transform  C3新增</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81translate%E4%BD%8D%E7%A7%BB"><span class="toc-text">1、translate位移</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">基本使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%81%B5%E5%AE%88%E7%9A%84%E8%A7%84%E5%88%99%EF%BC%9A"><span class="toc-text">遵守的规则：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#translateZ%EF%BC%9A"><span class="toc-text">translateZ：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81scale%E7%BC%A9%E6%94%BE"><span class="toc-text">2、scale缩放</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81rotate%E6%97%8B%E8%BD%AC"><span class="toc-text">3、rotate旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81skew%E5%80%BE%E6%96%9C%E5%8F%98%E6%8D%A2"><span class="toc-text">4、skew倾斜变换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E6%97%8B%E8%BD%AC%E7%82%B9transform-origin"><span class="toc-text">5、旋转点transform-origin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%E9%80%8F%E8%A7%86perspective%EF%BC%9A"><span class="toc-text">6、透视perspective：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81perspective"><span class="toc-text">1、perspective</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E8%A7%86%E8%A7%92perspective-origin"><span class="toc-text">2、视角perspective-origin</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/" title="移动端适配"><img src="https://images.unsplash.com/photo-1638914130169-5bd5240f6ea2?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动端适配"/></a><div class="content"><a class="title" href="/2022/01/06/CSS%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D-1/" title="移动端适配">移动端适配</a><time datetime="2022-01-06T05:37:26.087Z" title="发表于 2022-01-06 05:37:26">2022-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/02/%E6%83%B3%E7%8E%A9%E7%9A%84%E4%B8%9C%E8%A5%BF/" title="想玩的东西"><img src="https://images.unsplash.com/photo-1639005747853-ab4b8e22b35a?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="想玩的东西"/></a><div class="content"><a class="title" href="/2022/01/02/%E6%83%B3%E7%8E%A9%E7%9A%84%E4%B8%9C%E8%A5%BF/" title="想玩的东西">想玩的东西</a><time datetime="2022-01-02T23:36:58.000Z" title="发表于 2022-01-02 23:36:58">2022-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E8%BD%AC%E6%8D%A2/" title="驼峰命名转换"><img src="https://images.unsplash.com/photo-1638984849684-e646e7d9659c?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="驼峰命名转换"/></a><div class="content"><a class="title" href="/2021/12/29/%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E8%BD%AC%E6%8D%A2/" title="驼峰命名转换">驼峰命名转换</a><time datetime="2021-12-29T22:58:36.000Z" title="发表于 2021-12-29 22:58:36">2021-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/ES6%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" title="ES6的新特性"><img src="https://images.unsplash.com/photo-1639111503666-56295742ed85?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=871&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ES6的新特性"/></a><div class="content"><a class="title" href="/2021/12/29/ES6%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" title="ES6的新特性">ES6的新特性</a><time datetime="2021-12-29T22:54:26.000Z" title="发表于 2021-12-29 22:54:26">2021-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/29/%E8%99%BE%E7%9A%AE%E4%B8%80%E9%9D%A2%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="虾皮一面中的数组去重"><img src="https://images.unsplash.com/photo-1638957773782-f9614ba79d81?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=580&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="虾皮一面中的数组去重"/></a><div class="content"><a class="title" href="/2021/12/29/%E8%99%BE%E7%9A%AE%E4%B8%80%E9%9D%A2%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" title="虾皮一面中的数组去重">虾皮一面中的数组去重</a><time datetime="2021-12-29T22:44:55.000Z" title="发表于 2021-12-29 22:44:55">2021-12-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 飞儿</div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://mynightwish.top/2021/12/25/CSS%E7%9A%84%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB/'
+    this.page.identifier = '2021/12/25/CSS的过渡动画/'
+    this.page.title = 'transform动画基本使用'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Valine' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script data-pjax defer src="/js/custom/fixed_comment.js"></script><script async src="/js/newAdd.js"></script><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/img/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/12/11/JS的异步解决方案/" alt=""><img width="48" height="48" src="https://images.unsplash.com/photo-1594616389213-f3c7ce522896?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" alt="" onerror="this.src=https://cdn.jsdelivr.net/npm/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="2021/12/11/JS的异步解决方案/" alt="">JS的异步解决方案</a><div class="blog-slider__text">从回调-&gt;promise-&gt;async+await，漫长的前端异步之路</div><a class="blog-slider__button" href="2021/12/11/JS的异步解决方案/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/12/11/JS的异步运行机制/" alt=""><img width="48" height="48" src="https://images.unsplash.com/photo-1555930254-f837962bc58f?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80" alt="" onerror="this.src=https://cdn.jsdelivr.net/npm/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="2021/12/11/JS的异步运行机制/" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" href="2021/12/11/JS的异步运行机制/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>
