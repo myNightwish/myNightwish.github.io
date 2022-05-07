@@ -1,0 +1,926 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hook系列(1)之what | Nightwishのblog</title><meta name="keywords" content="Hook"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="What is Hook?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hook系列(1)之what">
+<meta property="og:url" content="https://mynightwish.top/posts/what's%20Hook.html">
+<meta property="og:site_name" content="Nightwishのblog">
+<meta property="og:description" content="What is Hook?">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/img/react.png">
+<meta property="article:published_time" content="2022-03-31T08:27:01.000Z">
+<meta property="article:modified_time" content="2022-04-30T15:34:11.201Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="Hook">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/img/react.png"><link rel="shortcut icon" href="/img/favicon.webp"><link rel="canonical" href="https://mynightwish.top/posts/what's%20Hook"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hook系列(1)之what',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-30 23:34:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/double.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/beautify.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/lastLoad.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="/js/clock/clock.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperFix.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">114</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">90</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 时光机</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-paper-plane"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-paw"></i><span> 访问足迹</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/charts/"><i class="fa-fw fas fa-camera-retro"></i><span> 文章统计</span></a></li><li><a class="site-page child" href="/census/"><i class="fa-fw fas fa-globe"></i><span> 网站统计</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-camera-retro"></i><span> 图册</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/img/react.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-heart"></i><span> 时光机</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-paper-plane"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-paw"></i><span> 访问足迹</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/charts/"><i class="fa-fw fas fa-camera-retro"></i><span> 文章统计</span></a></li><li><a class="site-page child" href="/census/"><i class="fa-fw fas fa-globe"></i><span> 网站统计</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-camera-retro"></i><span> 图册</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Hook系列(1)之what</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-31T08:27:01.000Z" title="发表于 2022-03-31 16:27:01">2022-03-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-30T15:34:11.201Z" title="更新于 2022-04-30 23:34:11">2022-04-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/React-Vue/">React&amp;&amp;Vue</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>28分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Hook系列(1)之what"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="center-Hook系列（1）之what-center"><center>Hook系列（1）之what</center><a class="anchor" href="#center-Hook系列（1）之what-center">·</a></h2>
+<blockquote>
+<p>前言：</p>
+<p>书接上回，我们简单读完了React文档中的核心概念部分：</p>
+<p>此外，基于Hook的讨论展开之前，铺垫了一篇函数组件VS类组件的特性分析，以及为什么函数组件跟契合react的理念：</p>
+<p>从本期开始，关于HOOK的讨论正式展开：</p>
+<p>我们将从what、how、why的角度去研究Hook，对于how更关注：how to work ，而API的使用层面不过于关注</p>
+<ul>
+<li>目的：学习HOOK的特性，以及开发实践时有什么启发（写法、优化、排查bug等）</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>官方文档：<strong>Hook</strong>是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性</p>
+</blockquote>
+<p>总的来说，Hooks是React团队在实践中逐渐认知的一个改进点，解决了团队长期编写和维护成千上万的组件时，遇到的各种各样看起来不相关的问题。背后涉及到<strong>类组件、函数组件</strong>两种组件形式的思考和侧重；</p>
+<h2 id="what">what<a class="anchor" href="#what">·</a></h2>
+<blockquote>
+<p>由于Hooks背后涉及到<strong>类组件、函数组件</strong>两种组件形式的思考和侧重，因此在说明之前，我们将对比下两大组件：</p>
+</blockquote>
+<ul>
+<li>
+<p>是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数</p>
+</li>
+<li>
+<p>是一套使函数组件更强大、更灵活的钩子。函数组件相比于类组件少了很多东西，而Hooks的出现就是帮助函数式组件补齐这种缺陷。函数式组件可以自由的使用Hooks提供的丰富工具</p>
+</li>
+</ul>
+<h3 id="1、useState基础">1、useState基础<a class="anchor" href="#1、useState基础">·</a></h3>
+<h4 id="1-1-基础用法">1.1 基础用法<a class="anchor" href="#1-1-基础用法">·</a></h4>
+<ul>
+<li>早期函数组件相比于类组件，劣势之一：缺乏维护和定义state的能力，而这个API<strong>为函数组件引入状态</strong></li>
+<li>它与 class 里面的 <code>this.state</code> 提供的功能完全相同。一般来说，在函数退出后变量就会”消失”，但 state 中的变量会被 React 保留。</li>
+<li>React 会在重复渲染时记住它当前的值，并且提供最新的值给我们的函数。</li>
+</ul>
+<ul>
+<li>
+<p>与类组件的不同：</p>
+<ul>
+<li>同样逻辑的函数组件比类组件复杂度更低，代码量更少</li>
+<li>它类似 class 组件的 <code>this.setState</code>，但它不会把<strong>新state 和旧state 合并</strong>，而是<strong>替换</strong></li>
+<li>值得注意的是，不同于 <code>this.state</code>，这里的 state <strong>不一定要是一个对象</strong> —— 如果你有需要，它也可以是。</li>
+<li>这个初始 state 参数只有在第一次渲染时会被用到，在后续的重新渲染中，<code>useState</code> 返回的第一个值将始终是更新后最新的 state</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">语法: <span class="keyword">const</span> [xxx, setXxx] = <span class="title class_">React</span>.<span class="title function_">useState</span>(initValue)<span class="comment">// 初始值，允许任意类型的值</span></span><br><span class="line"><span class="comment">// 解构赋值</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意</p>
+<p>React 会确保 <code>setState</code> 函数的标识是稳定的，并不会在组件重新渲染时发生变化。这就是为什么可以安全地从 <code>useEffect</code> 或 <code>useCallback</code> 的依赖列表中省略 <code>setState</code>。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="1-2-函数式setState更新">1.2 函数式setState更新<a class="anchor" href="#1-2-函数式setState更新">·</a></h4>
+<ul>
+<li>
+<p>如果新state 需要通过用先前state 计算得出，可以将函数传递给 <code>setState</code>。</p>
+</li>
+<li>
+<p>该函数将接收先前state，并返回一个更新后的值。</p>
+</li>
+<li>
+<p>如果你的更新函数返回值与当前 state 完全相同，则随后的<strong>重渲染会被完全跳过。</strong></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">setXxx</span>(<span class="function"><span class="params">value</span> =&gt;</span> newValue): 参数为函数, 接收原本的状态值, 返回新的状态值, 内部用其覆盖原来的状态值</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params">&#123;initialCount&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(initialCount);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      Count: &#123;count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(initialCount)&#125;&gt;Reset<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(prevCount =&gt; prevCount - 1)&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(prevCount =&gt; prevCount + 1)&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>注意</p>
+<p>与 class 组件中的 <code>setState</code> 方法不同，<code>useState</code> 不会自动合并更新对象。你可以用函数式的 <code>setState</code> 结合展开运算符来达到合并更新对象的效果。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = <span class="title function_">useState</span>(&#123;&#125;);</span><br><span class="line"><span class="title function_">setState</span>(<span class="function"><span class="params">prevState</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 也可使用 Object.assign</span></span><br><span class="line">  <span class="keyword">return</span> &#123;...prevState, ...updatedValues&#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><code>useReducer</code> 是另一种可选方案，它更适合用于管理包含多个子值的 state 对象。</p>
+</blockquote>
+<h4 id="1-3-惰性initialState">1.3 惰性initialState<a class="anchor" href="#1-3-惰性initialState">·</a></h4>
+<ul>
+<li>
+<p><code>initialState</code> 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。</p>
+</li>
+<li>
+<p>如果初始 state 需通过复杂计算获得，则可传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = <span class="title function_">useState</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> initialState = <span class="title function_">someExpensiveComputation</span>(props);</span><br><span class="line">  <span class="keyword">return</span> initialState;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="1-4-跳过-state-更新">1.4 跳过 state 更新<a class="anchor" href="#1-4-跳过-state-更新">·</a></h4>
+<ul>
+<li>调用 State Hook 的更新函数并传入当前的 state 时，也就是函数式更新，state返回值没有发生变化时，React 将跳过子组件的渲染及 effect 的执行。（React 使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description"><code>Object.is</code> 比较算法</a> 来比较 state。）</li>
+</ul>
+<blockquote>
+<p>需要注意的是：</p>
+<ul>
+<li>
+<p>React 可能仍需<strong>在跳过渲染前渲染该组件</strong>。不过由于 React <strong>不会对组件树的“深层”节点进行不必要的渲染</strong>，所以大可不必担心。</p>
+</li>
+<li>
+<p>如果你在渲染期间执行了高开销的计算，则可用 <code>useMemo</code> 来进行优化。</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="1-5-注意：">1.5 注意：<a class="anchor" href="#1-5-注意：">·</a></h4>
+<ul>
+<li>
+<p>多个状态声明时，<strong>必须分开写</strong></p>
+</li>
+<li>
+<p>多次调用 <code>useState</code> 时，必须保证每次渲染时它们的调用顺序是不变的。后面解释why</p>
+</li>
+<li>
+<p>因此，不能出现在<strong>条件判断语句</strong>中，因为它<strong>必须有一样的渲染顺序</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [ age , setAge ] = <span class="title function_">useState</span>(<span class="number">18</span>)</span><br><span class="line"><span class="keyword">const</span> [ sex , setSex ] = <span class="title function_">useState</span>(<span class="string">&#x27;男&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> [ work , setWork] = <span class="title function_">useState</span>(<span class="string">&#x27;前端程序员&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [ age , setAge ] = <span class="title function_">useState</span>(<span class="number">18</span>)   <span class="comment">// 错误写法</span></span><br><span class="line"><span class="keyword">if</span>(showSex)&#123;</span><br><span class="line">  <span class="keyword">const</span> [ sex , setSex ] = <span class="title function_">useState</span>(<span class="string">&#x27;男&#x27;</span>)</span><br><span class="line">  showSex=<span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> [ work , setWork ] = <span class="title function_">useState</span>(<span class="string">&#x27;前端程序员&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>
+<h4 id="why-顺序为什么重要？">why 顺序为什么重要？<a class="anchor" href="#why-顺序为什么重要？">·</a></h4>
+<p>已经填坑——请查看Hook的使用规则小节部分或者源码调用流程部分；</p>
+</li>
+</ul>
+<h3 id="2、-useEffect基">2、 useEffect基<a class="anchor" href="#2、-useEffect基">·</a></h3>
+<blockquote>
+<p>之前在React 组件中执行过数据获取、订阅或者手动修改过 DOM。我们统一把这些操作称为**“副作用”**</p>
+<ul>
+<li><code>useEffect</code> 就是一个 Effect Hook，给函数组件增加了操作副作用的能力</li>
+<li>它跟 class 组件中的 <code>componentDidMount</code>、<code>componentDidUpdate</code> 和 <code>componentWillUnmount</code> 具有相同的用途，只不过被合并成了一个 API</li>
+<li>调用 <code>useEffect</code> 时，就是在告诉 React 在完成对 DOM 的更改后运行你的“副作用”函数。由于副作用函数是在组件内声明的，所以可以访问到组件的 props 和 state</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">useEffect(callback, [](可选));</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-引入副作用">2.1 引入副作用<a class="anchor" href="#2-1-引入副作用">·</a></h4>
+<blockquote>
+<p>生命周期到useEffect的转换关系都不是最重要的，最重要的是构建组件有副作用，useEffect为函数组件引入副作用的钩子</p>
+</blockquote>
+<ul>
+<li>
+<p>通过 Hook，可以把<strong>组件内相关的副作用组织在一起</strong>（例如创建订阅及取消订阅），<strong>而不要把它们拆分到不同的生命周期函数里</strong></p>
+</li>
+<li>
+<p>过去在DidMount 、DidUpdate、willUnmount中做的事，可放在该钩子做。比如：操作DOM、获取外部API</p>
+</li>
+<li>
+<p>【注意】：<strong>useEffect中返回的函数叫“清除函数”：</strong></p>
+<p>当React识别到该函数，会在卸载阶段执行其清除逻辑。</p>
+<p>这个函数不会收第2个参数、或其他参数因素的影响。</p>
+<p>只要你在useEffect回调中返回了一个函数，它就会被当做清除函数来处理。</p>
+</li>
+</ul>
+<h4 id="2-2-无需清除的-effect-⭐️面试">2.2 无需清除的 effect ⭐️面试~<a class="anchor" href="#2-2-无需清除的-effect-⭐️面试">·</a></h4>
+<blockquote>
+<p>有时候，我们只想**在 React 更新 DOM 之后运行一些额外的代码。**比如发送网络请求，手动变更 DOM，记录日志，这些都是常见的无需清除的操作。</p>
+<p>因为在执行完这些操作之后，就可以忽略他们了。</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 每次渲染都执行：相当于 componentDidMount 和 componentDidUpdate:</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 只在挂载阶段执行一次的副作用，且该函数的返回值不是一个函数</span></span><br><span class="line">    &#125;,[]);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong><code>useEffect</code> 做了什么？</strong> React 会保存你传递的函数（effect），并在执行 DOM 更新之后调用它</p>
+</li>
+<li>
+<p><strong>为什么在组件内部调用 <code>useEffect</code>？</strong></p>
+<p>可以在 effect 中直接访问 <code>count</code> state 变量（或其他 props），而不需要特殊的 API 来读取它，它已经保存在函数作用域中（Hook 使用了<strong>JS的闭包机制</strong>）</p>
+</li>
+<li>
+<p><strong><code>useEffect</code> 会在每次渲染后都执行吗？</strong></p>
+<p>是的，默认情况下，它在<strong>第一次渲染之后<em>和</em>每次更新之后</strong>都会执行。</p>
+<p>你可能会更容易接受 effect 发生在“渲染之后”这种概念，不用再去考虑“挂载”还是“更新”。</p>
+<p>React <strong>保证了每次运行 effect 的同时，DOM 都已经更新完毕。</strong></p>
+</li>
+<li>
+<h5 id="函数在渲染过程中的不同：⭐️⭐️⭐️">函数在渲染过程中的不同：⭐️⭐️⭐️<a class="anchor" href="#函数在渲染过程中的不同：⭐️⭐️⭐️">·</a></h5>
+<ul>
+<li>注意到，传递给 <code>useEffect</code> 的函数在每次渲染中<strong>都会有所不同，这是刻意为之的。</strong></li>
+<li>事实上这正是我们可以在 effect 中<strong>获取最新的 <code>count</code> 的值</strong>，而不用担心其过期的原因。</li>
+<li>每次我们重新渲染，都会生成<em>新的</em> effect，替换掉之前的。某种意义上讲，effect 更像是渲染结果的一部分 —— 每个 effect “属于”一次特定的渲染。</li>
+<li>与 <code>componentDidMount</code> 或 <code>componentDidUpdate</code> 不同，使用 <code>useEffect</code> 调度的 effect <strong>不会阻塞浏览器更新屏幕，这让你的应用看起来响应更快</strong>。大多数情况下，effect 不需要同步地执行。在个别情况下（例如测量布局），有单独的 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-reference.html#uselayouteffect"><code>useLayoutEffect</code></a> Hook 供你使用，其 API 与 <code>useEffect</code> 相同。</li>
+<li>后续章节挖坑：⭐️</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-需清除的effect">2.3 需清除的effect<a class="anchor" href="#2-3-需清除的effect">·</a></h4>
+<p>此外，还有一些副作用是需要清除的。例如<strong>订阅外部数据源</strong>。这种情况下，清除工作可以防止引起内存泄露！</p>
+<ul>
+<li>
+<p><strong>为什么要在 effect 中返回一个函数？</strong></p>
+<p>这是 effect 可选的<strong>清除机制</strong>。每个 effect 都可以返回一个清除函数。如此可以将添加和移除订阅的逻辑放在一起。它们都属于 effect 的一部分。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> subscription = props.<span class="property">source</span>.<span class="title function_">subscribe</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 清除订阅</span></span><br><span class="line">    subscription.<span class="title function_">unsubscribe</span>();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>React 何时清除 effect？</strong></p>
+<ul>
+<li>
+<p>为防止内存泄漏，清除函数会在组件卸载前执行。如果组件多次渲染（通常如此），则<strong>在执行下一个 effect 之前，上一个 effect 就已被清除</strong>。在上述示例中，意味着组件的每一次更新都会创建新的订阅。若想避免每次更新都触发 effect 的执行</p>
+</li>
+<li>
+<p>正如之前学到的，<strong>effect 在每次渲染时都会执行</strong>。这就是为什么 React <em>会</em>在执行当前 effect 之前清除上一个 effect</p>
+</li>
+</ul>
+<p><strong>为什么要这样，以及如何在遇到性能问题时跳过此行为</strong>在2.5 2.6会展开</p>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 只在挂载、卸载阶段执行的副作用，且该函数的返回值是一个函数</span></span><br><span class="line">  </span><br><span class="line">  		<span class="comment">// 业务逻辑A: 它会在挂载阶段执行</span></span><br><span class="line">  		....<span class="property">A</span></span><br><span class="line">      <span class="comment">// 业务逻辑B: 它会在卸载时执行</span></span><br><span class="line">  		<span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;&#125;;</span><br><span class="line">    &#125;,[]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 每一次渲染、且卸载阶段执行的副作用，且该函数的返回值是一个函数，不传第2个参数</span></span><br><span class="line">  		<span class="comment">// 业务逻辑A: 它会在每次渲染时执行</span></span><br><span class="line">  		....<span class="property">A</span></span><br><span class="line">      <span class="comment">// 业务逻辑B:它会在卸载时执行</span></span><br><span class="line">  		<span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;&#125;;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 根据一定的依赖条件出发的副作用</span></span><br><span class="line">      <span class="comment">// 业务逻辑：</span></span><br><span class="line">      ....</span><br><span class="line">      <span class="comment">// 若xxx是一个函数，则xxx会在组件卸载时被触发</span></span><br><span class="line">  		<span class="keyword">return</span> xxx;</span><br><span class="line">    &#125;,[count1, count2, count3]);</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-Effect的执行时机">2.4 Effect的执行时机<a class="anchor" href="#2-4-Effect的执行时机">·</a></h4>
+<ul>
+<li>
+<p>与 <code>componentDidMount</code>、<code>componentDidUpdate</code> 不同的是，传给 <code>useEffect</code> 的函数会在浏览器完成布局与绘制<strong>之后</strong>，在一个延迟事件中被调用。</p>
+</li>
+<li>
+<p>这使得它适用于许多常见的副作用场景，比如设置订阅和事件处理等情况，因为<strong>绝大多数操作不应阻塞浏览器对屏幕的更新。</strong></p>
+</li>
+<li>
+<p>然而，并非所有 effect 都可以被延迟执行。例如，一个对用户可见的 DOM 变更就必须在浏览器执行下一次绘制前被同步执行，这样用户才不会感觉到视觉上的不一致。</p>
+</li>
+<li>
+<p>React 为此提供了一个额外的 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-reference.html#uselayouteffect"><code>useLayoutEffect</code></a> Hook 来处理这类 effect。它和 <code>useEffect</code> 的结构相同，区别只是调用时机不同。</p>
+</li>
+<li>
+<p>虽然 <code>useEffect</code> 会在浏览器绘制后延迟执行，但会保证在任何新的渲染前执行。在开始新的更新前，React 总会先清除上一轮渲染的 effect。</p>
+</li>
+</ul>
+<h4 id="使用多个Effect实现关注点分离">使用多个Effect实现关注点分离<a class="anchor" href="#使用多个Effect实现关注点分离">·</a></h4>
+<ul>
+<li>使用 Hook 其中一个<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-intro.html#complex-components-become-hard-to-understand">目的</a>就是要解决 class 中生命周期函数经常包含不相关的逻辑，但又把相关逻辑分离到了几个不同方法中的问题。so，它可以<strong>使用多个 effect</strong>。这会将不相关逻辑分离到不同的 effect 中：</li>
+<li><strong>Hook 允许我们按照代码的用途分离他们，</strong> 而不是像生命周期函数那样。React 将按照 effect 声明的顺序依次调用组件中的<em>每一个</em> effect。</li>
+</ul>
+<h4 id="2-5-为何每次更新时都运行-Effect">2.5 为何每次更新时都运行 Effect<a class="anchor" href="#2-5-为何每次更新时都运行-Effect">·</a></h4>
+<p>为什么 effect 的清除阶段在<strong>每次重新渲染时都会执行</strong>，<strong>而不是只在卸载组件的时候执行一次</strong>。</p>
+<ul>
+<li>
+<p><strong>因为这样的设计可以帮助创建组件bug更少：</strong></p>
+<p>一个用于显示好友是否在线的 <code>FriendStatus</code> 组件。从 class 中 props 读取 <code>friend.id</code>，然后在组件挂载后订阅好友的状态，并在卸载组件的时候取消订阅：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title class_">ChatAPI</span>.<span class="title function_">subscribeToFriendStatus</span>(</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">friend</span>.<span class="property">id</span>,</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">handleStatusChange</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title class_">ChatAPI</span>.<span class="title function_">unsubscribeFromFriendStatus</span>(</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">friend</span>.<span class="property">id</span>,</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">handleStatusChange</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>但当组件已显示在屏幕时，<code>friend</code> prop 发生变化时会发生什么？</strong></p>
+<p>我们的组件将继续展示原来的好友状态。<strong>这是一个 bug</strong>。</p>
+<p>而且我们还会因为<strong>取消订阅时使用错误的好友 ID</strong> 导致内存泄露或崩溃的问题。class 组件中要添加 <code>componentDidUpdate</code> 来解决这个问题：</p>
+<p>忘记正确地处理 <code>componentDidUpdate</code> 是 React 应用中常见的 bug 来源，其实确实存在</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">componentDidUpdate</span>(<span class="params">prevProps</span>) &#123;    </span><br><span class="line">  <span class="comment">// 取消订阅之前的 friend.id    	</span></span><br><span class="line"> <span class="title class_">ChatAPI</span>.<span class="title function_">unsubscribeFromFriendStatus</span>(prevProps.<span class="property">friend</span>.<span class="property">id</span>, <span class="variable language_">this</span>.<span class="property">handleStatusChange</span>);     <span class="comment">// 订阅新的 friend.id    </span></span><br><span class="line"> <span class="title class_">ChatAPI</span>.<span class="title function_">subscribeToFriendStatus</span>(<span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">friend</span>.<span class="property">id</span>,<span class="variable language_">this</span>.<span class="property">handleStatusChange</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>但hook的写法：并不会受到此 bug 影响</strong></p>
+<p><strong>并不需特定的代码来处理更新逻辑，因为 <code>useEffect</code> <em>默认</em>就会处理</strong>。它会在调用一个新的 effect 之前对前一个 effect 进行清理。下面按时间列出一个可能会产生的订阅和取消订阅操作调用序列来说明：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Mount with &#123; friend: &#123; id: 100 &#125; &#125; props</span></span><br><span class="line"><span class="title class_">ChatAPI</span>.<span class="title function_">subscribeToFriendStatus</span>(<span class="number">100</span>, handleStatusChange);     <span class="comment">// 运行第一个 effect</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Update with &#123; friend: &#123; id: 200 &#125; &#125; props</span></span><br><span class="line"><span class="title class_">ChatAPI</span>.<span class="title function_">unsubscribeFromFriendStatus</span>(<span class="number">100</span>, handleStatusChange); <span class="comment">// 清除上一个 effect</span></span><br><span class="line"><span class="title class_">ChatAPI</span>.<span class="title function_">subscribeToFriendStatus</span>(<span class="number">200</span>, handleStatusChange);     <span class="comment">// 运行下一个 effect</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Update with &#123; friend: &#123; id: 300 &#125; &#125; props</span></span><br><span class="line"><span class="title class_">ChatAPI</span>.<span class="title function_">unsubscribeFromFriendStatus</span>(<span class="number">200</span>, handleStatusChange); <span class="comment">// 清除上一个 effect</span></span><br><span class="line"><span class="title class_">ChatAPI</span>.<span class="title function_">subscribeToFriendStatus</span>(<span class="number">300</span>, handleStatusChange);     <span class="comment">// 运行下一个 effect</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Unmount</span></span><br><span class="line"><span class="title class_">ChatAPI</span>.<span class="title function_">unsubscribeFromFriendStatus</span>(<span class="number">300</span>, handleStatusChange); <span class="comment">// 清除最后一个 effect</span></span><br></pre></td></tr></table></figure>
+<p>此默认行为保证了一致性，<strong>避免了在 class 组件中因为没有处理更新逻辑而导致常见的 bug。</strong></p>
+</li>
+</ul>
+<h4 id="2-6-通过跳过-Effect来性能优化">2.6 通过跳过 Effect来性能优化<a class="anchor" href="#2-6-通过跳过-Effect来性能优化">·</a></h4>
+<p>在某些情况下，每次渲染后都执行清理或执行 effect 可能会导致性能问题。</p>
+<h5 id="渲染：">渲染：<a class="anchor" href="#渲染：">·</a></h5>
+<ul>
+<li>
+<p><strong>在 class 组件中</strong>，通过在 <code>componentDidUpdate</code> 中添加对 <code>prevProps</code> 或 <code>prevState</code> 的<strong>比较逻辑</strong>解决：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">componentDidUpdate</span>(<span class="params">prevProps, prevState</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (prevState.<span class="property">count</span> !== <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">count</span>) &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">`You clicked <span class="subst">$&#123;<span class="variable language_">this</span>.state.count&#125;</span> times`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>这是很常见的需求，所以<strong>它被内置到了 <code>useEffect</code> 的 Hook API 中</strong>。如果<strong>某些特定值在两次重渲染之间没有发生变化</strong>，你可以通知 React <strong>跳过</strong>对 effect 的调用，只要传递数组作为 <code>useEffect</code> 的第二个可选参数即可：</p>
+<p>如果数组中有多个元素，即使只有一个元素发生变化，React 也会执行 effect。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">`You clicked <span class="subst">$&#123;count&#125;</span> times`</span>;</span><br><span class="line">&#125;, [count]); <span class="comment">// 仅在 count 更改时更新</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="清除时：">清除时：<a class="anchor" href="#清除时：">·</a></h5>
+<ul>
+<li>
+<p>对于有清除操作的 effect 同样适用：未来版本，可能会在构建时自动添加第二个参数。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">handleStatusChange</span>(<span class="params">status</span>) &#123;</span><br><span class="line">    <span class="title function_">setIsOnline</span>(status.<span class="property">isOnline</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title class_">ChatAPI</span>.<span class="title function_">subscribeToFriendStatus</span>(props.<span class="property">friend</span>.<span class="property">id</span>, handleStatusChange);</span><br><span class="line">  <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title class_">ChatAPI</span>.<span class="title function_">unsubscribeFromFriendStatus</span>(props.<span class="property">friend</span>.<span class="property">id</span>, handleStatusChange);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;, [props.<span class="property">friend</span>.<span class="property">id</span>]); <span class="comment">// 仅在 props.friend.id 发生变化时，重新订阅</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="注意：">注意：<a class="anchor" href="#注意：">·</a></h5>
+<ul>
+<li>
+<p>如果你要使用此优化方式，请确保数组中包含了<strong>所有外部作用域中会随时间变化并且在 effect 中使用的变量</strong>，否则你的代码会引用到先前渲染中的旧变量。参阅文档，了解更多关于<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies">如何处理函数</a>以及<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often">数组频繁变化时的措施</a>内容。</p>
+</li>
+<li>
+<p>如果想<strong>执行只运行一次的 effect</strong>（仅在组件挂载和卸载时执行），可以传递一个空数组（<code>[]</code>）作为第二个参数。</p>
+<ul>
+<li>
+<p>这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它<strong>永远都不需要重复执行</strong>。这并不属于特殊情况 —— 它依然遵循依赖数组的工作方式。</p>
+</li>
+<li>
+<p>如果传入了一个空数组（<code>[]</code>），effect 内部的 props 和 state 就会一直拥有其初始值。尽管传入 <code>[]</code> 作为第二个参数更接近大家更熟悉的 <code>componentDidMount</code> 和 <code>componentWillUnmount</code> 思维模式，但我们有<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies">更好的</a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often">方式</a>来避免过于频繁的重复调用 effect。</p>
+</li>
+<li>
+<p>除此之外，请记得 <strong>React 会等待浏览器完成画面渲染之后才会延迟调用 <code>useEffect</code></strong>，因此会使得额外操作很方便。</p>
+</li>
+<li>
+<p>推荐启用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/eslint-plugin-react-hooks#installation"><code>eslint-plugin-react-hooks</code></a> 中的 <a target="_blank" rel="noopener" href="https://github.com/facebook/react/issues/14920"><code>exhaustive-deps</code></a> 规则。此规则会在添加错误依赖时发出警告并给出修复建议。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3、useContext基">3、useContext基<a class="anchor" href="#3、useContext基">·</a></h3>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> value = <span class="title function_">useContext</span>(<span class="title class_">MyContext</span>); <span class="comment">//参数必须是 context 对象本身</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>接收一个 context 对象（<code>React.createContext</code> 的返回值）并返回该 context 的当前值</li>
+<li>当前的 context 值由上层组件中<strong>距离当前组件最近</strong>的 <code>&lt;MyContext.Provider&gt;</code> 的 <code>value</code> prop 决定</li>
+</ul>
+<h4 id="3-1-特性：">3.1 特性：<a class="anchor" href="#3-1-特性：">·</a></h4>
+<ul>
+<li>当组件上层最近的 <code>&lt;MyContext.Provider&gt;</code> 更新时，该 Hook 会触发重渲染，并使用最新传递给 <code>MyContext</code> provider 的 context <code>value</code> 值。</li>
+<li>调用了 <code>useContext</code> 的组件<strong>总会在 context 值变化时重渲染</strong>，即使祖先使用 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-api.html#reactmemo"><code>React.memo</code></a> 或 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-component.html#shouldcomponentupdate"><code>shouldComponentUpdate</code></a>。</li>
+<li>如果重渲染组件的开销较大，可以 <a target="_blank" rel="noopener" href="https://github.com/facebook/react/issues/15156#issuecomment-474590693">通过使用 memoization 来优化</a>。</li>
+</ul>
+<h4 id="3-2-完整用法：">3.2 完整用法：<a class="anchor" href="#3-2-完整用法：">·</a></h4>
+<ol>
+<li>
+<p>创建Context容器对象：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">XxxContext</span> = <span class="title class_">React</span>.<span class="title function_">createContext</span>()  </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>传值子组件时，外面包裹<code>xxxContext.Provider</code>, 通过<strong>value</strong>属性（定死的）给后代组件传数据：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;xxxContext.<span class="property">Provider</span> value=&#123;数据&#125;&gt;</span><br><span class="line">		子组件</span><br><span class="line">&lt;/xxxContext.<span class="property">Provider</span>&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>数据其实是字符串，如果你想传对象，或多个值，可以再包一个{}</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;xxxContext.<span class="property">Provider</span> value=&#123;&#123;username, age, height&#125;&#125;&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">xxxContext.Provider</span> <span class="attr">value</span>=<span class="string">&#123;&#123;username:</span> &#x27;<span class="attr">superawesome</span>&#x27;&#125;&#125;&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>后代组件接收：<code>useContext()</code>钩子函数用来引入 Context 对象</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Messages</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">		<span class="keyword">const</span> &#123; username &#125; = <span class="title function_">useContext</span>(xxxContext)</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">       <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;messages&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">         <span class="tag">&lt;<span class="name">p</span>&gt;</span>1 message for &#123;username&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">         <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;message&quot;</span>&gt;</span>useContext is awesome!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="3-3-关于Context-API">3.3 关于Context API<a class="anchor" href="#3-3-关于Context-API">·</a></h4>
+<ul>
+<li>
+<p><code>useContext(MyContext)</code> 相当于 class 组件中的 <code>static contextType = MyContext</code> 或者 <code>&lt;MyContext.Consumer&gt;</code>。</p>
+</li>
+<li>
+<p><code>useContext(MyContext)</code> 只是让你能<strong><em>读取</em> context 的值及订阅 context 的变化</strong>。你<strong>仍需在上层组件树中使用 <code>&lt;MyContext.Provider&gt;</code> 来为下层组件<em>提供</em> context</strong>。</p>
+</li>
+<li>
+<p>高级指引部分有展开讲： <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/context.html">Context 高级指南</a></p>
+</li>
+</ul>
+<h4 id="3-4-memoization优化">3.4 memoization优化<a class="anchor" href="#3-4-memoization优化">·</a></h4>
+<p>待续~挖坑</p>
+<h3 id="4、useReducer">4、useReducer<a class="anchor" href="#4、useReducer">·</a></h3>
+<h4 id="4-1">4.1<a class="anchor" href="#4-1">·</a></h4>
+<blockquote>
+<p>在某些场景下，<code>useReducer</code> 会比 <code>useState</code> 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 <code>useReducer</code> 还能给那些会触发<strong>深更新的组件做性能优化</strong>，因为<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down">你可以向子组件传递 <code>dispatch</code> 而不是回调函数</a> 。</p>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, initialArg, init);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-reference.html#usestate"><code>useState</code></a> 的替代方案。它接收一个形如 <code>(state, action) =&gt; newState</code> 的 reducer，并返回当前的 state 以及与其配套的 <code>dispatch</code> 方法。</p>
+</li>
+<li>
+<p><strong>注意</strong></p>
+<p>React 会确保 <code>dispatch</code> 函数的标识是稳定的，并不会在组件重新渲染时改变。这就是为什么可以安全地从 <code>useEffect</code> 或 <code>useCallback</code> 的依赖列表中省略 <code>dispatch</code>。</p>
+</li>
+</ul>
+<h4 id="4-2-用法demo">4.2 用法demo<a class="anchor" href="#4-2-用法demo">·</a></h4>
+<ul>
+<li>
+<p>用 reducer 重写 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-reference.html#usestate"><code>useState</code></a> 一节的计数器示例：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> initialState = &#123;<span class="attr">count</span>: <span class="number">0</span>&#125;;     <span class="comment">// 1.1 初始化state</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reducer</span>(<span class="params">state, action</span>) &#123;    <span class="comment">// 1.2 定义reducer</span></span><br><span class="line">  <span class="keyword">switch</span> (action.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>: <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.<span class="property">count</span> + <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>: <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.<span class="property">count</span> - <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="attr">default</span>: <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, initialState); <span class="comment">// 1.3 初始化</span></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      Count: &#123;state.count&#125;</span></span><br><span class="line"><span class="language-xml">			// 1.4 想要更改store数据的组件，只需要有dispatch钩子就可以</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123;type: &#x27;decrement&#x27;&#125;)&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123;type: &#x27;increment&#x27;&#125;)&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="4-3-指定初始-state">4.3 指定初始 state<a class="anchor" href="#4-3-指定初始-state">·</a></h4>
+<p>有两种不同初始化 <code>useReducer</code> state 的方式：</p>
+<h5 id="最简单的：">最简单的：<a class="anchor" href="#最简单的：">·</a></h5>
+<ul>
+<li>
+<p>将初始 state 作为第二个参数传入 <code>useReducer</code> 是最简单的方法：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(</span><br><span class="line">  reducer,</span><br><span class="line">  &#123;<span class="attr">count</span>: initialCount&#125;  );</span><br></pre></td></tr></table></figure>
+<ul>
+<li>React 不使用 <code>state = initialState</code> 这一由 Redux 推广开来的参数约定。有时候初始值依赖于 props，因此需要在调用 Hook 时指定。</li>
+<li>如果你特别喜欢上述的参数约定，可以通过调用 <code>useReducer(reducer, undefined, reducer)</code> 来模拟 Redux 的行为，但不鼓励你这么做。</li>
+</ul>
+</li>
+</ul>
+<h5 id="惰性初始化">惰性初始化:<a class="anchor" href="#惰性初始化">·</a></h5>
+<ul>
+<li>
+<p>需将 <code>init</code> 函数作为 <code>useReducer</code> 的第三个参数传入，这样初始 state 将被置为 <code>init(initialArg)</code></p>
+</li>
+<li>
+<p>这么做可将用于计算 state 的逻辑提到reducer外部，这也为将来对<strong>重置 state 的 action</strong> 做处理提供了便利：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">init</span>(<span class="params">initialCount</span>) &#123;  <span class="keyword">return</span> &#123;<span class="attr">count</span>: initialCount&#125;;&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reducer</span>(<span class="params">state, action</span>) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:  <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.<span class="property">count</span> + <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:  <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.<span class="property">count</span> - <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;reset&#x27;</span>:  <span class="keyword">return</span> <span class="title function_">init</span>(action.<span class="property">payload</span>);     <span class="comment">// 重置action</span></span><br><span class="line">    <span class="attr">default</span>:    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params">&#123;initialCount&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, initialCount, init);  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      Count: &#123;state.count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123;type: &#x27;reset&#x27;, payload: initialCount&#125;)&#125;&gt;       				Reset</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123;type: &#x27;decrement&#x27;&#125;)&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123;type: &#x27;increment&#x27;&#125;)&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="4-4-跳过-dispatch">4.4 跳过 dispatch<a class="anchor" href="#4-4-跳过-dispatch">·</a></h4>
+<ul>
+<li>如果 Reducer Hook 的返回值与当前 state 相同，React 将跳过子组件的渲染及副作用的执行。（React 使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description"><code>Object.is</code> 比较算法</a> 来比较 state。）</li>
+<li>需要注意的是，React 可能仍需要在跳过渲染前再次渲染该组件。不过由于 React 不会对组件树的“深层”节点进行不必要的渲染，所以大可不必担心。如果你在渲染期间执行了高开销的计算，则可以使用 <code>useMemo</code> 来进行优化。不是很理解~？？？</li>
+</ul>
+<h3 id="5、useRef">5、useRef<a class="anchor" href="#5、useRef">·</a></h3>
+<h4 id="特性">特性<a class="anchor" href="#特性">·</a></h4>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> refContainer = <span class="title function_">useRef</span>(initialValue);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>useRef</code> 返回一个可变的 <strong>ref 对象</strong>，其 <code>.current</code> <strong>属性被初始化为传入的参数</strong>（<code>initialValue</code>）。返回的 ref 对象在<strong>组件的整个生命周期内持续存在</strong>。</li>
+<li>本质上，<code>useRef</code> 就像是可以在其 <code>.current</code> 属性中保存一个可变值的“盒子”。</li>
+<li><code>useRef()</code> 比 <code>ref</code> 属性更有用：
+<ul>
+<li>ref：是一种<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html">访问 DOM</a> 的主要方式，如果将 ref 对象以 <code>&lt;div ref=&#123;myRef&#125; /&gt;</code> 形式传入组件，则无论该节点如何改变，React 都会将 <strong>ref 对象的 <code>.current</code> 属性设置为相应的 DOM 节点</strong></li>
+<li><code>useRef()</code> ：可以<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#is-there-something-like-instance-variables">很方便地保存任何可变值</a>，因为它创建的是一个普通JS对象。而 <code>useRef()</code> 和自建一个 <code>&#123;current: ...&#125;</code> 对象的唯一区别是，<strong><code>useRef</code> 会在每次渲染时返回同一个 ref 对象。</strong></li>
+<li>注意：当 ref 对象内容变化时，<code>useRef</code> 并<em>不会</em>通知你。<strong>变更 <code>.current</code> 属性不会引发组件重新渲染</strong>。如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，则需要使用<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node">回调 ref</a> 来实现。</li>
+</ul>
+</li>
+</ul>
+<h4 id="使用demo：">使用demo：<a class="anchor" href="#使用demo：">·</a></h4>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">TextInputWithFocusButton</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> inputEl = <span class="title function_">useRef</span>(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">onButtonClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    inputEl.<span class="property">current</span>.<span class="title function_">focus</span>(); <span class="comment">// `current` 指向已挂载到 DOM 上的文本输入元素</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputEl&#125;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onButtonClick&#125;</span>&gt;</span>Focus the input<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6、useMemo">6、useMemo<a class="anchor" href="#6、useMemo">·</a></h3>
+<p>这部分不太理解，以后在实际使用时要多注意一下~</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> memoizedValue = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> <span class="title function_">computeExpensiveValue</span>(a, b), [a, b]);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>把“创建”函数和<strong>依赖项数组</strong>作为参数传入 <code>useMemo</code>，它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化<strong>有助于避免在每次渲染时都进行高开销的计算</strong>。</li>
+<li>返回一个 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Memoization">memoized</a> 值</li>
+<li>传入 <code>useMemo</code> 的函数会在渲染期间执行。请不要在这个函数内部执行与渲染无关的操作，诸如副作用这类的操作属于 <code>useEffect</code> 的适用范畴，而不是 <code>useMemo</code></li>
+</ul>
+<h4 id="特性：">特性：<a class="anchor" href="#特性：">·</a></h4>
+<ul>
+<li>
+<p>**目的：**用来解决用React hooks产生的无用渲染的性能问题</p>
+</li>
+<li>
+<p>如果没有提供依赖项数组，<code>useMemo</code> 在每次渲染时都会计算新的值</p>
+</li>
+<li>
+<p>先编写在没有 <code>useMemo</code> 的情况下也可执行的代码 —— 之后再添加 <code>useMemo</code>，以达到优化性能的目的</p>
+</li>
+</ul>
+<blockquote>
+<p>**你可以把 <code>useMemo</code> 作为性能优化的手段，但不要把它当成语义上的保证。**将来，React 可能会选择“遗忘”以前的一些 memoized 值，并在下次渲染时重新计算它们，比如为离屏组件释放内存。</p>
+<ul>
+<li>这里不是很理解？？？</li>
+</ul>
+</blockquote>
+<h4 id="demo举例：">demo举例：<a class="anchor" href="#demo举例：">·</a></h4>
+<ul>
+<li>
+<p>作用：</p>
+<ul>
+<li>函数组件失去了<code>shouldCompnentUpdate</code>，所以无法在组件更新前，根据某些条件来组件是否更新</li>
+<li>函数组件不再区分<code>mount</code>和<code>update</code>两个状态，所以<strong>函数组件每次调用都会执行内部的所有逻辑</strong>，性能损耗</li>
+</ul>
+</li>
+<li>
+<h5 id="父组件：">父组件：<a class="anchor" href="#父组件：">·</a></h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> [name , setname] = <span class="title function_">useState</span>(<span class="string">&#x27;小红&#x27;</span>)</span><br><span class="line">  <span class="keyword">const</span> [count , setcount] = <span class="title function_">useState</span>(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">     <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span>&gt;</span>名字：&#123;name&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">				<span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>&#123;setcount(count++)&#125;&#125;&gt;数字：&#123;count&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Child</span> <span class="attr">name</span>=<span class="string">&#123;name&#125;</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">Child</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<h5 id="子组件：">子组件：<a class="anchor" href="#子组件：">·</a></h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Child</span>(<span class="params">&#123;name,children&#125;</span>)&#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">changeName</span>(<span class="params">name</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我要更改父组件传过来的名字name啦&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> name+<span class="string">&#x27;,新的&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> newName = <span class="title function_">changeName</span>(name)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;newName&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>点击数字，计时器会更新，但是名字相关的展示组件，与count毫无关系，但是也在执行，这是在做无用的渲染。</li>
+<li>我们希望，只有与它相关的更新了，才执行对应的方法</li>
+</ul>
+</li>
+<li>
+<h4 id="优化：">优化：<a class="anchor" href="#优化：">·</a></h4>
+<p>useMemo包裹，并传递第二个参数，参数匹配成功，才会执行</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> newName = <span class="title function_">useMemo</span>(<span class="function">()=&gt;</span><span class="title function_">changeName</span>(name),[name]) </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="注意：-2">注意：<a class="anchor" href="#注意：-2">·</a></h4>
+<blockquote>
+<p>依赖项数组不会作为参数传“创建”函数。</p>
+<p>虽然从概念上来说它表现为：所有“创建”函数中引用的值都应该出现在依赖项数组中。未来编译器会更加智能，届时自动创建数组将成为可能。</p>
+<p>推荐启用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/eslint-plugin-react-hooks#installation"><code>eslint-plugin-react-hooks</code></a> 中的 <a target="_blank" rel="noopener" href="https://github.com/facebook/react/issues/14920"><code>exhaustive-deps</code></a> 规则。此规则会在<strong>添加错误依赖时</strong>发出警告并给出修复建议。</p>
+</blockquote>
+<h3 id="7、useCallback">7、useCallback<a class="anchor" href="#7、useCallback">·</a></h3>
+<h4 id="特性：-2">特性：<a class="anchor" href="#特性：-2">·</a></h4>
+<ul>
+<li>
+<p>返回一个 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Memoization">memoized</a> 回调函数</p>
+</li>
+<li>
+<p>把内联回调函数及依赖项数组作为参数传入 <code>useCallback</code>，它将返回该回调函数的 memoized 版本，该回调函数<strong>仅在某个依赖项改变时才会更新。</strong></p>
+</li>
+<li>
+<p>当你把回调函数传递给经过优化的并<strong>使用引用相等性</strong>去避免非必要渲染（例如 <code>shouldComponentUpdate</code>）的子组件时，它将非常有用。</p>
+<p>怎么理解？？？挖坑~</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> memoizedCallback = <span class="title function_">useCallback</span>(</span><br><span class="line">  <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">doSomething</span>(a, b);</span><br><span class="line">  &#125;,</span><br><span class="line">  [a, b],</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="注意：-3">注意：<a class="anchor" href="#注意：-3">·</a></h4>
+<ul>
+<li><code>useCallback(fn, deps)</code> 相当于 <code>useMemo(() =&gt; fn, deps)</code>。</li>
+</ul>
+<blockquote>
+<p>依赖项数组不会作为参数传给回调函数。虽然从概念上来说它表现为：所有回调函数中引用的值都应该出现在依赖项数组中。未来编译器会更加智能，届时自动创建数组将成为可能。</p>
+</blockquote>
+<ul>
+<li>推荐启用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/eslint-plugin-react-hooks#installation"><code>eslint-plugin-react-hooks</code></a> 中的 <a target="_blank" rel="noopener" href="https://github.com/facebook/react/issues/14920"><code>exhaustive-deps</code></a> 规则。此规则会在添加错误依赖时发出警告并给出修复建议</li>
+</ul>
+<h3 id="8、useLayoutEffect">8、useLayoutEffect<a class="anchor" href="#8、useLayoutEffect">·</a></h3>
+<ul>
+<li>与 <code>useEffect</code> 不同的是，它会在所有的 DOM 变更之后同步调用 effect，可以使用它来读取 DOM 布局并同步触发重渲染。</li>
+<li>在浏览器执行绘制之前，<code>useLayoutEffect</code> 内部的更新计划将被同步刷新。</li>
+</ul>
+<p>尽可能使用标准的 <code>useEffect</code> 以避免阻塞视觉更新。</p>
+<blockquote>
+<p>提示</p>
+<p>如果你正在将代码从 class 组件迁移到Hook，则注意 <code>useLayoutEffect</code> 与 <code>componentDidMount</code>、<code>componentDidUpdate</code> 的调用阶段是一样的。但推荐你<strong>一开始先用 <code>useEffect</code></strong>，只有当它出问题的时候再尝试用 <code>useLayoutEffect</code>。</p>
+<p>如果你使用服务端渲染，请记住，<strong><em>无论</em> <code>useLayoutEffect</code> <em>还是</em> <code>useEffect</code> 都无法在 JS代码加载完成之前执行</strong>。这就是为什么<strong>在服务端渲染组件中引入 <code>useLayoutEffect</code> 代码时会触发 React 告警</strong>。</p>
+<ul>
+<li>解决这个问题，需要将代码逻辑移至 <code>useEffect</code> 中（如果首次渲染不需要这段逻辑的情况下）</li>
+<li>或是将该组件延迟到客户端渲染完成后再显示（如果直到 <code>useLayoutEffect</code> 执行之前 HTML 都显示错乱的情况下）。</li>
+</ul>
+<p>若要从服务端渲染的 HTML 中排除依赖布局 effect 的组件，可以通过使用 <code>showChild &amp;&amp; &lt;Child /&gt;</code> 进行条件渲染，并使用 <code>useEffect(() =&gt; &#123; setShowChild(true); &#125;, [])</code> 延迟展示组件。这样，在客户端渲染完成之前，UI 就不会像之前那样显示错乱了。</p>
+</blockquote>
+<h3 id="9、useContext-useReducer">9、useContext + useReducer<a class="anchor" href="#9、useContext-useReducer">·</a></h3>
+<h4 id="9-1、redux开发痛点">9.1、redux开发痛点<a class="anchor" href="#9-1、redux开发痛点">·</a></h4>
+<p>比如当你正在开发一个很复杂的功能，中途需要不断添加全局状态，每次添加都不得不重复如下步骤：</p>
+<ol>
+<li>去到管理 redux 的文件夹，思考把这个状态放到状态树的哪个位置，然后新建一个文件夹并命名 <code>myFeature</code>。</li>
+<li>创建三个文件 <code>my-feature/actions.js</code> 、<code>my-feature/reducer.js</code>、<code>my-feature/type.js</code></li>
+<li>combineReducer 和并 reduce</li>
+<li>将 action 引入到组件中</li>
+<li>通过 connect HOC 与你的组件相连</li>
+<li>增加两个方法 mapStateToProps 和 mapDispatchToProps</li>
+</ol>
+<p>以上只是加个状态而已，写很多模板代码还是其次，最要命的是会打断你写代码的思路。</p>
+<p>而且随着项目越来越大， redux 的状态树也会变大，维护也会变困难。</p>
+<h4 id="做法：">做法：<a class="anchor" href="#做法：">·</a></h4>
+<p>对包裹组件使用useContext 和useReducer：</p>
+<ul>
+<li>
+<p>一方面：后代的组件都能够获取到这个值store里面某个值，用来渲染</p>
+</li>
+<li>
+<p>另一方面，还要把dispatch这个函数传下去，到时候，某种交互想改变store的数据，可以直接dispatch，派发action</p>
+</li>
+<li>
+<p><strong>APP组件：</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Color</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./color&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Color</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ShowArea</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Color</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>**Color组件：**包裹、传递</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.  创建 context</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ColorContext</span> = <span class="title function_">createContext</span>(&#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.2  reducer方法 声明</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">reducer</span> = (<span class="params">state, action</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">switch</span>(action.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="attr">UPDATE_COLOR</span>: <span class="keyword">return</span> action.<span class="property">color</span></span><br><span class="line">    <span class="attr">default</span>:  <span class="keyword">return</span> state  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">Color</span> = props =&gt; &#123;</span><br><span class="line">	<span class="comment">//2.1 使用useReducer</span></span><br><span class="line">  <span class="keyword">const</span> [color, dispatch] = <span class="title function_">useReducer</span>(reducer, <span class="string">&#x27;blue&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">  <span class="comment">// 3. Provider通过value 将自己的组件中的某一state+更新该state的方法也传给了子组件</span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">ColorContext.Provider</span> <span class="attr">value</span>=<span class="string">&#123;&#123;color,</span> <span class="attr">dispatch</span>&#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;props.children&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ColorContext.Provider</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>**ShowArea：**使用的组件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ColorContext</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./color&quot;</span>; <span class="comment">// 1. 导入context</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">ShowArea</span> = props =&gt; &#123;</span><br><span class="line">  <span class="comment">// 2. 通过context接收到satate</span></span><br><span class="line">  <span class="keyword">const</span> &#123; color, dispatch&#125; = <span class="title function_">useContext</span>(<span class="title class_">ColorContext</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">  	<span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    		// 3.1 使用store中的数据渲染</span></span><br><span class="line"><span class="language-xml">    		<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> <span class="attr">color</span> &#125;&#125;&gt;</span>字体颜色展示为&#123;color&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>;</span></span><br><span class="line"><span class="language-xml">					//3.2 用户交互改变store</span></span><br><span class="line"><span class="language-xml">    		<span class="tag">&lt;<span class="name">button</span>  <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">          dispatch(&#123; type: UPDATE_COLOR, color: &quot;red&quot; &#125;);&#125;&#125;</span></span><br><span class="line"><span class="language-xml">         &gt;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  )</span></span><br><span class="line"><span class="language-xml">  return </span></span><br><span class="line"><span class="language-xml">&#125;;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="小结-2">小结<a class="anchor" href="#小结-2">·</a></h2>
+<blockquote>
+<p>至此，我们介绍完了Hook中大部分钩子及其使用特性；</p>
+<p>关于接下来的Hook系列旅程中，我们将结合特性说明Hook的调用工作流程：How to work，以及最后分析why hooks的出现，以及为React的实际开发带来了怎样的好处；</p>
+<p>最后总结一些Hook的实际开发心得~</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Hook系列(1)之what</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-03-31</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-04-30</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/img/react.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 33234});
+(function() {
+  if ('WIDGETPACK_LOADED' in window) return;
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement('script');
+  mc.type = 'text/javascript';
+  mc.async = true;
+  mc.src = '//embed.widgetpack.com/widget.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/gap-property.html"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/gap.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">CSS中的gap属性</div></div></a></div><div class="next-post pull-right"><a href="/posts/React's%20Component.html"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/func hook.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">类组件vs函数组件</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avartor.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">114</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">90</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/myNightwish" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zml_byr@bupt.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#center-Hook%E7%B3%BB%E5%88%97%EF%BC%881%EF%BC%89%E4%B9%8Bwhat-center"><span class="toc-text">Hook系列（1）之what</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what"><span class="toc-text">what</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81useState%E5%9F%BA%E7%A1%80"><span class="toc-text">1、useState基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="toc-text">1.1 基础用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E5%87%BD%E6%95%B0%E5%BC%8FsetState%E6%9B%B4%E6%96%B0"><span class="toc-text">1.2 函数式setState更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E6%83%B0%E6%80%A7initialState"><span class="toc-text">1.3 惰性initialState</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-%E8%B7%B3%E8%BF%87-state-%E6%9B%B4%E6%96%B0"><span class="toc-text">1.4 跳过 state 更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-text">1.5 注意：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#why-%E9%A1%BA%E5%BA%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E8%A6%81%EF%BC%9F"><span class="toc-text">why 顺序为什么重要？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81-useEffect%E5%9F%BA"><span class="toc-text">2、 useEffect基</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E5%BC%95%E5%85%A5%E5%89%AF%E4%BD%9C%E7%94%A8"><span class="toc-text">2.1 引入副作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E6%97%A0%E9%9C%80%E6%B8%85%E9%99%A4%E7%9A%84-effect-%E2%AD%90%EF%B8%8F%E9%9D%A2%E8%AF%95"><span class="toc-text">2.2 无需清除的 effect ⭐️面试~</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%9C%A8%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%8D%E5%90%8C%EF%BC%9A%E2%AD%90%EF%B8%8F%E2%AD%90%EF%B8%8F%E2%AD%90%EF%B8%8F"><span class="toc-text">函数在渲染过程中的不同：⭐️⭐️⭐️</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E9%9C%80%E6%B8%85%E9%99%A4%E7%9A%84effect"><span class="toc-text">2.3 需清除的effect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-Effect%E7%9A%84%E6%89%A7%E8%A1%8C%E6%97%B6%E6%9C%BA"><span class="toc-text">2.4 Effect的执行时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AAEffect%E5%AE%9E%E7%8E%B0%E5%85%B3%E6%B3%A8%E7%82%B9%E5%88%86%E7%A6%BB"><span class="toc-text">使用多个Effect实现关注点分离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E4%B8%BA%E4%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E6%97%B6%E9%83%BD%E8%BF%90%E8%A1%8C-Effect"><span class="toc-text">2.5 为何每次更新时都运行 Effect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-%E9%80%9A%E8%BF%87%E8%B7%B3%E8%BF%87-Effect%E6%9D%A5%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">2.6 通过跳过 Effect来性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%EF%BC%9A"><span class="toc-text">渲染：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E6%97%B6%EF%BC%9A"><span class="toc-text">清除时：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-text">注意：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81useContext%E5%9F%BA"><span class="toc-text">3、useContext基</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="toc-text">3.1 特性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E5%AE%8C%E6%95%B4%E7%94%A8%E6%B3%95%EF%BC%9A"><span class="toc-text">3.2 完整用法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E5%85%B3%E4%BA%8EContext-API"><span class="toc-text">3.3 关于Context API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-memoization%E4%BC%98%E5%8C%96"><span class="toc-text">3.4 memoization优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81useReducer"><span class="toc-text">4、useReducer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1"><span class="toc-text">4.1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E7%94%A8%E6%B3%95demo"><span class="toc-text">4.2 用法demo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-%E6%8C%87%E5%AE%9A%E5%88%9D%E5%A7%8B-state"><span class="toc-text">4.3 指定初始 state</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%EF%BC%9A"><span class="toc-text">最简单的：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%83%B0%E6%80%A7%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">惰性初始化:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-%E8%B7%B3%E8%BF%87-dispatch"><span class="toc-text">4.4 跳过 dispatch</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81useRef"><span class="toc-text">5、useRef</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-text">特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8demo%EF%BC%9A"><span class="toc-text">使用demo：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81useMemo"><span class="toc-text">6、useMemo</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="toc-text">特性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#demo%E4%B8%BE%E4%BE%8B%EF%BC%9A"><span class="toc-text">demo举例：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%88%B6%E7%BB%84%E4%BB%B6%EF%BC%9A"><span class="toc-text">父组件：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%90%E7%BB%84%E4%BB%B6%EF%BC%9A"><span class="toc-text">子组件：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%EF%BC%9A"><span class="toc-text">优化：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A-2"><span class="toc-text">注意：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81useCallback"><span class="toc-text">7、useCallback</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%80%A7%EF%BC%9A-2"><span class="toc-text">特性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A-3"><span class="toc-text">注意：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81useLayoutEffect"><span class="toc-text">8、useLayoutEffect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81useContext-useReducer"><span class="toc-text">9、useContext + useReducer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#9-1%E3%80%81redux%E5%BC%80%E5%8F%91%E7%97%9B%E7%82%B9"><span class="toc-text">9.1、redux开发痛点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%9A%E6%B3%95%EF%BC%9A"><span class="toc-text">做法：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="toc-text">小结</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-hexo-git-main-mynightwish.vercel.app/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-hexo-git-main-mynightwish.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async src="/js/newAdd.js"></script><div id="live3d" class="live3d" style="position: fixed; left: -100px; bottom: 30px; width: 500px !important;height: 437.5px !important;z-index: 98;"><canvas id="live2dm" class="live3d"style="max-width:500px;max-height:437.5px;"></canvas></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-beautiful-page@latest/lib/asyncmodel.min.js"></script><div defer class="aplayer no-destroy" data-id="31872922" data-server="netease" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script>setInterval(()=>{let create_time=Math.round(new Date("2021-12-1-20:14:00").getTime()/1000);let timestamp=Math.round((new Date().getTime()+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600}if(second>=3600){time[2]=parseInt(second/3600);second%=3600}if(second>=60){time[3]=parseInt(second/60);second%=60}if(second>0){time[4]=second}currentTimeHtml='小破站已经安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';var elementById=document.getElementById('running-time');if(elementById){elementById.innerHTML=currentTimeHtml}},1000);</script><script defer src="/js/beautify.js"></script><script defer src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementsByClassName('category-lists')[0] && (location.pathname ==='/categories/'|| '/categories/' ==='all')){
+    var parent = document.getElementsByClassName('category-lists')[0];
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/Ajax、Axios/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🥝 Ajax、Axios (3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/CSS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍭 CSS (18)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/JS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🥑 JS、ES (29)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/React-Vue/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍡 React、Vue框架 (15)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/前端工程化/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍉 前端基建:webpack、Git、CICD (3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/浏览器/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 浏览器工作原理 (9)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/计算机基础/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🧊 计算机网络 (10)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/项目总结/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🔮 过往需求的梳理 (20)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/碎碎念/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💫 碎碎念~ (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item" style="visibility: hidden"></div><a class="magnet_link_more"  href="https://mynightwish.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style>
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?myNightwish";
+            var git_color =['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'];
+            var git_user ="myNightwish";
+            var parent_div_git = document.getElementById('archive');
+            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/archives/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('archive')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/js/clock/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="/js/clock/clock.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/2559768829.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/img/mm.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/2559768829.html&quot;);" href="javascript:void(0);" alt="">React的组件通信</a><div class="blog-slider__text">数据是如何在react组件上流动</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/2559768829.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/img/ff.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-13</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">React的虚拟DOM</a><div class="blog-slider__text">兄弟篇React的虚拟DOM，包括了栈调和</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/Hooks.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/img/sweet4.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/Hooks.html&quot;);" href="javascript:void(0);" alt="">React-Hook的出现</a><div class="blog-slider__text">为何Hooks是React的未来</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/Hooks.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/593377043.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/img/sweet3.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/593377043.html&quot;);" href="javascript:void(0);" alt="">React的生命周期</a><div class="blog-slider__text">生命周期是什么，与库本身的关系</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/593377043.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/img/a-hill.avif" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfnIl0f3oUJLgGFb7Qgi97y1hY9uIQsHizXQ&amp;usqp=CAU" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">JS的异步解决方案</a><div class="blog-slider__text">前端异步之路</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="/js/swiperFix.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
