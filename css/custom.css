@@ -60,7 +60,7 @@
 }
 /* 滚动条 */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 8px;
   height: 15px;
 }
 
@@ -219,7 +219,7 @@ svg.icon {
 }
 /* 鼠标样式*/
 body {
-  cursor: url("img/default.cur"),default;
+  cursor: url("/img/default.cur"),default;
 }
 a, img {
   cursor: url("/img/pointer.cur"),default;

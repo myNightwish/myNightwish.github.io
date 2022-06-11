@@ -3474,61 +3474,92 @@ span.categoryBar-list-count::after {
   right: -100%;
 }
 li.categoryBar-list-item:nth-child(1) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/Ajax.webp');
-}
-li.categoryBar-list-item:nth-child(2) {
   background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/css.webp');
 }
-li.categoryBar-list-item:nth-child(3) {
+li.categoryBar-list-item:nth-child(2) {
   background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/JS.webp');
+}
+li.categoryBar-list-item:nth-child(3) {
+  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/Ajax.png');
 }
 li.categoryBar-list-item:nth-child(4) {
   background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/框架.webp');
 }
 li.categoryBar-list-item:nth-child(5) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/工程化.webp');
+  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/组件库.png');
 }
 li.categoryBar-list-item:nth-child(6) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/browser.webp');
+  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/工程化.webp');
 }
 li.categoryBar-list-item:nth-child(7) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/碎碎念.webp');
+  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/功能实现.png');
 }
 li.categoryBar-list-item:nth-child(8) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/计算机基础.webp');
-}
-li.categoryBar-list-item:nth-child(9) {
   background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/总结.webp');
 }
-li.categoryBar-list-item:nth-child(1)>span::after {
-  content: 'Ajax的诞生' !important;
+li.categoryBar-list-item:nth-child(9) {
+  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/碎碎念.webp');
 }
-li.categoryBar-list-item:nth-child(2)>span::after {
+li.categoryBar-list-item:nth-child(10) {
+  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/browser.webp');
+}
+li.categoryBar-list-item:nth-child(11) {
+  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/计算机基础.webp');
+}
+li.categoryBar-list-item:nth-child(12) {
+  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/tools&shell.png');
+}
+li.categoryBar-list-item:nth-child(13) {
+  background: #abcdef;
+}
+li.categoryBar-list-item:nth-child(14) {
+  background: rgba(45,67,89,0.7);
+}
+li.categoryBar-list-item:nth-child(15) {
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.4) 25%, rgba(200,16 , 16, 0) 100%);
+  background: -moz-linear-gradient(rgba(0, 0, 0, 0.4) 25%, rgba(200,16 , 16, 0) 100%);
+  background: -o-linear-gradient(rgba(0, 0, 0, 0.4) 25%, rgba(200,16 , 16, 0) 100%);
+  background: -ms-linear-gradient(rgba(0, 0, 0, 0.4) 25%, rgba(200,16 , 16, 0) 100%);
+  background: linear-gradient(rgba(0, 0, 0, 0.4) 25%, rgba(200,16 , 16, 0) 100%);
+}
+li.categoryBar-list-item:nth-child(1)>span::after {
   content: 'CSS的酷炫多彩' !important;
 }
-li.categoryBar-list-item:nth-child(3)>span::after {
+li.categoryBar-list-item:nth-child(2)>span::after {
   content: '数据、函数、异步' !important;
+}
+li.categoryBar-list-item:nth-child(3)>span::after {
+  content: 'Ajax的诞生' !important;
 }
 li.categoryBar-list-item:nth-child(4)>span::after {
   content: 'Vue&React的世界' !important;
 }
 li.categoryBar-list-item:nth-child(5)>span::after {
-  content: '前端工程化' !important;
+  content: '组件库开发' !important;
 }
 li.categoryBar-list-item:nth-child(6)>span::after {
-  content: '浏览器的渲染' !important;
+  content: '前端工程化' !important;
 }
 li.categoryBar-list-item:nth-child(7)>span::after {
-  content: 'bidaoTalk' !important;
+  content: '功能实现积累' !important;
 }
 li.categoryBar-list-item:nth-child(8)>span::after {
-  content: '计算机基础' !important;
-}
-li.categoryBar-list-item:nth-child(9)>span::after {
   content: '项目总结' !important;
 }
+li.categoryBar-list-item:nth-child(9)>span::after {
+  content: 'bidaoTalk' !important;
+}
+li.categoryBar-list-item:nth-child(10)>span::after {
+  content: '浏览器渲染' !important;
+}
+li.categoryBar-list-item:nth-child(11)>span::after {
+  content: '计算机基础' !important;
+}
+li.categoryBar-list-item:nth-child(12)>span::after {
+  content: '小工具' !important;
+}
 li.categoryBar-list-item {
-  width: 32.3% !important;
+  width: 24% !important;
 }
 @media screen and (max-width: 650px) {
   li.categoryBar-list-item {
