@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://mynightwish.top/posts/cat.html</loc>
+    
+    <lastmod>2022-06-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://mynightwish.top/movies/index.html</loc>
+    
+    <lastmod>2022-06-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://mynightwish.top/posts/2131155013.html</loc>
     
     <lastmod>2022-06-11</lastmod>
@@ -174,15 +192,6 @@
   
   <url>
     <loc>https://mynightwish.top/posts/blogChange1.html</loc>
-    
-    <lastmod>2022-06-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://mynightwish.top/posts/cat.html</loc>
     
     <lastmod>2022-06-11</lastmod>
     
@@ -1001,15 +1010,6 @@
   </url>
   
   <url>
-    <loc>https://mynightwish.top/movies/index.html</loc>
-    
-    <lastmod>2022-05-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://mynightwish.top/tags/index.html</loc>
     
     <lastmod>2022-04-30</lastmod>
@@ -1601,6 +1601,13 @@
   </url>
   
   <url>
+    <loc>https://mynightwish.top/tags/HTTP/</loc>
+    <lastmod>2022-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://mynightwish.top/tags/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2022-06-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -1742,13 +1749,6 @@
   
   <url>
     <loc>https://mynightwish.top/tags/%E5%B8%A7%E5%8A%A8%E7%94%BB/</loc>
-    <lastmod>2022-06-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://mynightwish.top/tags/HTTP/</loc>
     <lastmod>2022-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
