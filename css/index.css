@@ -3474,40 +3474,40 @@ span.categoryBar-list-count::after {
   right: -100%;
 }
 li.categoryBar-list-item:nth-child(1) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/css.webp');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/css.webp');
 }
 li.categoryBar-list-item:nth-child(2) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/JS.webp');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/JS.webp');
 }
 li.categoryBar-list-item:nth-child(3) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/Ajax.png');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/Ajax.png');
 }
 li.categoryBar-list-item:nth-child(4) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/框架.webp');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/框架.webp');
 }
 li.categoryBar-list-item:nth-child(5) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/组件库.png');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/组件库.png');
 }
 li.categoryBar-list-item:nth-child(6) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/工程化.webp');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/工程化.webp');
 }
 li.categoryBar-list-item:nth-child(7) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/功能实现.png');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/功能实现.png');
 }
 li.categoryBar-list-item:nth-child(8) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/总结.webp');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/总结.webp');
 }
 li.categoryBar-list-item:nth-child(9) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/碎碎念.webp');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/碎碎念.webp');
 }
 li.categoryBar-list-item:nth-child(10) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/browser.webp');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/browser.webp');
 }
 li.categoryBar-list-item:nth-child(11) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/计算机基础.webp');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/计算机基础.webp');
 }
 li.categoryBar-list-item:nth-child(12) {
-  background: url('https://cdn.jsdelivr.net/gh/myNightwish/CDN_res/blogskin/tools&shell.png');
+  background: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/tools&shell.png');
 }
 li.categoryBar-list-item:nth-child(13) {
   background: #abcdef;
