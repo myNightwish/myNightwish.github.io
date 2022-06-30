@@ -181,8 +181,7 @@ template {
 @font-face {
   font-family: 'CandyC';
 /* 字体名自定义即可 */
-  src: url("/fonts/CandyC.ttf");
-/* 字体文件路径 */
+  src: url("/fonts/CandyC.ttf"); /* 字体文件路径 */
   font-display: swap;
 }
 .limit-one-line,
@@ -4183,6 +4182,12 @@ li.categoryBar-list-item {
     display: none !important;
   }
 }
+@font-face {
+  font-family: 'CandyC';
+/* 字体名自定义即可 */
+  src: url("/fonts/CandyC.ttf"); /* 字体文件路径 */
+  font-display: swap;
+}
 :root {
   --nav-bar-background-color: rgba(249,249,249,0.79);
   --nav-font-color: #494748;
@@ -4499,11 +4504,11 @@ li.categoryBar-list-item {
 }
 .menu-container .top-bar .message-container .message-weather .s-sticker-tmp.module {
   color: var(--nav-font-color) !important;
-  font-family: 'ZhuZiAYuanJWD' !important;
+  font-family: 'CandyC' !important;
 }
 .menu-container .top-bar .message-container .message-weather .s-sticker-city.module {
   color: var(--nav-font-color) !important;
-  font-family: 'ZhuZiAYuanJWD' !important;
+  font-family: 'CandyC' !important;
 }
 .menu-container .top-bar .message-container .message-date {
   width: 50%;
@@ -4544,8 +4549,8 @@ li.categoryBar-list-item {
   opacity: 1;
   -ms-filter: none;
   filter: none;
-  font-family: 'UnidreamLED', 'ZhuZiAYuanJWD';
-  font-size: 20px;
+  font-family: 'CandyC', 'UnidreamLED', 'ZhuZiAYuanJWD';
+  font-size: 28px;
 }
 .menu-container .top-bar .message-container .message-date .message-title-box {
   display: -webkit-box;
@@ -4583,7 +4588,7 @@ li.categoryBar-list-item {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
-  font-family: 'ZhuZiAYuanJWD';
+  font-family: 'CandyC';
   font-size: 20px;
 }
 .menu-container .top-bar .message-container .message-date .message-title-box a {
@@ -4629,7 +4634,7 @@ li.categoryBar-list-item {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  width: 25%;
+  width: 50%;
 }
 .menu-container .top-bar .message-container .message-function a {
   display: -webkit-box;
