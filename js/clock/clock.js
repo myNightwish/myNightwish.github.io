@@ -1,1 +1,51 @@
-"use strict";var keyMap="6a436d7ac1013a783445c0641e295d54",ipAddress=returnCitySN.cip,adcode="110000",infoCity="北京市",temperature="25",humidity="50",weather="晴";fetch("//restapi.amap.com/v3/ip?key="+keyMap+"&ip="+ipAddress).then(function(e){adcode=e.adcode}),fetch("//restapi.amap.com/v3/weather/weatherInfo?key="+keyMap+"&city="+adcode+"&output=JSON&extensions=base").then(function(e){return e.json()}).then(function(e){temperature=e.lives[0].temperature,humidity=e.lives[0].humidity,infoCity=e.lives[0].city,weather=e.lives[0].weather;var e=document.getElementById("hexo_electric_clock"),c='<div class="clock-row">\n    <span class="card-clock-weather">'.concat(weather,'</span>\n    <span class="card-clock-temperature">').concat(temperature,'°C</span>\n    <span class="card-clock-humidity">💧').concat(humidity,'%</span>\n  </div>\n  \n  <div class="clock-row">\n    <span class="card-clock-city">').concat(infoCity,'</span>\n  </div>\n  <div class="clock-row">\n    <span class="card-clock-ip">Ip: ').concat(ipAddress,"</span>\n  </div>\n  ");e.innerHTML=c});
+// key: 6a436d7ac1013a783445c0641e295d54
+var keyMap = '6a436d7ac1013a783445c0641e295d54';
+// 1. 根据ip地址获取城市名
+const ipAddress = returnCitySN["cip"];
+let adcode = '110000';
+let infoCity = '北京市';
+let temperature = '25';
+let humidity = '50';
+let weather = '晴';
+
+fetch('//restapi.amap.com/v3/ip?key='+keyMap+'&ip='+ipAddress)
+.then(res => res.json())
+.then(data => {
+  console.log('data', data)
+  adcode = data.adcode;
+  getWeather();
+})
+
+
+const getWeather = () => fetch('//restapi.amap.com/v3/weather/weatherInfo?key='+keyMap+'&city='+adcode+'&output=JSON&extensions=base')
+.then(res => res.json())
+.then(data => {
+  temperature = data.lives[0].temperature;
+  humidity = data.lives[0].humidity;
+  infoCity = data.lives[0].city;
+  weather = data.lives[0].weather;
+
+  const clock_dispay = document.getElementById('hexo_electric_clock');
+
+  const dispay_HTML =  
+`<div class="clock-row">
+    <span class="card-clock-weather">${weather}</span>
+    <span class="card-clock-temperature">${temperature}°C</span>
+    <span class="card-clock-humidity">💧${humidity}%</span>
+  </div>
+  
+  <div class="clock-row">
+    <span class="card-clock-city">${infoCity}</span>
+  </div>
+  <div class="clock-row">
+    <span class="card-clock-ip">Ip: ${ipAddress}</span>
+  </div>
+  `;
+  clock_dispay.innerHTML = dispay_HTML;
+})
+
+
+
+
+
+
