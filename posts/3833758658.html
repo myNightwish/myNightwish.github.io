@@ -1,0 +1,937 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vue的工程化概念 | Nightwishのblog</title><meta name="keywords" content="Vue的工程化概念"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="框架的前置知识· 1、前端过去的发展历程：·   在早期时代，前端的角色主要在页面样式与逻辑，大多数代表着切图与重构  前端常常拼接 JSP 模板、拼 PHP 模板 调节浏览器兼容    jQuery 的出现，链式调用的编程方式使得代码如行云流水般流畅，同时提供了极容易使用的异步请求 ajax，超方便的 Sizzle 引擎元素选择器，几乎满足了当时前端的大部分工作，所以说 jQuery 一把梭不是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue的工程化概念">
+<meta property="og:url" content="https://mynightwish.top/posts/3833758658.html">
+<meta property="og:site_name" content="Nightwishのblog">
+<meta property="og:description" content="框架的前置知识· 1、前端过去的发展历程：·   在早期时代，前端的角色主要在页面样式与逻辑，大多数代表着切图与重构  前端常常拼接 JSP 模板、拼 PHP 模板 调节浏览器兼容    jQuery 的出现，链式调用的编程方式使得代码如行云流水般流畅，同时提供了极容易使用的异步请求 ajax，超方便的 Sizzle 引擎元素选择器，几乎满足了当时前端的大部分工作，所以说 jQuery 一把梭不是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2022-07-20T02:11:17.000Z">
+<meta property="article:modified_time" content="2022-07-20T02:14:59.653Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="Vue的工程化概念">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.webp"><link rel="canonical" href="https://mynightwish.top/posts/3833758658"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vue的工程化概念',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-20 10:14:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/CSS/beautify.css" media="async"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" media="async"><link rel="stylesheet" href="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/CSS/lastLoad.css" media="defer" onload="this.media='all'"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/JS/clock/clock.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/CSS/swiperFix.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/Images/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">92</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-tags"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-paper-plane"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-paw"></i><span> 足迹</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/charts/"><i class="fa-fw fas fa-camera-retro"></i><span> 文章</span></a></li><li><a class="site-page child" href="/census/"><i class="fa-fw fas fa-globe"></i><span> 访问</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><div class="menu-container" id="menu-container"><div class="menu-item"><div class="menu-item-main"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menu-item-main"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-tags faa-tada"></i><span> 分类</span></a></div><div class="menu-item-main"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-paper-plane faa-tada"></i><span> 时间轴</span></a></div><div class="menu-item-main has-child"><div class="menu-item-parent"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><i class="fa-fw fas fa-paw faa-tada"></i><span> 足迹</span></a></div><div class="menu-item-child"><a class="faa-parent animated-hover site-page child" href="/charts/"><i class="fa-fw fas fa-camera-retro faa-tada"></i><span> 文章</span></a></div><div class="menu-item-child"><a class="faa-parent animated-hover site-page child" href="/census/"><i class="fa-fw fas fa-globe faa-tada"></i><span> 访问</span></a></div></div><div class="menu-item-main has-child"><div class="menu-item-parent"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video faa-tada"></i><span> 媒体</span></a></div><div class="menu-item-child"><a class="faa-parent animated-hover site-page child" href="/music/"><i class="fa-fw fas fa-music faa-tada"></i><span> 音乐</span></a></div><div class="menu-item-child"><a class="faa-parent animated-hover site-page child" href="/movies/"><i class="fa-fw fas fa-video faa-tada"></i><span> 视频</span></a></div><div class="menu-item-child"><a class="faa-parent animated-hover site-page child" href="/books/"><i class="fa-fw fas fa-book faa-tada"></i><span> 书籍</span></a></div></div><div class="menu-item-main"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-comments faa-tada"></i><span> 留言板</span></a></div></div><div class="top-bar"><div class="message-container"><div class="message-item message-date" onclick="Navvisible()"><div class="message-date-box" id="message-date-box"></div><div class="message-title-box" id="message-title-box"><a id="site-name" title="欢迎光临糖果屋，愿你有愉快的一天">Vue的工程化概念  </a></div></div><div class="message-item message-function"><div id="search-button"><a class="site-page social-icon search faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px" aria-hidden="true"><use xlink:href="#icon-search-01"></use></svg><span> search.title</span></a></div><a class="icon-V hidden faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换"><svg class="faa-tada" width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><div id="toggle-menu"><a class="site-page faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px" aria-hidden="true"><use xlink:href="#icon-multi-window-01"></use></svg></a></div></div></div></div><button class="active-button" onclick="Navvisible()"></button></div><div id="post-info"><h1 class="post-title">Vue的工程化概念</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-20T02:11:17.000Z" title="发表于 2022-07-20 10:11:17">2022-07-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-20T02:14:59.653Z" title="更新于 2022-07-20 10:14:59">2022-07-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/1-4-%E6%A1%86%E6%9E%B6/">1.4-框架</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>42分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vue的工程化概念"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="框架的前置知识">框架的前置知识<a class="anchor" href="#框架的前置知识">·</a></h2>
+<h3 id="1、前端过去的发展历程：">1、前端过去的发展历程：<a class="anchor" href="#1、前端过去的发展历程：">·</a></h3>
+<ul>
+<li>
+<p>在早期时代，前端的角色主要在页面样式与逻辑，大多数代表着切图与重构</p>
+<ul>
+<li>前端常常拼接 JSP 模板、拼 PHP 模板</li>
+<li>调节浏览器兼容</li>
+</ul>
+</li>
+<li>
+<p>jQuery 的出现，链式调用的编程方式使得代码如行云流水般流畅，同时提供了极容易使用的异步请求 ajax，超方便的 Sizzle 引擎元素选择器，几乎满足了当时前端的大部分工作，所以说 jQuery 一把梭不是毫无道理的。</p>
+</li>
+<li>
+<p>但 node.js 的发展、npm 包管理的完善，加上活跃的开源社区，前端发展过快：</p>
+<p>从页面开发到工具库开发、框架开发、脚本开发、到服务端开发，单线程的 Javascript 正在不断进行自我革新，从而将领域不断拓宽。</p>
+</li>
+</ul>
+<h3 id="2、前端工程化">2、前端工程化<a class="anchor" href="#2、前端工程化">·</a></h3>
+<ul>
+<li>
+<p>工程化管理工具：</p>
+<ul>
+<li>
+<p>代码中会使用到很多的资源，图片、样式、代码，还有各式各样的依赖包，而打包的时候怎么实现按需分块、处理依赖关系、不包含多余的文件或内容</p>
+</li>
+<li>
+<p>同时提供开发和生产环境，包括本地调试自动更新到浏览器这些能力，都是由工程化的工具整合起来的。</p>
+</li>
+<li>
+<p>比如：gulp、webpack</p>
+</li>
+</ul>
+</li>
+<li>
+<p>而前端工程化与node的关系：</p>
+<p>要实现工程化，前端开发几乎都离不开 node.js 的包管理器 npm：</p>
+<ul>
+<li>比如前端在搭建本地开发服务以及打包编译前端代码等都会用到。</li>
+<li>开发过程中，经常用到<code>npm install</code>来安装所需的依赖。</li>
+<li>同时，我们可以结合一些 Tree-shaking 的能力，在本地构建的时候，把使用的别人的依赖包里没用到的部分去掉，减小代码包的大小等。</li>
+</ul>
+</li>
+<li>
+<p>依赖<strong>管理工具、自动化工具、代码规范工具、测试工具</strong>等等，层出不穷的新工具加快了前端工程化的步伐。而各种框架也各自推出了脚手架，可以让你快速地生成示例代码、搭建本地环境，也可以更新依赖的版本等，避免了每个开发者自行调整开发环境、打包逻辑等配置。</p>
+</li>
+<li>
+<p>至此，开发者可以专注于业务开发，不再需要花很多事件处理一些低效而重复性的事情，开发效率得到质的提升。</p>
+</li>
+</ul>
+<h3 id="3、前端框架">3、前端框架<a class="anchor" href="#3、前端框架">·</a></h3>
+<ul>
+<li>为什么到现在几乎所有的前端项目都脱离不了框架开发呢？</li>
+<li>这些框架它们都做了什么事情呢？</li>
+</ul>
+<p>首先还是得从浏览器讲起</p>
+<h4 id="3-1、页面如何渲染的">3.1、页面如何渲染的<a class="anchor" href="#3-1、页面如何渲染的">·</a></h4>
+<blockquote>
+<p>一个页面：主要包括了 HTML、CSS、Javascript 三大块，那浏览器是怎么解析和加载这些内容的呢？</p>
+</blockquote>
+<p>一次浏览器的页面渲染过程中，浏览器会解析三种文件：</p>
+<ul>
+<li>解析 HTML/SVG/XHTML，会生成一个 DOM 结构树</li>
+<li>解析 CSS，会生成一个 CSS 规则树</li>
+<li>解析 JS，可通过 DOM API 和 CSS API 来操作 DOM 结构树和 CSS 规则树</li>
+<li>CSS 规则树与 DOM 结构树结合，最终生成一个 Render 树（即最终呈现的页面，例如其中会移除 DOM 结构树中匹配到 CSS 里面<code>display:none</code>的 DOM 节点）。</li>
+</ul>
+<p>所以，一般来说浏览器绘制页面的过程是：</p>
+<ol>
+<li>计算 CSS 规则树</li>
+<li>生成 Render 树</li>
+<li>计算各个节点的大小/position/z-index</li>
+<li>绘制</li>
+</ol>
+<h4 id="3-2、页面如何局部刷新">3.2、页面如何局部刷新<a class="anchor" href="#3-2、页面如何局部刷新">·</a></h4>
+<blockquote>
+<p>一般看来，浏览器生成了最终的 Render 树，页面也已经渲染完毕，似乎浏览器已经完成了它的工作了。但这只是静态页面，实际的网页还包括，比如：</p>
+<p>交互问题：还会包括点击、拖拽等事件操作，以及接口请求、数据渲染到页面等动态的交互逻辑，这时候需要更新页面的信息。</p>
+</blockquote>
+<ul>
+<li>
+<p>复杂业务中，情况会复杂得多，除了插入内容，还包括内容更新、删除元素节点等。不管是哪种情况，目前来说前端一般分为两种方式：</p>
+<ol>
+<li>字符串模版：用拼接的方式生成 DOM 字符串，直接通过<code>innerHTML()</code>插入页面</li>
+<li>节点模版：用<code>createElement()</code>/<code>appendChild()</code>/<code>textContent</code>等方法，动态插入 DOM 节点</li>
+</ol>
+</li>
+<li>
+<p>比如：假设页面中存在<code>&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;</code>这样一个元素，需要插入一些内容如<code>&lt;p&gt;测试&lt;a&gt;test&lt;/a&gt;&lt;/p&gt;</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 1. 字符串模版 **/</span></span><br><span class="line">div.<span class="property">innerHTML</span> = <span class="string">&quot;&lt;p&gt;测试&lt;a&gt;test&lt;/a&gt;&lt;/p&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 2. 节点模版 **/</span></span><br><span class="line"><span class="keyword">const</span> p = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;p&quot;</span>);</span><br><span class="line">p.<span class="property">textContent</span> = <span class="string">&quot;测试&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">a.<span class="property">textContent</span> = <span class="string">&quot;test&quot;</span>;</span><br><span class="line">p.<span class="title function_">appendChild</span>(a);</span><br><span class="line">div.<span class="title function_">appendChild</span>(p);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>但是，用 DOM API 和 CSS API 时，通常会触发浏览器的两种操作：Repaint和 Reflow：</p>
+<ul>
+<li>
+<p>Repaint：页面部分重画，通常不涉及尺寸的改变，常见于颜色的变化。</p>
+</li>
+<li>
+<p>Reflow：意味着节点需要重新计算和绘制，常见于尺寸的改变。</p>
+<p>浏览器会使渲染树中受到影响的部分失效，并重新构造这部分渲染树，完成 Reflow 后，浏览器会重新绘制受影响的部分到屏幕中</p>
+<p>回流的花销跟 render tree 有多少节点需要重新构建有关系，所以使用<code>innerHTML()</code>可能会导致更多的开销。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3、框架能做什么">3.3、框架能做什么<a class="anchor" href="#3-3、框架能做什么">·</a></h4>
+<blockquote>
+<p>前端框架为什么变得如此重要？以一个常见的表单提交作为例子：</p>
+</blockquote>
+<h5 id="3-3-1、传统dom的做法：">3.3.1、传统dom的做法：<a class="anchor" href="#3-3-1、传统dom的做法：">·</a></h5>
+<ul>
+<li>
+<h5 id="编写静态页面">编写静态页面<a class="anchor" href="#编写静态页面">·</a></h5>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  Name:</span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;name-value&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">id</span>=<span class="string">&quot;name-input&quot;</span> /&gt;</span></span><br><span class="line">  Email:</span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;email-value&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;email&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span> <span class="attr">id</span>=<span class="string">&quot;email-input&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<h5 id="给对应的元素绑定对应的事件">给对应的元素绑定对应的事件<a class="anchor" href="#给对应的元素绑定对应的事件">·</a></h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nameInputEl = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;name-input&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> emailInputEl = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;email-input&quot;</span>);</span><br><span class="line"><span class="comment">// 监听输入事件，此时 updateValue 函数未定义</span></span><br><span class="line">nameInputEl.<span class="title function_">addEventListener</span>(<span class="string">&quot;input&quot;</span>, updateNameValue);</span><br><span class="line">emailInputEl.<span class="title function_">addEventListener</span>(<span class="string">&quot;input&quot;</span>, updateEmailValue);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<h5 id="事件触发时，更新页面内容">事件触发时，更新页面内容<a class="anchor" href="#事件触发时，更新页面内容">·</a></h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nameValueEl = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;name-value&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> emailValueEl = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;email-value&quot;</span>);</span><br><span class="line"><span class="comment">// 定义 updateValue 函数，用来更新页面内容</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">updateNameValue</span>(<span class="params">e</span>) &#123;nameValueEl.<span class="property">innerText</span> = e.<span class="property">srcElement</span>.<span class="property">value</span>;&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">updateEmailValue</span>(<span class="params">e</span>) &#123;emailValueEl.<span class="property">innerText</span> = e.<span class="property">srcElement</span>.<span class="property">value</span>;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-3-2-传统dom的问题">3.3.2 传统dom的问题<a class="anchor" href="#3-3-2-传统dom的问题">·</a></h5>
+<ul>
+<li>开发模式繁琐</li>
+</ul>
+<blockquote>
+<p>结合前面的页面更新方式，如果有很多的内容需要更新，光拼接字符串可能就有一大堆代码。</p>
+<p>而VUe，<strong>数据绑定、界面更新、事件监听</strong>等都用最简单的方式提供给开发者，开发效率和代码可维护性也是直线上升。</p>
+</blockquote>
+<ul>
+<li>模板引擎，框架中很重要的一个功能。通过 AST 它能做到的事情还包括：
+<ul>
+<li>排除无效 DOM 元素，并在构建过程可进行报错</li>
+<li>使用自定义组件的时候，可匹配出来</li>
+<li>可方便地实现数据绑定、事件绑定等，具备自动更新页面的功能</li>
+<li>为虚拟 DOM Diff 过程打下铺垫</li>
+<li>HTML 转义（预防 XSS 漏洞）</li>
+</ul>
+</li>
+</ul>
+<h2 id="框架具体做了什么？">框架具体做了什么？<a class="anchor" href="#框架具体做了什么？">·</a></h2>
+<blockquote>
+<p>官方介绍：</p>
+<p>Vue 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。</p>
+<p>Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。</p>
+<p>但 Vue 并不只是一个简单的视图库，通过与一系列周边工具的配合，它也可以轻易地构建大型应用。</p>
+</blockquote>
+<blockquote>
+<p>所以 Vue 框架到底做了些什么呢？我们要怎么理解 Vue 框架提供的能力，这些能力又是怎样提高开发人员的开发效率和代码维护性的呢？</p>
+</blockquote>
+<h3 id="1、模板引擎">1、模板引擎<a class="anchor" href="#1、模板引擎">·</a></h3>
+<blockquote>
+<p>模板引擎大概是 Vue 里最主要、又最核心的一个能力</p>
+</blockquote>
+<ul>
+<li>
+<p>模板引擎还没出现时：</p>
+<ul>
+<li>
+<p>前端需要手动更新前端页面的内容，需要维护一大堆的 HTML 和变量拼接的动态内容</p>
+</li>
+<li>
+<p>虽然 jQuery 的出现提升了 DOM 元素的操作性，但依然难以避免代码的可读性、可维护性上存在的一些问题</p>
+</li>
+<li>
+<p>在这个阶段，更新页面的内容，大概的流程是：</p>
+<p>监听操作 -&gt; 获取数据变量 -&gt; 使用数据拼接成 HTML 模板 -&gt; 将 HTML 内容塞到页面对应的地方 -&gt; 将 HTML 片段内需要监听的点击等事件进行绑定。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>而在Vue中，在模板里用插值表达式<code>&#123;&#123;&#125;&#125;`、`v-bind`绑定变量来展示，同时配合`v-if`、`v-for`这些内置指令，就可以很方便地写出可读性和维护性都很不错的代码了。
+
+### 2、Vue渲染内容的流程 ###
+
+> 一般来说，Vue渲染一块内容的流程：
+>
+> 1. 解析语法生成 AST  ——> parse
+> 2. 根据 AST 结果，完成 data 数据初始化
+> 3. 根据 AST 结果和 data 数据绑定情况，生成虚拟 DOM
+> 4. 将虚拟 DOM 生成真正的 DOM 插入到页面中，此时页面会被渲染
+>
+> 其中编译compile过程：可以分成 `parse`、`optimize` 与 `generate` 三个阶段，最终需要得到 render function
+>
+> * parse：用正则等方式解析 template 模板中的指令、class、style等数据，形成AST
+>
+> * optimize：
+>
+>   作用是标记 static 静态节点，这是 Vue 在编译过程中的一处优化，后面当 `update` 更新界面时，会有一个 `patch` 的过程， diff 算法会直接跳过静态节点，从而减少了比较的过程，优化了 `patch` 的性能。
+>
+> * generate：
+>
+>    AST 转化成 render function 字符串的过程，得到结果是 render 的字符串以及 staticRenderFns 字符串
+>
+> * 在经历过 `parse`、`optimize` 与 `generate` 这三个阶段以后，组件中就会存在渲染 VNode 所需的 render function 了。
+
+#### 2.1、解析语法生成 AST ####
+
+> AST：抽象语法树，指的是源代码语法所对应的树状结构。
+>
+> * 也就是说，对于一种具体编程语言下的源代码，通过构建语法树的形式将源代码中的语句映射到树中的每一个节点上。
+>
+> * 其实DOM 结构树，也是 AST 的一种，把 HTML DOM 语法解析并生成最终的页面。
+> * 而模板引擎中常用的，则是将模板语法解析，分别生成 HTML DOM，使用像 HTML 拼接这样的方式（在对应的位置绑定变量、指令解析获取拼接逻辑等等），同时配合事件的管理、虚拟 DOM 的设计，可以最大化地提升页面的性能。
+
+整个过程如下：
+
+##### 2.1.1、过程1：捕获特定语法 #####
+
+> 生成 AST 的过程涉及到编译器的原理，一般经过以下过程（参考维基百科）：
+
+1. 语法分析
+
+   目的：在词法分析的基础上将单词序列组合成各类语法短语，如“程序”，“语句”，“表达式”等等。判断源程序在结构上是否正确，源程序的结构由上下文无关文法描述。
+
+   例如 Vue 框架中，有`v-if`/`v-for`这样的指令，也有`<my-custom-component>`这样的自定义 DOM 标签，还有`@click`/`:props`这样的简化绑定语法，模板引擎需要将它们一一解析出来
+
+2. 语义分析
+
+   * 语义分析是编译compile过程的一个逻辑阶段
+   * 目的：是对结构上正确的源程序进行上下文有关性质的审查，进行类型审查。审查源程序有无语义错误，为代码生成阶段收集类型信息，一般类型检查也会在这个过程中进行。
+   * Vue 框架中，例如我们绑定了某个不存在的变量或者事件，又或者是使用了某个未定义的自定义组件等，都会在这个阶段进行报错提示
+
+3. 生成 AST
+   * AST 的结构则根据使用者需要定义
+
+> 总的来说，Vue 里的处理方式中，语法分析、语义分析基本上是通过正则的方式来处理，生成 AST 的部分我们可以看一下简化后的源码，其实就是将解析出来的元素、指令、属性、父子节点关系等内容进行处理，得到一个 AST 对象：
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  将HTML编译成AST对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">parse</span>(<span class="params"></span></span><br><span class="line"><span class="params">  template: string,</span></span><br><span class="line"><span class="params">  options: CompilerOptions</span></span><br><span class="line"><span class="params"></span>): <span class="title class_">ASTElement</span> | <span class="keyword">void</span> &#123;</span><br><span class="line">  <span class="comment">// 返回AST对象</span></span><br><span class="line">  <span class="comment">// 篇幅原因，一些前置定义省略</span></span><br><span class="line">  <span class="comment">// 此处开始解析HTML模板</span></span><br><span class="line">  <span class="title function_">parseHTML</span>(template, &#123;</span><br><span class="line">    <span class="attr">expectHTML</span>: options.<span class="property">expectHTML</span>,</span><br><span class="line">    <span class="attr">isUnaryTag</span>: options.<span class="property">isUnaryTag</span>,</span><br><span class="line">    <span class="attr">shouldDecodeNewlines</span>: options.<span class="property">shouldDecodeNewlines</span>,</span><br><span class="line">    <span class="title function_">start</span>(<span class="params">tag, attrs, unary</span>) &#123;</span><br><span class="line">      <span class="comment">// 一些前置检查和设置、兼容处理此处省略</span></span><br><span class="line">      <span class="comment">// 此处定义了初始化的元素AST对象</span></span><br><span class="line">      <span class="keyword">const</span> <span class="attr">element</span>: <span class="title class_">ASTElement</span> = &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="number">1</span>,</span><br><span class="line">        tag,</span><br><span class="line">        <span class="attr">attrsList</span>: attrs,</span><br><span class="line">        <span class="attr">attrsMap</span>: <span class="title function_">makeAttrsMap</span>(attrs),</span><br><span class="line">        <span class="attr">parent</span>: currentParent,</span><br><span class="line">        <span class="attr">children</span>: []</span><br><span class="line">      &#125;;</span><br><span class="line">      <span class="comment">// 检查元素标签是否合法（不是保留命名）</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="title function_">isForbiddenTag</span>(element) &amp;&amp; !<span class="title function_">isServerRendering</span>()) &#123;</span><br><span class="line">        element.<span class="property">forbidden</span> = <span class="literal">true</span>;</span><br><span class="line">        process.<span class="property">env</span>.<span class="property">NODE_ENV</span> !== <span class="string">&quot;production&quot;</span> &amp;&amp;</span><br><span class="line">          <span class="title function_">warn</span>(</span><br><span class="line">            <span class="string">&quot;Templates should only be responsible for mapping the state to the &quot;</span> +</span><br><span class="line">              <span class="string">&quot;UI. Avoid placing tags with side-effects in your templates, such as &quot;</span> +</span><br><span class="line">              <span class="string">`&lt;<span class="subst">$&#123;tag&#125;</span>&gt;`</span> +</span><br><span class="line">              <span class="string">&quot;, as they will not be parsed.&quot;</span></span><br><span class="line">          );</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 执行一些前置的元素预处理</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; preTransforms.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        preTransforms[i](element, options);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 是否原生元素</span></span><br><span class="line">      <span class="keyword">if</span> (inVPre) &#123;</span><br><span class="line">        <span class="comment">// 处理元素元素的一些属性</span></span><br><span class="line">        <span class="title function_">processRawAttrs</span>(element);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 处理指令，此处包括v-for/v-if/v-once/key等等</span></span><br><span class="line">        <span class="title function_">processFor</span>(element);</span><br><span class="line">        <span class="title function_">processIf</span>(element);</span><br><span class="line">        <span class="title function_">processOnce</span>(element);</span><br><span class="line">        <span class="title function_">processKey</span>(element); <span class="comment">// 删除结构属性</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 确定这是否是一个简单的元素</span></span><br><span class="line">        element.<span class="property">plain</span> = !element.<span class="property">key</span> &amp;&amp; !attrs.<span class="property">length</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理ref/slot/component等属性</span></span><br><span class="line">        <span class="title function_">processRef</span>(element);</span><br><span class="line">        <span class="title function_">processSlot</span>(element);</span><br><span class="line">        <span class="title function_">processComponent</span>(element);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; transforms.<span class="property">length</span>; i++) &#123;</span><br><span class="line">          transforms[i](element, options);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">processAttrs</span>(element);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 后面还有一些父子节点等处理，此处省略</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 其他省略</span></span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+##### 2.1.2 DOM 元素捕获 #####
+
+> 捕获一个`<div>`元素，然后生成一个`<div>`元素。例如我们写了以下这么一段模板，可以对它捕获：
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span>&gt;</span>123<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>456<span class="tag">&lt;<span class="name">span</span>&gt;</span>789<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+捕获后我们或许可以得到这样的一个对象：
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">thisDiv = &#123;</span><br><span class="line">  <span class="attr">dom</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;dom&quot;</span>,</span><br><span class="line">    <span class="attr">ele</span>: <span class="string">&quot;div&quot;</span>,</span><br><span class="line">    <span class="attr">nodeIndex</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">children</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;dom&quot;</span>,</span><br><span class="line">        <span class="attr">ele</span>: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">        <span class="attr">nodeIndex</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">children</span>: [&#123; <span class="attr">type</span>: <span class="string">&quot;text&quot;</span>, <span class="attr">value</span>: <span class="string">&quot;123&quot;</span> &#125;]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;dom&quot;</span>,</span><br><span class="line">        <span class="attr">ele</span>: <span class="string">&quot;p&quot;</span>,</span><br><span class="line">        <span class="attr">nodeIndex</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="attr">children</span>: [</span><br><span class="line">          &#123; <span class="attr">type</span>: <span class="string">&quot;text&quot;</span>, <span class="attr">value</span>: <span class="string">&quot;456&quot;</span> &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;dom&quot;</span>,</span><br><span class="line">            <span class="attr">ele</span>: <span class="string">&quot;span&quot;</span>,</span><br><span class="line">            <span class="attr">nodeIndex</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="attr">children</span>: [&#123; <span class="attr">type</span>: <span class="string">&quot;text&quot;</span>, <span class="attr">value</span>: <span class="string">&quot;789&quot;</span> &#125;]</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+* 捕获得到的产物，这个对象维护我们需要的一些信息：
+
+  某个 HTML 元素里需要绑定哪些变量（变量更新的时候需要更新该节点内容）
+
+  以怎样的方式来拼接（是否有逻辑指令，如`v-if`、`v-for`等）
+
+  哪些节点绑定了怎样的事件监听事件（是否匹配一些常用的事件能力支持），
+
+  所以这里 AST 能做的事情是很多了。
+
+* 最终还是会根据 AST 对象生成真实的页面片段和逻辑，实现过程其实也是将很多的特殊标识（例如元素 ID、属性标记等）打到该元素上，同时配合一些 Javascript 的元素选择方式、事件监听方式等，来将这个元素动态化（支持内容更新、节点更新）而实现最终的页面效果。
+
+* Vue 会根据 AST 对象生成一段可执行的代码，看看这部分的实现：
+
+  <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 生成一个元素</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">genElement</span>(<span class="params">el: ASTElement</span>): string &#123;</span><br><span class="line">  <span class="comment">// 根据该元素是否有相关的指令、属性语法对象，来进行对应的代码生成</span></span><br><span class="line">  <span class="keyword">if</span> (el.<span class="property">staticRoot</span> &amp;&amp; !el.<span class="property">staticProcessed</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">genStatic</span>(el);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (el.<span class="property">once</span> &amp;&amp; !el.<span class="property">onceProcessed</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">genOnce</span>(el);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (el.<span class="property">for</span> &amp;&amp; !el.<span class="property">forProcessed</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">genFor</span>(el);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (el.<span class="property">if</span> &amp;&amp; !el.<span class="property">ifProcessed</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">genIf</span>(el);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (el.<span class="property">tag</span> === <span class="string">&quot;template&quot;</span> &amp;&amp; !el.<span class="property">slotTarget</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">genChildren</span>(el) || <span class="string">&quot;void 0&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (el.<span class="property">tag</span> === <span class="string">&quot;slot&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">genSlot</span>(el);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// component或者element的代码生成</span></span><br><span class="line">    <span class="keyword">let</span> code;</span><br><span class="line">    <span class="keyword">if</span> (el.<span class="property">component</span>) &#123;</span><br><span class="line">      code = <span class="title function_">genComponent</span>(el.<span class="property">component</span>, el);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> data = el.<span class="property">plain</span> ? <span class="literal">undefined</span> : <span class="title function_">genData</span>(el);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> children = el.<span class="property">inlineTemplate</span> ? <span class="literal">null</span> : <span class="title function_">genChildren</span>(el, <span class="literal">true</span>);</span><br><span class="line">      code = <span class="string">`_c(&#x27;<span class="subst">$&#123;el.tag&#125;</span>&#x27;<span class="subst">$&#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">        data ? <span class="string">`,<span class="subst">$&#123;data&#125;</span>`</span> : <span class="string">&quot;&quot;</span> // data</span></span></span><br><span class="line"><span class="subst"><span class="string">      &#125;</span><span class="subst">$&#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">        children ? <span class="string">`,<span class="subst">$&#123;children&#125;</span>`</span> : <span class="string">&quot;&quot;</span> // children</span></span></span><br><span class="line"><span class="subst"><span class="string">      &#125;</span>)`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 模块转换</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; transforms.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      code = transforms[i](el, code);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回最后拼装好的可执行的代码</span></span><br><span class="line">    <span class="keyword">return</span> code;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+##### 2.1.3、模板引擎的牛逼 #####
+
+> 以上的过程：通过捕获元素，我们将捕获后的产物经过AST生成一个对象，最终又生成了元素。为什么要多余的步骤呢？在这个过程中，实现一些功能
+>
+> 1. 排除无效 DOM 元素，并在构建过程可进行报错
+> 2. 使用自定义组件的时候，可匹配出来
+> 3. 可方便地实现数据绑定、事件绑定等功能
+> 4. 为虚拟 DOM Diff 过程打下铺垫
+> 5. HTML 转义（预防 XSS 漏洞）
+
+所以模板引擎的牛逼：
+
+* 通过通用的模板引擎，能处理掉很多低效又重复的工作，例如浏览器兼容、全局事件的统一管理和维护、模板更新的虚拟 DOM 机制、树状组织管理组件
+
+* 开发者专注于业务开发
+
+#### 2.2、虚拟 DOM ####
+
+> 虚拟 DOM 大概可分成三个过程：
+>
+> 1. 用 JS 对象模拟 DOM 树，得到一棵虚拟 DOM 树
+> 2. 当页面数据变更时，生成新的虚拟 DOM 树，比较新旧两棵虚拟 DOM 树的差异
+> 3. 把差异应用到真正的 DOM 树上
+
+##### 2.2.1 用 JS 对象模拟 DOM 树 #####
+
+为什么要用 JS 对象模拟 DOM 树？
+
+> 实际的DOM节点对象的样子：
+>
+> 一个真正的 DOM 元素非常庞大，拥有很多的属性值。因为一个 DOM 节点它包括了太多太多的属性、元素和事件对象，实际上我们并不是全部都会用到，通常包括节点内容、元素位置、样式、节点的添加删除等方法。所以，我们通过用 JS 对象表示 DOM 元素的方式，可以大大降低了比较差异的计算量。
+
+> 虚拟DOM的样子：以Vue源码中的VNode为例，他们只有这些属性：
+>
+> 看一下 Vue 源码，我们会发现 VNode 只有这些属性：
+>
+> <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">tag</span>: string | <span class="keyword">void</span>;</span><br><span class="line"><span class="attr">data</span>: <span class="title class_">VNodeData</span> | <span class="keyword">void</span>;</span><br><span class="line"><span class="attr">children</span>: ?<span class="title class_">Array</span>&lt;<span class="title class_">VNode</span>&gt;;</span><br><span class="line"><span class="attr">text</span>: string | <span class="keyword">void</span>;</span><br><span class="line"><span class="attr">elm</span>: <span class="title class_">Node</span> | <span class="keyword">void</span>;</span><br><span class="line"><span class="attr">ns</span>: string | <span class="keyword">void</span>;</span><br><span class="line"><span class="attr">context</span>: <span class="title class_">Component</span> | <span class="keyword">void</span>; <span class="comment">// rendered in this component&#x27;s scope</span></span><br><span class="line"><span class="attr">key</span>: string | number | <span class="keyword">void</span>;</span><br><span class="line"><span class="attr">componentOptions</span>: <span class="title class_">VNodeComponentOptions</span> | <span class="keyword">void</span>;</span><br><span class="line"><span class="attr">componentInstance</span>: <span class="title class_">Component</span> | <span class="keyword">void</span>; <span class="comment">// component instance</span></span><br><span class="line"><span class="attr">parent</span>: <span class="title class_">VNode</span> | <span class="keyword">void</span>; <span class="comment">// component placeholder node</span></span><br><span class="line"><span class="comment">// strictly internal</span></span><br><span class="line"><span class="attr">raw</span>: boolean; <span class="comment">// contains raw HTML? (server only)</span></span><br><span class="line"><span class="attr">isStatic</span>: boolean; <span class="comment">// hoisted static node</span></span><br><span class="line"><span class="attr">isRootInsert</span>: boolean; <span class="comment">// necessary for enter transition check</span></span><br><span class="line"><span class="attr">isComment</span>: boolean; <span class="comment">// empty comment placeholder?</span></span><br><span class="line"><span class="attr">isCloned</span>: boolean; <span class="comment">// is a cloned node?</span></span><br><span class="line"><span class="attr">isOnce</span>: boolean; <span class="comment">// is a v-once node?</span></span><br><span class="line"><span class="attr">asyncFactory</span>: <span class="title class_">Function</span> | <span class="keyword">void</span>; <span class="comment">// async component factory function</span></span><br><span class="line"><span class="attr">asyncMeta</span>: <span class="title class_">Object</span> | <span class="keyword">void</span>;</span><br><span class="line"><span class="attr">isAsyncPlaceholder</span>: boolean;</span><br><span class="line"><span class="attr">ssrContext</span>: <span class="title class_">Object</span> | <span class="keyword">void</span>;</span><br><span class="line"><span class="attr">fnContext</span>: <span class="title class_">Component</span> | <span class="keyword">void</span>; <span class="comment">// real context vm for functional nodes</span></span><br><span class="line"><span class="attr">fnOptions</span>: ?<span class="title class_">ComponentOptions</span>; <span class="comment">// for SSR caching</span></span><br><span class="line"><span class="attr">devtoolsMeta</span>: ?<span class="title class_">Object</span>; <span class="comment">// used to store functional render context fordevtools</span></span><br><span class="line"><span class="attr">fnScopeId</span>: ?string; <span class="comment">// functional scope id support</span></span><br></pre></td></tr></table></figure>
+
+##### 2.2.2 比较新旧两棵虚拟 DOM 树的差异 #####
+
+> 虚拟 DOM 中的差异对比：
+>
+> 当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异。通常来说这样的差异需要记录：
+
+* 需要替换掉原来的节点
+* 移动、删除、新增子节点
+* 修改了节点的属性
+* 对于文本节点的文本内容改变
+
+<img src="https://github-imglib-1255459943.cos.ap-chengdu.myqcloud.com/wxapp-4.png" alt="img" style="zoom:50%;" />
+对比两棵 DOM 树，得到的差异有：
+
+p 元素插入了一个 span 元素子节点，然后原先的文本节点挪到了 span 元素子节点下面
+
+##### 2.2.3 把差异应用到真正的 DOM 树上 #####
+
+> 经过差异对比之后，得到差异记录，从而将差异应用在真实DOM中。例如节点的替换、移动、删除，文本内容的改变等。
+
+那么， Vue 中是怎么进行 DOM Diff 的呢？
+
+* 其实看函数名也可以大概理解都是什么作用，例如`updateChildren`、`addVnodes`、`removeVnodes`、`setTextContent`等，大致是个对比差异然后更新的操作：
+* 之前说过，页面的更新有两种方式：字符串模板和节点模板。而字符串模板`innerHTML`的方式会消耗比较多的计算，节点模板的方式又需要管理特别多的节点信息和引用保存，使用虚拟 DOM 则可以有效地降低浏览器计算和性能。
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 简单看这段代码感受下</span></span><br><span class="line"><span class="comment">// 对比差异然后更新</span></span><br><span class="line"><span class="keyword">const</span> oldCh = oldVnode.<span class="property">children</span>;</span><br><span class="line"><span class="keyword">const</span> ch = vnode.<span class="property">children</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">isDef</span>(data) &amp;&amp; <span class="title function_">isPatchable</span>(vnode)) &#123;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; cbs.<span class="property">update</span>.<span class="property">length</span>; ++i) cbs.<span class="property">update</span>[i](oldVnode, vnode);</span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_">isDef</span>((i = data.<span class="property">hook</span>)) &amp;&amp; <span class="title function_">isDef</span>((i = i.<span class="property">update</span>))) <span class="title function_">i</span>(oldVnode, vnode);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">isUndef</span>(vnode.<span class="property">text</span>)) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_">isDef</span>(oldCh) &amp;&amp; <span class="title function_">isDef</span>(ch)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (oldCh !== ch)</span><br><span class="line">      <span class="title function_">updateChildren</span>(elm, oldCh, ch, insertedVnodeQueue, removeOnly);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_">isDef</span>(ch)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> !== <span class="string">&quot;production&quot;</span>) &#123;</span><br><span class="line">      <span class="title function_">checkDuplicateKeys</span>(ch);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_">isDef</span>(oldVnode.<span class="property">text</span>)) nodeOps.<span class="title function_">setTextContent</span>(elm, <span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="title function_">addVnodes</span>(elm, <span class="literal">null</span>, ch, <span class="number">0</span>, ch.<span class="property">length</span> - <span class="number">1</span>, insertedVnodeQueue);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_">isDef</span>(oldCh)) &#123;</span><br><span class="line">    <span class="title function_">removeVnodes</span>(elm, oldCh, <span class="number">0</span>, oldCh.<span class="property">length</span> - <span class="number">1</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_">isDef</span>(oldVnode.<span class="property">text</span>)) &#123;</span><br><span class="line">    nodeOps.<span class="title function_">setTextContent</span>(elm, <span class="string">&quot;&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (oldVnode.<span class="property">text</span> !== vnode.<span class="property">text</span>) &#123;</span><br><span class="line">  nodeOps.<span class="title function_">setTextContent</span>(elm, vnode.<span class="property">text</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">isDef</span>(data)) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_">isDef</span>((i = data.<span class="property">hook</span>)) &amp;&amp; <span class="title function_">isDef</span>((i = i.<span class="property">postpatch</span>))) <span class="title function_">i</span>(oldVnode, vnode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+#### 2.3、数据绑定 ####
+
+>  Vue 中，插值表达式`&#123;&#123;&#125;&#125;</code>绑定，例如</p>
+</li>
+</ul>
+<blockquote>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>开发者在 Vue 实例<code>data</code>中绑定该变量：最终页面展示内容为<code>&lt;div&gt;测试文本&lt;/div&gt;</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: <span class="string">&quot;测试文本&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>所以，Vue是如何做到的呢？也就是Vue如何实现数据绑定的呢？</p>
+</blockquote>
+<h5 id="2-3-1-数据绑定的实现">2.3.1 数据绑定的实现<a class="anchor" href="#2-3-1-数据绑定的实现">·</a></h5>
+<blockquote>
+<p>前面介绍过模板引擎牛逼之处时提过，他可以做的事情很多：</p>
+<ol>
+<li>排除无效 DOM 元素，并在构建过程可进行报错</li>
+<li>使用自定义组件的时候，可匹配出来</li>
+<li>可方便地实现数据绑定、事件绑定等功能</li>
+<li>为虚拟 DOM Diff 过程打下铺垫</li>
+<li>HTML 转义（预防 XSS 漏洞）</li>
+</ol>
+<p>而具体到数据绑定的环节是：</p>
+<p>首先解析语法生成AST —&gt;  根据AST结果data 数据绑定情况生成虚拟DOM —&gt;  将数据绑定到</p>
+</blockquote>
+<ol>
+<li>
+<p>例如上面 Vue 里的代码片段<code>&lt;div&gt;&lt;/div&gt;</code>，可通过 DOM 元素捕获，解析后获得这样一个 AST 对象：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">thisDiv = &#123;</span><br><span class="line">  <span class="attr">dom</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;dom&quot;</span>,</span><br><span class="line">    <span class="attr">ele</span>: <span class="string">&quot;div&quot;</span>,</span><br><span class="line">    <span class="attr">nodeIndex</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">children</span>: [&#123; <span class="attr">type</span>: <span class="string">&quot;text&quot;</span>, <span class="attr">value</span>: <span class="string">&quot;&quot;</span> &#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">binding</span>: [&#123; <span class="attr">type</span>: <span class="string">&quot;dom&quot;</span>, <span class="attr">nodeIndex</span>: <span class="number">0</span>, <span class="attr">valueName</span>: <span class="string">&quot;message&quot;</span> &#125;]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>这样，我们<strong>在生成一个 DOM 的时候，同时添加对<code>message</code>的监听</strong>，数据更新时我们会找到对应的<code>nodeIndex</code>，更新值：</p>
+<p>这样，就能在<code>message</code>变量更新时，通过该变量关联的引用，来自动更新对应展示的内容。而要知道<code>message</code>变量什么时候进行了改变，我们需要对数据进行监听。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这是一个生成 DOM 的过程，包括 innerHTML 和事件监听</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">generateDOM</span>(<span class="params">astObject</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; dom, binding = [] &#125; = astObject;</span><br><span class="line">  <span class="comment">// 生成DOM，这里假装当前节点是baseDom</span></span><br><span class="line">  baseDom.<span class="property">innerHTML</span> = <span class="title function_">getDOMString</span>(dom);</span><br><span class="line">  <span class="comment">// 对于数据绑定的，来进行监听更新吧</span></span><br><span class="line">  baseDom.<span class="title function_">addEventListener</span>(<span class="string">&quot;data:change&quot;</span>, <span class="function">(<span class="params">name, value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 寻找匹配的数据绑定</span></span><br><span class="line">    <span class="keyword">const</span> obj = binding.<span class="title function_">find</span>(<span class="function"><span class="params">x</span> =&gt;</span> x.<span class="property">valueName</span> == name);</span><br><span class="line">    <span class="comment">// 若找到值绑定的对应节点，则更新其值。</span></span><br><span class="line">    <span class="keyword">if</span> (obj) &#123;</span><br><span class="line">      baseDom.<span class="title function_">find</span>(<span class="string">`[data-node-index=&quot;<span class="subst">$&#123;obj.nodeIndex&#125;</span>&quot;]`</span>).<span class="property">innerHTML</span> = value;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取DOM字符串，这里简单拼成字符串</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getDOMString</span>(<span class="params">domObj</span>) &#123;</span><br><span class="line">  <span class="comment">// 无效对象返回&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">if</span> (!domObj) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> &#123; type, children = [], nodeIndex, ele, value &#125; = domObj;</span><br><span class="line">  <span class="keyword">if</span> (type == <span class="string">&quot;dom&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// 若有子对象，递归返回生成的字符串拼接</span></span><br><span class="line">    <span class="keyword">const</span> childString = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    children.<span class="title function_">forEach</span>(<span class="function"><span class="params">x</span> =&gt;</span> &#123;</span><br><span class="line">      childString += <span class="title function_">getDOMString</span>(x);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// dom对象，拼接生成对象字符串</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">`&lt;<span class="subst">$&#123;ele&#125;</span> data-node-index=&quot;<span class="subst">$&#123;nodeIndex&#125;</span>&quot;&gt;<span class="subst">$&#123;childString&#125;</span>&lt;/<span class="subst">$&#123;ele&#125;</span>&gt;`</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type == <span class="string">&quot;text&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// 若为textNode，返回text的值</span></span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="2-3-2-数据更新监听">2.3.2 数据更新监听<a class="anchor" href="#2-3-2-数据更新监听">·</a></h5>
+<blockquote>
+<p>上面的简单代码描述过程中，使用的数据监听方法是用了<code>addEventListener(&quot;data:change&quot;, Function)</code>的方式。其实每个框架都会有自己的方式：</p>
+</blockquote>
+<ul>
+<li>
+<h5 id="Angular-watch-机制：">Angular: watch 机制：<a class="anchor" href="#Angular-watch-机制：">·</a></h5>
+<ol>
+<li>在 AngularJS 中，并不直接监听数据的变动，而是监听常见的事件如用户交互（点击、输入等）、定时器、生命周期等。在每次事件触发完毕后，计算数据的新值和旧值是否有差异，若有差异则更新页面，并触发下一次的脏检查，直到没有差异或是次数达到设定阈值。很显然，这样每一次脏检查可能会形成环状，导致死循环。虽然 AngularJS 有阈值控制，但也无法避免这种机制所导致的低效甚至性能问题</li>
+<li>由于设计上存在的这些问题一直被大家诟病，在 Angular2 中应用的组织类似 DOM，也是树结构的，脏检查会从根组件开始，自上而下对树上的所有子组件进行检查。相比 AngularJS 中的带有环的结构，这样的单向数据流效率更高，而且容易预测，性能上也有不少的提升</li>
+</ol>
+</li>
+<li>
+<h5 id="React手动更新：">React手动更新：<a class="anchor" href="#React手动更新：">·</a></h5>
+<p>需要手动调用<code>set()</code>的方式写入数据来更新模版</p>
+</li>
+<li>
+<h5 id="Vue-主要是依赖了Getter-Setter：">Vue: 主要是依赖了Getter/Setter：<a class="anchor" href="#Vue-主要是依赖了Getter-Setter：">·</a></h5>
+<p>在数据更新时就执行了模板更新、watch、computed 等一些工作，而3.0使用<code>Proxy</code>来进行</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, key, &#123;</span><br><span class="line">  <span class="attr">enumerable</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">configurable</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// getter</span></span><br><span class="line">  <span class="attr">get</span>: <span class="keyword">function</span> <span class="title function_">reactiveGetter</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> value = getter ? getter.<span class="title function_">call</span>(obj) : val;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">Dep</span>.<span class="property">target</span>) &#123;</span><br><span class="line">      dep.<span class="title function_">depend</span>();</span><br><span class="line">      <span class="keyword">if</span> (childOb) &#123;</span><br><span class="line">        childOb.<span class="property">dep</span>.<span class="title function_">depend</span>();</span><br><span class="line">        <span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(value)) &#123;</span><br><span class="line">          <span class="title function_">dependArray</span>(value);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// setter，最终更新后会通知噢</span></span><br><span class="line">  <span class="attr">set</span>: <span class="keyword">function</span> <span class="title function_">reactiveSetter</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> value = getter ? getter.<span class="title function_">call</span>(obj) : val;</span><br><span class="line">    <span class="keyword">if</span> (newVal === value || (newVal !== newVal &amp;&amp; value !== value)) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> !== <span class="string">&quot;production&quot;</span> &amp;&amp; customSetter) &#123;<span class="title function_">customSetter</span>();&#125;</span><br><span class="line">    <span class="keyword">if</span> (getter &amp;&amp; !setter) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (setter) &#123;</span><br><span class="line">      setter.<span class="title function_">call</span>(obj, newVal);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      val = newVal;</span><br><span class="line">    &#125;</span><br><span class="line">    childOb = !shallow &amp;&amp; <span class="title function_">observe</span>(newVal);</span><br><span class="line">    dep.<span class="title function_">notify</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2-4-XSS-漏洞填补">2.4 XSS 漏洞填补<a class="anchor" href="#2-4-XSS-漏洞填补">·</a></h4>
+<blockquote>
+<p>XSS 的整个攻击过程大概为：（DOM型）</p>
+<ol>
+<li>通常页面中包含的用户输入内容都在固定的容器或者属性内，以文本的形式展示</li>
+<li>攻击者利用这些页面的用户输入片段，拼接特殊格式的字符串，突破原有位置的限制，形成了代码片段</li>
+<li>攻击者通过在目标网站上注入脚本，使之在用户的浏览器上运行，从而引发潜在风险</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>防范措施：</p>
+<ol>
+<li>
+<p>用纯前端的方式，不用服务器端拼接后返回（不使用服务端渲染）</p>
+</li>
+<li>
+<p>对需要插入到 HTML 中的代码做好充分的转义。对于 DOM 型的攻击，主要是前端脚本的不可靠而造成的，对于数据获取渲染和字符串拼接的时候应该对可能出现的恶意代码情况进行判断。</p>
+<ul>
+<li>
+<p>拒绝innerHTML, 使用.innerText、.setAttribute、.style，</p>
+</li>
+<li>
+<p>Vue：如果你一定要输出 HTML 代码，也可以使用<code>v-html</code>指令输出。</p>
+<p>官方文档也有特殊说明：你的站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 XSS 攻击。请只对可信内容使用 HTML 插值，绝不要对用户提供的内容使用插值。</p>
+</li>
+<li>
+<p>你的站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cross-site_scripting">XSS 攻击</a>。请只对可信内容使用 HTML 插值，<strong>绝不要</strong>对用户提供的内容使用插值</p>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>
+<p>主要是将用户所提供的内容进行过滤，而大多数模板引擎会自带 HTML 转义功能</p>
+<p>在 Vue 中，默认的数据绑定方式（双大括号、<code>v-bind</code>等）会进行 HTML 转义，将数据解释为普通文本，而非 HTML 代码。来感受下这堆正则和转义，篇幅关系，只贴一部分来观摩下：</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 元素标签和属性相关的正则表达式</span></span><br><span class="line"><span class="keyword">const</span> attribute = <span class="regexp">/^\s*([^\s&quot;&#x27;&lt;&gt;\/=]+)(?:\s*(=)\s*(?:&quot;([^&quot;]*)&quot;+|&#x27;([^&#x27;]*)&#x27;+|([^\s&quot;&#x27;=&lt;&gt;`]+)))?/</span>;</span><br><span class="line"><span class="keyword">const</span> dynamicArgAttribute = <span class="regexp">/^\s*((?:v-[\w-]+:|@|:|#)\[[^=]+\][^\s&quot;&#x27;&lt;&gt;\/=]*)(?:\s*(=)\s*(?:&quot;([^&quot;]*)&quot;+|&#x27;([^&#x27;]*)&#x27;+|([^\s&quot;&#x27;=&lt;&gt;`]+)))?/</span>;</span><br><span class="line"><span class="keyword">const</span> ncname = <span class="string">`[a-zA-Z_][\\-\\.0-9_a-zA-Z<span class="subst">$&#123;unicodeRegExp.source&#125;</span>]*`</span>;</span><br><span class="line"><span class="keyword">const</span> qnameCapture = <span class="string">`((?:<span class="subst">$&#123;ncname&#125;</span>\\:)?<span class="subst">$&#123;ncname&#125;</span>)`</span>;</span><br><span class="line"><span class="keyword">const</span> startTagOpen = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">`^&lt;<span class="subst">$&#123;qnameCapture&#125;</span>`</span>);</span><br><span class="line"><span class="keyword">const</span> startTagClose = <span class="regexp">/^\s*(\/?)&gt;/</span>;</span><br><span class="line"><span class="keyword">const</span> endTag = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">`^&lt;\\/<span class="subst">$&#123;qnameCapture&#125;</span>[^&gt;]*&gt;`</span>);</span><br><span class="line"><span class="keyword">const</span> doctype = <span class="regexp">/^&lt;!DOCTYPE [^&gt;]+&gt;/i</span>;</span><br><span class="line"><span class="comment">// 避免注释中被处理掉</span></span><br><span class="line"><span class="keyword">const</span> comment = <span class="regexp">/^&lt;!\--/</span>;</span><br><span class="line"><span class="keyword">const</span> conditionalComment = <span class="regexp">/^&lt;!\[/</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 特殊元素处理</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> isPlainTextElement = <span class="title function_">makeMap</span>(<span class="string">&quot;script,style,textarea&quot;</span>, <span class="literal">true</span>);</span><br><span class="line"><span class="keyword">const</span> reCache = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转义</span></span><br><span class="line"><span class="keyword">const</span> decodingMap = &#123;</span><br><span class="line">  <span class="string">&quot;&amp;lt;&quot;</span>: <span class="string">&quot;&lt;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;&amp;gt;&quot;</span>: <span class="string">&quot;&gt;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;&amp;quot;&quot;</span>: <span class="string">&#x27;&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&quot;&amp;amp;&quot;</span>: <span class="string">&quot;&amp;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;&amp;#10;&quot;</span>: <span class="string">&quot;\n&quot;</span>,</span><br><span class="line">  <span class="string">&quot;&amp;#9;&quot;</span>: <span class="string">&quot;\t&quot;</span>,</span><br><span class="line">  <span class="string">&quot;&amp;#39;&quot;</span>: <span class="string">&quot;&#x27;&quot;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Vue脚手架">Vue脚手架<a class="anchor" href="#Vue脚手架">·</a></h2>
+<blockquote>
+<p>通常来说，脚手架可以让你快速地生成示例代码、搭建本地环境，也可以更新依赖的版本等，避免了我自行调整开发环境、打包逻辑等配置。</p>
+<p>Vue cli 也提供了这样的能力：对 Babel、TypeScript、ESLint、PostCSS、PWA、单元测试和 End-to-end 测试提供开箱即用的支持。它确保了各种构建工具能够基于智能的默认配置即可平稳衔接，这样你可以专注在撰写应用上，而不必花好几天去纠结配置的问题。使用方式很简单：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 安装脚手架</span></span><br><span class="line">npm install -g @vue/cli</span><br><span class="line"><span class="comment">// 脚手架生成 vue 项目，同时会自动安装依赖</span></span><br><span class="line">vue create vue-cli-demo</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="1、CLI-与-Webpack的介绍">1、CLI 与 Webpack的介绍<a class="anchor" href="#1、CLI-与-Webpack的介绍">·</a></h3>
+<h4 id="1-1、Vue-CLI-和-webpack-的关系">1.1、Vue CLI 和 webpack 的关系<a class="anchor" href="#1-1、Vue-CLI-和-webpack-的关系">·</a></h4>
+<ul>
+<li>Vue CLI 服务是构建于 webpack 和 webpack-dev-server 之上的，它包含了：
+<ul>
+<li>加载其它 CLI 插件的核心服务</li>
+<li>一个针对绝大部分应用优化过的内部的 webpack 配置</li>
+<li>项目内部的 vue-cli-service 命令，提供 serve、build 和 inspect 命令</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2、如何理解-CLI-的一些配置？">1.2、如何理解 CLI 的一些配置？<a class="anchor" href="#1-2、如何理解-CLI-的一些配置？">·</a></h4>
+<blockquote>
+<p>要理解 CLI 的一些配置，先要来理解一下 Webpcak 一些概念：</p>
+<p>定位：本质上，Webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 Webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle</p>
+<p>四个核心概念：入口(entry)、输出(output)、loader、插件(plugins)</p>
+</blockquote>
+<h5 id="1-2-1、入口-entry">1.2.1、入口(entry)<a class="anchor" href="#1-2-1、入口-entry">·</a></h5>
+<ul>
+<li>
+<p>应用程序的入口起点认为是根上下文(contextual root)或 app 第一个启动文件，比如：在 Vue 中是<code>new Vue()</code>位置所在的文件，在 Angular 中是启动<code>.bootstrap()</code>的文件，在 React 中则是<code>ReactDOM.render()</code>或者是<code>React.render()</code>的启动文件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 将entry指向启动文件即可</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;<span class="attr">entry</span>: <span class="string">&quot;./path/to/my/entry/file.js&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们来看看，Vue CLI里源码是怎样的：</span></span><br><span class="line">webpackConfig</span><br><span class="line">  .<span class="title function_">entry</span>(<span class="string">&quot;app&quot;</span>)</span><br><span class="line">  .<span class="title function_">add</span>(<span class="string">&quot;./src/main.js&quot;</span>)</span><br><span class="line">  .<span class="title function_">end</span>();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>显然，Vue CLI 的默认入口文件是./src/main.js。</p>
+</li>
+<li>
+<p>我们能看到 Vue CLI 内部的 webpack 配置是通过链式调用的，该能力通过 webpack-chain 库提供的。这个库提供了一个 webpack 原始配置的上层抽象，使其可以定义具名的 loader 规则和具名插件，并有机会在后期进入这些规则并对它们的选项进行修改</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-2-2、出口-output">1.2.2、出口(output)<a class="anchor" href="#1-2-2、出口-output">·</a></h5>
+<ul>
+<li>
+<p>描述了如何处理归拢在一起的代码(bundled code)，在哪里打包应用程序。简单来说，就是最终打包好的代码放哪。</p>
+</li>
+<li>
+<p>一般需要以下两点配置：</p>
+<ol>
+<li>filename: 编译文件的文件名(main.js/bundle.js/index.js 等)</li>
+<li>path：对应一个绝对路径，此路径是你希望一次性打包的目录</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这是一般的Webpack写法</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&quot;/home/proj/public/assets&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们来看看，Vue CLI源码的实现：</span></span><br><span class="line">webpackConfig.<span class="property">output</span></span><br><span class="line">  .<span class="title function_">path</span>(api.<span class="title function_">resolve</span>(options.<span class="property">outputDir</span>))</span><br><span class="line">  .<span class="title function_">filename</span>(isLegacyBundle ? <span class="string">&quot;[name]-legacy.js&quot;</span> : <span class="string">&quot;[name].js&quot;</span>)</span><br><span class="line">  .<span class="title function_">publicPath</span>(options.<span class="property">publicPath</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="1-2-3、loader">1.2.3、loader<a class="anchor" href="#1-2-3、loader">·</a></h5>
+<ul>
+<li>
+<h5 id="loader做了什么事？">loader做了什么事？<a class="anchor" href="#loader做了什么事？">·</a></h5>
+</li>
+</ul>
+<blockquote>
+<p>Webpack 把每个文件(.css, .html, .scss, .jpg, etc.) 都作为模块处理，但 Webpack 只理解 JavaScript。</p>
+<ul>
+<li>如果你看过生成的 bundle.js 代码就会发现，Webpack 将所有的模块打包一起，每个模块添加标记 id，通过这样一个 id 去获取所需模块的代码</li>
+<li>而<strong>loader 的作用，就是把不同的模块和文件转换为这样一个模块，打包进去</strong></li>
+</ul>
+</blockquote>
+<ul>
+<li>loader 支持链式传递，能够对资源使用流水线(pipeline)：loader 链式地按照先后顺序进行编译，从后往前，最终需要返回 javascript</li>
+</ul>
+<blockquote>
+<p>不同场景下，有不同的loader：</p>
+</blockquote>
+<ul>
+<li>
+<h5 id="babel-loader">babel-loader<a class="anchor" href="#babel-loader">·</a></h5>
+<p>作用：将 ES6/ES7 语法编译生成 ES5，当然有些特性还是需要 babel-polyfill 支持的（Babel 默认只转换新的 JavaScript 句法，而不转换新的 API，如 Promise 等全局对象）。</p>
+<p>而对于 babel-loader 的配置，可以通过<code>options</code>进行，但一般更常使用.babelrc 文件进行（使用 Vue CLI 生成的项目目录中，可以使用 babel.config.js 文件来配置）：</p>
+</li>
+<li>
+<h5 id="css-部分loader">css 部分loader<a class="anchor" href="#css-部分loader">·</a></h5>
+<ul>
+<li>css-loader: 处理 css 文件中的 url()</li>
+<li>style-loader: 将 css 插入到页面的 style 标签</li>
+<li>less-loader: less 转换为 css</li>
+<li>postcss-loader(autoprefixer-loader): 自动添加兼容前缀(<code>-webkit-</code>、<code>-moz-</code>等)</li>
+</ul>
+</li>
+<li>
+<h5 id="其他-loader">其他 loader<a class="anchor" href="#其他-loader">·</a></h5>
+<ul>
+<li>url-loader/file-loader: 修改文件名，放在输出目录下，并返其对应的 url
+<ul>
+<li>url-loader 在当文件大小小于限制值时，它可以返回一个 Data Url</li>
+</ul>
+</li>
+<li>html-loader/raw-loader: 把 Html 文件输出成字符串
+<ul>
+<li>html-loader 默认处理 html 中的<code>&lt;img src=&quot;image.png&quot;&gt;</code>为<code>require(&quot;./image.png&quot;)</code>，需要在配置中指定 image 文件的加载器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h5 id="看看-Vue-CLI-自带了多少的-Loader：">看看 Vue CLI 自带了多少的 Loader：<a class="anchor" href="#看看-Vue-CLI-自带了多少的-Loader：">·</a></h5>
+<p>我们可以明白以下的 CLI 说明：</p>
+<ol>
+<li>所有编译后的 CSS 都会通过 css-loader 来解析其中的<code>url()</code>引用，并将这些引用作为模块请求来处理。也就是说我们可以根据本地的文件结构用相对路径来引用静态资源</li>
+<li>内置的 webpack 被预配置了预处理器，支持 Sass/Less/Stylus 处理</li>
+<li>Vue CLI 内部使用了 PostCSS，默认开启了 autoprefixer</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 最基本的，Vue文件解析</span></span><br><span class="line">webpackConfig.<span class="property">module</span></span><br><span class="line">  .<span class="title function_">rule</span>(<span class="string">&quot;vue&quot;</span>)</span><br><span class="line">  <span class="comment">// 命中后缀为.vue的文件</span></span><br><span class="line">  .<span class="title function_">test</span>(<span class="regexp">/\.vue$/</span>)</span><br><span class="line">  <span class="comment">// 使用缓存cache-loader</span></span><br><span class="line">  <span class="comment">// 在一些性能开销较大的loader之前添加此loader，以将结果缓存到磁盘里</span></span><br><span class="line">  .<span class="title function_">use</span>(<span class="string">&quot;cache-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">loader</span>(<span class="string">&quot;cache-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">options</span>(vueLoaderCacheConfig)</span><br><span class="line">  .<span class="title function_">end</span>()</span><br><span class="line">  <span class="comment">// 使用vue-loader</span></span><br><span class="line">  .<span class="title function_">use</span>(<span class="string">&quot;vue-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">loader</span>(<span class="string">&quot;vue-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">options</span>(</span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">assign</span>(</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">compilerOptions</span>: &#123;</span><br><span class="line">          <span class="attr">preserveWhitespace</span>: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      vueLoaderCacheConfig</span><br><span class="line">    )</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图片文件解析</span></span><br><span class="line">webpackConfig.<span class="property">module</span></span><br><span class="line">  .<span class="title function_">rule</span>(<span class="string">&quot;images&quot;</span>)</span><br><span class="line">  <span class="comment">// 命中后缀为.png/.jpeg/.jpg/.gif/.webp的文件</span></span><br><span class="line">  .<span class="title function_">test</span>(<span class="regexp">/\.(png|jpe?g|gif|webp)(\?.*)?$/</span>)</span><br><span class="line">  <span class="comment">// 使用url-loader</span></span><br><span class="line">  <span class="comment">// 修改文件名，放在输出目录 img 下，并返其对应的url</span></span><br><span class="line">  <span class="comment">// 默认情况下，生成文件的文件名，是文件内容的 MD5 哈希值</span></span><br><span class="line">  .<span class="title function_">use</span>(<span class="string">&quot;url-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">loader</span>(<span class="string">&quot;url-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">options</span>(<span class="title function_">genUrlLoaderOptions</span>(<span class="string">&quot;img&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// do not base64-inline SVGs.</span></span><br><span class="line"><span class="comment">// https://github.com/facebookincubator/create-react-app/pull/1180</span></span><br><span class="line"><span class="comment">// svg文件解析</span></span><br><span class="line">webpackConfig.<span class="property">module</span></span><br><span class="line">  .<span class="title function_">rule</span>(<span class="string">&quot;svg&quot;</span>)</span><br><span class="line">  <span class="comment">// 命中后缀为.svg的文件</span></span><br><span class="line">  .<span class="title function_">test</span>(<span class="regexp">/\.(svg)(\?.*)?$/</span>)</span><br><span class="line">  <span class="comment">// 使用file-loader，与url-loader相似</span></span><br><span class="line">  <span class="comment">// 修改文件名，放在输出目录 img 下，并返其对应的url</span></span><br><span class="line">  <span class="comment">// 默认情况下，生成文件的文件名，是文件内容的 MD5 哈希值</span></span><br><span class="line">  .<span class="title function_">use</span>(<span class="string">&quot;file-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">loader</span>(<span class="string">&quot;file-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">options</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="title function_">genAssetSubPath</span>(<span class="string">&quot;img&quot;</span>)</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 媒体文件解析</span></span><br><span class="line">webpackConfig.<span class="property">module</span></span><br><span class="line">  .<span class="title function_">rule</span>(<span class="string">&quot;media&quot;</span>)</span><br><span class="line">  <span class="comment">// 命中后缀为以下的文件</span></span><br><span class="line">  .<span class="title function_">test</span>(<span class="regexp">/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/</span>)</span><br><span class="line">  <span class="comment">// 使用url-loader，此处输出目录为 media</span></span><br><span class="line">  .<span class="title function_">use</span>(<span class="string">&quot;url-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">loader</span>(<span class="string">&quot;url-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">options</span>(<span class="title function_">genUrlLoaderOptions</span>(<span class="string">&quot;media&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字体文件解析</span></span><br><span class="line">webpackConfig.<span class="property">module</span></span><br><span class="line">  .<span class="title function_">rule</span>(<span class="string">&quot;fonts&quot;</span>)</span><br><span class="line">  .<span class="title function_">test</span>(<span class="regexp">/\.(woff2?|eot|ttf|otf)(\?.*)?$/i</span>)</span><br><span class="line">  <span class="comment">// 使用url-loader，此处输出目录为 fonts</span></span><br><span class="line">  .<span class="title function_">use</span>(<span class="string">&quot;url-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">loader</span>(<span class="string">&quot;url-loader&quot;</span>)</span><br><span class="line">  .<span class="title function_">options</span>(<span class="title function_">genUrlLoaderOptions</span>(<span class="string">&quot;fonts&quot;</span>));</span><br></pre></td></tr></table></figure>
+<p>babel 相关的被单独放在了 cli-plugin-babel 模块里了，我们来看看：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// babel-loader使用了插件的模式</span></span><br><span class="line"><span class="comment">// 插件地址可参考@vue/cli-plugin-babel</span></span><br><span class="line">webpackConfig.<span class="property">module</span></span><br><span class="line">  .<span class="title function_">rule</span>(<span class="string">&#x27;js&#x27;</span>)</span><br><span class="line">    <span class="comment">// 命中后缀为.js/.jsx/.mjs/.mjsx的文件</span></span><br><span class="line">    .<span class="title function_">test</span>(<span class="regexp">/\.m?jsx?$/</span>)</span><br><span class="line">    .<span class="property">exclude</span></span><br><span class="line">      <span class="comment">// 排除以下文件</span></span><br><span class="line">      .<span class="title function_">add</span>(<span class="function"><span class="params">filepath</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// blablabla</span></span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">end</span>()</span><br><span class="line">    <span class="comment">// 使用缓存cache-loader</span></span><br><span class="line">    <span class="comment">// 在一些性能开销较大的loader之前添加此loader，以将结果缓存到磁盘里</span></span><br><span class="line">    .<span class="title function_">use</span>(<span class="string">&#x27;cache-loader&#x27;</span>)</span><br><span class="line">      .<span class="title function_">loader</span>(<span class="string">&#x27;cache-loader&#x27;</span>)</span><br><span class="line">      <span class="comment">// 这里还有一堆配置blablabla，感兴趣的可以自行去翻</span></span><br><span class="line">      .<span class="title function_">end</span>()</span><br><span class="line">    <span class="comment">// 使用babel-loader</span></span><br><span class="line">    .<span class="title function_">use</span>(<span class="string">&#x27;babel-loader&#x27;</span>)</span><br><span class="line">        .<span class="title function_">loader</span>(<span class="string">&#x27;babel-loader&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们能看到，Vue CLI默认的babel配置如下：</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">babel</span>: &#123;</span><br><span class="line">    <span class="attr">presets</span>: [<span class="string">&#x27;@vue/app&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">dependencies</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;core-js&#x27;</span>: <span class="string">&#x27;^2.6.5&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里使用的 babel 插件是@vue/babel-preset-app，它通过@babel/preset-env 和 browserslist 配置来决定项目需要的 polyfill。默认情况下，它会把<code>useBuiltIns: 'usage'</code>传递给@babel/preset-env，这样它会根据源代码中出现的语言特性自动检测需要的 polyfill。这确保了最终包里 polyfill 数量的最小化</p>
+</li>
+</ul>
+<h5 id="1-2-4、插件-plugins">1.2.4、插件(plugins)<a class="anchor" href="#1-2-4、插件-plugins">·</a></h5>
+<blockquote>
+<p>loader 仅在每个文件的基础上执行转换，<strong>插件目的在于解决 loader 无法实现的其他事</strong>：</p>
+<p>由于 plugin 可以携带参数/选项，需要在 wepback 配置中，向 plugins 属性传入<code>new</code>实例</p>
+</blockquote>
+<p>常用的插件：</p>
+<ul>
+<li>
+<h5 id="HtmlwebpackPlugin">HtmlwebpackPlugin<a class="anchor" href="#HtmlwebpackPlugin">·</a></h5>
+<p>作用：</p>
+<ul>
+<li>
+<p>为 html 文件中引入的外部资源如 script、link 动态添加每次 compile 后的 hash，防止引用缓存的外部文件问题</p>
+</li>
+<li>
+<p>可以生成创建 html 入口文件，比如单页面可以生成一个 html 文件入口，但其实最常使用的，无非是把 index.html 页面插入（因为入口文件为 js 文件）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// HtmlwebpackPlugin使用方式示例</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">HtmlwebpackPlugin</span>(&#123;</span><br><span class="line">  <span class="attr">template</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;src/index.html&quot;</span>),</span><br><span class="line">  <span class="attr">inject</span>: <span class="string">&quot;body&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<h5 id="CommonsChunkPlugin">CommonsChunkPlugin<a class="anchor" href="#CommonsChunkPlugin">·</a></h5>
+<p>作用：</p>
+<p>提取代码中的公共模块，<strong>然后将公共模块打包到一个独立的文件中</strong>，以便在其他的入口和模块中使用</p>
+</li>
+<li>
+<h5 id="ExtractTextPlugin">ExtractTextPlugin<a class="anchor" href="#ExtractTextPlugin">·</a></h5>
+<p>可以将样式从 js 中抽出，生成单独的.css 样式文件。即把所以的 css 打包合并：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ExtractTextPlugin使用方式示例</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">ExtractTextPlugin</span>(<span class="string">&quot;style.css&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">allChunks</span>: <span class="literal">true</span> <span class="comment">// 提取所有的chunk（默认只提取initial chunk，而上面CommonsChunkPlugin已经把部分抽离了）</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<h5 id="Vue-CLI-中默认都使用了哪些插件：">Vue CLI 中默认都使用了哪些插件：<a class="anchor" href="#Vue-CLI-中默认都使用了哪些插件：">·</a></h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// html-webpack-plugin插件</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">HTMLPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="comment">// 这是html-webpack-plugin的扩展插件</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">PreloadPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;@vue/preload-webpack-plugin&quot;</span>);</span><br><span class="line"></span><br><span class="line">webpackConfig.<span class="title function_">plugin</span>(<span class="string">&quot;html&quot;</span>).<span class="title function_">use</span>(<span class="title class_">HTMLPlugin</span>, [htmlOptions]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用于自动连接异步（和其他类型）的JavaScript块&lt;link rel=&#x27;preload&#x27;&gt;。这有助于延迟加载</span></span><br><span class="line">webpackConfig.<span class="title function_">plugin</span>(<span class="string">&quot;preload&quot;</span>).<span class="title function_">use</span>(<span class="title class_">PreloadPlugin</span>, [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">rel</span>: <span class="string">&quot;preload&quot;</span>,</span><br><span class="line">    <span class="attr">include</span>: <span class="string">&quot;initial&quot;</span>,</span><br><span class="line">    <span class="attr">fileBlacklist</span>: [<span class="regexp">/\.map$/</span>, <span class="regexp">/hot-update\.js$/</span>]</span><br><span class="line">  &#125;</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 来告诉浏览器在页面加载完成后，利用空闲时间提前获取用户未来可能会访问的内容。</span></span><br><span class="line">webpackConfig.<span class="title function_">plugin</span>(<span class="string">&quot;prefetch&quot;</span>).<span class="title function_">use</span>(<span class="title class_">PreloadPlugin</span>, [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">rel</span>: <span class="string">&quot;prefetch&quot;</span>,</span><br><span class="line">    <span class="attr">include</span>: <span class="string">&quot;asyncChunks&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 简单地复制public文件夹下的内容</span></span><br><span class="line"><span class="keyword">const</span> publicDir = api.<span class="title function_">resolve</span>(<span class="string">&quot;public&quot;</span>);</span><br><span class="line">webpackConfig.<span class="title function_">plugin</span>(<span class="string">&quot;copy&quot;</span>).<span class="title function_">use</span>(<span class="built_in">require</span>(<span class="string">&quot;copy-webpack-plugin&quot;</span>), [</span><br><span class="line">  [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">from</span>: publicDir,</span><br><span class="line">      <span class="attr">to</span>: outputDir,</span><br><span class="line">      <span class="attr">toType</span>: <span class="string">&quot;dir&quot;</span>,</span><br><span class="line">      <span class="attr">ignore</span>: publicCopyIgnore</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为什么不为html-webpack-plugin设置文件名？</span></span><br><span class="line"><span class="comment">// 1.它无法处理绝对路径</span></span><br><span class="line"><span class="comment">// 2.相对路径导致生成错误的SW清单（＃2007）</span></span><br><span class="line">webpackConfig</span><br><span class="line">  .<span class="title function_">plugin</span>(<span class="string">&quot;move-index&quot;</span>)</span><br><span class="line">  .<span class="title function_">use</span>(<span class="built_in">require</span>(<span class="string">&quot;../webpack/MovePlugin&quot;</span>), [</span><br><span class="line">    path.<span class="title function_">resolve</span>(outputDir, <span class="string">&quot;index.html&quot;</span>),</span><br><span class="line">    path.<span class="title function_">resolve</span>(outputDir, options.<span class="property">indexPath</span>)</span><br><span class="line">  ]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// DefinePlugin允许创建一个在编译时可以配置的全局常量</span></span><br><span class="line">webpackConfig</span><br><span class="line">  .<span class="title function_">plugin</span>(<span class="string">&quot;define&quot;</span>)</span><br><span class="line">  .<span class="title function_">use</span>(<span class="built_in">require</span>(<span class="string">&quot;webpack/lib/DefinePlugin&quot;</span>), [<span class="title function_">resolveClientEnv</span>(options)]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 友好的错误插件，在webpack时显示非常混乱的错误</span></span><br><span class="line"><span class="comment">// 无法解析加载器，因此我们提供自定义处理程序来改进它</span></span><br><span class="line"><span class="keyword">const</span> &#123; transformer, formatter &#125; = <span class="built_in">require</span>(<span class="string">&quot;../util/resolveLoaderError&quot;</span>);</span><br><span class="line">webpackConfig</span><br><span class="line">  .<span class="title function_">plugin</span>(<span class="string">&quot;friendly-errors&quot;</span>)</span><br><span class="line">  .<span class="title function_">use</span>(<span class="built_in">require</span>(<span class="string">&quot;@soda/friendly-errors-webpack-plugin&quot;</span>), [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">additionalTransformers</span>: [transformer],</span><br><span class="line">      <span class="attr">additionalFormatters</span>: [formatter]</span><br><span class="line">    &#125;</span><br><span class="line">  ]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 热加载的插件</span></span><br><span class="line">webpackConfig</span><br><span class="line">  .<span class="title function_">plugin</span>(<span class="string">&quot;hmr&quot;</span>)</span><br><span class="line">  .<span class="title function_">use</span>(<span class="built_in">require</span>(<span class="string">&quot;webpack/lib/HotModuleReplacementPlugin&quot;</span>));</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>理一下CLI 的基本情况：</p>
+<ol>
+<li>public/index.html 文件是一个会被 html-webpack-plugin 处理的模板。在构建过程中，资源链接会被自动注入。</li>
+<li><code>&lt;link rel=&quot;preload&quot;&gt;</code>用来指定页面加载后很快会被用到的资源，所以在页面加载的过程中，我们希望在浏览器开始主体渲染之前尽早 preload。默认情况下，一个 Vue CLI 应用会为所有初始化渲染需要的文件自动生成 preload 提示。</li>
+<li><code>&lt;link rel=&quot;prefetch&quot;&gt;</code>用来告诉浏览器在页面加载完成后，利用空闲时间提前获取用户未来可能会访问的内容。默认情况下，一个 Vue CLI 应用会为所有作为 async chunk 生成的 JavaScript 文件自动生成 prefetch 提示。</li>
+<li>任何放置在 public 文件夹的静态资源都会被简单的复制，而不经过 webpack。你需要通过绝对路径来引用它们。</li>
+</ol>
+</li>
+</ul>
+<h4 id="1-3、解析-resolve">1.3、解析(resolve)<a class="anchor" href="#1-3、解析-resolve">·</a></h4>
+<p>这些选项能设置模块如何被解析，因为这里会使用到所以也介绍一下用到的：</p>
+<ul>
+<li>resolve.extensions
+<ul>
+<li>自动解析确定的扩展。默认值为：<code>[&quot;.js&quot;, &quot;.json&quot;]</code></li>
+</ul>
+</li>
+<li>resolve.modules
+模块将在 resolve.modules 中指定的所有目录内搜索。</li>
+<li>resolve.alias
+<ul>
+<li>创建<code>import</code>或<code>require</code>的别名，来确保模块引入变得更简单。如果使用 typescript 的话，我们还需要配置 tsconfig.json</li>
+</ul>
+</li>
+</ul>
+<p>Vue CLI 提供的默认配置：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">webpackConfig.<span class="property">resolve</span>.<span class="property">extensions</span> <span class="comment">// 此处为支持解析的文件名后缀</span></span><br><span class="line">  .<span class="title function_">merge</span>([<span class="string">&quot;.mjs&quot;</span>, <span class="string">&quot;.js&quot;</span>, <span class="string">&quot;.jsx&quot;</span>, <span class="string">&quot;.vue&quot;</span>, <span class="string">&quot;.json&quot;</span>, <span class="string">&quot;.wasm&quot;</span>])</span><br><span class="line">  .<span class="title function_">end</span>()</span><br><span class="line">  .<span class="property">modules</span> <span class="comment">// 这里所有的模块，我们都在 node_modules 目录下搜索</span></span><br><span class="line">  .<span class="title function_">add</span>(<span class="string">&quot;node_modules&quot;</span>)</span><br><span class="line">  .<span class="title function_">add</span>(api.<span class="title function_">resolve</span>(<span class="string">&quot;node_modules&quot;</span>))</span><br><span class="line">  .<span class="title function_">add</span>(<span class="title function_">resolveLocal</span>(<span class="string">&quot;node_modules&quot;</span>))</span><br><span class="line">  .<span class="title function_">end</span>()</span><br><span class="line">  .<span class="property">alias</span> <span class="comment">// 我们能看到，在Vue CLI生成的项目里，可以直接使用 @ 映射到 src 目录下</span></span><br><span class="line">  .<span class="title function_">set</span>(<span class="string">&quot;@&quot;</span>, api.<span class="title function_">resolve</span>(<span class="string">&quot;src&quot;</span>))</span><br><span class="line">  .<span class="title function_">set</span>(</span><br><span class="line">    <span class="string">&quot;vue$&quot;</span>,</span><br><span class="line">    options.<span class="property">runtimeCompiler</span></span><br><span class="line">      ? <span class="string">&quot;vue/dist/vue.esm.js&quot;</span></span><br><span class="line">      : <span class="string">&quot;vue/dist/vue.runtime.esm.js&quot;</span></span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+<h3 id="2、在-Vue-CLI-里配置-Webpack">2、在 Vue CLI 里配置 Webpack<a class="anchor" href="#2、在-Vue-CLI-里配置-Webpack">·</a></h3>
+<blockquote>
+<p>虽然 Vue CLI 里初始化了很多 Webpack 的配置，也内置了很多 Loader、Plugin，但如果我们需要自己进行一些 Webpack 配置的时候，CLI 也开放了接口给我们使用。调整 webpack 配置有几种种方式。</p>
+</blockquote>
+<h4 id="方式1：最简单">方式1：最简单<a class="anchor" href="#方式1：最简单">·</a></h4>
+<blockquote>
+<p>vue.config.js 中的 configureWebpack 选项提供一个对象：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">configureWebpack</span>: &#123;</span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">      <span class="comment">// 没办法，我还是需要使用jQuery</span></span><br><span class="line">      <span class="keyword">new</span> webpack.<span class="title class_">ProvidePlugin</span>(&#123;</span><br><span class="line">        <span class="attr">jQuery</span>: <span class="string">&quot;jquery&quot;</span>,</span><br><span class="line">        <span class="attr">$</span>: <span class="string">&quot;jquery&quot;</span></span><br><span class="line">      &#125;)</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="方式2：基于环境的配置">方式2：基于环境的配置<a class="anchor" href="#方式2：基于环境的配置">·</a></h4>
+<ul>
+<li>如果你需要基于环境有条件地配置行为，或者想要直接修改配置，那就换成一个函数 (该函数会在环境变量被设置之后懒执行)。</li>
+<li>该方法的第一个参数会收到已经解析好的配置。在函数内，你可以直接修改配置，或者返回一个将会被合并的对象：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">configureWebpack</span>: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&quot;production&quot;</span>) &#123;</span><br><span class="line">      <span class="comment">// 为生产环境修改配置...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 为开发环境修改配置...</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="方式3：chainWebpack">方式3：chainWebpack<a class="anchor" href="#方式3：chainWebpack">·</a></h4>
+<blockquote>
+<p>在 vue.config.js 中的 chainWebpack 修改，允许我们更细粒度的控制其内部配置。例如：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">filenameHashing</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">chainWebpack</span>: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 我不想要预加载的preload和prefetch</span></span><br><span class="line">    <span class="comment">// delete删除HTML相关的preload和prefetch webpack插件</span></span><br><span class="line">    config.<span class="property">plugins</span>.<span class="title function_">delete</span>(<span class="string">&quot;preload&quot;</span>);</span><br><span class="line">    config.<span class="property">plugins</span>.<span class="title function_">delete</span>(<span class="string">&quot;prefetch&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 我想要使用typescript</span></span><br><span class="line">    <span class="comment">// 加个loader</span></span><br><span class="line">    config</span><br><span class="line">      .<span class="title function_">rule</span>(<span class="string">&quot;ts&quot;</span>)</span><br><span class="line">      .<span class="title function_">test</span>(<span class="regexp">/\.ts$/</span>)</span><br><span class="line">      .<span class="title function_">use</span>(<span class="string">&quot;ts-loader&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="3、其他配置">3、其他配置<a class="anchor" href="#3、其他配置">·</a></h3>
+<p>除了前面讲到的一些 Webpack 配置，Loader、Plugins 相关的，我们还有一些可能会用到的其他配置。其实更多的可能是比较基础的配置：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">publicPath</span>: <span class="string">&quot;/&quot;</span>, <span class="comment">// 部署应用包时的基本 URL</span></span><br><span class="line">  <span class="attr">outputDir</span>: <span class="string">&quot;dist&quot;</span>, <span class="comment">// 当运行 vue-cli-service build 时生成的生产环境构建文件的目录</span></span><br><span class="line">  <span class="attr">assetsDir</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录</span></span><br><span class="line">  <span class="attr">indexPath</span>: <span class="string">&quot;index.html&quot;</span>, <span class="comment">// 指定生成的 index.html 的输出路径 (相对于 outputDir)</span></span><br><span class="line">  <span class="attr">filenameHashing</span>: <span class="literal">true</span>, <span class="comment">// 默认情况下，生成的静态资源在它们的文件名中包含了 hash 以便更好的控制缓存</span></span><br><span class="line">  <span class="attr">pages</span>: <span class="literal">undefined</span>, <span class="comment">// 在 multi-page 模式下构建应用</span></span><br><span class="line">  <span class="attr">lintOnSave</span>: <span class="literal">true</span>, <span class="comment">// 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果这个值是一个对象，则会通过 webpack-merge 合并到最终的配置中</span></span><br><span class="line">  <span class="comment">// 如果这个值是一个函数，则会接收被解析的配置作为参数。该函数及可以修改配置并不返回任何东西，也可以返回一个被克隆或合并过的配置版本</span></span><br><span class="line">  <span class="attr">configureWebpack</span>: <span class="literal">undefined</span>,</span><br><span class="line">  <span class="comment">// 是一个函数</span></span><br><span class="line">  <span class="comment">// 会接收一个基于 webpack-chain 的 ChainableConfig 实例。允许对内部的 webpack 配置进行更细粒度的修改</span></span><br><span class="line">  <span class="attr">chainWebpack</span>: <span class="literal">undefined</span>,</span><br><span class="line"></span><br><span class="line">  <span class="attr">devServer</span>: <span class="literal">undefined</span> <span class="comment">// 所有 webpack-dev-server 的选项都支持</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在很久以前，Vue CLI 还会把内置的 webpack 配置暴露在开发者的项目中，现在已经通过内置的方式来提供很多的通用和基础能力，开发者可以直接使用而无需进行很多的配置。</p>
+<h2 id="小结-3">小结<a class="anchor" href="#小结-3">·</a></h2>
+<blockquote>
+<p>一方面，我们可以看到模板引擎非常牛逼，而Vue 中大多数能力都依赖于模板引擎，包括组件化管理、事件管理、Vue 实例、生命周期等等。而这每个模块的具体实现，再详细展开介绍</p>
+</blockquote>
+<blockquote>
+<p>另一方面，Vue CLI 还提供了很多的配置给到开发者进行灵活配置，解放了我们的双手，还能够根据需求配置，真的特别棒</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Vue的工程化概念</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-07-20</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-07-20</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 33234});
+(function() {
+  if ('WIDGETPACK_LOADED' in window) return;
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement('script');
+  mc.type = 'text/javascript';
+  mc.async = true;
+  mc.src = '//embed.widgetpack.com/widget.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/privateGame.html"><img class="prev-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">来跟我玩个游戏吧~</div></div></a></div><div class="next-post pull-right"><a href="/posts/855735627.html"><img class="next-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/移动端适配.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">移动端适配方案总结</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/Images/avartor.webp" onerror="this.onerror=null;this.src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">113</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">92</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/myNightwish" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zml_byr@bupt.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6%E7%9A%84%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-text">框架的前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%89%8D%E7%AB%AF%E8%BF%87%E5%8E%BB%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%EF%BC%9A"><span class="toc-text">1、前端过去的发展历程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="toc-text">2、前端工程化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6"><span class="toc-text">3、前端框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1%E3%80%81%E9%A1%B5%E9%9D%A2%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93%E7%9A%84"><span class="toc-text">3.1、页面如何渲染的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2%E3%80%81%E9%A1%B5%E9%9D%A2%E5%A6%82%E4%BD%95%E5%B1%80%E9%83%A8%E5%88%B7%E6%96%B0"><span class="toc-text">3.2、页面如何局部刷新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3%E3%80%81%E6%A1%86%E6%9E%B6%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-text">3.3、框架能做什么</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-1%E3%80%81%E4%BC%A0%E7%BB%9Fdom%E7%9A%84%E5%81%9A%E6%B3%95%EF%BC%9A"><span class="toc-text">3.3.1、传统dom的做法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2"><span class="toc-text">编写静态页面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%99%E5%AF%B9%E5%BA%94%E7%9A%84%E5%85%83%E7%B4%A0%E7%BB%91%E5%AE%9A%E5%AF%B9%E5%BA%94%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-text">给对应的元素绑定对应的事件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E8%A7%A6%E5%8F%91%E6%97%B6%EF%BC%8C%E6%9B%B4%E6%96%B0%E9%A1%B5%E9%9D%A2%E5%86%85%E5%AE%B9"><span class="toc-text">事件触发时，更新页面内容</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-2-%E4%BC%A0%E7%BB%9Fdom%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">3.3.2 传统dom的问题</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6%E5%85%B7%E4%BD%93%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">框架具体做了什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="toc-text">1、模板引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-1-%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">2.3.1 数据绑定的实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0%E7%9B%91%E5%90%AC"><span class="toc-text">2.3.2 数据更新监听</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Angular-watch-%E6%9C%BA%E5%88%B6%EF%BC%9A"><span class="toc-text">Angular: watch 机制：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#React%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0%EF%BC%9A"><span class="toc-text">React手动更新：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Vue-%E4%B8%BB%E8%A6%81%E6%98%AF%E4%BE%9D%E8%B5%96%E4%BA%86Getter-Setter%EF%BC%9A"><span class="toc-text">Vue: 主要是依赖了Getter&#x2F;Setter：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-XSS-%E6%BC%8F%E6%B4%9E%E5%A1%AB%E8%A1%A5"><span class="toc-text">2.4 XSS 漏洞填补</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="toc-text">Vue脚手架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81CLI-%E4%B8%8E-Webpack%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-text">1、CLI 与 Webpack的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E3%80%81Vue-CLI-%E5%92%8C-webpack-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">1.1、Vue CLI 和 webpack 的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E3%80%81%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3-CLI-%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE%EF%BC%9F"><span class="toc-text">1.2、如何理解 CLI 的一些配置？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1%E3%80%81%E5%85%A5%E5%8F%A3-entry"><span class="toc-text">1.2.1、入口(entry)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2%E3%80%81%E5%87%BA%E5%8F%A3-output"><span class="toc-text">1.2.2、出口(output)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-3%E3%80%81loader"><span class="toc-text">1.2.3、loader</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#loader%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%E4%BA%8B%EF%BC%9F"><span class="toc-text">loader做了什么事？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#babel-loader"><span class="toc-text">babel-loader</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#css-%E9%83%A8%E5%88%86loader"><span class="toc-text">css 部分loader</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E4%BB%96-loader"><span class="toc-text">其他 loader</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9C%8B%E7%9C%8B-Vue-CLI-%E8%87%AA%E5%B8%A6%E4%BA%86%E5%A4%9A%E5%B0%91%E7%9A%84-Loader%EF%BC%9A"><span class="toc-text">看看 Vue CLI 自带了多少的 Loader：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-4%E3%80%81%E6%8F%92%E4%BB%B6-plugins"><span class="toc-text">1.2.4、插件(plugins)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HtmlwebpackPlugin"><span class="toc-text">HtmlwebpackPlugin</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CommonsChunkPlugin"><span class="toc-text">CommonsChunkPlugin</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ExtractTextPlugin"><span class="toc-text">ExtractTextPlugin</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Vue-CLI-%E4%B8%AD%E9%BB%98%E8%AE%A4%E9%83%BD%E4%BD%BF%E7%94%A8%E4%BA%86%E5%93%AA%E4%BA%9B%E6%8F%92%E4%BB%B6%EF%BC%9A"><span class="toc-text">Vue CLI 中默认都使用了哪些插件：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3%E3%80%81%E8%A7%A3%E6%9E%90-resolve"><span class="toc-text">1.3、解析(resolve)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%9C%A8-Vue-CLI-%E9%87%8C%E9%85%8D%E7%BD%AE-Webpack"><span class="toc-text">2、在 Vue CLI 里配置 Webpack</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F1%EF%BC%9A%E6%9C%80%E7%AE%80%E5%8D%95"><span class="toc-text">方式1：最简单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F2%EF%BC%9A%E5%9F%BA%E4%BA%8E%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">方式2：基于环境的配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F3%EF%BC%9AchainWebpack"><span class="toc-text">方式3：chainWebpack</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE"><span class="toc-text">3、其他配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93-3"><span class="toc-text">小结</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-hexo-git-main-mynightwish.vercel.app/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-hexo-git-main-mynightwish.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async data-pjax src="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/JS/newAdd.js"></script><div defer class="aplayer no-destroy" data-id="31872922" data-server="netease" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script async data-pjax src="https://cdn.jsdelivr.net/npm/hexo-beautiful-page@latest/lib/asyncmodel.min.js"></script><div id="live3d" class="live3d" style="position: fixed; left: -100px; bottom: 30px; width: 500px !important;height: 437.5px !important;z-index: 98;"><canvas id="live2dm" class="live3d"style="max-width:500px;max-height:437.5px;"></canvas></div><script defer data-pjax src="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/JS/bottomTime.js"></script><script async data-pjax src="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/JS/custom/nav.js"></script><script defer data-pjax src="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/JS/sun_moon.js" async></script><script defer src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementsByClassName('category-lists')[0] && (location.pathname ==='/categories/'|| '/categories/' ==='all')){
+    var parent = document.getElementsByClassName('category-lists')[0];
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-1-CSS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍭 CSS<br>(17)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-2-JS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🥑 JS、ES<br>(29)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-3-Ajax/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🥝 Ajax、Axios<br>(3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-4-框架/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍡 React、Vue<br>(16)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-1-组件库/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍉 组件库开发<br>(1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-2-基建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🐱‍🚀 项目基建<br>(5)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-3-实现Tricks/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💫 积累功能<br>(4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-4-项目/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🔮 项目总结<br>(12)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-1-记录/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👻 碎碎念~<br>(3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-2-浏览器/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 浏览器渲染<br>(8)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-3-基础/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🧊 网络<br>(10)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-4-Tool-Shell/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍤 工具、脚本<br>(1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="https://mynightwish.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(25% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style>
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?myNightwish";
+            var git_color =['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'];
+            var git_user ="myNightwish";
+            var parent_div_git = document.getElementById('archive');
+            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/archives/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('archive')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/JS/clock/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/JS/clock/clock.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/2621268747.html" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-virtualDom.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-13</span><a class="blog-slider__title" href="posts/2621268747.html" alt="">React的虚拟DOM</a><div class="blog-slider__text">兄弟篇React的虚拟DOM，包括了栈调和</div><a class="blog-slider__button" href="posts/2621268747.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/ReactHooks.html" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/hook1.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="posts/ReactHooks.html" alt="">React-Hook的出现</a><div class="blog-slider__text">为何Hooks是React的未来</div><a class="blog-slider__button" href="posts/ReactHooks.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/656350506.html" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/浏览器异步.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="posts/656350506.html" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" href="posts/656350506.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/3384747987.html" alt=""><img width="48" height="48" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfnIl0f3oUJLgGFb7Qgi97y1hY9uIQsHizXQ&amp;usqp=CAU" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" href="posts/3384747987.html" alt="">JS的异步解决方案</a><div class="blog-slider__text">前端异步之路</div><a class="blog-slider__button" href="posts/3384747987.html" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://mynightwish.oss-cn-beijing.aliyuncs.com/source/JS/swiperFix.js"></script><!-- hexo injector body_end end --></body></html>
