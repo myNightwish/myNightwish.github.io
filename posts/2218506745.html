@@ -1,0 +1,1064 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>关于HTTP | Nightwishのblog</title><meta name="keywords" content="HTTP"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HTTP....">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于HTTP">
+<meta property="og:url" content="https://mynightwish.top/posts/2218506745.html">
+<meta property="og:site_name" content="Nightwishのblog">
+<meta property="og:description" content="HTTP....">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.unsplash.com/photo-1639254399161-9d6d729132d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
+<meta property="article:published_time" content="2021-12-13T09:09:17.000Z">
+<meta property="article:modified_time" content="2023-01-09T14:45:43.700Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="HTTP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1639254399161-9d6d729132d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"><link rel="shortcut icon" href="/img/favicon.webp"><link rel="canonical" href="https://mynightwish.top/posts/2218506745"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '关于HTTP',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-09 22:45:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/double.css"><link rel="stylesheet" href="/css/beautify.css" media="async"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" media="async"><link rel="stylesheet" href="/css/lastLoad.css" media="defer" onload="this.media='all'"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><div id="myscoll"></div><div class="dengl"><div class="d-box"><div class="d1"><span></span><span><p></p></span><ul><li></li><li> </li><li><span></span></li><li> </li><li> </li></ul></div><div class="d2"><span></span><span><p></p></span><ul><li></li><li> </li><li><span></span></li><li> </li><li> </li></ul></div></div><div class="d-box1"><div class="d1"><span></span><span><p></p></span><ul><li></li><li> </li><li><span></span></li><li> </li><li> </li></ul></div><div class="d2"><span></span><span><p></p></span><ul><li></li><li> </li><li><span></span></li><li> </li><li>  </li></ul></div></div></div><!-- hexo injector head_end start --><link rel="stylesheet" href="/js/clock/clock.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperFix.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-tags"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-paper-plane"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-paw"></i><span> 足迹</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/charts/"><i class="fa-fw fas fa-camera-retro"></i><span> 文章</span></a></li><li><a class="site-page child" href="/census/"><i class="fa-fw fas fa-globe"></i><span> 访问</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video"></i><span> 媒体</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1639254399161-9d6d729132d1?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=435&amp;q=80')"><div class="menu-container" id="menu-container"><div class="menu-item"><div class="menu-item-main"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menu-item-main"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-tags faa-tada"></i><span> 分类</span></a></div><div class="menu-item-main"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-paper-plane faa-tada"></i><span> 时间轴</span></a></div><div class="menu-item-main has-child"><div class="menu-item-parent"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><i class="fa-fw fas fa-paw faa-tada"></i><span> 足迹</span></a></div><div class="menu-item-child"><a class="faa-parent animated-hover site-page child" href="/charts/"><i class="fa-fw fas fa-camera-retro faa-tada"></i><span> 文章</span></a></div><div class="menu-item-child"><a class="faa-parent animated-hover site-page child" href="/census/"><i class="fa-fw fas fa-globe faa-tada"></i><span> 访问</span></a></div></div><div class="menu-item-main has-child"><div class="menu-item-parent"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><i class="fa-fw fas fa-photo-video faa-tada"></i><span> 媒体</span></a></div><div class="menu-item-child"><a class="faa-parent animated-hover site-page child" href="/music/"><i class="fa-fw fas fa-music faa-tada"></i><span> 音乐</span></a></div><div class="menu-item-child"><a class="faa-parent animated-hover site-page child" href="/movies/"><i class="fa-fw fas fa-video faa-tada"></i><span> 视频</span></a></div><div class="menu-item-child"><a class="faa-parent animated-hover site-page child" href="/books/"><i class="fa-fw fas fa-book faa-tada"></i><span> 书籍</span></a></div></div><div class="menu-item-main"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-comments faa-tada"></i><span> 留言板</span></a></div></div><div class="top-bar"><div class="message-container"><div class="message-item message-date" onclick="Navvisible()"><div class="message-date-box" id="message-date-box"></div><div class="message-title-box" id="message-title-box"><a id="site-name" title="HTTP....">关于HTTP  </a></div></div><div class="message-item message-function"><div id="search-button"><a class="site-page social-icon search faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px" aria-hidden="true"><use xlink:href="#icon-search-01"></use></svg><span> search.title</span></a></div><a class="icon-V hidden faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换"><svg class="faa-tada" width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><div id="toggle-menu"><a class="site-page faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px" aria-hidden="true"><use xlink:href="#icon-multi-window-01"></use></svg></a></div></div></div></div><button class="active-button" onclick="Navvisible()"></button></div><div id="post-info"><h1 class="post-title">关于HTTP</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-13T09:09:17.000Z" title="发表于 2021-12-13 17:09:17">2021-12-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.700Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>30分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="关于HTTP"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="1、HTTP概述-2">1、HTTP概述<a class="anchor" href="#1、HTTP概述-2">·</a></h3>
+<h4 id="1、是什么：-2">1、是什么：<a class="anchor" href="#1、是什么：-2">·</a></h4>
+<ol>
+<li>超文本传输协议，基于TCP/IP协议，<strong>是一个在计算机世界里专门在两点之间传输文字、图片、音频、视频等超文本数据的约定和规范</strong></li>
+<li>通常，由HTTP客户端发起一个请求，创建一个到服务器指定端口（默认是80端口）的TCP连接。HTTP服务器则在那个端口监听客户端的请求。一旦收到请求，服务器会向客户端返回一个状态，比如&quot;HTTP/1.1 200 OK&quot;，以及返回的内容，如请求的文件、错误消息、或者其它信息</li>
+</ol>
+<h4 id="2、特点：-2">2、特点：<a class="anchor" href="#2、特点：-2">·</a></h4>
+<h5 id="1、灵活可扩展-2">1、灵活可扩展<a class="anchor" href="#1、灵活可扩展-2">·</a></h5>
+<ul>
+<li>一个是语法上只规定了基本格式，空格分隔单词，换行分隔字段等。</li>
+<li>另外一个就是传输形式上不仅可以传输文本，还可以传输图片，视频等任意数据</li>
+</ul>
+<h5 id="2、请求-应答模式-2">2、请求-应答模式<a class="anchor" href="#2、请求-应答模式-2">·</a></h5>
+<ul>
+<li>通常而言，就是一方发送消息，另外一方要接受消息，或者是做出相应等</li>
+</ul>
+<h5 id="3、可靠传输-2">3、可靠传输<a class="anchor" href="#3、可靠传输-2">·</a></h5>
+<ul>
+<li>HTTP是基于TCP/IP，因此把这一特性继承了下来</li>
+</ul>
+<h5 id="4、无状态-2">4、无状态<a class="anchor" href="#4、无状态-2">·</a></h5>
+<ul>
+<li>
+<p>指协议对于事物处理没有记忆能力。不对请求和响应之间的通信状态进行保存</p>
+</li>
+<li>
+<p>缺少状态意味着如果后续处理需要前面的信息，则它必须重传</p>
+</li>
+<li>
+<p>无状态协议解决办法：</p>
+<p>1、通过、Cookie</p>
+<p>2、通过Session会话保存</p>
+</li>
+</ul>
+<h4 id="3、优、缺点-2">3、优、缺点<a class="anchor" href="#3、优、缺点-2">·</a></h4>
+<h5 id="1、无状态-2">1、无状态<a class="anchor" href="#1、无状态-2">·</a></h5>
+<ul>
+<li>有时候，需要保存信息，比如像购物系统，需要保留下顾客信息等等</li>
+<li>另外一方面，有时候，无状态也会减少网络开销，比如类似直播行业这样子等，这个还是分场景来说</li>
+</ul>
+<h5 id="2、明文传输-2">2、明文传输<a class="anchor" href="#2、明文传输-2">·</a></h5>
+<ul>
+<li>即协议里的报文(主要指的是头部)不使用二进制数据，而是文本形式</li>
+<li>这让HTTP的报文信息暴露给了外界，给攻击者带来了便利</li>
+<li>不验证对方信息，会遭遇伪装；</li>
+</ul>
+<h5 id="3、队头阻塞-2">3、队头阻塞<a class="anchor" href="#3、队头阻塞-2">·</a></h5>
+<ul>
+<li>当http开启长连接时，共用一个TCP连接，当某个请求时间过长时，其他的请求只能处于阻塞状态，这就是队头阻塞问题</li>
+</ul>
+<h3 id="2、HTTP-状态码-2">2、HTTP 状态码<a class="anchor" href="#2、HTTP-状态码-2">·</a></h3>
+<p>RFC 规定 HTTP 的状态码为**「三位数」**，第一个数字定义了响应的类别，被分为五类:</p>
+<ul>
+<li><strong>「1xx」</strong>: 代表请求已被接受，需要继续处理。</li>
+<li><strong>「2xx」</strong>: 表示成功状态。</li>
+<li><strong>「3xx」</strong>: 重定向状态。</li>
+<li><strong>「4xx」</strong>: 客户端错误。</li>
+<li><strong>「5xx」</strong>: 服务器端错误。</li>
+</ul>
+<h4 id="1、1xx-信息类-2">1、1xx 信息类<a class="anchor" href="#1、1xx-信息类-2">·</a></h4>
+<ul>
+<li>100继续 ：指客户端询问是否可以在后续的请求中发送附件。在这种情况下，服务器用100允许客户端继续或用417告诉客户端不同意接受附件。     HTTP 1.1中新加入的</li>
+<li>101转换协议：指服务器将按照其上的头信息变为一个不同的协议。 HTTP 1.1中新加入的</li>
+</ul>
+<h4 id="2、2xx-成功-2">2、2xx 成功<a class="anchor" href="#2、2xx-成功-2">·</a></h4>
+<ul>
+<li>
+<p>200 （成功） 服务器已成功处理了请求。通常，这表示服务器提供了请求的网页</p>
+</li>
+<li>
+<p>201 （已创建） 请求成功并且服务器创建了新的资源。</p>
+</li>
+<li>
+<p>204：请求得到了成功处理，但返回的响应报文中不含实体的主体部分（没有资源可以返回）</p>
+</li>
+<li>
+<p>206 Partial Content，该状态码表示客户端进行了范围请求，而服务器成功执行了这部分的 GET 请求 响应报文中包含由 <strong>「Content-Range」</strong> 指定范围的实体内容。</p>
+</li>
+</ul>
+<h4 id="3、3xx-重定向-2">3、3xx 重定向<a class="anchor" href="#3、3xx-重定向-2">·</a></h4>
+<h5 id="同样是重定向，307，303，302的区别？-2">同样是重定向，<strong>307</strong>，<strong>303</strong>，<strong>302</strong>的区别？<a class="anchor" href="#同样是重定向，307，303，302的区别？-2">·</a></h5>
+<ul>
+<li>
+<p>302是http1.0的协议状态码，在http1.1版本的时候为了细化302状态码⼜出来了两个303和307。</p>
+<ul>
+<li>303明确表示客户端应当采⽤get⽅法获取资源，他会把POST请求变为GET请求进⾏重定向。</li>
+<li>307会遵照浏览器标准，不会从post变为get。</li>
+</ul>
+</li>
+<li>
+<p>301 （永久移动）表示请求的资源已经被分配了新的 URI，以后应使用资源指定的 URI，新的 URI 会在 HTTP 响应头中的 Location 首部字段指定。</p>
+<ul>
+<li>若用户已经把原来的URI保存为书签，此时会按照 Location 中新的URI重新保存该书签。同时，搜索引擎在抓取新内容的同时也将旧的网址替换为重定向之后的网址</li>
+<li>使用场景：
+<ul>
+<li>当我们想换个域名，旧的域名不再使用时，用户访问旧域名时用301就重定向到新的域名。其实也是告诉搜索引擎收录的域名需要对新的域名进行收录。</li>
+<li>在搜索引擎的搜索结果中出现了不带www的域名，而带www的域名却没有收录，这个时候可以用301重定向来告诉搜索引擎我们目标的域名是哪一个。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>302 （临时移动） 表示请求的资源被分配到了新的 URI，希望用户（本次）能使用新的 URI 访问资源。</p>
+<ul>
+<li>302 代表的资源不是被永久重定向，只是临时性质的。也就是说已移动的资源对应的 URI 将来还有可能发生改变。</li>
+<li>若用户把 URI 保存成书签，但不会像 301 状态码出现时那样去更新书签，而是仍旧保留返回 302 状态码的页面对应的 URI。</li>
+<li>同时，搜索引擎会抓取新的内容而保留旧的网址。因为服务器返回302代码，搜索引擎认为新的网址只是暂时的。</li>
+<li>使用场景：
+<ul>
+<li>当我们在做活动时，登录到首页自动重定向，进入活动页面。</li>
+<li>未登陆的用户访问用户中心重定向到登录页面。</li>
+<li>访问404页面重新定向到首页。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>303 （查看其他位置）表示由于请求对应的资源存在另一个 URI，应使用 GET 方法定向获取请求的资源</p>
+<ul>
+<li>和 302 Found 状态码有着相似的功能，但 303 状态码明确表示客户端应当采用 GET 方法获取资源</li>
+<li>303 状态码通常作为 PUT 或 POST 操作的返回结果，它表示重定向链接指向的不是新上传的资源，而是另外一个页面，比如消息确认页面或上传进度页面。而请求重定向页面的方法要总是使用 GET。</li>
+<li>注意：
+<ul>
+<li>当 301、302、303 响应状态码返回时，几乎所有的浏览器都会把 POST 改成GET，并删除请求报文内的主体，之后请求会再次自动发送。</li>
+<li>301、302 标准是禁止将 POST 方法变成 GET方法的，但实际大家都会这么做</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>304 （未修改，协商缓存可用） 自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容。</strong></p>
+<p>304 状态码返回时，不包含任何响应的主体部分。304 虽然被划分在 3XX 类别中，但是和重定向没有关系</p>
+<ol>
+<li>
+<p><strong>产生较多304状态码的原因：</strong></p>
+<ul>
+<li>页面更新周期长或不更新</li>
+<li>纯静态页面或强制生成静态html</li>
+</ul>
+</li>
+<li>
+<p><strong>304状态码出现过多会造成以下问题：</strong></p>
+<ul>
+<li>网站快照停止；</li>
+<li>收录减少；</li>
+<li>权重下降。</li>
+</ul>
+</li>
+<li>
+<p><strong>HTTP状态码304是多好还是少好</strong></p>
+<p>搜索引擎蜘蛛会更加青睐内容源更新频繁的网站。通过特定时间内对网站抓取返回的状态码来调节对该网站的抓取频次。</p>
+<p>若网站在一定时间内一直处于304的状态，那么蜘蛛可能会降低对网站的抓取次数。相反，若网站变化的频率非常之快，每次抓取都能获取新内容，那么日积月累，的回访率也会提高。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>305 （使用<strong>代理</strong>） 请求者只能使用代理访问请求的网页。如果服务器返回此响应，还表示请求者应使用代理。</p>
+</li>
+<li>
+<p>307 （临时重定向）会遵守浏览器标准，<strong>不会从 POST 变成 GET</strong>。但对于处理请求的行为时，不同浏览器还是会出现不同的情况。规范要求浏览器继续向 Location 的地址 POST 内容。规范要求浏览器继续向 Location 的地址 POST 内容</p>
+</li>
+</ul>
+<h4 id="4、4XX-客户端错误-2">4、4XX 客户端错误<a class="anchor" href="#4、4XX-客户端错误-2">·</a></h4>
+<ul>
+<li>
+<p>400  请求报文存在语法错误。当错误发生时，需修改请求的内容后再次发送请求。另外，浏览器会像 200 OK 一样对待该状态码。</p>
+</li>
+<li>
+<p>401 unauthorized，表示发送的请求需要有通过 HTTP 认证(BASIC 认证、DIGEST 认证)的认证信息。若之前已进行过一次请求，则表示用户认证失败。</p>
+<ul>
+<li>
+<p>返回含有 401 的响应必须包含一个适用于被请求资源的 WWW-Authenticate 首部用以质询(challenge)用户信息。当浏览器初次接收到 401 响应，会弹出认证用的对话窗口。</p>
+</li>
+<li>
+<p>出现401场景：</p>
+<ul>
+<li>401.1 - 登录失败。</li>
+<li>401.2 - 服务器配置导致登录失败。</li>
+<li>401.3 - 由于 ACL 对资源的限制而未获得授权。</li>
+<li>401.4 - 筛选器授权失败。</li>
+<li>401.5 - ISAPI/CGI 应用程序授权失败。</li>
+<li>401.7 - 访问被 Web 服务器上的 URL 授权策略拒绝。这个错误代码为 IIS 6.0 所专用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>403 forbidden，表示对请求资源的访问被服务器拒绝。服务器端没有必要给出详细理由，但是可以在响应报文实体的主体中进行说明。**进入该状态后，不能再继续进行验证。**该访问是永久禁止的，并且与应用逻辑密切相关。</p>
+</li>
+<li>
+<p>404 not found，表明服务器上无法找到请求的资源。除此之外，也可以在服务器端拒绝请求且不想说明理由时使用。 以下情况会出现404：</p>
+</li>
+<li>
+<p>405  表示客户端请求的方法虽然能被服务器识别，但是服务器禁止使用该方法。</p>
+<p>GET 和 HEAD 方法，服务器应该总是允许客户端进行访问。客户端可以通过 OPTIONS 方法（预检）来查看服务器允许的访问方法, 如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="5、5XX-服务器错误-2">5、5XX 服务器错误<a class="anchor" href="#5、5XX-服务器错误-2">·</a></h4>
+<ul>
+<li>500 internal sever error，表示服务器端在执行请求时发生了错误。</li>
+<li>502 Bad Gateway，服务器自身是正常的，访问的时候出了问题，具体啥错误我们不知道。</li>
+<li>503 service unavailable，表明服务器暂时处于超负载或正在停机维护，无法处理请求。</li>
+</ul>
+<h3 id="3、HTTP版本差异-2">3、HTTP版本差异<a class="anchor" href="#3、HTTP版本差异-2">·</a></h3>
+<h4 id="1、HTTP-0-9-2">1、HTTP 0.9<a class="anchor" href="#1、HTTP-0-9-2">·</a></h4>
+<ul>
+<li>91年,原型版本，功能简陋，只有一个命令GET,只支持纯文本内容，已过时。</li>
+</ul>
+<h4 id="2、HTTP-1-0-2">2、HTTP 1.0<a class="anchor" href="#2、HTTP-1-0-2">·</a></h4>
+<ul>
+<li>任何格式的内容都可以发送，这使得互联网不仅可以传输文字，还能传输图像、视频、二进制等文件</li>
+<li>除了GET命令，还引入了POST命令和HEAD命令</li>
+<li>http请求和回应的格式改变，除了数据部分，每次通信都必须包括头信息（HTTP header），用来描述一些元数据。</li>
+<li>只使用 header 中的 If-Modified-Since 和 Expires 作为缓存失效的标准。</li>
+<li>不支持断点续传，也就是说，每次都会传送全部的页面和数据。</li>
+<li>通常每台计算机只能绑定一个 IP，所以请求消息中的 URL 并没有传递主机名（hostname）</li>
+</ul>
+<h4 id="3、HTTP-1-1-2">3、HTTP 1.1<a class="anchor" href="#3、HTTP-1-1-2">·</a></h4>
+<p><strong>http1.1是目前最为主流的http协议版本</strong>，从1999年发布至今，仍是主流的http协议版本。</p>
+<ul>
+<li>引入了持久连接，即TCP连接默认不关闭，可以被多个请求复用，不用声明Connection: keep-alive。长连接的连接时长可以通过请求头中的 <code>keep-alive</code> 来设置</li>
+<li>引入了管道机制，即在同一个TCP连接里，客户端可以同时发送多个请求，进一步改进了HTTP协议的效率</li>
+<li>HTTP 1.1 中新增加了 E-tag，If-Unmodified-Since, If-Match, If-None-Match 等缓存控制标头来控制缓存失效</li>
+<li>支持断点续传，通过使用请求头中的 <code>Range</code> 来实现</li>
+<li>使用了虚拟网络，在一台物理服务器上可以存在多个虚拟主机，并且它们共享一个IP地址</li>
+<li>新增方法：PUT、 PATCH、 OPTIONS、 DELETE</li>
+</ul>
+<h4 id="3-2、总结1-0与1-1区别-2">3.2、总结1.0与1.1区别<a class="anchor" href="#3-2、总结1-0与1-1区别-2">·</a></h4>
+<ul>
+<li>
+<p><strong>连接方面</strong></p>
+<p>http1.0 默认使用非持久连接，而 http1.1 默认使用持久连接。http1.1 通过使用持久连接来使多个 http 请求复用同一个 TCP 连接，以此来避免使用非持久连接时每次需要建立连接的时延</p>
+</li>
+<li>
+<p><strong>资源请求方面</strong></p>
+<p>在 http1.0 中，存在一些浪费带宽的现象，例如客户端只是需要某个对象的一部分，而服务器却将整个对象送过来了，并且不支持断点续传功能，http1.1 则在请求头引入了 range 头域，它允许只请求资源的某个部分，即返回码是 206（Partial Content），这样就方便了开发者自由的选择以便于充分利用带宽和连接</p>
+</li>
+<li>
+<p><strong>缓存方面</strong>，在 http1.0 中主要使用 header 里的 If-Modified-Since、Expires 来做为缓存判断的标准，http1.1 则引入了更多的缓存控制策略，例如 Etag、If-Unmodified-Since、If-Match、If-None-Match 等更多可供选择的缓存头来控制缓存策略。</p>
+</li>
+<li>
+<p>http1.1 中<strong>新增了 host 字段</strong>，用来指定服务器的域名。http1.0 中认为每台服务器都绑定一个唯一的 IP 地址，因此，请求消息中的 URL 并没有传递主机名（hostname）。但随着虚拟主机技术的发展，在一台物理服务器上可以存在多个虚拟主机，并且它们共享一个IP地址。因此有了 host 字段，这样就可以将请求发往到同一台服务器上的不同网站。</p>
+</li>
+<li>
+<p>http1.1 相对于 http1.0 还新增了很多<strong>请求方法</strong>，如 PUT、HEAD、OPTIONS 等。</p>
+</li>
+</ul>
+<h4 id="4、http1-x版本问题-2">4、http1.x版本问题<a class="anchor" href="#4、http1-x版本问题-2">·</a></h4>
+<ul>
+<li>
+<h4 id="安全：-2">安全：<a class="anchor" href="#安全：-2">·</a></h4>
+<p>在传输数据过程中，所有内容都是明文，客户端和服务器端都无法验证对方的身份，无法保证数据的安全性</p>
+</li>
+<li>
+<h4 id="队头阻塞：-2">队头阻塞：<a class="anchor" href="#队头阻塞：-2">·</a></h4>
+<p>HTTP/1.1 版本默认允许复用TCP连接，但是在同一个TCP连接里，所有数据通信是按次序进行的，服务器通常在处理完一个回应后，才会继续去处理下一个，这样子就会造成队头阻塞</p>
+</li>
+<li>
+<h4 id="Keep-alive性能问题-2">Keep-alive性能问题<a class="anchor" href="#Keep-alive性能问题-2">·</a></h4>
+<p>http/1.x 版本支持Keep-alive，用此方案来弥补创建多次连接产生的延迟，但是同样会给服务器带来压力，并且的话，对于单文件被不断请求的服务，Keep-alive会极大影响性能，因为它在文件被请求之后还保持了不必要的连接很长时间</p>
+</li>
+</ul>
+<h4 id="5、HTTP-2-0-2">5、HTTP 2.0<a class="anchor" href="#5、HTTP-2-0-2">·</a></h4>
+<h5 id="1、二进制分帧-2">1、<code>二进制分帧</code><a class="anchor" href="#1、二进制分帧-2">·</a></h5>
+<ul>
+<li>这是一次彻底的二进制协议，头信息和数据体都是二进制，并且统称为&quot;帧&quot;：头信息帧和数据帧。</li>
+<li>HTTP/2 是一个二进制协议。在 HTTP/1.1 版中，报文的头信息必须是文本（ASCII 编码），数据体可以是文本，也可以是二进制。HTTP/2 则是一个彻底的二进制协议，头信息和数据体都是二进制，并且统称为&quot;帧&quot;，可以分为头信息帧和数据帧。 帧的概念是它实现多路复用的基础。</li>
+</ul>
+<h5 id="2、头部压缩-2">2、<code>头部压缩</code><a class="anchor" href="#2、头部压缩-2">·</a></h5>
+<ul>
+<li>HTTP 1.1版本会出现 <strong>「User-Agent、Cookie、Accept、Server、Range」</strong> 等字段可能会占用几百甚至几千字节，而 Body 却经常只有几十字节，所以导致头部偏重。</li>
+<li>HTTP 2.0 使用 <code>HPACK</code> 算法进行压缩。</li>
+</ul>
+<h5 id="3、多路复用-2">3、<code>多路复用</code><a class="anchor" href="#3、多路复用-2">·</a></h5>
+<ul>
+<li>复用TCP连接，在一个连接里，客户端和浏览器都可以同时发送多个请求或回应，且不用按顺序一一对应，这样子解决了队头阻塞的问题。</li>
+</ul>
+<h5 id="4、服务器推送-2">4、<code>服务器推送</code><a class="anchor" href="#4、服务器推送-2">·</a></h5>
+<ul>
+<li>允许服务器未经请求，主动向客户端发送资源，即服务器推送。</li>
+</ul>
+<h5 id="5、请求优先级-2">5、<code>请求优先级</code><a class="anchor" href="#5、请求优先级-2">·</a></h5>
+<ul>
+<li>可以设置数据帧的优先级，让服务端先处理重要资源，优化用户体验</li>
+</ul>
+<h4 id="6、3-0-QUIC-协议-2">6、3.0  QUIC 协议<a class="anchor" href="#6、3-0-QUIC-协议-2">·</a></h4>
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/45a0a2ec0ef143b49d79256cea543418~tplv-k3u1fbpfcp-watermark.awebp" alt="img" style="zoom:25%;" />
+<h5 id="1-特点：-2">1. 特点：<a class="anchor" href="#1-特点：-2">·</a></h5>
+<ul>
+<li>HTTP/3 是基于 UDP 实现的，实现了类似于 TCP 的多路数据流、传输可靠性等功能，称为 QUIC 协议
+<ul>
+<li>实现了类似 TCP 的流量控制、传输可靠性的功能。虽然 UDP 不提供可靠性的传输，但 QUIC 在 UDP 的基础之上增加了一层来保证数据可靠性传输。它提供了数据包重传、拥塞控制以及其他一些 TCP 中存在的特性。</li>
+<li>集成了 TLS 加密功能。目前 QUIC 使用的是 TLS1.3，相较于早期版本 TLS1.3 有更多的优点，其中最重要的一点是减少了握手所花费的 RTT 个数。</li>
+<li>实现了 HTTP/2 中的多路复用功能。和 TCP 不同，QUIC 实现了在同一物理连接上可以有多个独立的逻辑数据流（如下图）。实现了数据流的单独传输，就解决了 TCP 中队头阻塞的问题。</li>
+<li>实现了快速握手功能。由于 QUIC 是基于 UDP 的，所以 QUIC 可以实现使用 0-RTT 或者 1-RTT 来建立连接，这意味着 QUIC 可以用最快的速度来发送和接收数据，这样可以大大提升首次打开页面的速度。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-HTTP-3-的挑战-2">2. HTTP/3 的挑战<a class="anchor" href="#2-HTTP-3-的挑战-2">·</a></h5>
+<ul>
+<li>第一，从目前的情况来看，服务器和浏览器端都没有对 HTTP/3 提供比较完整的支持。Chrome 虽然在数年前就开始支持 Google 版本的 QUIC，但是这个版本的 QUIC 和官方的 QUIC 存在着非常大的差异。</li>
+<li>第二，部署 HTTP/3 也存在着非常大的问题。因为系统内核对 UDP 的优化远远没有达到 TCP 的优化程度，这也是阻碍 QUIC 的一个重要原因。</li>
+<li>第三，中间设备僵化的问题。这些设备对 UDP 的优化程度远远低于 TCP，据统计使用 QUIC 协议时，大约有 3%～7% 的丢包率。</li>
+</ul>
+<h3 id="4、对HTTP-2理解-2">4、对HTTP/2理解<a class="anchor" href="#4、对HTTP-2理解-2">·</a></h3>
+<h4 id="1、头部压缩-2">1、头部压缩<a class="anchor" href="#1、头部压缩-2">·</a></h4>
+<ul>
+<li>
+<p>由于 HTTP 1.1 协议不带状态，每次请求都必须附上所有信息。</p>
+<ul>
+<li>
+<p>所以，请求的很多字段都是重复的，比如 Cookie 和 User Agent ，一模一样的内容，每次请求都必须附带，这会浪费很多带宽，也影响速度。</p>
+</li>
+<li>
+<p><strong>「User-Agent、Cookie、Accept、Server、Range」</strong> 等字段可能会占用几百甚至几千字节，而 Body 却经常只有几十字节，所以导致头部偏重</p>
+</li>
+</ul>
+</li>
+<li>
+<p>HTTP/2 实现了头信息压缩，引入了头信息压缩机制。</p>
+<ul>
+<li>一方面，头信息使用 gzip 或 compress 压缩后再发送；</li>
+<li>另一方面，客户端和服务器同时维护一张头信息表<code>HPACK</code> 算法，所有字段都会存入这个表，生成一个索引号，以后就不发送同样字段了，只发送索引号，这样就能提高速度了</li>
+</ul>
+</li>
+<li>
+<h4 id="HPACK-算法：-传索引-2"><code>HPACK</code> 算法：  传索引<a class="anchor" href="#HPACK-算法：-传索引-2">·</a></h4>
+<ul>
+<li>类似于索引表，每个索引表对应一个值，比如索引为2对应头部中的method头部信息，这样子的话，在传输的时候，不在是传输对应的头部信息了，而是传递索引</li>
+<li>对于之前出现过的头部信息，只需要把**「索引」**(比如1，2，…)传给对方，对方拿到索引查表就行了</li>
+</ul>
+</li>
+</ul>
+<img src="https://user-images.githubusercontent.com/34484322/89356545-a3fd4100-d6f0-11ea-8e0a-8870d832e96e.png" alt="img" style="zoom: 33%;" />
+<ul>
+<li>
+<h4 id="好处：-2">好处：<a class="anchor" href="#好处：-2">·</a></h4>
+<ol>
+<li>
+<p>这种**「传索引」**的方式，可以说让请求头字段得到极大程度的精简和复用</p>
+</li>
+<li>
+<p>其次是对于整数和字符串进行**「哈夫曼编码」**</p>
+<p>哈夫曼编码的原理就是先将所有出现的字符建立一张索引表</p>
+<p>然后让出现次数多的字符对应的索引尽可能短，传输的时候也是传输这样的**「索引序列」**，可以达到非常高的压缩率</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="2、多路复用-2">2、多路复用<a class="anchor" href="#2、多路复用-2">·</a></h4>
+<p>HTTP 1.x 中，如果想并发多个请求，必须使用多个 TCP 链接，且浏览器为了控制资源，还会对单个域名有 6-8个的TCP链接请求限制。</p>
+<h5 id="HTTP2中：-2">HTTP2中：<a class="anchor" href="#HTTP2中：-2">·</a></h5>
+<ul>
+<li>
+<p>同域名下所有通信都在单个连接上完成。</p>
+</li>
+<li>
+<p>单个连接可以承载任意数量的双向数据流。</p>
+</li>
+<li>
+<p>数据流以消息的形式发送，而消息又由一个或多个帧组成，多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装，也就是<code>Stream ID</code>，流标识符</p>
+<p>有了它，接收方就能从乱序的二进制帧中选择ID相同的帧，按照顺序组装成请求/响应报文。</p>
+</li>
+<li>
+<p>HTTP/2 实现了多路复用，HTTP/2 仍然复用 TCP 连接，但是在一个连接里，客户端和服务器都可以同时发送多个请求或回应，而且不用按照顺序一一发送，这样就避免了**“队头堵塞”**的问题。</p>
+</li>
+</ul>
+<h4 id="3、服务器推送-2">3、服务器推送<a class="anchor" href="#3、服务器推送-2">·</a></h4>
+<ul>
+<li>HTTP/2 允许服务器未经请求，主动向客户端发送资源，这叫做服务器推送，这样就可以相对减少一些延迟时间</li>
+<li>需要注意的是 http2 下服务器主动推送的是<strong>静态资源</strong>，和 WebSocket 以及使用 SSE 等方式向客户端发送即时数据的推送是不同的。</li>
+</ul>
+<h5 id="相比较http-1-1的优势👇-2">相比较http/1.1的优势👇<a class="anchor" href="#相比较http-1-1的优势👇-2">·</a></h5>
+<ul>
+<li>推送资源可以由不同页面共享</li>
+<li>服务器可以按照优先级推送资源</li>
+<li>客户端可以缓存推送的资源</li>
+<li>客户端可以拒收推送过来的资源</li>
+</ul>
+<h4 id="4、二进制分帧与数据流-2">4、二进制分帧与数据流<a class="anchor" href="#4、二进制分帧与数据流-2">·</a></h4>
+<h5 id="二进制帧：-2">二进制帧：<a class="anchor" href="#二进制帧：-2">·</a></h5>
+<ul>
+<li>
+<p>在 HTTP/1.1 版中，报文的头信息必须是文本（ASCII 编码），数据体可以是文本，也可以是二进制。</p>
+</li>
+<li>
+<p>HTTP/2 则是一个彻底的二进制协议，一个报文格式就被拆分为一个个二进制帧，帧的概念是它实现多路复用的基础。</p>
+<ul>
+<li>
+<p>用**「Headers帧」<strong>存放头部字段，</strong>「Data帧」**存放请求体数据。这样子的话，就是一堆乱序的二进制帧，它们不存在先后关系，因此不需要排队等待，解决了HTTP队头阻塞问题</p>
+</li>
+<li>
+<p>HTTP/2采用二进制格式，全部传输01串，便于机器解码</p>
+<p>明文传输，不方便计算机解析，对于回车换行符来说到底是内容还是分隔符，都需要内部状态机去识别，这样子效率低</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="数据流：-2">数据流：<a class="anchor" href="#数据流：-2">·</a></h5>
+<ul>
+<li>在客户端与服务器之间，双方都可以互相发送二进制帧，这样子**「双向传输的序列」<strong>，称为<code>流</code>，所以HTTP/2中以</strong>流<strong>来</strong>表示一个TCP连接上进行多个数据帧的通信**，这就是<strong>多路复用</strong>概念</li>
+<li>HTTP/2 使用了数据流的概念，因为 HTTP/2 的数据包是不按顺序发送的，同一个连接里面连续的数据包，可能属于不同的请求。因此，必须要对数据包做标记，指出它属于哪个请求。
+<ul>
+<li>HTTP/2 将每个请求或回应的所有数据包，称为一个数据流；</li>
+<li>每个数据流都有一个独一无二的编号。数据包发送时，都必须标记数据流 ID ，用来区分它属于哪个数据流。</li>
+</ul>
+</li>
+</ul>
+<h5 id="那乱序的二进制帧，是如何组装成对于的报文呢？-2">那乱序的二进制帧，是如何组装成对于的报文呢？<a class="anchor" href="#那乱序的二进制帧，是如何组装成对于的报文呢？-2">·</a></h5>
+<ul>
+<li>乱序，指的是不同ID的Stream是乱序的，对于同一个Stream ID的帧是按顺序传输的</li>
+<li>接收方收到二进制帧后，将相同的Stream ID组装成完整的请求报文和响应报文</li>
+<li>二进制帧中有一些字段，控制着<code>优先级</code>和<code>流量控制</code>等功能，这样子的话，就可以设置数据帧的优先级，让服务器处理重要资源，优化用户体验</li>
+</ul>
+<h5 id="队头阻塞-2">队头阻塞<a class="anchor" href="#队头阻塞-2">·</a></h5>
+<ul>
+<li>队头阻塞是由 HTTP 基本的“请求 - 应答”模型所导致的；</li>
+<li>HTTP 规定报文必须是“一发一收”，这就形成了一个先进先出的“串行”队列。</li>
+<li>队列里的请求是没有优先级的，只有入队的先后顺序，排在最前面的请求会被最优先处理；</li>
+<li>如果队首的请求因为处理的太慢耽误了时间，那么队列里后面的所有请求也不得不跟着一起等待，结果就是其他的请求承担了不应有的时间成本，造成了队头堵塞的现象。</li>
+</ul>
+<h3 id="5、keep-alive-2">5、keep-alive<a class="anchor" href="#5、keep-alive-2">·</a></h3>
+<h4 id="1、什么是keep-alive-2">1、什么是keep-alive<a class="anchor" href="#1、什么是keep-alive-2">·</a></h4>
+<ul>
+<li>
+<h4 id="普通模式：-2">普通模式：<a class="anchor" href="#普通模式：-2">·</a></h4>
+<p>HTTP协议采用“请求-应答”模式，当使用普通模式时，每个请求/应答客户和服务器都要新建一个连接，完成 之后立即断开连接，这就是<strong>短连接</strong>。（HTTP协议为无连接的协议）</p>
+</li>
+<li>
+<h4 id="Keep-Alive模式：-2">Keep-Alive模式：<a class="anchor" href="#Keep-Alive模式：-2">·</a></h4>
+<p>当使用Keep-Alive模式（又称持久连接、连接重用）时，Keep-Alive功能使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive功能避免了建立或者重新建立连接 ，这就是<strong>长连接</strong>。</p>
+</li>
+</ul>
+<h4 id="2、为什么要使用keep-alive-2">2、为什么要使用keep-alive<a class="anchor" href="#2、为什么要使用keep-alive-2">·</a></h4>
+<ul>
+<li>**创建目的：**能在多次HTTP之前重用同一个TCP连接，从而减少创建/关闭多个 TCP 连接的开销（包括响应时间、CPU 资源、减少拥堵等）</li>
+</ul>
+<img src="https://user-images.githubusercontent.com/34484322/89356849-64832480-d6f1-11ea-8f53-5372f8c30f39.png" alt="img" style="zoom:50%;" />
+<ul>
+<li>优点：
+<ul>
+<li>较少的CPU和内存的使⽤（由于同时打开的连接的减少了）；</li>
+<li>允许请求和应答的HTTP管线化；</li>
+<li>降低拥塞控制 （TCP连接减少了）；</li>
+<li>减少了后续请求的延迟（⽆需再进⾏握⼿）；</li>
+<li>报告错误⽆需关闭TCP连；</li>
+</ul>
+</li>
+<li>缺点：长时间的Tcp连接容易导致系统资源无效占用，浪费系统资源。</li>
+</ul>
+<h4 id="3、客户端如何开启-2">3、客户端如何开启<a class="anchor" href="#3、客户端如何开启-2">·</a></h4>
+<p>Keep-Alive的<strong>建立过程</strong>：</p>
+<ul>
+<li>客户端向服务器在发送请求报文同时在首部添加发送Connection字段</li>
+<li>服务器收到请求并处理 Connection字段</li>
+<li>服务器回送Connection:Keep-Alive字段给客户端</li>
+<li>客户端接收到Connection字段</li>
+<li>Keep-Alive连接建立成功</li>
+</ul>
+<p><strong>服务端自动断开过程（也就是没有keep-alive）</strong>：</p>
+<ul>
+<li>客户端向服务器只是发送内容报文（不包含Connection字段）</li>
+<li>服务器收到请求并处理</li>
+<li>服务器返回客户端请求的资源并关闭连接</li>
+<li>客户端接收资源，发现没有Connection字段，断开连接</li>
+</ul>
+<p><strong>客户端请求断开连接过程</strong>：</p>
+<ul>
+<li>客户端向服务器发送Connection:close字段</li>
+<li>服务器收到请求并处理connection字段</li>
+<li>服务器回送响应资源并断开连接</li>
+<li>客户端接收资源并断开连接</li>
+</ul>
+<h3 id="6、请求方法get-post-2">6、请求方法get/post<a class="anchor" href="#6、请求方法get-post-2">·</a></h3>
+<h4 id="1、HTTP请求方法-2">1、HTTP请求方法<a class="anchor" href="#1、HTTP请求方法-2">·</a></h4>
+<ul>
+<li>HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法</li>
+<li>HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT</li>
+</ul>
+<p><code>http/1.1</code>规定了以下请求方法(注意，都是大写):</p>
+<ul>
+<li>
+<p>GET：                请求获取Request-URI所标识的资源</p>
+</li>
+<li>
+<p>POST：              在Request-URI所标识的资源后附加新的数据</p>
+</li>
+<li>
+<p>HEAD：             请求获取由Request-URI所标识的资源的响应消息报头，没有响应体</p>
+</li>
+<li>
+<p>PUT：                请求服务器存储一个资源，并用Request-URI作为其标识（修改数据）</p>
+<ul>
+<li>PUT请求是向服务器端发送数据，从而修改数据的内容，但是不会增加数据的种类等</li>
+<li>也就是说无论进行多少次PUT操作，其结果并没有不同。（可以理解为时<strong>更新数据</strong>）</li>
+</ul>
+</li>
+<li>
+<p>OPTIONS：       用于请求获得由<code>Request-URI</code>标识的资源在请求/响应的通信过程中可以使用的功能选项</p>
+<ul>
+<li>通过这个方法，客户端可以<strong>在采取具体资源请求之前，决定对该资源采取何种必要措施，或者了解服务器的性能</strong>。该请求方法的响应不能缓存。</li>
+</ul>
+<p>OPTIONS请求方法的<strong>主要用途</strong>有两个：</p>
+<ul>
+<li>
+<p>获取服务器对该资源支持的所有HTTP请求方法；</p>
+<p>该方法会用’*'来代替资源名称，向服务器发送 OPTIONS 请求，可以测试服务器功能是否正常。</p>
+</li>
+<li>
+<p>用来检查访问权限。例如：JS 的 XMLHttpRequest对象在进行 CORS 跨域资源共享时，对于复杂请求，就是使用 OPTIONS 方法发送嗅探请求，以判断是否有对指定资源的访问权限。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>DELETE：          请求服务器删除对应所标识的资源</p>
+</li>
+<li>
+<p>TRACE：            请求服务器回送收到的请求信息，主要用于测试或诊断</p>
+</li>
+<li>
+<p>CONNECT：      建立连接隧道，用于代理服务器</p>
+</li>
+</ul>
+<h4 id="2、谈一谈GET-和-POST-的区别-2">2、谈一谈GET 和 POST 的区别<a class="anchor" href="#2、谈一谈GET-和-POST-的区别-2">·</a></h4>
+<p>本质上，只是语义上的区别，GET 用于获取资源，POST 用于提交资源。</p>
+<p>从应用场景角度来看，Get 多用于无副作用，幂等的场景，例如搜索关键字。Post 多用于副作用，不幂等的场景，例如注册</p>
+<p>想装逼请参考 https://zhuanlan.zhihu.com/p/22536382</p>
+<h5 id="1、缓存角度-2">1、缓存角度<a class="anchor" href="#1、缓存角度-2">·</a></h5>
+<ul>
+<li>GET 请求后浏览器会主动缓存，POST 默认情况下不能</li>
+</ul>
+<h5 id="2、参数角度-2">2、参数角度<a class="anchor" href="#2、参数角度-2">·</a></h5>
+<ul>
+<li>GET请求一般放在URL中，因此不太安全，因为请求的 url 会被保留在历史记录中</li>
+<li>POST请求放在请求体中，相对而言较为安全，但是在抓包的情况下都是一样的</li>
+</ul>
+<h5 id="3、编码角度-2">3、编码角度<a class="anchor" href="#3、编码角度-2">·</a></h5>
+<ul>
+<li>GET请求只能进行URL编码，只能接受ASCII码，而POST支持更多的编码类型且不对数据类型限值。</li>
+</ul>
+<h5 id="3-2、请求长度：-2">3.2、请求长度：<a class="anchor" href="#3-2、请求长度：-2">·</a></h5>
+<ul>
+<li>
+<p>浏览器由于对 url 长度的限制，所以会影响 get 请求发送数据时的长度。这个限制是浏览器规定的，并不是 RFC 规定的。</p>
+<p><strong>为什么会限制长度？</strong></p>
+<ul>
+<li>实际上HTTP协议规范并没有对get方法请求的url长度进行限制，这个限制是特定的浏览器及服务器对它的限制。</li>
+<li>get方法中的URL长度最长不超过2083个字符，这样所有的浏览器和服务器都可能正常工作。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable constant_">GET</span>的长度值 = <span class="variable constant_">URL</span>（<span class="number">2083</span>）- （你的<span class="title class_">Domain</span>+<span class="title class_">Path</span>）-<span class="number">2</span>（<span class="number">2</span>是get请求中?=两个字符的长度）</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="4、请求幂等-2">4、请求幂等<a class="anchor" href="#4、请求幂等-2">·</a></h5>
+<ul>
+<li>GET请求幂等</li>
+<li>POST请求不幂等，幂等指发送 M 和 N 次请求（两者不相同且都大于1），服务器上资源的状态一致</li>
+</ul>
+<h5 id="5、请求时-2">5、请求时<a class="anchor" href="#5、请求时-2">·</a></h5>
+<ul>
+<li>GET请求会一次性发送请求报文</li>
+<li>POST请求通常分为两个TCP数据包，首先发 header 部分，如果服务器响应 100(continue)， 然后发 body 部分</li>
+</ul>
+<h4 id="3、POST与PUT的区别-2">3、POST与PUT的区别<a class="anchor" href="#3、POST与PUT的区别-2">·</a></h4>
+<ul>
+<li>PUT不会产生新数据，只是覆盖老数据，是幂等的</li>
+<li>POST请求一次就产生一个新数据，是非幂等的</li>
+</ul>
+<h3 id="请求头、响应头">请求头、响应头<a class="anchor" href="#请求头、响应头">·</a></h3>
+<h4 id="HTTP-Request-Header-常见的请求头：-2"><strong>HTTP Request Header 常见的请求头：</strong><a class="anchor" href="#HTTP-Request-Header-常见的请求头：-2">·</a></h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* Accept:浏览器能够处理的内容类型</span><br><span class="line">* Accept-Charset:浏览器能够显示的字符集</span><br><span class="line">* Accept-Encoding：浏览器能够处理的压缩编码</span><br><span class="line">* Accept-Language：浏览器当前设置的语言</span><br><span class="line">* Connection：浏览器与服务器之间连接的类型</span><br><span class="line">* Cookie：当前页面设置的任何Cookie</span><br><span class="line">* Host：发出请求的页面所在的域</span><br><span class="line">* Referer：发出请求的页面的URL</span><br><span class="line">* User-Agent：浏览器的用户代理字符串</span><br></pre></td></tr></table></figure>
+<h4 id="响应头：-2">响应头：<a class="anchor" href="#响应头：-2">·</a></h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HTTP Responses Header 常见的响应头：</span><br><span class="line"></span><br><span class="line">Date：表示消息发送的时间，时间的描述格式由rfc822定义</span><br><span class="line">server:服务器名称</span><br><span class="line">Connection：浏览器与服务器之间连接的类型</span><br><span class="line">Cache-Control：控制HTTP缓存</span><br><span class="line">content-type:表示后面的文档属于什么MIME类型</span><br></pre></td></tr></table></figure>
+<h4 id="常见的-Content-Type-属性值有四种：-2">常见的 Content-Type 属性值有四种：<a class="anchor" href="#常见的-Content-Type-属性值有四种：-2">·</a></h4>
+<p>（1）application/x-www-form-urlencoded：浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 application/x-www-form-urlencoded 方式提交数据。该种方式提交的数据放在 body 里面，数据按照 key1=val1&amp;key2=val2 的方式进行编码，key 和 val 都进行了 URL转码。</p>
+<p>（2）multipart/form-data：该种方式也是一个常见的 POST 提交方式，通常表单上传文件时使用该种方式。</p>
+<p>（3）application/json：服务器消息主体是序列化后的 JSON 字符串。</p>
+<p>（4）text/xml：该种方式主要用来提交 XML 格式的数据。</p>
+<h3 id="7、对URL组成-2">7、对URL组成<a class="anchor" href="#7、对URL组成-2">·</a></h3>
+<h4 id="1、URL与URI-3">1、URL与URI<a class="anchor" href="#1、URL与URI-3">·</a></h4>
+<ul>
+<li>
+<p>URI：统一资源标识符</p>
+<p>父类        表示请求服务器资源，定位这个资源</p>
+</li>
+<li>
+<p>URL：统一资源定位符，常常被称为网址，是因特网上标准的资源地址</p>
+<p>子类       而URL还要表示如何访问这个资源</p>
+<p>通用的格式：scheme://host[:port]/path/…/?query#anchor</p>
+</li>
+</ul>
+<h4 id="2、组成格式：-3">2、组成格式：<a class="anchor" href="#2、组成格式：-3">·</a></h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://www.aspxfans.com:8080/news/index.…</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>**协议：**访问服务器以获取资源时要使用哪种协议，比如：http，https 和 FTP 等后面一定接上://</p>
+</li>
+<li>
+<p>**域名：**该URL的域名部分为“www.aspxfans.com”</p>
+</li>
+<li>
+<p>**port：**跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。</p>
+<ul>
+<li>端口不是一个URL必须的部分，如果省略端口部分，将采用默认端口</li>
+</ul>
+</li>
+<li>
+<p>（HTTP协议默认端口是80，HTTPS协议默认端口是443）；</p>
+</li>
+<li>
+<p><strong>虚拟目录部分</strong>：从域名后的第一个“/”开始到最后一个“/”为止，是虚拟目录部分。虚拟目录也不是一个URL必须的部分。本例中的虚拟目录是“/news/”；</p>
+</li>
+<li>
+<p><strong>文件名部分</strong>：从域名后的最后一个“/”开始到“？”为止，是文件名部分</p>
+<ul>
+<li>如果没有“?”,则是从域名后的最后一个“/”开始到“#”为止，是文件部分</li>
+<li>如果没有“？”和“#”，那么从域名后的最后一个“/”开始到结束，都是文件名部分。</li>
+<li>本例中的文件名是“index.asp”。文件名部分也不是一个URL必须的部分，如果省略该部分，则使用默认的文件名；</li>
+</ul>
+</li>
+<li>
+<p><strong>锚部分</strong>：从“#”开始到最后，都是锚部分。本例的锚部分是“name”。锚部分也不是一个URL必须的部分；</p>
+</li>
+<li>
+<p><strong>参数部分</strong>：从“？”开始到“#”为止之间的部分为参数部分，又称搜索部分、查询部分。</p>
+<p>本例中的参数部分为“boardID=5&amp;ID=24618&amp;page=1”。参数可以允许有多个参数，参数与参数之间用“&amp;”作为分隔符。</p>
+</li>
+</ul>
+<h4 id="3、URL-编码-3">3、URL 编码<a class="anchor" href="#3、URL-编码-3">·</a></h4>
+<ul>
+<li>URL 只能使用 <a href="https://link.juejin.cn?target=https%3A%2F%2Fwww.w3school.com.cn%2Ftags%2Fhtml_ref_ascii.asp">ASCII 字符集</a>来通过因特网进行发送。</li>
+<li>由于 URL 常常会包含 ASCII 集合之外的字符，URL 必须转换为有效的 ASCII 格式。</li>
+<li>URL 编码使用 “%” 其后跟随两位的十六进制数来替换非 ASCII 字符。</li>
+<li>URL 不能包含空格。URL 编码通常使用 + 来替换空格。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">天天`转换为有效的ASCII格式就是`%CC%EC%CC%EC</span><br></pre></td></tr></table></figure>
+<h3 id="8、队头阻塞问题-2">8、队头阻塞问题<a class="anchor" href="#8、队头阻塞问题-2">·</a></h3>
+<h4 id="1、什么是队头阻塞？-2">1、什么是队头阻塞？<a class="anchor" href="#1、什么是队头阻塞？-2">·</a></h4>
+<ul>
+<li>对于每一个HTTP请求而言，这些任务是会被放入一个任务队列中串行执行的</li>
+<li>一旦队首任务请求太慢时，就会阻塞后面的请求处理，这就是<code>HTTP队头阻塞</code>问题</li>
+</ul>
+<h4 id="2、解决1：并发连接-2">2、解决1：并发连接<a class="anchor" href="#2、解决1：并发连接-2">·</a></h4>
+<ul>
+<li>我们知道对于一个域名而言，是允许分配多个长连接的，那么可以理解成增加了任务队列，也就是说不会导致一个任务阻塞了该任务队列的其他任务</li>
+<li>在<code>RFC规范</code>中规定客户端最多并发2个连接，不过实际情况就是要比这个还要多，举个例子，Chrome中是6个。</li>
+</ul>
+<h4 id="3、解决2：域名分片-2">3、解决2：域名分片<a class="anchor" href="#3、解决2：域名分片-2">·</a></h4>
+<ul>
+<li>可以在一个域名下分出多个二级域名出来，而它们最终指向的还是同一个服务器</li>
+<li>就可以并发处理的任务队列更多，也更好的解决了队头阻塞的问题</li>
+</ul>
+<p>比如<code>TianTian.com</code>，可以分出很多二级域名，比如<code>Day1.TianTian.com</code>，<code>Day2.TianTian.com</code>,<code>Day3.TianTian.com</code>,这样子就可以有效解决队头阻塞问题</p>
+<h3 id="9、谈一谈HTTP数据传输-2">9、谈一谈HTTP数据传输<a class="anchor" href="#9、谈一谈HTTP数据传输-2">·</a></h3>
+<p>大概遇到的情况就分为**「定长数据」** 与 **「不定长数据」**的处理吧。</p>
+<h4 id="1、定长数据-2">1、定长数据<a class="anchor" href="#1、定长数据-2">·</a></h4>
+<ul>
+<li>发送端在发送数据的过程中，需要设置<code>Content-Length</code>,来指明发送数据的长度。如果采用了Gzip压缩的话，Content-Length设置的就是压缩后的传输长度</li>
+</ul>
+<p>【注意】：</p>
+<ul>
+<li>Content-Length如果存在并且有效的话，则必须和消息内容的传输长度完全一致，也就是说，如果过短就会截断，过长的话，就会导致超时。</li>
+<li>如果采用短链接的话，直接可以通过服务器关闭连接来确定消息的传输长度。</li>
+<li>那么在HTTP/1.0之前的版本中，Content-Length字段可有可无,因为一旦服务器关闭连接，我们就可以获取到传输数据的长度了。</li>
+<li>在HTTP/1.1版本中，如果是Keep-alive的话，chunked优先级高于<code>Content-Length</code>,若是非Keep-alive，跟前面情况一样，Content-Length可有可无</li>
+</ul>
+<h4 id="2、不定长数据-2">2、不定长数据<a class="anchor" href="#2、不定长数据-2">·</a></h4>
+<p>现在采用最多的就是HTTP/1.1版本，来完成传输数据，在保存Keep-alive状态下，当数据是不定长的时候，我们需要设置新的头部字段👇</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Transfer-Encoding: chunked</span><br></pre></td></tr></table></figure>
+<p>通过chunked机制，可以完成对不定长数据的处理，当然了，你需要知道的是</p>
+<ul>
+<li>如果头部信息中有<code>Transfer-Encoding</code>,优先采用Transfer-Encoding里面的方法来找到对应的长度。</li>
+<li>如果设置了Transfer-Encoding，那么Content-Length将被忽视。</li>
+<li>使用长连接的话，会持续的推送动态内容。</li>
+</ul>
+<p>那我们来模拟一下吧👇</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const server = require(&#x27;http&#x27;).createServer();</span><br><span class="line">server.on(&#x27;request&#x27;, (req, res) =&gt; &#123;</span><br><span class="line">  if(req.url === &#x27;/index&#x27;) &#123;</span><br><span class="line">   // 设置数据类型</span><br><span class="line">    res.setHeader(&#x27;Content-Type&#x27;, &#x27;text/html; charset=utf8&#x27;);</span><br><span class="line">    res.setHeader(&#x27;Content-Length&#x27;, 10);</span><br><span class="line">    res.setHeader(&#x27;Transfer-Encoding&#x27;, &#x27;chunked&#x27;);</span><br><span class="line">    </span><br><span class="line">    res.write(&quot;你好，使用的是Transfer-Encoding设置传输数据形式&quot;);</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      res.write(&quot;第一次传输数据给您&lt;br/&gt;&quot;);</span><br><span class="line">    &#125;, 1000);</span><br><span class="line">    res.write(&quot;骚等一下&quot;);</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      res.write(&quot;第一次传输数据给您&quot;);</span><br><span class="line">      res.end()</span><br><span class="line">    &#125;, 3000);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(3000, () =&gt; &#123;</span><br><span class="line">  console.log(&quot;成功启动--TinaTian&quot;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>关于HTTP</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-12-13</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-01-09</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://images.unsplash.com/photo-1639254399161-9d6d729132d1?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=435&amp;q=80" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 33234});
+(function() {
+  if ('WIDGETPACK_LOADED' in window) return;
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement('script');
+  mc.type = 'text/javascript';
+  mc.async = true;
+  mc.src = '//embed.widgetpack.com/widget.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/http-cache.html"><img class="prev-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/kuayu.png" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">关于跨域问题</div></div></a></div><div class="next-post pull-right"><a href="/posts/1168384896.html"><img class="next-cover" src="https://images.unsplash.com/photo-1639238096324-9ddecb31c0cb?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">浏览器的进程、线程</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avartor.webp" onerror="this.onerror=null;this.src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/myNightwish" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zml_byr@bupt.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81HTTP%E6%A6%82%E8%BF%B0-2"><span class="toc-text">1、HTTP概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9A-2"><span class="toc-text">1、是什么：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E7%89%B9%E7%82%B9%EF%BC%9A-2"><span class="toc-text">2、特点：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E7%81%B5%E6%B4%BB%E5%8F%AF%E6%89%A9%E5%B1%95-2"><span class="toc-text">1、灵活可扩展</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E8%AF%B7%E6%B1%82-%E5%BA%94%E7%AD%94%E6%A8%A1%E5%BC%8F-2"><span class="toc-text">2、请求-应答模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93-2"><span class="toc-text">3、可靠传输</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81%E6%97%A0%E7%8A%B6%E6%80%81-2"><span class="toc-text">4、无状态</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BC%98%E3%80%81%E7%BC%BA%E7%82%B9-2"><span class="toc-text">3、优、缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E6%97%A0%E7%8A%B6%E6%80%81-2"><span class="toc-text">1、无状态</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E6%98%8E%E6%96%87%E4%BC%A0%E8%BE%93-2"><span class="toc-text">2、明文传输</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E-2"><span class="toc-text">3、队头阻塞</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81HTTP-%E7%8A%B6%E6%80%81%E7%A0%81-2"><span class="toc-text">2、HTTP 状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%811xx-%E4%BF%A1%E6%81%AF%E7%B1%BB-2"><span class="toc-text">1、1xx 信息类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%812xx-%E6%88%90%E5%8A%9F-2"><span class="toc-text">2、2xx 成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%813xx-%E9%87%8D%E5%AE%9A%E5%90%91-2"><span class="toc-text">3、3xx 重定向</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8C%E6%A0%B7%E6%98%AF%E9%87%8D%E5%AE%9A%E5%90%91%EF%BC%8C307%EF%BC%8C303%EF%BC%8C302%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F-2"><span class="toc-text">同样是重定向，307，303，302的区别？</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%814XX-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%94%99%E8%AF%AF-2"><span class="toc-text">4、4XX 客户端错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%815XX-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%94%99%E8%AF%AF-2"><span class="toc-text">5、5XX 服务器错误</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81HTTP%E7%89%88%E6%9C%AC%E5%B7%AE%E5%BC%82-2"><span class="toc-text">3、HTTP版本差异</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81HTTP-0-9-2"><span class="toc-text">1、HTTP 0.9</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81HTTP-1-0-2"><span class="toc-text">2、HTTP 1.0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81HTTP-1-1-2"><span class="toc-text">3、HTTP 1.1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2%E3%80%81%E6%80%BB%E7%BB%931-0%E4%B8%8E1-1%E5%8C%BA%E5%88%AB-2"><span class="toc-text">3.2、总结1.0与1.1区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81http1-x%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98-2"><span class="toc-text">4、http1.x版本问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%EF%BC%9A-2"><span class="toc-text">安全：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%EF%BC%9A-2"><span class="toc-text">队头阻塞：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Keep-alive%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98-2"><span class="toc-text">Keep-alive性能问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81HTTP-2-0-2"><span class="toc-text">5、HTTP 2.0</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%88%86%E5%B8%A7-2"><span class="toc-text">1、二进制分帧</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%A4%B4%E9%83%A8%E5%8E%8B%E7%BC%A9-2"><span class="toc-text">2、头部压缩</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-2"><span class="toc-text">3、多路复用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81-2"><span class="toc-text">4、服务器推送</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81%E8%AF%B7%E6%B1%82%E4%BC%98%E5%85%88%E7%BA%A7-2"><span class="toc-text">5、请求优先级</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%813-0-QUIC-%E5%8D%8F%E8%AE%AE-2"><span class="toc-text">6、3.0  QUIC 协议</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%89%B9%E7%82%B9%EF%BC%9A-2"><span class="toc-text">1. 特点：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-HTTP-3-%E7%9A%84%E6%8C%91%E6%88%98-2"><span class="toc-text">2. HTTP&#x2F;3 的挑战</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%AF%B9HTTP-2%E7%90%86%E8%A7%A3-2"><span class="toc-text">4、对HTTP&#x2F;2理解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%A4%B4%E9%83%A8%E5%8E%8B%E7%BC%A9-2"><span class="toc-text">1、头部压缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HPACK-%E7%AE%97%E6%B3%95%EF%BC%9A-%E4%BC%A0%E7%B4%A2%E5%BC%95-2"><span class="toc-text">HPACK 算法：  传索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A5%BD%E5%A4%84%EF%BC%9A-2"><span class="toc-text">好处：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-2"><span class="toc-text">2、多路复用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#HTTP2%E4%B8%AD%EF%BC%9A-2"><span class="toc-text">HTTP2中：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81-2"><span class="toc-text">3、服务器推送</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B8%E6%AF%94%E8%BE%83http-1-1%E7%9A%84%E4%BC%98%E5%8A%BF%F0%9F%91%87-2"><span class="toc-text">相比较http&#x2F;1.1的优势👇</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%88%86%E5%B8%A7%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%B5%81-2"><span class="toc-text">4、二进制分帧与数据流</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B8%A7%EF%BC%9A-2"><span class="toc-text">二进制帧：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%EF%BC%9A-2"><span class="toc-text">数据流：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%82%A3%E4%B9%B1%E5%BA%8F%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B8%A7%EF%BC%8C%E6%98%AF%E5%A6%82%E4%BD%95%E7%BB%84%E8%A3%85%E6%88%90%E5%AF%B9%E4%BA%8E%E7%9A%84%E6%8A%A5%E6%96%87%E5%91%A2%EF%BC%9F-2"><span class="toc-text">那乱序的二进制帧，是如何组装成对于的报文呢？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E-2"><span class="toc-text">队头阻塞</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81keep-alive-2"><span class="toc-text">5、keep-alive</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFkeep-alive-2"><span class="toc-text">1、什么是keep-alive</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E6%A8%A1%E5%BC%8F%EF%BC%9A-2"><span class="toc-text">普通模式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Keep-Alive%E6%A8%A1%E5%BC%8F%EF%BC%9A-2"><span class="toc-text">Keep-Alive模式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8keep-alive-2"><span class="toc-text">2、为什么要使用keep-alive</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%A6%82%E4%BD%95%E5%BC%80%E5%90%AF-2"><span class="toc-text">3、客户端如何开启</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95get-post-2"><span class="toc-text">6、请求方法get&#x2F;post</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81HTTP%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95-2"><span class="toc-text">1、HTTP请求方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E8%B0%88%E4%B8%80%E8%B0%88GET-%E5%92%8C-POST-%E7%9A%84%E5%8C%BA%E5%88%AB-2"><span class="toc-text">2、谈一谈GET 和 POST 的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E7%BC%93%E5%AD%98%E8%A7%92%E5%BA%A6-2"><span class="toc-text">1、缓存角度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%8F%82%E6%95%B0%E8%A7%92%E5%BA%A6-2"><span class="toc-text">2、参数角度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E7%BC%96%E7%A0%81%E8%A7%92%E5%BA%A6-2"><span class="toc-text">3、编码角度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2%E3%80%81%E8%AF%B7%E6%B1%82%E9%95%BF%E5%BA%A6%EF%BC%9A-2"><span class="toc-text">3.2、请求长度：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81%E8%AF%B7%E6%B1%82%E5%B9%82%E7%AD%89-2"><span class="toc-text">4、请求幂等</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81%E8%AF%B7%E6%B1%82%E6%97%B6-2"><span class="toc-text">5、请求时</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81POST%E4%B8%8EPUT%E7%9A%84%E5%8C%BA%E5%88%AB-2"><span class="toc-text">3、POST与PUT的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4%E3%80%81%E5%93%8D%E5%BA%94%E5%A4%B4"><span class="toc-text">请求头、响应头</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-Request-Header-%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4%EF%BC%9A-2"><span class="toc-text">HTTP Request Header 常见的请求头：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4%EF%BC%9A-2"><span class="toc-text">响应头：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84-Content-Type-%E5%B1%9E%E6%80%A7%E5%80%BC%E6%9C%89%E5%9B%9B%E7%A7%8D%EF%BC%9A-2"><span class="toc-text">常见的 Content-Type 属性值有四种：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E5%AF%B9URL%E7%BB%84%E6%88%90-2"><span class="toc-text">7、对URL组成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81URL%E4%B8%8EURI-3"><span class="toc-text">1、URL与URI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E7%BB%84%E6%88%90%E6%A0%BC%E5%BC%8F%EF%BC%9A-3"><span class="toc-text">2、组成格式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81URL-%E7%BC%96%E7%A0%81-3"><span class="toc-text">3、URL 编码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%E9%97%AE%E9%A2%98-2"><span class="toc-text">8、队头阻塞问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%9F%E5%A4%B4%E9%98%BB%E5%A1%9E%EF%BC%9F-2"><span class="toc-text">1、什么是队头阻塞？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E8%A7%A3%E5%86%B31%EF%BC%9A%E5%B9%B6%E5%8F%91%E8%BF%9E%E6%8E%A5-2"><span class="toc-text">2、解决1：并发连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E8%A7%A3%E5%86%B32%EF%BC%9A%E5%9F%9F%E5%90%8D%E5%88%86%E7%89%87-2"><span class="toc-text">3、解决2：域名分片</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E8%B0%88%E4%B8%80%E8%B0%88HTTP%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93-2"><span class="toc-text">9、谈一谈HTTP数据传输</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%AE%9A%E9%95%BF%E6%95%B0%E6%8D%AE-2"><span class="toc-text">1、定长数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%95%B0%E6%8D%AE-2"><span class="toc-text">2、不定长数据</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0</span><span>%</span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-hexo-git-main-mynightwish.vercel.app/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-hexo-git-main-mynightwish.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async data-pjax src="/js/newAdd.js"></script><div defer class="aplayer no-destroy" data-id="31872922" data-server="netease" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script async data-pjax src="https://cdn.jsdelivr.net/npm/hexo-beautiful-page@latest/lib/asyncmodel.min.js"></script><div id="live3d" class="live3d" style="position: fixed; left: -100px; bottom: 30px; width: 500px !important;height: 437.5px !important;z-index: 98;"><canvas id="live2dm" class="live3d"style="max-width:500px;max-height:437.5px;"></canvas></div><script defer data-pjax src="/js/bottomTime.js"></script><script async data-pjax src="/js/custom/nav.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer data-pjax src="/js/emoji.js"></script><script defer data-pjax src="/js/sun_moon.js" async></script><script defer src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementsByClassName('category-lists')[0] && (location.pathname ==='/categories/'|| '/categories/' ==='all')){
+    var parent = document.getElementsByClassName('category-lists')[0];
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-1-CSS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍭 CSS<br>(17)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-2-JS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🥑 JS、ES<br>(29)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-3-Ajax/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🥝 Ajax、Axios<br>(3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-4-框架/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍡 React、Vue<br>(15)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-1-组件库/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍉 组件库开发<br>(1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-2-基建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🐱‍🚀 项目基建<br>(5)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-3-实现Tricks/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💫 积累功能<br>(4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-4-项目/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🔮 项目总结<br>(12)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-1-记录/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👻 碎碎念~<br>(3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-2-浏览器/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 浏览器渲染<br>(8)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-3-基础/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🧊 网络<br>(10)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-4-Tool-Shell/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍤 工具、脚本<br>(1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="https://mynightwish.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(25% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style>
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?myNightwish";
+            var git_color =['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'];
+            var git_user ="myNightwish";
+            var parent_div_git = document.getElementById('archive');
+            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/archives/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('archive')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="/js/clock/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="/js/clock/clock.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-virtualDom.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-13</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">React的虚拟DOM</a><div class="blog-slider__text">兄弟篇React的虚拟DOM，包括了栈调和</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/hook1.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt="">React-Hook的出现</a><div class="blog-slider__text">为何Hooks是React的未来</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/浏览器异步.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfnIl0f3oUJLgGFb7Qgi97y1hY9uIQsHizXQ&amp;usqp=CAU" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">JS的异步解决方案</a><div class="blog-slider__text">前端异步之路</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="/js/swiperFix.js"></script><!-- hexo injector body_end end --><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

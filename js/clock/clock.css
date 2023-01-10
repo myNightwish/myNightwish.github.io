@@ -1,0 +1,43 @@
+@font-face{
+    font-family:'CandyC' ;  /* 字体名自定义即可 */
+    src: url('/fonts/CandyC.ttf'); /* 字体文件路径 */
+    font-display: swap;
+}
+#hexo_electric_clock {
+    padding: 15px;
+    font-family: CandyC;
+}
+.card-clock {
+    padding: 0 !important;
+}
+.card-background {
+    height: 153px;
+    margin: 15px;
+    border-radius: 10px;
+    background-color: #ececec;
+    z-index: 2;
+}
+.clock-row {
+    font-weight: 400;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+
+}
+.clock-row:nth-of-type(1) {
+    justify-content: space-between;
+}
+
+.card-clock-ip {
+    text-align: center;
+}
+[data-theme="dark"]
+  .card-background{
+    background-color: #212121;
+    }
+[data-theme="dark"]
+  .clock-row{
+    color: #fff;
+  }

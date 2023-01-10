@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /  
+Allow: /tags/ 
+Allow: /categories/
+Allow: /archives/ 
+Allow: /music/
+Allow: /movies/
+Allow: /books/  
+Allow: /charts/
+Allow: /census/
+Disallow: /js/
+Disallow: /css/ 
+Disallow: /lib/ 
+Sitemap: https://mynightwish.top/sitemap.xml
