@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  初始化header
+  // 初始化header
   const initAdjust = () => {
     adjustMenu()
     document.getElementById('nav').classList.add('show')
@@ -830,51 +830,20 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   }
 
-  // const unRefreshFn = function () {
-  //   window.addEventListener('resize', adjustMenu)
-  //   window.addEventListener('orientationchange', () => { setTimeout(adjustMenu(true), 100) })
-
-  //   clickFnOfSubMenu()
-  //   GLOBAL_CONFIG.islazyload && lazyloadImg()
-  //   GLOBAL_CONFIG.copyright !== undefined && addCopyright()
-  // }
-
   const unRefreshFn = function () {
-    window.addEventListener('resize', () => {
-      btf.isHidden(document.getElementById('toggle-menu')) && mobileSidebarOpen && sidebarFn.close()
-    })
+    window.addEventListener('resize', adjustMenu)
+    window.addEventListener('orientationchange', () => { setTimeout(adjustMenu(true), 100) })
+
+    clickFnOfSubMenu()
+    GLOBAL_CONFIG.islazyload && lazyloadImg()
+    GLOBAL_CONFIG.copyright !== undefined && addCopyright()
   }
 
-  // window.refreshFn = function () {
-  //   initAdjust()
-
-  //   if (GLOBAL_CONFIG_SITE.isPost) {
-  //     GLOBAL_CONFIG_SITE.isToc && tocFn()
-  //     GLOBAL_CONFIG.noticeOutdate !== undefined && addPostOutdateNotice()
-  //     GLOBAL_CONFIG.relativeDate.post && relativeDate(document.querySelectorAll('#post-meta time'))
-  //   } else {
-  //     GLOBAL_CONFIG.relativeDate.homepage && relativeDate(document.querySelectorAll('#recent-posts time'))
-  //     GLOBAL_CONFIG.runtime && addRuntime()
-  //     addLastPushDate()
-  //     toggleCardCategory()
-  //   }
-
-  //   sidebarFn()
-  //   GLOBAL_CONFIG_SITE.isHome && scrollDownInIndex()
-  //   addHighlightTool()
-  //   GLOBAL_CONFIG.isPhotoFigcaption && addPhotoFigcaption()
-  //   jqLoadAndRun()
-  //   GLOBAL_CONFIG.lightbox === 'mediumZoom' && addMediumZoom()
-  //   scrollFn()
-  //   addTableWrap()
-  //   clickFnOfTagHide()
-  //   tabsFn.clickFnOfTabs()
-  //   tabsFn.backToTop()
-  //   switchComments()
-  // }
-
   window.refreshFn = function () {
+    initAdjust()
+
     if (GLOBAL_CONFIG_SITE.isPost) {
+      GLOBAL_CONFIG_SITE.isToc && tocFn()
       GLOBAL_CONFIG.noticeOutdate !== undefined && addPostOutdateNotice()
       GLOBAL_CONFIG.relativeDate.post && relativeDate(document.querySelectorAll('#post-meta time'))
     } else {

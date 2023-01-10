@@ -11,30 +11,3 @@
   /* 鼠标悬停是左侧缩进归零，完全显示按钮 */
 }
 
-/* 黑暗样式、阅读、阅读黑暗 */
-[data-theme="dark"]
-  #aside-content .card-widget{
-      background: rgba(0, 0, 0, 0.5)!important;
-    }
-[data-theme="dark"]
-  div#post{
-    background: rgba(0, 0, 0, 0.5)!important;
-  }
-
-.read-mode #aside-content .card-widget{
-  background: rgba(158, 204, 171, 0.5)!important;
-}
-.read-mode div#post{
-  background: rgba(158, 204, 171, 0.5)!important;
-}
-
-[data-theme="dark"]
-  .read-mode #aside-content .card-widget{
-        background: rgba(0, 0, 0, 0.5)!important;
-        color: #ffffff;
-      }
-[data-theme="dark"]  
-  .read-mode div#post{
-      background: rgba(0, 0, 0, 0.5)!important;
-      color: #ffffff;
-      }
