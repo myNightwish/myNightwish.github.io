@@ -428,8 +428,11 @@ if (localStorage.getItem("reset_2") == undefined) {
   <div class="note warning modern"><p>非商免字体未经授权只能个人使用。本站为完全非商业、非盈利性质的网站，平时用于个人学习交流，如有侵权请联系站长删除，谢谢！ —— 致版权方</p>
 </div>
   <p id="swfs">
-  <a class="swf" id="swf_ZhuZiAWan" href="javascript:;" rel="noopener external nofollow" style="font-family:'ZhuZiAWan'!important;color:black" onclick="setFont('ZhuZiAWan')">筑紫A丸标准体2.0</a>
-  <a class="swf" id="swf_default" href="javascript:;" rel="noopener external nofollow" style="font-family:-apple-system, IBM Plex Mono ,monosapce,'微软雅黑', sans-serif;!important;color:black" onclick="setFont('default')">系统默认</a>
+    <a class="swf" id="swf_XIA_WU_WEN_KAI" href="javascript:;" rel="noopener external nofollow" style="font-family:'XIA_WU_WEN_KAI'!important;color:black" onclick="setFont('XIA_WU_WEN_KAI')">霞鹜文楷</a>
+    <a class="swf" id="swf_CandyC" href="javascript:;" rel="noopener external nofollow" style="font-family:'CandyC'!important;color:black" onclick="setFont('CandyC')">甜甜圈</a>
+    <a class="swf" id="swf_MiSans" href="javascript:;" rel="noopener external nofollow" style="font-family:'MiSans'!important;color:black" onclick="setFont('MiSans')">MiSans</a>
+    <a class="swf" id="swf_TANG_MEI_REN" href="javascript:;" rel="noopener external nofollow" style="font-family:'MiSans'!important;color:black" onclick="setFont('TANG_MEI_REN')">唐美人</a>
+    <a class="swf" id="swf_default" href="javascript:;" rel="noopener external nofollow" style="font-family:'ZhuZiAWan'!important;color:black" onclick="setFont('ZhuZiAWan')">默认</a>
   </p>
   
   <h2>三、主题色设置</h2>
