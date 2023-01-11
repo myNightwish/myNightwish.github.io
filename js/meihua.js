@@ -38,7 +38,7 @@ if (localStorage.getItem("reset_2") == undefined) {
   
   // 设置字体
   if (localStorage.getItem("font") == undefined) {
-    localStorage.setItem("font", "YSHST");
+    localStorage.setItem("font", "TANG_MEI_REN");
   }
   setFont(localStorage.getItem("font"));
   function setFont(n) {
@@ -219,10 +219,10 @@ if (localStorage.getItem("reset_2") == undefined) {
   } else {
       // 替换你自己的默认背景
     document.getElementById("defineBg").innerText = `:root{
-      --default-bg: url("/img/def_top_img.webp");
-      --darkmode-bg:url("/img/def_top_img.webp");
-      --mobileday-bg: url("/img/snowflower.webp");
-      --mobilenight-bg: url("/img/snowflower.webp");
+      --default-bg: url("/img/home_bg.webp");
+      --darkmode-bg: url("/img/home_bg.webp");
+      --mobileday-bg: url("/img/home_bg_mobile.webp");
+      --mobilenight-bg: url("/img/home_bg_mobile.webp");
     }`;
   }
   function changeBg(s) {
