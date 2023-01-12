@@ -3105,7 +3105,6 @@ blockquote footer cite:before {
   transition: all 0.2s ease-in-out;
 }
 #aside-content #card-toc .toc-content .toc-link.active {
-  border-left-color: #d84f4d;
   background: #e58a89;
   color: #fff;
 }
