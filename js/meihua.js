@@ -334,12 +334,10 @@ if (localStorage.getItem("reset_2") == undefined) {
   }
   if (localStorage.getItem("light") == "true") {
     clearInterval(clk);
-    clk = setInterval(changeLightColor, 1200);
   }
   function setLight() {
     if (document.getElementById("lightSet").checked) {
       clearInterval(clk);
-      clk = setInterval(changeLightColor, 1200);
       localStorage.setItem("light", "true");
     } else {
       clearInterval(clk);
