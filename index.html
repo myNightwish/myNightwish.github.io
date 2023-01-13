@@ -63,7 +63,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-01-13 19:10:53'
+  postUpdate: '2023-01-13 19:23:11'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -178,17 +178,14 @@
     
   
 
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/855735627.html" title="移动端适配方案总结">移动端适配方案总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-12T15:11:05.000Z" title="发表于 2022-06-12 23:11:05">2022-06-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.666Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/1-1-CSS/">1.1-CSS</a></span></div><div class="content">移动端适配·
-
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/855735627.html" title="移动端适配方案总结">移动端适配方案总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-12T15:11:05.000Z" title="发表于 2022-06-12 23:11:05">2022-06-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.666Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/1-1-CSS/">1.1-CSS</a></span></div><div class="content">移动端适配
 前言：最近公司官网项目需要做移动端适配，所以借此机会对移动端的适配方案进行调研。本期分享内容主要包括一下几点：
 
 我们为什么要做适配？
-
 这里涉及适配的前置概念：例如像素、dpr等
 
 
 如何适配？
-
 都有哪些适配方案？
 它们是如何工作的？
 
@@ -196,36 +193,24 @@
 对不同的项目需求，我们做技术评审时如何选择合适的方案？
 
 
-1、前置知识·
-1.1 尺寸、像素·
-
-英寸：·
-
+1、前置知识1.1 尺寸、像素
+英寸：
 描述屏幕尺寸的物理单位，且是屏幕对角线的长度
 英寸和厘米的换算单位是：1英寸 = 2.54厘米
 
-像素：·
-
+像素：
 具有特定的位置和颜色的小方块，而图片、电子屏幕是由无数个像素拼接而成的
 可以说，作为图片或电子屏幕的最小组成单位
 
 
-1.2 分辨率·
-1.2.1 屏幕分辨率：·
-
+1.2 分辨率1.2.1 屏幕分辨率：
 指一个屏幕具体由多少个像素点组成，比如：iPhone XS Max 和 iPhone SE的分辨率分别为2688 x 1242和1136 x 640。这表示手机分别在垂直和水平上所具有的像素点数。
 分辨率高不代表屏幕就清晰，屏幕的清晰程度还与尺寸有关。这是很好理解的嘛~必须以用一尺寸在有比较的意义
 
-1.2.2 图像分辨率：·
-
-是指图片含有的像素数 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/CSStricks-2.html" title="CSS tricks-2">CSS tricks-2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-12T10:01:08.000Z" title="发表于 2022-06-12 18:01:08">2022-06-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.693Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-3-%E5%AE%9E%E7%8E%B0Tricks/">2.3-实现Tricks</a></span></div><div class="content">开发中的CSS tricks-2·
-1、100vw横向滚动条：·
-100vw的问题：·
-
-
+1.2.2 图像分辨率：
+是指图片含有的像素数，比如一张图片的分辨率为800 x  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/CSStricks-2.html" title="CSS tricks-2">CSS tricks-2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-12T10:01:08.000Z" title="发表于 2022-06-12 18:01:08">2022-06-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.693Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-3-%E5%AE%9E%E7%8E%B0Tricks/">2.3-实现Tricks</a></span></div><div class="content">开发中的CSS tricks-21、100vw横向滚动条：100vw的问题：
 在容器宽度设置为100vw，高度很小时：没有滚动条，任意调整窗口
 &lt;div class=&quot;wrapper&quot;&gt;testContent&lt;/div&gt;* &#123;padding: 0;margin: 0;&#125;.wrapper &#123;    width: 100vw;    height: 50px;&#125;
-
 
 
 在容器宽度设置为100vw，高度很大时，内容不能完整显示出来：横向、纵向都出现了滚动条
@@ -235,77 +220,53 @@ https://stackoverflow.com/questions/23367345/100vw-causing-horizontal-overflow-b
 纵向滚动条是占用浏览器宽度的
 为了让宽度为 100vw 的元素的最右边能完整的展示出来，浏览器会展示一个横向滚动条让用户滚动看到最右侧内容
 
-&lt;div ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/toolsTest.html" title="小工具">小工具</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-10T23:57:19.000Z" title="发表于 2022-06-11 07:57:19">2022-06-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.694Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-4-Tool-Shell/">3.4-Tool&amp;Shell</a></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/feature-tricks1.html" title="功能实现trick1">功能实现trick1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-10T21:35:11.000Z" title="发表于 2022-06-11 05:35:11">2022-06-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.693Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-3-%E5%AE%9E%E7%8E%B0Tricks/">2.3-实现Tricks</a></span></div><div class="content">开发中的功能实现trick·
-
-滚动吸顶的实现·
-1.1 功能及分析：·
-
-
+&lt;div class=& ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/toolsTest.html" title="小工具">小工具</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-10T23:57:19.000Z" title="发表于 2022-06-11 07:57:19">2022-06-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.694Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-4-Tool-Shell/">3.4-Tool&amp;Shell</a></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/feature-tricks1.html" title="功能实现trick1">功能实现trick1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-10T21:35:11.000Z" title="发表于 2022-06-11 05:35:11">2022-06-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.693Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-3-%E5%AE%9E%E7%8E%B0Tricks/">2.3-实现Tricks</a></span></div><div class="content">开发中的功能实现trick
+滚动吸顶的实现1.1 功能及分析：
 
 滚动过程中，滚至对应区域，对应nav高亮显示；
 所以，要记录页面滚动的高度，这样切换到对应高度区间时，通知该区间对应的子项，激活显示，so，这里还涉及消息传递；
-
 
 点击nav中的子项，跳转至该区域
 相反的，知道了子项，可以得到对应高度区间，再scroll到该区间的左值即可
 
 
 
-1.2 自定义Hook：useWindowScroll·
-
+1.2 自定义Hook：useWindowScroll
 拿到每一帧中滚动的位置；
 
-import &#123; isClient &#125; from &#x27;../utils/common&#x27;;export default useWindowScroll = () =&gt; &#123;  const frame = useRef(0);  const [state, setState] = useState(&#123;    x: isClient ? window.scrollX : 0,    y: isClient ? window.scrollY : 0,  &#125;);  useEffect ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/CSStricks-1.html" title="CSS tricks-1">CSS tricks-1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-10T21:34:45.000Z" title="发表于 2022-06-11 05:34:45">2022-06-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.692Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-3-%E5%AE%9E%E7%8E%B0Tricks/">2.3-实现Tricks</a></span></div><div class="content">开发中的CSS tricks-1·
-
-1、hover悬浮效果·
-.item:hover &#123;      z-index: 2;      transition: 0.2s;      box-shadow: 1px 1px 12px 12px #00000010;&#125;
-2、混入实现原生CSS读取·
-
-
+import &#123; isClient &#125; from &#x27;../utils/common&#x27;;export default useWindowScroll = () =&gt; &#123;  const frame = useRef(0);  const [state, setState] = useState(&#123;    x: isClient ? window.scrollX : 0,    y: isClient ? window.scrollY : 0,  &#125;);  useEffect(() =&gt;  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/CSStricks-1.html" title="CSS tricks-1">CSS tricks-1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-10T21:34:45.000Z" title="发表于 2022-06-11 05:34:45">2022-06-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.692Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-3-%E5%AE%9E%E7%8E%B0Tricks/">2.3-实现Tricks</a></span></div><div class="content">开发中的CSS tricks-1
+1、hover悬浮效果.item:hover &#123;      z-index: 2;      transition: 0.2s;      box-shadow: 1px 1px 12px 12px #00000010;&#125;
+2、混入实现原生CSS读取
 背景色，采用混入的方式：
 原本：Background-image: url()
-
 
 配置混入：
 @function appendHost($path) &#123;  @return $host + $path;&#125;// 将url带上host@mixin backgroundImg($path) &#123;  background-image: url(appendHost($path));&#125;
 
-
 使用混入：
 @include backgroundImg(&#x27;/componentStatic/danceCard.png&#x27;);
 
-
 写行内样式的bg：
-style=&#123;&#123;backgroundImage: &#x27;ur ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/antd-data-show.html" title="antd-数据展示">antd-数据展示</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-10T21:14:55.000Z" title="发表于 2022-06-11 05:14:55">2022-06-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.696Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-1-%E7%BB%84%E4%BB%B6%E5%BA%93/">2.1-组件库</a></span></div><div class="content">antd之数据展示类·
-
+style=&#123;&#123;backgroundImage: &#x27;url(&#x27; + ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/antd-data-show.html" title="antd-数据展示">antd-数据展示</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-10T21:14:55.000Z" title="发表于 2022-06-11 05:14:55">2022-06-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.696Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-1-%E7%BB%84%E4%BB%B6%E5%BA%93/">2.1-组件库</a></span></div><div class="content">antd之数据展示类
 记录一下实际开发中用到的一些有意思的组件及遇到问题解决
 文档：https://ant.design/docs/spec/data-display-cn#%E6%A0%91%E5%BD%A2%E6%8E%A7%E4%BB%B6%EF%BC%88Tree%EF%BC%89
 分类总结下遇到的组件，遇到再更新
 
-Tree·
-
+Tree
 『树形控件』通过逐级大纲的形式来展现信息的层级关系，高效且具有极佳的视觉可视性
 用户可同时浏览与处理多个树状层级的内容。适用于任何需要通过层级组织的信息场景，如文件夹、组织架构、生物分类、国家地区等等。
-基本使用：·
-&lt;Tree   defaultExpandedKeys=&#123;[&#x27;0-0-0&#x27;, &#x27;0-0-1&#x27;]&#125;   defaultSelectedKeys=&#123;[&#x27;0-0-0&#x27;, &#x27;0-0-1&#x27;]&#125;   defaultCheckedKeys=&#123;[&#x27;0-0-0&#x27;, &#x27;0-0-1&#x27 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/better_performance.html" title="前后端链路的性能优化">前后端链路的性能优化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-24T05:31:50.000Z" title="发表于 2022-05-24 13:31:50">2022-05-24</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.689Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-2-%E6%B5%8F%E8%A7%88%E5%99%A8/">3.2-浏览器</a></span></div><div class="content">全链路的性能优化整合·
-
+基本使用：&lt;Tree   defaultExpandedKeys=&#123;[&#x27;0-0-0&#x27;, &#x27;0-0-1&#x27;]&#125;   defaultSelectedKeys=&#123;[&#x27;0-0-0&#x27;, &#x27;0-0-1&#x27;]&#125;   defaultCheckedKeys=&#123;[&#x27;0-0-0&#x27;, &#x27;0-0-1&#x27;]&#12 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/better_performance.html" title="前后端链路的性能优化">前后端链路的性能优化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-24T05:31:50.000Z" title="发表于 2022-05-24 13:31:50">2022-05-24</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.689Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-2-%E6%B5%8F%E8%A7%88%E5%99%A8/">3.2-浏览器</a></span></div><div class="content">全链路的性能优化整合
 前言：
 前面的过程中，我们零零散散地提到了性能优化做的事情，恰巧内网最近一篇文章写的不错，仔细学习了下作者的微信公众号文章。但我不打算把他的文本简单copy一遍，因为自己最近刚刚做过相关的事，所以，更多的想结合自己的理解和其他资料学习总结一下
-
-
 在介绍知识之前，我们需要交代一下背景。如果现在给你一个现成的项目要求做性能优化，你会怎么下手呢？这种感觉就好像，你要去体检，那么知道你哪里好，哪儿不好，不好需要吃什么药呢？开始之前，需要明确几点：
 
-
-如何评价页面的性能好坏呢？
+如何评价页面的性能好坏呢？ 
 当然不是直觉，必须有数据指标支撑，这就需要一些工具的帮助
-
 
 随后，问题就来了，如何使用各种性能相关工具？
 这个过程中，肯定会涉及到很多指标，我们需要读懂指标的含义，针对其对应的表现优化，要有针对性的理解指标，就要需要浏览器的基本知识了。
 
-
 页面是从哪里来的？又是怎么在浏览器上渲染出来的？
-
-
 
 
 以上抛出的3个问题基本回答了：
@@ -314,60 +275,42 @@ Tree·
 页面渲染环节发生了什么？
 两个环节的我们如何下手优化？
 
+完整过程
 
-
-完整过程·
-
-
-一、网络通信环节·
-阶段0：用户输入·
-
-我们在 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/URL_URI.html" title="URL、URI">URL、URI</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-06T15:07:56.000Z" title="发表于 2022-05-06 23:07:56">2022-05-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.698Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="content">Url与URI都是啥？·
-1、URL与URI·
-
-
-URI：统一资源标识符
+一、网络通信环节阶段0：用户输入
+我们在搜索栏目巴拉巴拉输入…..一个u ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/URL_URI.html" title="URL、URI">URL、URI</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-06T15:07:56.000Z" title="发表于 2022-05-06 23:07:56">2022-05-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.698Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="content">Url与URI都是啥？1、URL与URI
+URI：统一资源标识符         
 父类        表示请求服务器资源，定位这个资源
-
 
 URL：统一资源定位符，常常被称为网址，是因特网上标准的资源地址
 子类       而URL还要表示如何访问这个资源
 通用的格式：scheme://host[:port]/path/…/?query#anchor
 
 
-2、组成格式：·
-https://www.aspxfans.com:8080/news/index.…
+2、组成格式：https://www.aspxfans.com:8080/news/index.…
 
+协议：访问服务器以获取资源时要使用哪种协议，比如：http，https 和 FTP 等后面一定接上://
 
-**协议：**访问服务器以获取资源时要使用哪种协议，比如：http，https 和 FTP 等后面一定接上://
+域名：该URL的域名部分为“www.aspxfans.com”
 
-
-**域名：**该URL的域名部分为“www.aspxfans.com”
-
-
-**port：**跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。
+port：跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。
 
 端口不是一个URL必须的部分，如果省略端口部分，将采用默认端口
 
 
-
 （HTTP协议默认端口是80，HTTPS协议默认端口是443）；
 
+虚拟目录部分：从域名后的第一个“/”开始到最后一个“/”为止，是虚拟目录部分。虚拟目录也不是一个URL必须的部分。本例中的虚拟目录是“/news/”；
 
-虚拟目录部分：从域名后的第一个“/”开始到最后一个“/”为止，是虚拟目录部分。虚拟目录也不是一个URL必须的部分。本例中的虚拟 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/CSR_SSR_ISR.html" title="CSR、SSR、ISR">CSR、SSR、ISR</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-06T15:07:56.000Z" title="发表于 2022-05-06 23:07:56">2022-05-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.705Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-2-%E5%9F%BA%E5%BB%BA/">2.2-基建</a></span></div><div class="content">SSR·
-SSR是什么？·
-
+文件 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/CSR_SSR_ISR.html" title="CSR、SSR、ISR">CSR、SSR、ISR</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-06T15:07:56.000Z" title="发表于 2022-05-06 23:07:56">2022-05-06</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.705Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-2-%E5%9F%BA%E5%BB%BA/">2.2-基建</a></span></div><div class="content">SSRSSR是什么？
 SSR（Server Side Rendering），一种传统的渲染方式。与客户端渲染不同的是，SSR输出的是一个渲染完成的html，整个渲染过程是在服务器端进行的。例如传统的JSP，PHP都是服务端渲染
 由于服务端把渲染的完整的页面吐给客户端。这样减少了一次客户端到服务端的一次http请求，加快相应速度，一般用于首屏的性能优化。
 
-SSR如何工作的？·
-
+SSR如何工作的？
 SSR将一个完整的HTML发送给客户端，客户端只负责HTML的解析。只不过它会被网速，在线活跃人数，服务器的物理位置等等客观因素所约束造成用户体验不佳的情况。
 而且如果面临客户端和服务器多次交互的情况就显得非常吃亏，即使在页面只是有稍加改动的地方都需要重新请求到一个完整页面并且重新进行渲染，对服务器的压力更大
 假设你需要访问的域名叫： example.testsite.com.
-&lt;html&gt;  &lt;head&gt;    &lt;meta charset=&quot;utf-8&quot;&gt;    &lt;title&gt;Example Website&lt;/title&gt; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/scroll.html" title="overflow与滚动">overflow与滚动</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-21T12:09:43.000Z" title="发表于 2022-04-21 20:09:43">2022-04-21</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.666Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span></div><div class="content">overflow与scroll·
-overflow属性：·
-
+&lt;html&gt;  &lt;head&gt;    &lt;meta charset=&quot;utf-8&quot;&gt;    &lt;title&gt;Example Website&lt;/title&gt;  &lt; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/scroll.html" title="overflow与滚动">overflow与滚动</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-21T12:09:43.000Z" title="发表于 2022-04-21 20:09:43">2022-04-21</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.666Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span></div><div class="content">overflow与scrolloverflow属性：
 overflow文档：https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow
 
 定义当一个元素的内容太大而无法适应 块级格式化上下文 时候该做什么，该属性有四个常用的值：
@@ -382,14 +325,11 @@ auto: 如果没有超出容器的显示，将会正常显示，如果超出，�
 如果 overflow-x 与 overflow-y 的值相同，结果等同于 overflow；
 如果  overflow-x 与 overflow-y 不同，且其中一个属性的值被赋予 visible，另外一个被赋予一个 非 visible 的值，第一个被赋予 visible 的值会自动变为 auto。
 
-起作用的条件：·
-
-
+起作用的条件：
 
 父容器非 display:inline 水平
 
-
-对应方位的尺寸限制，(width / he ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/animation.html" title="帧动画-优化资源加载">帧动画-优化资源加载</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-12T12:18:53.000Z" title="发表于 2022-04-12 20:18:53">2022-04-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.708Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">雪碧图替换MP4播放</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#content-inner">10</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avartor.webp" onerror="this.onerror=null;this.src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com" target="_blank" title="B站"><svg class="social_icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a></div></div><div class="sticky_layout"><div class="card-widget card-webinfo"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:5px" aria-hidden="true"><use xlink:href="#icon-shafaB"></use></svg></a><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">112</div></div><div class="webinfo-item"><div class="item-name">总字数 :</div><div class="item-count">35.1w</div></div><div class="webinfo-item"><div class="item-name">访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最近更新 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-01-13T11:10:52.020Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+对应方位的尺寸限制，(width / height / m ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/animation.html" title="帧动画-优化资源加载">帧动画-优化资源加载</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-12T12:18:53.000Z" title="发表于 2022-04-12 20:18:53">2022-04-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.708Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">雪碧图替换MP4播放</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#content-inner">10</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avartor.webp" onerror="this.onerror=null;this.src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com" target="_blank" title="B站"><svg class="social_icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a></div></div><div class="sticky_layout"><div class="card-widget card-webinfo"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:5px" aria-hidden="true"><use xlink:href="#icon-shafaB"></use></svg></a><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">112</div></div><div class="webinfo-item"><div class="item-name">总字数 :</div><div class="item-count">34.9w</div></div><div class="webinfo-item"><div class="item-name">访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最近更新 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-01-13T11:23:10.042Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
