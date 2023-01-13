@@ -1076,3 +1076,17 @@ input[name="colors"] {
 .el-textarea__inner:focus {
   background-image: url(https://tuchuang.voooe.cn/images/2023/01/02/close.webp) !important;
 }
+
+/* 和风插件 */
+#he-plugin-standard{
+  width:100%!important;
+  height: 100%!important;
+  font-family: var(--global-font)!important;
+  color:var(--font-color)!important;
+}
+.wv-v-v-forecast[data-v-3b50b9ba] {
+ padding-top: .5em !important;
+}
+.wv-v-v-now {
+  display: none;
+}
