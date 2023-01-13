@@ -40,10 +40,7 @@ svg.social_icon {
   line-height: 34px; /*如果有溢出或者垂直不居中的现象微调一下这个参数*/
   font-size: 18px; /*根据个人喜好*/
 }
-#site-name:hover::before {
-  opacity: 1;
-  scale: 1.03;
-}
+
 #site-name {
   position: relative;
   font-size: 24px; /*一定要把字体调大点，否则效果惨不忍睹！*/
@@ -1075,18 +1072,4 @@ input[name="colors"] {
 }
 .el-textarea__inner:focus {
   background-image: url(https://tuchuang.voooe.cn/images/2023/01/02/close.webp) !important;
-}
-
-/* 和风插件 */
-#he-plugin-standard{
-  width:100%!important;
-  height: 100%!important;
-  font-family: var(--global-font)!important;
-  color:var(--font-color)!important;
-}
-.wv-v-v-forecast[data-v-3b50b9ba] {
- padding-top: .5em !important;
-}
-.wv-v-v-now {
-  display: none;
 }

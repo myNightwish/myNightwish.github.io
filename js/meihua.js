@@ -142,7 +142,7 @@ if (localStorage.getItem("reset_2") == undefined) {
   
   // 透明度调节滑块
   if (localStorage.getItem("transNum") == undefined) {
-    localStorage.setItem("transNum", 95);
+    localStorage.setItem("transNum", 80);
   }
   var curTransNum = localStorage.getItem("transNum");
   var curTransMini = curTransNum * 0.95;
