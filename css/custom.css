@@ -85,6 +85,11 @@ svg.social_icon {
   #page-name:hover:before {
     opacity: 1;
   }
+  #name-container #page-name:hover {
+    display: inline-block;
+    min-width: 100px;
+    height: 52px;
+  }
   #name-container {
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
@@ -92,9 +97,7 @@ svg.social_icon {
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
   }
-  #name-container:hover {
-    scale: 1.03;
-  }
+
   #page-name {
     position: relative;
     padding: 10px 30px; /*如果文字间隔不合理可以微调修改，第二个是水平方向的padding，第一个是垂直的*/
@@ -106,8 +109,8 @@ svg.social_icon {
   /* 修复滚动显示标题居中 */
   center#name-container {
     position: absolute !important;
-    width: fit-content !important;
-    left: 30% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
   }
   @media screen and (max-width: 768px) {
     center#name-container {
@@ -389,7 +392,6 @@ blockquote {
 }
 #aside-content #card-toc .toc-content .toc-link:hover {
   color: var(--theme-color);
-  scale: 1.03;
 }
 *::selection {
   background: var(--theme-color);
@@ -419,6 +421,7 @@ blockquote {
 }
 #pagination .page-number.current {
   background: var(--theme-color);
+  border-radius: .4rem;
 }
 #article-container h1:hover:before,
 #article-container h2:hover:before,

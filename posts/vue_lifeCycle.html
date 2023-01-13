@@ -1,8 +1,8 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vue的生命周期 | Nightwishのblog</title><meta name="keywords" content="生命周期"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Vue的生命周期及常见问题">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vue的生命周期 | Nightwishのblog🧊</title><meta name="keywords" content="生命周期"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Vue的生命周期及常见问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue的生命周期">
-<meta property="og:url" content="https://mynightwish.top/posts/vue_lifeCycle.html">
-<meta property="og:site_name" content="Nightwishのblog">
+<meta property="og:url" content="https://mynightwish.github.io/posts/vue_lifeCycle.html">
+<meta property="og:site_name" content="Nightwishのblog🧊">
 <meta property="og:description" content="Vue的生命周期及常见问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/vue-lifecycle.png">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="飞儿">
 <meta property="article:tag" content="生命周期">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/vue-lifecycle.png"><link rel="shortcut icon" href="/img/favicon.webp"><link rel="canonical" href="https://mynightwish.top/posts/vue_lifeCycle"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/vue-lifecycle.png"><link rel="shortcut icon" href="/img/favicon.webp"><link rel="canonical" href="https://mynightwish.github.io/posts/vue_lifeCycle"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
@@ -169,19 +169,27 @@
     background-size: cover!important;
     background-repeat: no-repeat!important;
   }
-</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-pudding"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-pudding"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/React/vue-lifecycle.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-pudding"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-pudding"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">Vue的生命周期</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T14:55:23.000Z" title="发表于 2021-12-11 22:55:23">2021-12-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.686Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/1-4-%E6%A1%86%E6%9E%B6/">1.4-框架</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1858</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vue的生命周期"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
-<li><p>Vue 实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模版、挂载 Dom -&gt; 渲染、更新 -&gt; 渲染、卸载等一系列过程</p>
+</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-pudding"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-pudding"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/React/vue-lifecycle.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-pudding"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-pudding"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">Vue的生命周期</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T14:55:23.000Z" title="发表于 2021-12-11 22:55:23">2021-12-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.686Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/1-4-%E6%A1%86%E6%9E%B6/">1.4-框架</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1858</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vue的生命周期"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="生命周期">生命周期<a class="anchor" href="#生命周期">·</a></h2>
+<h3 id="1-概念">1. 概念<a class="anchor" href="#1-概念">·</a></h3>
+<ul>
+<li>
+<p>Vue 实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模版、挂载 Dom -&gt; 渲染、更新 -&gt; 渲染、卸载等一系列过程</p>
 </li>
-<li><p><img src="https://img-blog.csdnimg.cn/20200418101911580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NDX1RvZ2V0aGVy,size_16,color_FFFFFF,t_70" alt="图片转自coderwhy老师" style="zoom: 33%;" /></p>
+<li>
+<img src="https://img-blog.csdnimg.cn/20200418101911580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NDX1RvZ2V0aGVy,size_16,color_FFFFFF,t_70" alt="图片转自coderwhy老师" style="zoom: 33%;" />
 </li>
 </ul>
-<h3 id="2-各个钩子的作用"><a href="#2-各个钩子的作用" class="headerlink" title="2. 各个钩子的作用"></a>2. 各个钩子的作用</h3><p><strong>过程：</strong>均不可用——初始数据获取，方法——虚拟Dom创建 ——el完成挂载，真实DOM创建——Diff算法，打补丁——更新数据</p>
-<h5 id="1）beforeCreate："><a href="#1）beforeCreate：" class="headerlink" title="1）beforeCreate："></a>1）beforeCreate：</h5><ul>
+<h3 id="2-各个钩子的作用">2. 各个钩子的作用<a class="anchor" href="#2-各个钩子的作用">·</a></h3>
+<p>**过程：**均不可用——初始数据获取，方法——虚拟Dom创建 ——el完成挂载，真实DOM创建——Diff算法，打补丁——更新数据</p>
+<h5 id="1）beforeCreate：">1）beforeCreate：<a class="anchor" href="#1）beforeCreate：">·</a></h5>
+<ul>
 <li>在<strong>实例初始化之后</strong>，数据观测(data observer) 和 event/watcher 事件配置之前被调用</li>
 <li>特点： data、methods、computed 以及 watch 上的数据和方法都不能被访问</li>
 </ul>
-<h5 id="2）created："><a href="#2）created：" class="headerlink" title="2）created："></a>2）created：</h5><ul>
-<li>实例已完成以下的配置：<ul>
+<h5 id="2）created：">2）created：<a class="anchor" href="#2）created：">·</a></h5>
+<ul>
+<li>实例已完成以下的配置：
+<ul>
 <li><strong>数据劫持 (data observer)，属性和方法</strong>的运算。</li>
 <li>数据已经和<strong>data属性绑定</strong>（放在data中的属性将来值发生改变的同时，视图也会改变）</li>
 </ul>
@@ -189,75 +197,103 @@
 <li>此时操作数据，不会触发update函数，一般在这里做初始数据的获取，且相比在 beforeMount 获取数据页面渲染速度较快</li>
 <li>然而，<strong><code>$el</code> 属性</strong>目前尚不可用。如果非要想与 Dom 进行交互，可以通过 vm.$nextTick 来访问 Dom</li>
 </ul>
-<h5 id="3）beforeMount"><a href="#3）beforeMount" class="headerlink" title="3）beforeMount"></a>3）beforeMount</h5><ul>
-<li><p>在挂载开始之前被调用：</p>
+<h5 id="3）beforeMount">3）beforeMount<a class="anchor" href="#3）beforeMount">·</a></h5>
+<ul>
+<li>
+<p>在挂载开始之前被调用：</p>
 <p>相关的 <code>render</code> 函数首次被调用。</p>
 <p><strong>虚拟dom 创建完成，真实 dom未完成挂载</strong>，这里更改数据不会触发 update函数，这里是渲染前最后一次更改数据的机会，在这里也可以做初始数据的获取</p>
 </li>
 </ul>
-<h5 id="4）mounted："><a href="#4）mounted：" class="headerlink" title="4）mounted："></a>4）mounted：</h5><ul>
-<li>实例完成的配置：<ul>
+<h5 id="4）mounted：">4）mounted：<a class="anchor" href="#4）mounted：">·</a></h5>
+<ul>
+<li>实例完成的配置：
+<ul>
 <li><strong>完成了挂载，这时 <code>el</code></strong> 被新创建的 <code>vm.$el</code> 替换了。</li>
 <li><strong>数据、真实dom</strong>都已经处理，一般在这里初始化一些操作真实 dom 的方法</li>
 </ul>
 </li>
 <li>注意：此阶段不会保证所有的子组件也都一起被挂载，如果你希望等到整个视图都渲染完毕，可以在 <code>mounted</code> 内部使用 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#vm-nextTick">vm.$nextTick</a></li>
 </ul>
-<h5 id="5）beforeUpdate："><a href="#5）beforeUpdate：" class="headerlink" title="5）beforeUpdate："></a>5）beforeUpdate：</h5><ul>
-<li><p>时机：当组件或实例的数据更改，会立即执行beforeUpdate，发生在虚拟 DOM 打补丁之前</p>
-</li>
-<li><p>特点：可以监听到 <strong>data 变化，但view层的数据还没有变化</strong></p>
-</li>
-<li><p>适合：在更新之前访问现有的 DOM，比如手动移除已添加的事件监听器</p>
-</li>
-</ul>
-<h5 id="6）updated："><a href="#6）updated：" class="headerlink" title="6）updated："></a>6）updated：</h5><ul>
-<li><p>时机：完成虚拟 DOM 重新渲染和打补丁后，来到这个钩子</p>
-</li>
-<li><p>特点：</p>
+<h5 id="5）beforeUpdate：">5）beforeUpdate：<a class="anchor" href="#5）beforeUpdate：">·</a></h5>
 <ul>
-<li><p>此时组件 DOM 已经更新，可以操作更新后的虚拟dom，view层的数据重新渲染完成；</p>
+<li>
+<p>时机：当组件或实例的数据更改，会立即执行beforeUpdate，发生在虚拟 DOM 打补丁之前</p>
 </li>
-<li><p>应该避免在此期间更改状态，如果要相应状态改变，通常最好使用<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#computed">计算属性</a>或 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#watch">watcher</a> 取而代之；</p>
+<li>
+<p>特点：可以监听到 <strong>data 变化，但view层的数据还没有变化</strong></p>
 </li>
-<li><p><strong>不会</strong>保证所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以在 <code>updated</code> 里使用 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#vm-nextTick">vm.$nextTick</a>：</p>
+<li>
+<p>适合：在更新之前访问现有的 DOM，比如手动移除已添加的事件监听器</p>
+</li>
+</ul>
+<h5 id="6）updated：">6）updated：<a class="anchor" href="#6）updated：">·</a></h5>
+<ul>
+<li>
+<p>时机：完成虚拟 DOM 重新渲染和打补丁后，来到这个钩子</p>
+</li>
+<li>
+<p>特点：</p>
+<ul>
+<li>
+<p>此时组件 DOM 已经更新，可以操作更新后的虚拟dom，view层的数据重新渲染完成；</p>
+</li>
+<li>
+<p>应该避免在此期间更改状态，如果要相应状态改变，通常最好使用<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#computed">计算属性</a>或 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#watch">watcher</a> 取而代之；</p>
+</li>
+<li>
+<p><strong>不会</strong>保证所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以在 <code>updated</code> 里使用 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#vm-nextTick">vm.$nextTick</a>：</p>
 </li>
 </ul>
 </li>
 </ul>
-<h5 id="7）beforeDestroy："><a href="#7）beforeDestroy：" class="headerlink" title="7）beforeDestroy："></a>7）beforeDestroy：</h5><ul>
+<h5 id="7）beforeDestroy：">7）beforeDestroy：<a class="anchor" href="#7）beforeDestroy：">·</a></h5>
+<ul>
 <li>时机：实例销毁之前调用，实例仍然完全可用</li>
-<li>工作：做一些善后工作，例如<strong>清除计时器、数据和事件的监听等 </strong> </li>
+<li>工作：做一些善后工作，例如**清除计时器、数据和事件的监听等 **</li>
 </ul>
-<h5 id="8）destroyed："><a href="#8）destroyed：" class="headerlink" title="8）destroyed："></a>8）destroyed：</h5><ul>
+<h5 id="8）destroyed：">8）destroyed：<a class="anchor" href="#8）destroyed：">·</a></h5>
+<ul>
 <li>时机：实例销毁后调用，对应 Vue 实例的所有指令都被解绑，所有的事件监听器被移除，所有的子实例也都被销毁。</li>
 </ul>
-<h5 id="9）activated：被-keep-alive-缓存的组件激活时调用"><a href="#9）activated：被-keep-alive-缓存的组件激活时调用" class="headerlink" title="9）activated：被 keep-alive 缓存的组件激活时调用"></a>9）activated：被 keep-alive 缓存的组件激活时调用</h5><ul>
+<h5 id="9）activated：被-keep-alive-缓存的组件激活时调用">9）activated：被 keep-alive 缓存的组件激活时调用<a class="anchor" href="#9）activated：被-keep-alive-缓存的组件激活时调用">·</a></h5>
+<ul>
 <li>keep-alive：当在组件之间切换的时候，你有时会想保持这些组件的状态，以避免反复重渲染导致的性能问题</li>
 </ul>
-<h5 id="10）deactivated：被-keep-alive-缓存的组件停用时调用"><a href="#10）deactivated：被-keep-alive-缓存的组件停用时调用" class="headerlink" title="10）deactivated：被 keep-alive 缓存的组件停用时调用"></a>10）deactivated：被 keep-alive 缓存的组件停用时调用</h5><h5 id="11）errorHandler：被-keep-alive-缓存的组件停用时调用"><a href="#11）errorHandler：被-keep-alive-缓存的组件停用时调用" class="headerlink" title="11）errorHandler：被 keep-alive 缓存的组件停用时调用"></a>11）errorHandler：被 keep-alive 缓存的组件停用时调用</h5><ul>
-<li><p>指定组件的渲染和观察期间未捕获错误的处理函数。这个处理函数被调用时，可获取错误信息和 Vue 实例</p>
+<h5 id="10）deactivated：被-keep-alive-缓存的组件停用时调用">10）deactivated：被 keep-alive 缓存的组件停用时调用<a class="anchor" href="#10）deactivated：被-keep-alive-缓存的组件停用时调用">·</a></h5>
+<h5 id="11）errorHandler：被-keep-alive-缓存的组件停用时调用">11）errorHandler：被 keep-alive 缓存的组件停用时调用<a class="anchor" href="#11）errorHandler：被-keep-alive-缓存的组件停用时调用">·</a></h5>
+<ul>
+<li>
+<p>指定组件的渲染和观察期间未捕获错误的处理函数。这个处理函数被调用时，可获取错误信息和 Vue 实例</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">Vue.config.errorHandler = <span class="function"><span class="keyword">function</span> (<span class="params">err, vm, info</span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="12）errorCaptured"><a href="#12）errorCaptured" class="headerlink" title="12）errorCaptured"></a>12）errorCaptured</h5><ul>
+<h5 id="12）errorCaptured">12）errorCaptured<a class="anchor" href="#12）errorCaptured">·</a></h5>
+<ul>
 <li>当捕获一个来自子孙组件的错误时被调用。此钩子会收到三个参数：错误对象、发生错误的组件实例以及一个包含错误来源信息的字符串。此钩子可以返回 false 以阻止该错误继续向上传播</li>
 <li>触发时机都是相同的，不同的是 errorCaptured 发生在前，且如果某个组件的 errorCaptured 方法返回了 false，那么这个异常信息不会再向上冒泡也不会再调用 errorHandler 方法</li>
 </ul>
-<h3 id="3-常见问题"><a href="#3-常见问题" class="headerlink" title="3. 常见问题"></a>3. 常见问题</h3><h4 id="1-调用异步请求"><a href="#1-调用异步请求" class="headerlink" title="1. 调用异步请求"></a>1. 调用异步请求</h4><ul>
+<h3 id="3-常见问题">3. 常见问题<a class="anchor" href="#3-常见问题">·</a></h3>
+<h4 id="1-调用异步请求">1. 调用异步请求<a class="anchor" href="#1-调用异步请求">·</a></h4>
+<ul>
 <li>可以 created、beforeMount、mounted 中调用：在这三个钩子函数中，<strong>data 已经创建</strong>，可以将服务端端返回的<strong>数据进行赋值。</strong></li>
-<li>如果异步请求不需要依赖 Dom 推荐在 <strong>created</strong> 钩子函数中调用异步请求，因为在 created 钩子函数中调用异步请求有以下优点：<ul>
+<li>如果异步请求不需要依赖 Dom 推荐在 <strong>created</strong> 钩子函数中调用异步请求，因为在 created 钩子函数中调用异步请求有以下优点：
+<ul>
 <li>能更快获取到服务端数据，减少页面  loading 时间；</li>
 <li>ssr  不支持 beforeMount 、mounted 钩子函数，所以放在 created 中有助于一致性；</li>
 </ul>
 </li>
 </ul>
-<h4 id="2-el选项对生命周期影响："><a href="#2-el选项对生命周期影响：" class="headerlink" title="2. el选项对生命周期影响："></a>2. el选项对生命周期影响：</h4><ul>
-<li><p><strong>没有el选项，则停止编译</strong>，也意味着暂时停止了生命周期。生命周期到created就结束了</p>
+<h4 id="2-el选项对生命周期影响：">2. el选项对生命周期影响：<a class="anchor" href="#2-el选项对生命周期影响：">·</a></h4>
+<ul>
+<li>
+<p><strong>没有el选项，则停止编译</strong>，也意味着暂时停止了生命周期。生命周期到created就结束了</p>
 </li>
-<li><p>而当我们不加el选项，但是手动执行<code>vm.$mount(el)</code>方法的话，也能够使暂停的生命周期进行下去</p>
+<li>
+<p>而当我们不加el选项，但是手动执行<code>vm.$mount(el)</code>方法的话，也能够使暂停的生命周期进行下去</p>
 </li>
-<li><p><code>template</code>和<code>HTML</code>的优先级：</p>
+<li>
+<p><code>template</code>和<code>HTML</code>的优先级：</p>
 <blockquote>
 <p>结论</p>
 </blockquote>
@@ -275,30 +311,41 @@
 </ol>
 </li>
 </ul>
-<h3 id="4-父子组件"><a href="#4-父子组件" class="headerlink" title="4. 父子组件"></a>4. 父子组件</h3><ul>
-<li><h4 id="执行顺序："><a href="#执行顺序：" class="headerlink" title="执行顺序："></a>执行顺序：</h4><ul>
-<li><p>加载渲染过程：父要等子的挂载</p>
-<p><code>父beforeCreate</code>——<code>父created</code>———<code>父beforeMounted</code>———<code>子beforeCreate</code>———<code>子created</code>———<code>子beforeMounted</code>—-<code>子mounted</code>———<code>父mounted</code></p>
+<h3 id="4-父子组件">4. 父子组件<a class="anchor" href="#4-父子组件">·</a></h3>
+<ul>
+<li>
+<h4 id="执行顺序：">执行顺序：<a class="anchor" href="#执行顺序：">·</a></h4>
+<ul>
+<li>
+<p>加载渲染过程：父要等子的挂载</p>
+<p><code>父beforeCreate </code>----<code>父created</code>------<code>父beforeMounted</code>------<code>子beforeCreate </code>------<code>子created</code>------<code>子beforeMounted</code>—<code>子mounted</code>------<code>父mounted</code></p>
 </li>
-<li><p>子组件更新过程：父要等子的更新</p>
-<p><code>父beforeUpdate</code>——<code>子beforeUpdate</code>—-<code>子updated</code>—-<code>父updated</code></p>
+<li>
+<p>子组件更新过程：父要等子的更新</p>
+<p><code>父beforeUpdate</code>----<code>子beforeUpdate</code>—<code>子updated</code>—<code>父updated</code></p>
 </li>
-<li><p>父组件更新过程</p>
-<p><code>父 beforeUpdate</code> -&gt; <code>父 updated</code></p>
+<li>
+<p>父组件更新过程</p>
+<p><code>父 beforeUpdate</code> -&gt; <code> 父 updated</code></p>
 </li>
-<li><p>销毁过程</p>
-<p><code>父beforeDestroy</code>——<code>子beforeDestroy</code>——<code>子destroyed</code>——<code>父destroyed</code></p>
+<li>
+<p>销毁过程</p>
+<p><code>父beforeDestroy</code>----<code>子beforeDestroy</code>----<code>子destroyed</code>----<code>父destroyed</code></p>
 </li>
 </ul>
 </li>
-<li><h4 id="数据传输流程："><a href="#数据传输流程：" class="headerlink" title="数据传输流程："></a>数据传输流程：</h4><ul>
+<li>
+<h4 id="数据传输流程：">数据传输流程：<a class="anchor" href="#数据传输流程：">·</a></h4>
+<ul>
 <li>当子组件被点击后，会向外emit一个事件，父组件会监听这个自定义事件，methods里改变data的list</li>
 <li>这个list会由于单向数据流，传递给子组件</li>
-<li>所以子组件列表渲染好了，此时父组件才整个更新：<code>父beforeUpdate</code>——<code>子beforeUpdate</code>—-<code>子updated</code>—-<code>父updated</code></li>
+<li>所以子组件列表渲染好了，此时父组件才整个更新：<code>父beforeUpdate</code>----<code>子beforeUpdate</code>—<code>子updated</code>—<code>父updated</code></li>
 </ul>
 </li>
-<li><h4 id="场景设计："><a href="#场景设计：" class="headerlink" title="场景设计："></a>场景设计：</h4><p><strong>层级：</strong>父—子—孙  3级层级组件</p>
-<p><strong>需求：</strong>在组件显示在页面上之后，再将数据初始化进行回显。父组件获取数据后传递到子组件，要求子组件根据这个值将内部元数据进行加工，那么<strong>在子组件中什么时机下才能获取父组件传递过来的新值呢？</strong></p>
+<li>
+<h4 id="场景设计：">场景设计：<a class="anchor" href="#场景设计：">·</a></h4>
+<p>**层级：**父–子–孙  3级层级组件</p>
+<p><strong>需求：<strong>在组件显示在页面上之后，再将数据初始化进行回显。父组件获取数据后传递到子组件，要求子组件根据这个值将内部元数据进行加工，那么</strong>在子组件中什么时机下才能获取父组件传递过来的新值呢？</strong></p>
 <p><strong>分析：</strong></p>
 <ol>
 <li>子组件挂载完成后，父组件还未挂载。所以组件数据回显的时候，在父组件<code>mounted</code>中获取api的数据，子组件的<code>mounted</code>是拿不到的</li>
@@ -315,8 +362,9 @@ wpac_init.push({widget: 'Rating', id: 33234});
   var mc = document.createElement('script');
   mc.type = 'text/javascript';
   mc.async = true;
-  mc.src = '//embed.widgetpack.com/widget.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  //- mc.src = '//embed.widgetpack.com/widget.js';
+  var s = document.getElementsByTagName('script')[0];
+  s?.parentNode?.insertBefore(mc, s?.nextSibling);
 })();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/ReactHooks.html"><img class="prev-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/hook1.png" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">React-Hook的出现</div></div></a></div><div class="next-post pull-right"><a href="/posts/React_lifecycle.html"><img class="next-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-lifecycle.png" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">React的生命周期</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%84%E4%B8%AA%E9%92%A9%E5%AD%90%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">2. 各个钩子的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%89beforeCreate%EF%BC%9A"><span class="toc-text">1）beforeCreate：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%89created%EF%BC%9A"><span class="toc-text">2）created：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%EF%BC%89beforeMount"><span class="toc-text">3）beforeMount</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%EF%BC%89mounted%EF%BC%9A"><span class="toc-text">4）mounted：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%EF%BC%89beforeUpdate%EF%BC%9A"><span class="toc-text">5）beforeUpdate：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6%EF%BC%89updated%EF%BC%9A"><span class="toc-text">6）updated：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7%EF%BC%89beforeDestroy%EF%BC%9A"><span class="toc-text">7）beforeDestroy：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8%EF%BC%89destroyed%EF%BC%9A"><span class="toc-text">8）destroyed：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9%EF%BC%89activated%EF%BC%9A%E8%A2%AB-keep-alive-%E7%BC%93%E5%AD%98%E7%9A%84%E7%BB%84%E4%BB%B6%E6%BF%80%E6%B4%BB%E6%97%B6%E8%B0%83%E7%94%A8"><span class="toc-text">9）activated：被 keep-alive 缓存的组件激活时调用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10%EF%BC%89deactivated%EF%BC%9A%E8%A2%AB-keep-alive-%E7%BC%93%E5%AD%98%E7%9A%84%E7%BB%84%E4%BB%B6%E5%81%9C%E7%94%A8%E6%97%B6%E8%B0%83%E7%94%A8"><span class="toc-text">10）deactivated：被 keep-alive 缓存的组件停用时调用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11%EF%BC%89errorHandler%EF%BC%9A%E8%A2%AB-keep-alive-%E7%BC%93%E5%AD%98%E7%9A%84%E7%BB%84%E4%BB%B6%E5%81%9C%E7%94%A8%E6%97%B6%E8%B0%83%E7%94%A8"><span class="toc-text">11）errorHandler：被 keep-alive 缓存的组件停用时调用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12%EF%BC%89errorCaptured"><span class="toc-text">12）errorCaptured</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">3. 常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%B0%83%E7%94%A8%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82"><span class="toc-text">1. 调用异步请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-el%E9%80%89%E9%A1%B9%E5%AF%B9%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%BD%B1%E5%93%8D%EF%BC%9A"><span class="toc-text">2. el选项对生命周期影响：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6"><span class="toc-text">4. 父子组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%EF%BC%9A"><span class="toc-text">执行顺序：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-text">数据传输流程：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1%EF%BC%9A"><span class="toc-text">场景设计：</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
@@ -465,7 +513,7 @@ document.addEventListener('pjax:error', (e) => {
   }
 })</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementsByClassName('category-lists')[0] && (location.pathname ==='/categories/'|| '/categories/' ==='all')){
     var parent = document.getElementsByClassName('category-lists')[0];
-    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-1-CSS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍭 CSS<br>(17)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-2-JS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🥑 JS、ES<br>(29)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-3-Ajax/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🥝 Ajax、Axios<br>(3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/1-4-框架/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍡 React、Vue<br>(15)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-1-组件库/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍉 组件库开发<br>(1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-2-基建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍹 项目基建<br>(5)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-3-实现Tricks/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💫 积累功能<br>(4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/2-4-项目/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🔮 项目总结<br>(12)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-1-记录/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👻 碎碎念~<br>(3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-2-浏览器/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 浏览器渲染<br>(8)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-3-基础/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🧊 网络<br>(10)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://mynightwish.top/categories/3-4-Tool-Shell/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍤 工具、脚本<br>(1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="https://mynightwish.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/1-1-CSS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍭 CSS<br>(17)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/1-2-JS/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🥑 JS、ES<br>(29)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/1-3-Ajax/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🥝 Ajax、Axios<br>(3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/1-4-框架/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍡 React、Vue<br>(15)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/2-1-组件库/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍉 组件库开发<br>(1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/2-2-基建/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍹 项目基建<br>(5)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/2-3-实现Tricks/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💫 积累功能<br>(4)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/2-4-项目/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🔮 项目总结<br>(12)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/3-1-记录/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👻 碎碎念~<br>(3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/3-2-浏览器/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 浏览器渲染<br>(8)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/3-3-基础/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🧊 网络<br>(10)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://myNightwish.github.io/categories/3-4-Tool/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🍤 工具、脚本<br>(1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="https://myNightwish.github.io/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
     console.log('已挂载magnet')
     parent.insertAdjacentHTML("afterbegin",child)}
      </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(25% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
