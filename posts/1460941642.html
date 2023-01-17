@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目2：去哪儿网：问题总结篇 | Nightwishのblog🧊</title><meta name="keywords" content="Vue"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2020年10月大概   项目背景： 慕课网的项目学习时做的笔记   问题总结篇： 总结一些之前的问题（简洁版）   概述：去哪儿网的移动端页面的实现，其中有3大模块: 遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。在解决这些问题的过程中，又产生了新的问题并进行了优化。   1. localSto">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目2：去哪儿网：问题总结篇 | Nightwishのblog🧊</title><meta name="keywords" content="Vue"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2020年10月大概 项目背景： 慕课网的项目学习时做的笔记 问题总结篇： 总结一些之前的问题（简洁版）  概述：去哪儿网的移动端页面的实现，其中有3大模块:遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。在解决这些问题的过程中，又产生了新的问题并进行了优化。   1. localStorage解决变">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目2：去哪儿网：问题总结篇">
 <meta property="og:url" content="https://mynightwish.online/posts/1460941642.html">
 <meta property="og:site_name" content="Nightwishのblog🧊">
-<meta property="og:description" content="项目时间： 2020年10月大概   项目背景： 慕课网的项目学习时做的笔记   问题总结篇： 总结一些之前的问题（简洁版）   概述：去哪儿网的移动端页面的实现，其中有3大模块: 遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。在解决这些问题的过程中，又产生了新的问题并进行了优化。   1. localSto">
+<meta property="og:description" content="项目时间： 2020年10月大概 项目背景： 慕课网的项目学习时做的笔记 问题总结篇： 总结一些之前的问题（简洁版）  概述：去哪儿网的移动端页面的实现，其中有3大模块:遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。在解决这些问题的过程中，又产生了新的问题并进行了优化。   1. localStorage解决变">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://images.unsplash.com/photo-1638454909775-82b870c6580d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80">
 <meta property="article:published_time" content="2021-12-12T16:13:14.000Z">
@@ -169,101 +169,71 @@
     background-size: cover!important;
     background-repeat: no-repeat!important;
   }
-</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1638454909775-82b870c6580d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">项目2：去哪儿网：问题总结篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T16:13:14.000Z" title="发表于 2021-12-13 00:13:14">2021-12-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.710Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1338</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="项目2：去哪儿网：问题总结篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
-<li>
-<p>项目时间： 2020年10月大概</p>
+</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1638454909775-82b870c6580d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">项目2：去哪儿网：问题总结篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T16:13:14.000Z" title="发表于 2021-12-13 00:13:14">2021-12-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.710Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1340</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="项目2：去哪儿网：问题总结篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
+<li>项目时间： 2020年10月大概</li>
+<li>项目背景： 慕课网的项目学习时做的笔记</li>
+<li><p>问题总结篇： 总结一些之前的问题（简洁版）</p>
 </li>
-<li>
-<p>项目背景： 慕课网的项目学习时做的笔记</p>
-</li>
-<li>
-<p>问题总结篇： 总结一些之前的问题（简洁版）</p>
-</li>
-<li>
-<p>概述：去哪儿网的移动端页面的实现，其中有3大模块:
-遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。在解决这些问题的过程中，又产生了新的问题并进行了优化。</p>
+<li><p>概述：去哪儿网的移动端页面的实现，其中有3大模块:<br>遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。<br>在解决这些问题的过程中，又产生了新的问题并进行了优化。</p>
 </li>
 </ul>
-<h3 id="1-localStorage解决变更城市名后，首页无法更新的问题">1. localStorage解决变更城市名后，首页无法更新的问题<a class="anchor" href="#1-localStorage解决变更城市名后，首页无法更新的问题">·</a></h3>
-<ul>
-<li>
-<p>**原本需求：**不选的时候有一个默认城市，展示该城市数据，实现选中一次，展示新的城市数据</p>
+<h3 id="1-localStorage解决变更城市名后，首页无法更新的问题"><a href="#1-localStorage解决变更城市名后，首页无法更新的问题" class="headerlink" title="1. localStorage解决变更城市名后，首页无法更新的问题"></a>1. localStorage解决变更城市名后，首页无法更新的问题</h3><ul>
+<li><p><strong>原本需求：</strong>不选的时候有一个默认城市，展示该城市数据，实现选中一次，展示新的城市数据</p>
 </li>
-<li>
-<p>**原本实现逻辑：**当用户每次进入页面，都在mounted钩子里会发ajax请求，并将Vuex中城市名的数据带过去</p>
+<li><p><strong>原本实现逻辑：</strong>当用户每次进入页面，都在mounted钩子里会发ajax请求，并将Vuex中城市名的数据带过去</p>
 </li>
-<li>
-<h4 id="出现的问题：刷新了页面，城市又回到了默认城市上海"><strong>出现的问题：刷新了页面，城市又回到了默认城市上海</strong><a class="anchor" href="#出现的问题：刷新了页面，城市又回到了默认城市上海">·</a></h4>
-<ul>
-<li>
-<p>**原因：**由于store里的数据是保存在运行内存中的,当页面刷新时，页面会重新加载vue实例，store里面的数据就会被重新赋值，就会使用state中默认保存的数据</p>
+<li><h4 id="出现的问题：刷新了页面，城市又回到了默认城市上海"><a href="#出现的问题：刷新了页面，城市又回到了默认城市上海" class="headerlink" title="出现的问题：刷新了页面，城市又回到了默认城市上海"></a><strong>出现的问题：刷新了页面，城市又回到了默认城市上海</strong></h4><ul>
+<li><p><strong>原因：</strong>由于store里的数据是保存在运行内存中的,当页面刷新时，页面会重新加载vue实例，store里面的数据就会被重新赋值，就会使用state中默认保存的数据</p>
 </li>
-<li>
-<p>**解决：**localStorage可以实现当有缓存值的时候用缓存值，没有才用默认值的功能，为什么选它？</p>
+<li><p><strong>解决：</strong>localStorage可以实现当有缓存值的时候用缓存值，没有才用默认值的功能，为什么选它？</p>
 <ul>
 <li>localStorage是永久存储在本地，除非你主动去删除;</li>
 <li>sessionStorage是存储到当前页面关闭为止;</li>
 <li>cookie则根据你设置的有效时间来存储，但缺点是不能储存大数据且不易读取。</li>
 </ul>
 </li>
-<li>
-<p><strong>新的问题：</strong></p>
+<li><p><strong>新的问题：</strong></p>
 <p>引入localStorage，当用户重新选择了城市时，Vuex会更新state里面的city变量，此时城市名已经变动，此时应该进行ajax请求的。</p>
 <p>但同时由于对首页用了keep_alive，所以再次回到首页不会再执行mounted这个钩子了，进而无法在该钩子里做数据获取得操作，我们可以用activated</p>
 </li>
-<li>
-<p><strong>网络请求优化：</strong></p>
-<p>**原因：**每点一个城市都会数据请求，假如点击前后城市并没更新，其实没有必要重新请求：</p>
-<p>**解决：**在首页activated新定义一个变量保存每次请求前的城市名，来对state里面的城市做if判断，只有二者不一致时才会去重新请求</p>
-<p>**实现：**首次请求后不会再次请求的问题；城市名实际未变化，也不会再次请求的问题</p>
+<li><p><strong>网络请求优化：</strong></p>
+<p><strong>原因：</strong>每点一个城市都会数据请求，假如点击前后城市并没更新，其实没有必要重新请求：</p>
+<p><strong>解决：</strong>在首页activated新定义一个变量保存每次请求前的城市名，来对state里面的城市做if判断，只有二者不一致时才会去重新请求</p>
+<p><strong>实现：</strong>首次请求后不会再次请求的问题；城市名实际未变化，也不会再次请求的问题</p>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="2-实现手指滑动时的更准确的高度计算并优化计算性能；">2. 实现手指滑动时的更准确的高度计算并优化计算性能；<a class="anchor" href="#2-实现手指滑动时的更准确的高度计算并优化计算性能；">·</a></h3>
+<h3 id="2-实现手指滑动时的更准确的高度计算并优化计算性能；"><a href="#2-实现手指滑动时的更准确的高度计算并优化计算性能；" class="headerlink" title="2. 实现手指滑动时的更准确的高度计算并优化计算性能；"></a>2. 实现手指滑动时的更准确的高度计算并优化计算性能；</h3><ul>
+<li>需求：在右侧字母表上下拖拽时，左边对应的城市列表自动上下滚动</li>
+<li><p>绑定touch相关的3个事件：touchstart、touchmove、touchend。设置标识位，在start里面将标识位更新为true，在move里判断标识位为true时才进行高度的计算。在touchend中将标识位false。</p>
+</li>
+<li><p>高度计算：</p>
 <ul>
-<li>
-<p>需求：在右侧字母表上下拖拽时，左边对应的城市列表自动上下滚动</p>
-</li>
-<li>
-<p>绑定touch相关的3个事件：touchstart、touchmove、touchend。设置标识位，在start里面将标识位更新为true，在move里判断标识位为true时才进行高度的计算。在touchend中将标识位false。</p>
-</li>
-<li>
-<p>高度计算：</p>
-<ul>
-<li>获得字母A距离顶部的高度A ：·<code>this.$refs['A'][0].offsetTop</code>DOM元素距离顶部的距离 ，再拿到当前手指滑动个位置距离顶部的高度B ：通过事件对象里面的touche数组，e.touches[0].clientY，相减的高度差除以一个字母的高度20，就拿到了当前字母对应的索引，然后从存储字母的数组中取出来。</li>
+<li>获得字母A距离顶部的高度A ：·<code>this.$refs[&#39;A&#39;][0].offsetTop</code>DOM元素距离顶部的距离 ，再拿到当前手指滑动个位置距离顶部的高度B ：通过事件对象里面的touche数组，e.touches[0].clientY，相减的高度差除以一个字母的高度20，就拿到了当前字母对应的索引，然后从存储字母的数组中取出来。</li>
 </ul>
 </li>
-<li>
-<p>优化：每次执行一次move，都要获取dom结构的offsetTOP属性进行一次计算。这是没有必要的且耗费性能的                                                  <strong>JS方面的优化</strong></p>
+<li><p>优化：每次执行一次move，都要获取dom结构的offsetTOP属性进行一次计算。这是没有必要的且耗费性能的                                                  <strong>JS方面的优化</strong></p>
 <ul>
 <li>字母A距离顶部的高度A，在初次渲染这个组件的时候数据还是空的，而当ajax数据获取后，往这个组件传的数据改变，updated生命周期钩子就会执行，页面中显示出了列表的内容。这个时候去获取就能得到字母A所在的DOM对应的offsetTop的值不仅是准确的，还能解决耗费性能的问题</li>
 <li>引入防抖操作，在touchmove中，如果标志位为true，就清空定时器，并且设置新的定时器，将高度计算的操作放在定时器里</li>
 </ul>
 </li>
 </ul>
-<h3 id="3-城市名搜索的逻辑实现">3. 城市名搜索的逻辑实现<a class="anchor" href="#3-城市名搜索的逻辑实现">·</a></h3>
-<ul>
-<li>
-<p>需求：</p>
+<h3 id="3-城市名搜索的逻辑实现"><a href="#3-城市名搜索的逻辑实现" class="headerlink" title="3. 城市名搜索的逻辑实现"></a>3. 城市名搜索的逻辑实现</h3><ul>
+<li><p>需求：</p>
 <ul>
 <li>搜索框搜索城市名或拼音，显示对应的搜索结果，并引入防抖降低搜索过程中查找匹配函数的频率</li>
 <li>当匹配不到城市时，显示无法匹配</li>
 <li>匹配的城市可以滚动显示</li>
 </ul>
 </li>
-<li>
-<p>实现：</p>
-</li>
-<li>
-<p>搜索框通过<strong>v-model双向绑定</strong>数据keyword，在<strong>侦听器watch</strong>中监听keyword的改变，当它发生改变时，代表用户正在输入。</p>
-<ul>
+<li>实现：</li>
+<li>搜索框通过<strong>v-model双向绑定</strong>数据keyword，在<strong>侦听器watch</strong>中监听keyword的改变，当它发生改变时，代表用户正在输入。<ul>
 <li>此时对cities对象进行遍历，cities里每一项都包含了indexof一个城市的名字name和拼音。只要输入的内容能匹配其中之一，就将匹配到的城市数据加入到list列表中。然后对list列表中的数据在li组件中循环显示出来。</li>
 </ul>
 </li>
-<li>
-<p>在循环列表末尾添加一项li，用于展示是否无法匹配，当匹配不到城市时，通过<strong>v-show</strong>控制，显示匹配不到该城市</p>
-<ul>
+<li>在循环列表末尾添加一项li，用于展示是否无法匹配，当匹配不到城市时，通过<strong>v-show</strong>控制，显示匹配不到该城市<ul>
 <li>滚动：将这个组件绑定ref，在mounted阶段，通过<strong>refs拿到DOM元素</strong>，传入<strong>new BetterScroll</strong>中，然后实现局部滚动</li>
 </ul>
 </li>
