@@ -11,4 +11,4 @@ Allow: /census/
 Disallow: /js/
 Disallow: /css/ 
 Disallow: /lib/ 
-Sitemap: https://mynightwish.top/sitemap.xml
+Sitemap: https://mynightwish.online/sitemap.xml
