@@ -4841,22 +4841,22 @@ mjx-container[display],
 }
 @media screen and (max-width: 800px) {
   #web_bg {
-    background: var(--mobileday-bg) !important;
-    background-attachment: local !important;
-    background-position: center !important;
-    -webkit-background-size: cover !important;
-    -moz-background-size: cover !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
+    background: var(--mobileday-bg);
+    background-attachment: local;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   [data-theme="dark"] #web_bg {
-    background: var(--mobilenight-bg) !important;
-    background-attachment: local !important;
-    background-position: center !important;
-    -webkit-background-size: cover !important;
-    -moz-background-size: cover !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
+    background: var(--mobilenight-bg);
+    background-attachment: local;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }
 #article-container .btn-center {

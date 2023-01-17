@@ -63,7 +63,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-01-17 12:05:11'
+  postUpdate: '2023-01-17 20:49:26'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -153,11 +153,11 @@
     }
     detectApple()
     document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/double.css"><link rel="stylesheet" href="/css/beautify.css" media="async"><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/lastLoad.css" media="defer" onload="this.media='all'"><style id="themeColor"></style><style id="rightSide"></style><style id="transPercent"></style><style id="blurNum"></style><style id="settingStyle"></style><span id="fps"></span><style id="defineBg"></style><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.css" media="defer" onload="this.media='all'"><script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperFix.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"><style>#web_bg{
-  background: var(--default-bg) !important;
-  background-attachment: local!important;
-  background-position: center!important;
-  background-size: cover!important;
-  background-repeat: no-repeat!important;
+  background: var(--default-bg);
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 [data-theme="dark"]
   #web_bg{
@@ -172,33 +172,42 @@
 项目背景： 给师姐做的（首页功能+购物车）
 问题总结篇，比较啰嗦
 
-1. 吸顶效果position属性的特性：5种定位方式
+1. 吸顶效果·
+position属性的特性：5种定位方式
+
 
 static：        默认值  正常文档流的位置（从上到下，从左到右）
 
-浏览器会按照源码的顺序，决定每个元素的位置，这称为”正常的页面流”（normal flow）。每个块级元素占据自己的区块（block），元素与元素之间不产生重叠，这个位置就是元素的默认位置。
+浏览器会按照源码的顺序，决定每个元素的位置，这称为&quot;正常的页面流&quot;（normal flow）。每个块级元素占据自己的区块（block），元素与元素之间不产生重叠，这个位置就是元素的默认位置。
 static定位所导致的元素位置，是浏览器自主决定的，所以这时top、bottom、left、right这四个属性无效。
+
 
 
 relative：     不脱标， 相对于原本占据的位置，且占用原位置
 
+
 absolute       脱标   相对于第一个不是static的父元素定位，如果没有，就以html元素为基准
+
 
 fixed：          脱标        相对于浏览器窗口
 
-sticky：  基于用户的滚动位置来定位，在 position:relative 与 position:fixed 定位之间切换
 
-一般它的行为就像 positi ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/926905116.html" title="项目3：购物街项目:学习笔记">项目3：购物街项目:学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T16:17:05.000Z" title="发表于 2021-12-13 00:17:05">2021-12-13</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.711Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">
+sticky：  基于用户的滚动位置来定位，在 position:relative 与 position:fixed 定位之间切换 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/926905116.html" title="项目3：购物街项目:学习笔记">项目3：购物街项目:学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T16:17:05.000Z" title="发表于 2021-12-13 00:17:05">2021-12-13</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.711Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">
 项目时间： 2020年11月-12月大概
 项目背景： 给师姐做的（首页功能+购物车）
 项目记录篇，比较啰嗦
 
-项目首页Home笔记项目相关配置：项目的目录结构划分（主要是Src）
+项目首页Home笔记·
+项目相关配置：项目的目录结构划分（主要是Src）·
+
+
 去掉public里面的index.hml 的 favicon图标，去掉初始化的hellworld.vue
+
 
 assets
 
 img
+
 cart
 common
 detail
@@ -208,8 +217,10 @@ tabbar
 
 
 css
+
 normalize.css
 base.css
+
 
 
 
@@ -217,6 +228,7 @@ base.css
 components
 
 common （这里放不仅仅当前项目可以用的，完全抽离的，还可以在将来的组件中应用）
+
 tabbar 文件夹: TabBar.vue    TabBarItem.vue
 navbar文件夹: NavBar.vue
 scroll文件夹:    Scroll.vue
@@ -224,116 +236,166 @@ swiper文件夹 ：  index.js    Swiper.vue    SwiperItem.vue
 toast文件夹 :        index.js    Toast.vue
 
 
-content（和业务相关的公共组件，只针对当前项目）
-main ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2071449193.html" title="项目2-去哪儿网：项目记录篇">项目2-去哪儿网：项目记录篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T16:13:37.000Z" title="发表于 2021-12-13 00:13:37">2021-12-13</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.710Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">
+content（和业务相关的公共组件，只针对 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2071449193.html" title="项目2-去哪儿网：项目记录篇">项目2-去哪儿网：项目记录篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T16:13:37.000Z" title="发表于 2021-12-13 00:13:37">2021-12-13</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.710Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">
 项目时间： 2020年10月
 项目背景： 慕课网的项目学习时做的笔记
 项目记录篇，比较啰嗦
 
-去哪儿项目记录梳理Axios—进行Ajax数据的获取
-Vue Router—来做多页面之间的路由
-Vuex—来做各个组件之间的数据共享
-异步组件—来让我们代码上线，性能更优
-Stylus—编写前端的样式
-递归组件—实现组件调用自己的效果
-插件—比Swiper插件来实现页面上的轮播效果
-6-1  Vue项目预热-环境配置
-cmd输入git —version报错解决办法：
+去哪儿项目记录梳理·
+Axios–进行Ajax数据的获取
+Vue Router–来做多页面之间的路由
+Vuex–来做各个组件之间的数据共享
+异步组件–来让我们代码上线，性能更优
+Stylus–编写前端的样式
+递归组件–实现组件调用自己的效果
+插件–比Swiper插件来实现页面上的轮播效果
+6-1  Vue项目预热-环境配置·
+
+
+cmd输入git --version报错解决办法：·
+
 
 ①配置环境变量(分行已经是代表分号【;】间隔了)；
 ②安装的时候选择git和cmd一起的选项…(自动帮你配置好环境变量)
 
 
-打通线上(git码云)-线下……SSH公钥：
+
+打通线上(git码云)-线下……SSH公钥：·
+
+
 设置-&gt;SSH公钥-&gt;生成/添加SSH公钥
+
 
 在Git Bash(在windows小型的Linux操作系统)运行Linux命令：
 ssh-keygen -t rsa -C &quot;2211016493@qq.com&quot; cat ~/.ssh/id_rsa.pub
 
-生成公钥粘贴到网站上,[网站上有公钥，然后其实本地有一个私钥，公钥和 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1460941642.html" title="项目2：去哪儿网：问题总结篇">项目2：去哪儿网：问题总结篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T16:13:14.000Z" title="发表于 2021-12-13 00:13:14">2021-12-13</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.710Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">
+
+生成公钥粘贴到网站上,[网站上有公钥，然 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1460941642.html" title="项目2：去哪儿网：问题总结篇">项目2：去哪儿网：问题总结篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T16:13:14.000Z" title="发表于 2021-12-13 00:13:14">2021-12-13</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.710Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">
+
 项目时间： 2020年10月大概
+
+
 项目背景： 慕课网的项目学习时做的笔记
+
+
 问题总结篇： 总结一些之前的问题（简洁版）
 
-概述：去哪儿网的移动端页面的实现，其中有3大模块:遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。在解决这些问题的过程中，又产生了新的问题并进行了优化。
+
+概述：去哪儿网的移动端页面的实现，其中有3大模块:
+遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。在解决这些问题的过程中，又产生了新的问题并进行了优化。
 
 
-1. localStorage解决变更城市名后，首页无法更新的问题
-原本需求：不选的时候有一个默认城市，展示该城市数据，实现选中一次，展示新的城市数据
+1. localStorage解决变更城市名后，首页无法更新的问题·
 
-原本实现逻辑：当用户每次进入页面，都在mounted钩子里会发ajax请求，并将Vuex中城市名的数据带过去
 
-出现的问题：刷新了页面，城市又回到了默认城市上海
-原因：由于store里的数据是保存在运行内存中的,当页面刷新时，页面会重新加载vue实例，store里面的数据就会被重新赋值，就会使用state中默认保存的数据
+**原本需求：**不选的时候有一个默认城市，展示该城市数据，实现选中一次，展示新的城市数据
 
-解决：localStorage可以实现当有缓存值的时候用缓存值，没有才用默认值的功能，为什么选它？
 
-localStorage是永久存储在本地，除非你主动去 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1322992885.html" title="浏览器运行机制">浏览器运行机制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T08:27:00.000Z" title="发表于 2021-12-12 16:27:00">2021-12-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.696Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-2-%E6%B5%8F%E8%A7%88%E5%99%A8/">3.2-浏览器</a></span></div><div class="content">待续
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1720673220.html" title="经典国内外计算机基础课程">经典国内外计算机基础课程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T08:20:52.000Z" title="发表于 2021-12-12 16:20:52">2021-12-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.701Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="content">计算机网络斯坦福144：https://www.bilibili.com/video/BV137411Z7LR?from=search&amp;seid=5779448666653480680哈工大：https://www.bilibili.com/video/BV1Up411Z7hC
-数据结构与算法数据结构：https://www.bilibili.com/video/BV1Kb41127fTleetcode刷题笔记：https://mp.weixin.qq.com/s?__biz=MzI0NjAxMDU5NA==&amp;mid=328435125&amp;idx=1&amp;sn=3de887a586e8a6a08784036de466623e&amp;chksm=7f22e23848556b2e67fedbd30b1ca0fcdb46ed336279aa4cb0899a0f2ff44210e829d125ade6#rd
-操作系统：南大蒋岩岩：https://www.bilibili.com/video/BV1N741177F5?p=1&amp;share_medium=andr ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/310999178.html" title="项目5：Node用户管理接口：学习记录篇">项目5：Node用户管理接口：学习记录篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T16:42:57.000Z" title="发表于 2021-12-12 00:42:57">2021-12-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.712Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">
+**原本实现逻辑：**当用户每次进入页面，都在mounted钩子里会发ajax请求，并将Vuex中城市名的数据带过去
+
+
+出现的问题：刷新了页面，城市又回到了默认城市上海·
+
+
+**原因：**由于store里的数据是保存在运行内存中的,当页面刷新时，页面会重新加载vue实例，store里面的数据就会被重新赋值，就会使用state中默认保存的数据
+
+
+**解决：**localStorage可以实现当有缓存值的时候用缓存值，没有才用默认值的功能，为什么 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1322992885.html" title="浏览器运行机制">浏览器运行机制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T08:27:00.000Z" title="发表于 2021-12-12 16:27:00">2021-12-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.696Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-2-%E6%B5%8F%E8%A7%88%E5%99%A8/">3.2-浏览器</a></span></div><div class="content">待续
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1720673220.html" title="经典国内外计算机基础课程">经典国内外计算机基础课程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T08:20:52.000Z" title="发表于 2021-12-12 16:20:52">2021-12-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.701Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="content">计算机网络·
+斯坦福144：https://www.bilibili.com/video/BV137411Z7LR?from=search&amp;seid=5779448666653480680
+哈工大：https://www.bilibili.com/video/BV1Up411Z7hC
+数据结构与算法·
+数据结构：https://www.bilibili.com/video/BV1Kb41127fT
+leetcode刷题笔记：https://mp.weixin.qq.com/s?__biz=MzI0NjAxMDU5NA==&amp;mid=328435125&amp;idx=1&amp;sn=3de887a586e8a6a08784036de466623e&amp;chksm=7f22e23848556b2e67fedbd30b1ca0fcdb46ed336279aa4cb0899a0f2ff44210e829d125ade6#rd
+操作系统：·
+南大蒋岩岩：https://www.bilibili.com/video/BV1N741177F5?p=1&amp;share_med ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/310999178.html" title="项目5：Node用户管理接口：学习记录篇">项目5：Node用户管理接口：学习记录篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T16:42:57.000Z" title="发表于 2021-12-12 00:42:57">2021-12-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.712Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">
 项目时间： 2021年2月
 项目背景： 春节在家，只是想简单了解下接口、数据库的概念
 学习记录篇：记录过程的，记忆丢失，嘤嘤嘤
 
-项目实战1. 划分目录结构
+项目实战·
+1. 划分目录结构·
+
+
 划分方式：
 
+
 按照功能模块划分；
+
 
 按照业务模块划分；
 
 
 
-项目配置文件信息：&quot;start&quot;: &quot;nodemon ./src/main.js&quot;
 
-项目的入口文件：main.jsconst app = require(&#x27;./app/index&#x27;)const config = require(&#x27;./app/config&#x27;)// 启动服务器app.listen(config.APP_PORT, () =&gt; &#123;  console.log(&#x27;服务器启动成功&#x27;,config.APP_PORT);&#125;);
+项目配置文件信息：·
+&quot;start&quot;: &quot;nodemon ./src/main.js&quot;
 
-创建服务器：index.jsconst Koa = require(&#x27;koa&#x27;)const bodyParser = require(&#x27;koa-bodyParser&#x27;)con ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3253305718.html" title="项目5：Node用户管理接口：项目梳理篇">项目5：Node用户管理接口：项目梳理篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T16:19:34.000Z" title="发表于 2021-12-12 00:19:34">2021-12-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.712Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">
+
+项目的入口文件：main.js·
+const app = require(&#x27;./app/index&#x27;)const config = require(&#x27;./app/config&#x27;)// 启动服务器app.listen(config.APP_PORT, () =&gt; &#123;  console.log(&#x27;服务器启动成功&#x27;,config.APP_PORT);&#125;);
+
+
+创建服务器：index.js·
+const Koa = require(&#x27;koa&#x27;)const bodyParser = require(&#x27;koa-body ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/3253305718.html" title="项目5：Node用户管理接口：项目梳理篇">项目5：Node用户管理接口：项目梳理篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T16:19:34.000Z" title="发表于 2021-12-12 00:19:34">2021-12-12</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.712Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="content">
 项目时间： 2021年2月
 项目背景： 春节在家，只是想简单了解下接口、数据库的概念
 梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤
 
-用户管理系统逻辑1. 用户注册// 用户注册userRouter.post(&#x27;/&#x27;, verifyUser, handlePassword, create)
+用户管理系统逻辑·
+1. 用户注册·
+// 用户注册userRouter.post(&#x27;/&#x27;, verifyUser, handlePassword, create)
 
-验证是否已有该账户： verifyUser查询数据库，结果是否为空
+
+验证是否已有该账户： verifyUser
+查询数据库，结果是否为空
+
 
 对用户信息加密：handlePassWord，目的：避免存在数据库中的用户信息是明文的
 借助框架crypto的createHash（），MD5的加密方式
+
 
 创建新用户：create
 对users表插入数据
 
 
-2. 用户登录// 用户登录authRouter.post(&#x27;/login&#x27;, verifyLogin, login)// 验证是否授权的一个接口authRouter.get(&#x27;/test&#x27;, verifyAuth, success)
+2. 用户登录·
+// 用户登录authRouter.post(&#x27;/login&#x27;, verifyLogin, login)// 验证是否授权的一个接口authRouter.get(&#x27;/test&#x27;, verifyAuth, success)
 
 验证账户密码正确：verifyLogin
-拿到请求中的账户密码，是否为空、是否存在该用户
-对登录的密码进行MD ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/372934289.html" title="关于git-协同开发">关于git-协同开发</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T15:34:01.000Z" title="发表于 2021-12-11 23:34:01">2021-12-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.704Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-2-%E5%9F%BA%E5%BB%BA/">2.2-基建</a></span></div><div class="content">远程版本控制Git</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2124882507.html" title="TCP &amp;&amp; UDP传输">TCP &amp;&amp; UDP传输</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T15:30:34.000Z" title="发表于 2021-12-11 23:30:34">2021-12-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.698Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="content">传输层的TCP、UDP介绍</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/HTTPS.html" title="HTTPS">HTTPS</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T15:30:18.000Z" title="发表于 2021-12-11 23:30:18">2021-12-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.698Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="content">HTTPS的加密方法</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2716721158.html" title="HTTP">HTTP</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T15:30:10.000Z" title="发表于 2021-12-11 23:30:10">2021-12-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.697Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="content">1、HTTP概述1、是什么：
-超文本传输协议，基于TCP/IP协议，是一个在计算机世界里专门在两点之间传输文字、图片、音频、视频等超文本数据的约定和规范
-通常，由HTTP客户端发起一个请求，创建一个到服务器指定端口（默认是80端口）的TCP连接。HTTP服务器则在那个端口监听客户端的请求。一旦收到请求，服务器会向客户端返回一个状态，比如”HTTP/1.1 200 OK”，以及返回的内容，如请求的文件、错误消息、或者其它信息
 
-2、特点：1、灵活可扩展
+拿到请求中的账户密码，是否为空、是否存在该用户 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/372934289.html" title="关于git-协同开发">关于git-协同开发</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T15:34:01.000Z" title="发表于 2021-12-11 23:34:01">2021-12-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.704Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/2-2-%E5%9F%BA%E5%BB%BA/">2.2-基建</a></span></div><div class="content">远程版本控制Git</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2124882507.html" title="TCP &amp;&amp; UDP传输">TCP &amp;&amp; UDP传输</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T15:30:34.000Z" title="发表于 2021-12-11 23:30:34">2021-12-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.698Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="content">传输层的TCP、UDP介绍</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/HTTPS.html" title="HTTPS">HTTPS</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T15:30:18.000Z" title="发表于 2021-12-11 23:30:18">2021-12-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.698Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="content">HTTPS的加密方法</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2716721158.html" title="HTTP">HTTP</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T15:30:10.000Z" title="发表于 2021-12-11 23:30:10">2021-12-11</time><span class="article-meta__separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.697Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/3-3-%E5%9F%BA%E7%A1%80/">3.3-基础</a></span></div><div class="content">1、HTTP概述·
+1、是什么：·
+
+超文本传输协议，基于TCP/IP协议，是一个在计算机世界里专门在两点之间传输文字、图片、音频、视频等超文本数据的约定和规范
+通常，由HTTP客户端发起一个请求，创建一个到服务器指定端口（默认是80端口）的TCP连接。HTTP服务器则在那个端口监听客户端的请求。一旦收到请求，服务器会向客户端返回一个状态，比如&quot;HTTP/1.1 200 OK&quot;，以及返回的内容，如请求的文件、错误消息、或者其它信息
+
+2、特点：·
+1、灵活可扩展·
+
 一个是语法上只规定了基本格式，空格分隔单词，换行分隔字段等。
 另外一个就是传输形式上不仅可以传输文本，还可以传输图片，视频等任意数据
 
-2、请求-应答模式
+2、请求-应答模式·
+
 通常而言，就是一方发送消息，另外一方要接受消息，或者是做出相应等
 
-3、可靠传输
+3、可靠传输·
+
 HTTP是基于TCP/IP，因此把这一特性继承了下来
 
-4、无状态
+4、无状态·
+
+
 指协议对于事物处理没有记忆能力。不对请求和响应之间的通信状态进行保存
+
 
 缺少状态意味着如果后续处理需要前面的信息，则它必须重传
 
+
 无状态协议解决办法：
-1、通过、Cookie  
-2、通过Session会话保存
-
-
-3、优、缺点1、无状态 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#content-inner">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#content-inner">10</a><a class="extend next" rel="next" href="/page/7/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avartor.webp" onerror="this.onerror=null;this.src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com" target="_blank" title="B站"><svg class="social_icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a></div></div><div class="sticky_layout"><div class="card-widget card-webinfo"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:5px" aria-hidden="true"><use xlink:href="#icon-shafaB"></use></svg></a><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">112</div></div><div class="webinfo-item"><div class="item-name">总字数 :</div><div class="item-count">34.9w</div></div><div class="webinfo-item"><div class="item-name">访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最近更新 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-01-17T04:05:10.002Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+1、通过、Cookie
+2、通过 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#content-inner">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#content-inner">10</a><a class="extend next" rel="next" href="/page/7/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avartor.webp" onerror="this.onerror=null;this.src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">飞儿</div><div class="author-info__description">你来啦</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/myNightwish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com" target="_blank" title="B站"><svg class="social_icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a></div></div><div class="sticky_layout"><div class="card-widget card-webinfo"><div class="item-headline"><a class="faa-parent animated-hover"><svg class="faa-tada icon" style="height:25px;width:25px;fill:currentColor;position:relative;top:5px" aria-hidden="true"><use xlink:href="#icon-shafaB"></use></svg></a><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">112</div></div><div class="webinfo-item"><div class="item-name">总字数 :</div><div class="item-count">35.1w</div></div><div class="webinfo-item"><div class="item-name">访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最近更新 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-01-17T12:49:25.329Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')

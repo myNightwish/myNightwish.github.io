@@ -176,7 +176,7 @@ svg.social_icon {
   /* 为载入的字体取名字(随意) */
   font-family: 'CandyC';	
   /* 字体文件地址(相对或者绝对路径都可以) */
-  src: url("/fonts/CandyC.ttf");
+  src: url("/fonts/CandyC.woff2");
   /* 定义加粗样式(加粗多少) */
   font-weight: normal;
   /* 定义字体样式(斜体/非斜体) */
@@ -218,13 +218,13 @@ svg.social_icon {
 /* 个人信息卡片背景图 */
 /* TODO:待替换成链接 */
 [data-theme="light"] #aside-content > .card-widget.card-info {
-  background-image: url("/img/snowflower.webp");
+  background-image: url("https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/snowflower.webp");
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
 }
 [data-theme="dark"] #aside-content > .card-widget.card-info {
-  background-image: url("/img/snowflower.webp");
+  background-image: url("https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/snowflower.webp");
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
@@ -286,7 +286,7 @@ svg.social_icon {
 .bgbox {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .pimgbox,

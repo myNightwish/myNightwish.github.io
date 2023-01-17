@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目5：Node用户管理接口：项目梳理篇 | Nightwishのblog🧊</title><meta name="keywords" content="Node、MySQL2"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2021年2月 项目背景： 春节在家，只是想简单了解下接口、数据库的概念 梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤  用户管理系统逻辑1. 用户注册&#x2F;&#x2F; 用户注册userRouter.post(&amp;#x27;&#x2F;&amp;#x27;, verifyUser, handlePassword, create)  验证是否已有该账户： verifyUser查询数据库，结果是否为空">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目5：Node用户管理接口：项目梳理篇 | Nightwishのblog🧊</title><meta name="keywords" content="Node、MySQL2"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2021年2月 项目背景： 春节在家，只是想简单了解下接口、数据库的概念 梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤  用户管理系统逻辑· 1. 用户注册· &#x2F;&#x2F; 用户注册userRouter.post(&amp;#x27;&#x2F;&amp;#x27;, verifyUser, handlePassword, create)   验证是否已有该账户： verifyUser 查询数据库，结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目5：Node用户管理接口：项目梳理篇">
 <meta property="og:url" content="https://mynightwish.online/posts/3253305718.html">
 <meta property="og:site_name" content="Nightwishのblog🧊">
-<meta property="og:description" content="项目时间： 2021年2月 项目背景： 春节在家，只是想简单了解下接口、数据库的概念 梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤  用户管理系统逻辑1. 用户注册&#x2F;&#x2F; 用户注册userRouter.post(&amp;#x27;&#x2F;&amp;#x27;, verifyUser, handlePassword, create)  验证是否已有该账户： verifyUser查询数据库，结果是否为空">
+<meta property="og:description" content="项目时间： 2021年2月 项目背景： 春节在家，只是想简单了解下接口、数据库的概念 梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤  用户管理系统逻辑· 1. 用户注册· &#x2F;&#x2F; 用户注册userRouter.post(&amp;#x27;&#x2F;&amp;#x27;, verifyUser, handlePassword, create)   验证是否已有该账户： verifyUser 查询数据库，结">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://images.unsplash.com/photo-1638645671264-82cae622dada?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDUwfHhIeFlUTUhMZ09jfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60">
 <meta property="article:published_time" content="2021-12-11T16:19:34.000Z">
@@ -155,11 +155,11 @@
     }
     detectApple()
     document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/double.css"><link rel="stylesheet" href="/css/beautify.css" media="async"><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/lastLoad.css" media="defer" onload="this.media='all'"><style id="themeColor"></style><style id="rightSide"></style><style id="transPercent"></style><style id="blurNum"></style><style id="settingStyle"></style><span id="fps"></span><style id="defineBg"></style><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.css" media="defer" onload="this.media='all'"><script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperFix.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"><style>#web_bg{
-  background: var(--default-bg) !important;
-  background-attachment: local!important;
-  background-position: center!important;
-  background-size: cover!important;
-  background-repeat: no-repeat!important;
+  background: var(--default-bg);
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 [data-theme="dark"]
   #web_bg{
@@ -169,37 +169,48 @@
     background-size: cover!important;
     background-repeat: no-repeat!important;
   }
-</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1638645671264-82cae622dada?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDUwfHhIeFlUTUhMZ09jfHxlbnwwfHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">项目5：Node用户管理接口：项目梳理篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T16:19:34.000Z" title="发表于 2021-12-12 00:19:34">2021-12-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.712Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1575</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="项目5：Node用户管理接口：项目梳理篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
+</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1638645671264-82cae622dada?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDUwfHhIeFlUTUhMZ09jfHxlbnwwfHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">项目5：Node用户管理接口：项目梳理篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T16:19:34.000Z" title="发表于 2021-12-12 00:19:34">2021-12-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.712Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1577</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="项目5：Node用户管理接口：项目梳理篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
 <li>项目时间： 2021年2月</li>
 <li>项目背景： 春节在家，只是想简单了解下接口、数据库的概念</li>
 <li>梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤</li>
 </ul>
-<h2 id="用户管理系统逻辑"><a href="#用户管理系统逻辑" class="headerlink" title="用户管理系统逻辑"></a>用户管理系统逻辑</h2><h4 id="1-用户注册"><a href="#1-用户注册" class="headerlink" title="1. 用户注册"></a>1. 用户注册</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 用户注册</span><br><span class="line">userRouter.post(&#x27;/&#x27;, verifyUser, handlePassword, create)</span><br></pre></td></tr></table></figure>
+<h2 id="用户管理系统逻辑">用户管理系统逻辑<a class="anchor" href="#用户管理系统逻辑">·</a></h2>
+<h4 id="1-用户注册">1. 用户注册<a class="anchor" href="#1-用户注册">·</a></h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 用户注册</span><br><span class="line">userRouter.post(&#x27;/&#x27;, verifyUser, handlePassword, create)</span><br></pre></td></tr></table></figure>
 <ol>
-<li><p>验证是否已有该账户： verifyUser<br>查询数据库，结果是否为空</p>
+<li>
+<p>验证是否已有该账户： verifyUser
+查询数据库，结果是否为空</p>
 </li>
-<li><p>对用户信息加密：handlePassWord，目的：避免存在数据库中的用户信息是明文的</p>
+<li>
+<p>对用户信息加密：handlePassWord，目的：避免存在数据库中的用户信息是明文的</p>
 <p>借助框架crypto的createHash（），MD5的加密方式</p>
 </li>
-<li><p>创建新用户：create</p>
+<li>
+<p>创建新用户：create</p>
 <p>对users表插入数据</p>
 </li>
 </ol>
-<h4 id="2-用户登录"><a href="#2-用户登录" class="headerlink" title="2. 用户登录"></a>2. 用户登录</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 用户登录</span><br><span class="line">authRouter.post(&#x27;/login&#x27;, verifyLogin, login)</span><br><span class="line">// 验证是否授权的一个接口</span><br><span class="line">authRouter.get(&#x27;/test&#x27;, verifyAuth, success)</span><br></pre></td></tr></table></figure>
+<h4 id="2-用户登录">2. 用户登录<a class="anchor" href="#2-用户登录">·</a></h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 用户登录</span><br><span class="line">authRouter.post(&#x27;/login&#x27;, verifyLogin, login)</span><br><span class="line">// 验证是否授权的一个接口</span><br><span class="line">authRouter.get(&#x27;/test&#x27;, verifyAuth, success)</span><br></pre></td></tr></table></figure>
 <ol>
-<li>验证账户密码正确：verifyLogin<ul>
+<li>验证账户密码正确：verifyLogin
+<ul>
 <li>拿到请求中的账户密码，是否为空、是否存在该用户</li>
 <li>对登录的密码进行MD5的加密，去数据库查询是否匹配</li>
 </ul>
 </li>
-<li>登录：login<ul>
+<li>登录：login
+<ul>
 <li>从ctx.user中拿到id和name，通过jwt.sign({})，设置过期时间+私钥的加密算法，生成token。</li>
 </ul>
 </li>
 </ol>
-<h4 id="3-用户动态"><a href="#3-用户动态" class="headerlink" title="3. 用户动态"></a>3. 用户动态</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//发表动态之前要先验证登录，然后才是create创建动态</span><br><span class="line">momentRouter.post(&#x27;/&#x27;, verifyAuth, create)</span><br><span class="line">// 查看动态,不需要登录,需要知道动态对应的id</span><br><span class="line">momentRouter.get(&#x27;/:momentId&#x27;, momentDetail)</span><br><span class="line"></span><br><span class="line">// 修改动态 </span><br><span class="line">momentRouter.patch(&#x27;/:momentId&#x27;,verifyAuth, verifyPermission, update)</span><br><span class="line">// 删除动态</span><br><span class="line">momentRouter.delete(&#x27;/:momentId&#x27;,verifyAuth, verifyPermission, remove)</span><br><span class="line">// 给动态添加标签</span><br><span class="line">momentRouter.post(&#x27;/:momentId/labels&#x27;, verifyAuth, verifyPermission,</span><br><span class="line">                    verifyLabelExist,addLabels)</span><br></pre></td></tr></table></figure>
+<h4 id="3-用户动态">3. 用户动态<a class="anchor" href="#3-用户动态">·</a></h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//发表动态之前要先验证登录，然后才是create创建动态</span><br><span class="line">momentRouter.post(&#x27;/&#x27;, verifyAuth, create)</span><br><span class="line">// 查看动态,不需要登录,需要知道动态对应的id</span><br><span class="line">momentRouter.get(&#x27;/:momentId&#x27;, momentDetail)</span><br><span class="line"></span><br><span class="line">// 修改动态 </span><br><span class="line">momentRouter.patch(&#x27;/:momentId&#x27;,verifyAuth, verifyPermission, update)</span><br><span class="line">// 删除动态</span><br><span class="line">momentRouter.delete(&#x27;/:momentId&#x27;,verifyAuth, verifyPermission, remove)</span><br><span class="line">// 给动态添加标签</span><br><span class="line">momentRouter.post(&#x27;/:momentId/labels&#x27;, verifyAuth, verifyPermission,</span><br><span class="line">                    verifyLabelExist,addLabels)</span><br></pre></td></tr></table></figure>
 <ol>
-<li><p>验证登录：verifyAuth，作用：验证用户授权与否、颁发签名是否有效</p>
+<li>
+<p>验证登录：verifyAuth，作用：验证用户授权与否、颁发签名是否有效</p>
 <p>在验证时：</p>
 <ul>
 <li>通过ctx.headers.authorization拿到authorization，处理（去掉Bearer ），得到token</li>
@@ -207,29 +218,37 @@
 <li>通过try.catch块包裹，如果有错误会抛出。否则进入下一个中间件</li>
 </ul>
 </li>
-<li><p>创建动态：create</p>
+<li>
+<p>创建动态：create</p>
 <ul>
 <li>在上一中间件中ctx.user，进行解构拿到id（哪个用户），拿到content内容（请求体），插入数据库moment表中</li>
 </ul>
 </li>
-<li><p>查询动态:</p>
+<li>
+<p>查询动态:</p>
 <ul>
 <li>单条：由params拿到要查询的动态id，再去数据库moment表中查询（左连接）</li>
 <li>多条：offset和size在query中拿到，在评论的功能汇总添加的动态的评论数量。这是通过修改sql语句，增加字段</li>
 </ul>
 </li>
-<li><p>修改动态</p>
+<li>
+<p>修改动态</p>
 <ul>
-<li><p>验证登录verifyAuth</p>
+<li>
+<p>验证登录verifyAuth</p>
 </li>
-<li><p>验证是否具备修改权限verifyPermission<br>拿到要删除的动态id（params中得到），登录用户的id，查询结果是否为空，判断是否具有权限</p>
+<li>
+<p>验证是否具备修改权限verifyPermission
+拿到要删除的动态id（params中得到），登录用户的id，查询结果是否为空，判断是否具有权限</p>
 </li>
-<li><p>更改</p>
+<li>
+<p>更改</p>
 <p>对moment表中id为xxx的content设置新的值</p>
 </li>
 </ul>
 </li>
-<li><p>删除动态</p>
+<li>
+<p>删除动态</p>
 <ul>
 <li>验证登录</li>
 <li>验证权限</li>
@@ -237,90 +256,114 @@
 </ul>
 </li>
 </ol>
-<h4 id="4-用户评论：comment"><a href="#4-用户评论：comment" class="headerlink" title="4. 用户评论：comment"></a>4. 用户评论：comment</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">commentRouter.post(&#x27;/&#x27;, verifyAuth, create)</span><br><span class="line">commentRouter.post(&#x27;/:commentId/reply&#x27;, verifyAuth, reply)</span><br><span class="line">// 修改评论,你只能修改自己发表的评论，而不能修改别人发表的评论</span><br><span class="line">commentRouter.patch(&#x27;/:commentId&#x27;, verifyAuth,verifyPermission, update)</span><br><span class="line">// 删除评论</span><br><span class="line">commentRouter.delete(&#x27;/:commentId&#x27;, verifyAuth, verifyPermission, remove)</span><br><span class="line">// 获取评论列表：不需要验证登录、权限</span><br><span class="line">commentRouter.get(&#x27;/&#x27;, list)</span><br></pre></td></tr></table></figure>
+<h4 id="4-用户评论：comment">4. 用户评论：comment<a class="anchor" href="#4-用户评论：comment">·</a></h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">commentRouter.post(&#x27;/&#x27;, verifyAuth, create)</span><br><span class="line">commentRouter.post(&#x27;/:commentId/reply&#x27;, verifyAuth, reply)</span><br><span class="line">// 修改评论,你只能修改自己发表的评论，而不能修改别人发表的评论</span><br><span class="line">commentRouter.patch(&#x27;/:commentId&#x27;, verifyAuth,verifyPermission, update)</span><br><span class="line">// 删除评论</span><br><span class="line">commentRouter.delete(&#x27;/:commentId&#x27;, verifyAuth, verifyPermission, remove)</span><br><span class="line">// 获取评论列表：不需要验证登录、权限</span><br><span class="line">commentRouter.get(&#x27;/&#x27;, list)</span><br></pre></td></tr></table></figure>
 <ol>
-<li><p>发布评论</p>
+<li>
+<p>发布评论</p>
 <ul>
 <li>验证登录</li>
-<li>创建评论<br>从请求体里拿到动态id，内容content、用户id。也就是哪个用户对哪条动态做了怎样的评论</li>
+<li>创建评论从请求体里拿到动态id，内容content、用户id。也就是哪个用户对哪条动态做了怎样的评论</li>
 </ul>
 </li>
-<li><p>回复评论</p>
+<li>
+<p>回复评论</p>
 <ul>
 <li>验证登录</li>
 <li>回复：从请求体里拿到动态id，内容content、用户id，再拿到要评论的id（params），去操作moment表</li>
 </ul>
 </li>
-<li><p>修改评论</p>
+<li>
+<p>修改评论</p>
 <ul>
-<li><p>验证登录</p>
+<li>
+<p>验证登录</p>
 </li>
-<li><p>验证权限：varifyPermission，只能修改自己的评论</p>
+<li>
+<p>验证权限：varifyPermission，只能修改自己的评论</p>
 <p>对varifyPermission做了修改，通过遍历ctx.params属性拿到表名，从而动态的修改statement中的表名，使其作为一个参数传入进去，这样每次查询的是否，根据传入参数tablename的不同，查询的不同权限，使其既具备验证动态权限处理又可验证评论权限</p>
 </li>
-<li><p>update</p>
+<li>
+<p>update</p>
 </li>
 </ul>
 </li>
-<li><p>删除评论</p>
+<li>
+<p>删除评论</p>
 <ul>
 <li>验证登录</li>
 <li>验证权限</li>
 <li>remove</li>
 </ul>
 </li>
-<li><p>查询动态，显示评论</p>
+<li>
+<p>查询动态，显示评论</p>
 <ul>
 <li>单条：显示评论列表</li>
 <li>多条：修改sql语句，增加commentCount字段</li>
 </ul>
 </li>
 </ol>
-<h4 id="5-标签功能"><a href="#5-标签功能" class="headerlink" title="5. 标签功能"></a>5. 标签功能</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 创建标签时会先验证登录，</span><br><span class="line">labelRouter.post(&#x27;/&#x27;, verifyAuth,create)</span><br><span class="line"></span><br><span class="line">// 查询标签列表</span><br><span class="line">labelRouter.get(&#x27;/&#x27;, list)</span><br></pre></td></tr></table></figure>
-<h5 id="添加标签的过程"><a href="#添加标签的过程" class="headerlink" title="添加标签的过程"></a>添加标签的过程</h5><ol>
-<li><p>验证登录  √</p>
+<h4 id="5-标签功能">5. 标签功能<a class="anchor" href="#5-标签功能">·</a></h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 创建标签时会先验证登录，</span><br><span class="line">labelRouter.post(&#x27;/&#x27;, verifyAuth,create)</span><br><span class="line"></span><br><span class="line">// 查询标签列表</span><br><span class="line">labelRouter.get(&#x27;/&#x27;, list)</span><br></pre></td></tr></table></figure>
+<h5 id="添加标签的过程">添加标签的过程<a class="anchor" href="#添加标签的过程">·</a></h5>
+<ol>
+<li>
+<p>验证登录  √</p>
 </li>
-<li><p>验证用户权限  √</p>
+<li>
+<p>验证用户权限  √</p>
 </li>
-<li><p>验证要添加的标签是否存在 （verifyLabelsExists）</p>
+<li>
+<p>验证要添加的标签是否存在 （verifyLabelsExists）</p>
 <ul>
-<li><p>从params中拿到动态id，再拿到所有的标签，进行遍历，getLabelByName判断label表中，是否有标签id</p>
+<li>
+<p>从params中拿到动态id，再拿到所有的标签，进行遍历，getLabelByName判断label表中，是否有标签id</p>
 <p>如果没有标签id，通过create在label表中添加，此时数据库的操作返回结果result.insertId就有了该id</p>
 <p>如果已有标签id，通过getLabelByName查询的结果 labelResult.id中，可以拿到id</p>
 </li>
-<li><p>补充如何添加标签：创建标签表、验证登录、从请求体拿到标签名，通过create插入label中</p>
+<li>
+<p>补充如何添加标签：创建标签表、验证登录、从请求体拿到标签名，通过create插入label中</p>
 </li>
 </ul>
 </li>
-<li><p>再给某条动态添加标签（在关系表中）</p>
+<li>
+<p>再给某条动态添加标签（在关系表中）</p>
 <p>此时已有commentId、标签id，以及标签。在添加标签之前，hasLabel判断该动态是否已存在该标签，对没有某些标签的那个动态，再通过addLabels去添加标签。在关系表中添加</p>
 </li>
 </ol>
-<h5 id="展示标签"><a href="#展示标签" class="headerlink" title="展示标签"></a>展示标签</h5><ul>
+<h5 id="展示标签">展示标签<a class="anchor" href="#展示标签">·</a></h5>
+<ul>
 <li>从query中取出offset和size，去label表中查询结果</li>
 </ul>
-<h4 id="6-图片上传"><a href="#6-图片上传" class="headerlink" title="6. 图片上传"></a>6. 图片上传</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 用户上传头像</span><br><span class="line">userRouter.get(&#x27;/:userId/avatar&#x27;, avatarInfo)</span><br></pre></td></tr></table></figure>
+<h4 id="6-图片上传">6. 图片上传<a class="anchor" href="#6-图片上传">·</a></h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 用户上传头像</span><br><span class="line">userRouter.get(&#x27;/:userId/avatar&#x27;, avatarInfo)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fileRouter.post(&#x27;/avatar&#x27;, verifyAuth, uploadHandle,saveAvatarInfo)</span><br><span class="line">fileRouter.post(&#x27;/picture&#x27;, verifyAuth, pictureHandle,pictureResize, savePictureInfo)</span><br></pre></td></tr></table></figure>
 <ol>
-<li>头像上传<ul>
+<li>头像上传
+<ul>
 <li>验证登录：VerifyAuth</li>
 <li>uploadHandle：借助koa-multer，实现上传功能，单张图片用single的方法</li>
 <li>图像信息保存：saveAvatarInfo，从ctx.req.file中拿到filename,mimetype,size，再去数据库中插入数据</li>
 </ul>
 </li>
-<li>头像获取<ul>
+<li>头像获取
+<ul>
 <li>拿到用户id（从params中），再去数据库中查询，拿到查询结果</li>
 </ul>
 </li>
-<li>展示头像<ul>
+<li>展示头像
+<ul>
 <li>ctx.body = result，不能直接去那个接口请求，会下载下来。而是先设置ctx.response.set()设置content-type为头像的mimetype。</li>
-<li>再修改ctx.body =为fs读取文件流的结果，读取的地址是http：//localhost:8000/…..等接口下的某路径。但是这个地方不能写死了，所以可以将端口主机等修改为导入的量。</li>
+<li>再修改ctx.body =为fs读取文件流的结果，读取的地址是http：//localhost:8000/…等接口下的某路径。但是这个地方不能写死了，所以可以将端口主机等修改为导入的量。</li>
 <li>为表users添加字段avatar_url，保存请求地址，此时修改获取头像时，只需要传入avatar_url和用户的id，就可以在users中查找到对应的头像</li>
 </ul>
 </li>
-<li>上传动态的配图（多张）<ul>
+<li>上传动态的配图（多张）
+<ul>
 <li>登录验证</li>
-<li>savePictureInfo<ul>
+<li>savePictureInfo
+<ul>
 <li>上传文件，使用multer，并用array的方法</li>
 <li>拿到文件信息，用户id，momentId（query中），遍历每个文件，都进行插入数据库的表file中，</li>
 </ul>

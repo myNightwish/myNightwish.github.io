@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/ES6.png">
 <meta property="article:published_time" content="2021-12-29T14:54:26.000Z">
-<meta property="article:modified_time" content="2023-01-09T14:45:43.672Z">
+<meta property="article:modified_time" content="2023-01-17T11:47:30.972Z">
 <meta property="article:author" content="飞儿">
 <meta property="article:tag" content="博客、飞儿、前端">
 <meta name="twitter:card" content="summary">
@@ -65,7 +65,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-01-09 22:45:43'
+  postUpdate: '2023-01-17 19:47:30'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -155,11 +155,11 @@
     }
     detectApple()
     document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/double.css"><link rel="stylesheet" href="/css/beautify.css" media="async"><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/lastLoad.css" media="defer" onload="this.media='all'"><style id="themeColor"></style><style id="rightSide"></style><style id="transPercent"></style><style id="blurNum"></style><style id="settingStyle"></style><span id="fps"></span><style id="defineBg"></style><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.css" media="defer" onload="this.media='all'"><script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperFix.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"><style>#web_bg{
-  background: var(--default-bg) !important;
-  background-attachment: local!important;
-  background-position: center!important;
-  background-size: cover!important;
-  background-repeat: no-repeat!important;
+  background: var(--default-bg);
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 [data-theme="dark"]
   #web_bg{
@@ -169,37 +169,47 @@
     background-size: cover!important;
     background-repeat: no-repeat!important;
   }
-</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/ES6.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">ES6的新特性</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-29T14:54:26.000Z" title="发表于 2021-12-29 22:54:26">2021-12-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.672Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/1-2-JS/">1.2-JS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6458</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ES6的新特性"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="ES6概括"><a href="#ES6概括" class="headerlink" title="ES6概括"></a>ES6概括</h2><p>涵盖了<strong>ES2015</strong>、<strong>ES2016</strong>、<strong>ES2017</strong>、<strong>ES2018</strong>、<strong>ES2019</strong>、<strong>ES2020</strong>。更新的内容主要分为以下几点</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f623a94c2f6f4cbeb46b1e8d66e75186~tplv-k3u1fbpfcp-watermark.image" alt="ES6缩略" style="zoom: 25%;" /></p>
+</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/ES6.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">ES6的新特性</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-29T14:54:26.000Z" title="发表于 2021-12-29 22:54:26">2021-12-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-17T11:47:30.972Z" title="更新于 2023-01-17 19:47:30">2023-01-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/1-2-JS/">1.2-JS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6467</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ES6的新特性"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="ES6概括">ES6概括<a class="anchor" href="#ES6概括">·</a></h2>
+<p>涵盖了<strong>ES2015</strong>、<strong>ES2016</strong>、<strong>ES2017</strong>、<strong>ES2018</strong>、<strong>ES2019</strong>、<strong>ES2020</strong>。更新的内容主要分为以下几点</p>
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f623a94c2f6f4cbeb46b1e8d66e75186~tplv-k3u1fbpfcp-watermark.image" alt="ES6缩略" style="zoom: 25%;" />
 <ul>
 <li><strong>表达式</strong>：声明、解构赋值</li>
 <li><strong>内置对象</strong>：字符串扩展、数值扩展、对象扩展、数组扩展、函数扩展、正则扩展、Symbol、Set、Map、Proxy、Reflect</li>
 <li><strong>语句与运算</strong>：Class、Module、Iterator</li>
 <li><strong>异步编程</strong>：Promise、Generator、Async</li>
 </ul>
-<h2 id="ES2015"><a href="#ES2015" class="headerlink" title="ES2015"></a>ES2015</h2><h3 id="1、表达式"><a href="#1、表达式" class="headerlink" title="1、表达式"></a>1、表达式</h3><h4 id="1、声明：const、let"><a href="#1、声明：const、let" class="headerlink" title="1、声明：const、let"></a>1、声明：const、let</h4><h4 id="2、解构赋值"><a href="#2、解构赋值" class="headerlink" title="2、解构赋值"></a>2、解构赋值</h4><h5 id="1、语法："><a href="#1、语法：" class="headerlink" title="1、语法："></a>1、语法：</h5><ul>
+<h2 id="ES2015">ES2015<a class="anchor" href="#ES2015">·</a></h2>
+<h3 id="1、表达式">1、表达式<a class="anchor" href="#1、表达式">·</a></h3>
+<h4 id="1、声明：const、let">1、声明：const、let<a class="anchor" href="#1、声明：const、let">·</a></h4>
+<h4 id="2、解构赋值">2、解构赋值<a class="anchor" href="#2、解构赋值">·</a></h4>
+<h5 id="1、语法：">1、语法：<a class="anchor" href="#1、语法：">·</a></h5>
+<ul>
 <li><strong>字符串解构</strong>：<code>const [a, b, c, d, e] = &quot;hello&quot;</code></li>
 <li><strong>数值解构</strong>：<code>const &#123; toString: s &#125; = 123</code></li>
 <li><strong>布尔解构</strong>：<code>const &#123; toString: b &#125; = true</code></li>
-<li>对象解构<ul>
+<li>对象解构
+<ul>
 <li>形式：<code>const &#123; x, y &#125; = &#123; x: 1, y: 2 &#125;</code></li>
 <li>默认：<code>const &#123; x, y = 2 &#125; = &#123; x: 1 &#125;</code></li>
 <li>改名：<code>const &#123; x, y: z &#125; = &#123; x: 1, y: 2 &#125;</code></li>
 </ul>
 </li>
-<li>数组解构<ul>
+<li>数组解构
+<ul>
 <li>规则：数据结构具有<code>Iterator接口</code>可采用数组形式的解构赋值</li>
 <li>形式：<code>const [x, y] = [1, 2]</code></li>
 <li>默认：<code>const [x, y = 2] = [1]</code></li>
 </ul>
 </li>
-<li>函数参数解构<ul>
+<li>函数参数解构
+<ul>
 <li>数组解构：<code>function Func([x = 0, y = 1]) &#123;&#125;</code></li>
 <li>对象解构：<code>function Func(&#123; x = 0, y = 1 &#125; = &#123;&#125;) &#123;&#125;</code></li>
 </ul>
 </li>
 </ul>
-<h5 id="2、应用场景："><a href="#2、应用场景：" class="headerlink" title="2、应用场景："></a>2、应用场景：</h5><ul>
+<h5 id="2、应用场景：-2">2、应用场景：<a class="anchor" href="#2、应用场景：-2">·</a></h5>
+<ul>
 <li>交换变量值：<code>[x, y] = [y, x]</code></li>
 <li>返回函数多个值：<code>const [x, y, z] = Func()</code></li>
 <li>定义函数参数：<code>Func([1, 2])</code></li>
@@ -208,14 +218,17 @@
 <li>遍历Map结构：<code>for (let [k, v] of Map) &#123;&#125;</code></li>
 <li>输入模块指定属性和方法：<code>const &#123; readFile, writeFile &#125; = require(&quot;fs&quot;)</code></li>
 </ul>
-<h5 id="3、重点难点"><a href="#3、重点难点" class="headerlink" title="3、重点难点"></a>3、重点难点</h5><ul>
+<h5 id="3、重点难点">3、重点难点<a class="anchor" href="#3、重点难点">·</a></h5>
+<ul>
 <li>匹配模式：只要等号两边的模式相同，左边的变量就会被赋予对应的值</li>
 <li>解构赋值规则：只要等号右边的值不是对象或数组，就先将其转为对象</li>
 <li>解构默认值生效条件：属性值严格等于<code>undefined</code></li>
 <li>解构不成功时变量的值等于<code>undefined</code></li>
 <li><code>undefined</code>和<code>null</code>无法转为对象，因此无法进行解构</li>
 </ul>
-<h3 id="2、内置对象"><a href="#2、内置对象" class="headerlink" title="2、内置对象"></a>2、内置对象</h3><h4 id="1、字符串扩展"><a href="#1、字符串扩展" class="headerlink" title="1、字符串扩展"></a>1、字符串扩展</h4><ul>
+<h3 id="2、内置对象">2、内置对象<a class="anchor" href="#2、内置对象">·</a></h3>
+<h4 id="1、字符串扩展">1、字符串扩展<a class="anchor" href="#1、字符串扩展">·</a></h4>
+<ul>
 <li><strong>Unicode表示法</strong>：<code>大括号包含</code>表示Unicode字符(<code>\u&#123;0xXX&#125;</code>或<code>\u&#123;0XXX&#125;</code>)</li>
 <li><strong>字符串遍历</strong>：可通过<code>for-of</code>遍历字符串</li>
 <li><strong>字符串模板</strong>：可单行可多行可插入变量的增强版字符串</li>
@@ -230,11 +243,13 @@
 <li><strong>startsWith()</strong>：是否存在字符串头部指定字符串</li>
 <li><strong>endsWith()</strong>：是否存在字符串尾部指定字符串</li>
 </ul>
-<h4 id="2、数值扩展"><a href="#2、数值扩展" class="headerlink" title="2、数值扩展"></a>2、数值扩展</h4><ul>
+<h4 id="2、数值扩展">2、数值扩展<a class="anchor" href="#2、数值扩展">·</a></h4>
+<ul>
 <li><strong>二进制表示法</strong>：<code>0b或0B开头</code>表示二进制(<code>0bXX</code>或<code>0BXX</code>)</li>
 <li><strong>八进制表示法</strong>：<code>0o或0O开头</code>表示二进制(<code>0oXX</code>或<code>0OXX</code>)</li>
 </ul>
-<h5 id="1、Number："><a href="#1、Number：" class="headerlink" title="1、Number："></a>1、Number：</h5><ul>
+<h5 id="1、Number：">1、Number：<a class="anchor" href="#1、Number：">·</a></h5>
+<ul>
 <li><strong>Number.EPSILON</strong>：数值最小精度</li>
 <li><strong>Number.MIN_SAFE_INTEGER</strong>：最小安全数值(<code>-2^53</code>)</li>
 <li><strong>Number.MAX_SAFE_INTEGER</strong>：最大安全数值(<code>2^53</code>)</li>
@@ -245,12 +260,14 @@
 <li><strong>Number.isInteger()</strong>：是否为整数</li>
 <li><strong>Number.isSafeInteger()</strong>：是否在数值安全范围内</li>
 </ul>
-<h5 id="2、Math："><a href="#2、Math：" class="headerlink" title="2、Math："></a>2、Math：</h5><ul>
+<h5 id="2、Math：">2、Math：<a class="anchor" href="#2、Math：">·</a></h5>
+<ul>
 <li><strong>Math.sign()</strong>：返回数值类型(<code>正数1</code>、<code>负数-1</code>、<code>零0</code>)</li>
 <li><strong>Math.cbrt()</strong>：返回数值立方根</li>
 <li>对数、立方根、双曲、正弦、、、</li>
 </ul>
-<h4 id="3、对象扩展"><a href="#3、对象扩展" class="headerlink" title="3、对象扩展"></a>3、对象扩展</h4><ul>
+<h4 id="3、对象扩展">3、对象扩展<a class="anchor" href="#3、对象扩展">·</a></h4>
+<ul>
 <li><strong>简洁表示法</strong>：键值相同</li>
 <li><strong>属性名表达式</strong>：字面量定义对象时使用<code>[]</code>定义键(<code>[prop]</code>，不能与上同时使用)</li>
 <li><strong>属性的可枚举性和遍历</strong>：描述对象的<code>enumerable</code></li>
@@ -265,7 +282,8 @@
 </blockquote>
 <ul>
 <li>描述：<code>自身</code>、<code>可继承</code>、<code>可枚举</code>、<code>非枚举</code>、<code>Symbol</code></li>
-<li>遍历<ul>
+<li>遍历
+<ul>
 <li><code>for-in</code>：遍历对象<code>自身可继承可枚举</code>属性</li>
 <li><code>Object.keys()</code>：返回对象<code>自身可枚举</code>属性键组成的数组</li>
 <li><code>Object.getOwnPropertyNames()</code>：返回对象<code>自身非Symbol</code>属性键组成的数组</li>
@@ -273,16 +291,20 @@
 <li><code>Reflect.ownKeys()</code>：返回对象<code>自身全部</code>属性键组成的数组</li>
 </ul>
 </li>
-<li>规则<ul>
+<li>规则
+<ul>
 <li>首先遍历所有数值键，按照数值升序排列</li>
 <li>其次遍历所有字符串键，按照加入时间升序排列</li>
 <li>最后遍历所有Symbol键，按照加入时间升序排列</li>
 </ul>
 </li>
 </ul>
-<h4 id="4、数组扩展"><a href="#4、数组扩展" class="headerlink" title="4、数组扩展"></a>4、数组扩展</h4><h5 id="1、语法：-1"><a href="#1、语法：-1" class="headerlink" title="1、语法："></a>1、语法：</h5><ul>
+<h4 id="4、数组扩展">4、数组扩展<a class="anchor" href="#4、数组扩展">·</a></h4>
+<h5 id="1、语法：-2">1、语法：<a class="anchor" href="#1、语法：-2">·</a></h5>
+<ul>
 <li><strong>扩展运算符(…)</strong></li>
-<li>Array.from()：转换具有Iterator接口的数据结构为真正数组，返回新数组<ul>
+<li>Array.from()：转换具有Iterator接口的数据结构为真正数组，返回新数组
+<ul>
 <li>类数组对象：<code>包含length的对象</code>、<code>Arguments对象</code>、<code>NodeList对象</code></li>
 <li>可遍历对象：<code>String</code>、<code>Set结构</code>、<code>Map结构</code>、<code>Generator函数</code></li>
 </ul>
@@ -296,7 +318,8 @@
 <li><strong>values()</strong>：返回以属性值为遍历器的对象</li>
 <li><strong>entries()</strong>：返回以索引值和属性值为遍历器的对象</li>
 </ul>
-<h5 id="2、扩展应用"><a href="#2、扩展应用" class="headerlink" title="2、扩展应用"></a>2、扩展应用</h5><ul>
+<h5 id="2、扩展应用">2、扩展应用<a class="anchor" href="#2、扩展应用">·</a></h5>
+<ul>
 <li>克隆数组：<code>const arr = [...arr1]</code></li>
 <li>合并数组：<code>const arr = [...arr1, ...arr2]</code></li>
 <li>拼接数组：<code>arr.push(...arr1)</code></li>
@@ -306,7 +329,9 @@
 <li>转换可遍历对象为数组：<code>[...String, ...Set, ...Map, ...Generator]</code></li>
 <li>与数组解构赋值结合：<code>const [x, ...rest/spread] = [1, 2, 3]</code></li>
 </ul>
-<h4 id="5、函数扩展"><a href="#5、函数扩展" class="headerlink" title="5、函数扩展"></a>5、函数扩展</h4><h5 id="1、参数默认值：为函数参数指定默认值"><a href="#1、参数默认值：为函数参数指定默认值" class="headerlink" title="1、参数默认值：为函数参数指定默认值"></a>1、参数默认值：为函数参数指定默认值</h5><ul>
+<h4 id="5、函数扩展">5、函数扩展<a class="anchor" href="#5、函数扩展">·</a></h4>
+<h5 id="1、参数默认值：为函数参数指定默认值">1、参数默认值：为函数参数指定默认值<a class="anchor" href="#1、参数默认值：为函数参数指定默认值">·</a></h5>
+<ul>
 <li>形式：<code>function Func(x = 1, y = 2) &#123;&#125;</code></li>
 <li>参数赋值：惰性求值(函数调用后才求值)</li>
 <li>参数位置：尾参数</li>
@@ -314,23 +339,30 @@
 <li>声明方式：默认声明，不能用<code>const</code>或<code>let</code>再次声明</li>
 <li>length：返回没有指定默认值的参数个数</li>
 <li>与解构赋值默认值结合：<code>function Func(&#123; x = 1, y = 2 &#125; = &#123;&#125;) &#123;&#125;</code></li>
-<li>应用<ul>
+<li>应用
+<ul>
 <li>指定某个参数不得省略，省略即抛出错误：<code>function Func(x = throwMissing()) &#123;&#125;</code></li>
 <li>将参数默认值设为<code>undefined</code>，表明此参数可省略：<code>Func(undefined, 1)</code></li>
 </ul>
 </li>
 </ul>
-<h5 id="2、剩余参数-…-：返回函数多余参数"><a href="#2、剩余参数-…-：返回函数多余参数" class="headerlink" title="2、剩余参数(…)：返回函数多余参数"></a>2、剩余参数(…)：返回函数多余参数</h5><ul>
+<h5 id="2、剩余参数-…-：返回函数多余参数">2、剩余参数(…)：返回函数多余参数<a class="anchor" href="#2、剩余参数-…-：返回函数多余参数">·</a></h5>
+<ul>
 <li>形式：以数组的形式存在，之后不能再有其他参数</li>
 <li>作用：代替<code>Arguments对象</code></li>
 <li>length：返回没有指定默认值的参数个数但不包括<code>rest/spread参数</code></li>
 </ul>
-<h5 id="3、箭头函数-gt-：函数简写"><a href="#3、箭头函数-gt-：函数简写" class="headerlink" title="3、箭头函数(=&gt;)：函数简写"></a>3、箭头函数(=&gt;)：函数简写</h5><ul>
-<li><p>无参数、单个参数、多个参数、解构参数<code>(&#123;x, y&#125;) =&gt; &#123;&#125;</code>、</p>
+<h5 id="3、箭头函数-：函数简写">3、箭头函数(=&gt;)：函数简写<a class="anchor" href="#3、箭头函数-：函数简写">·</a></h5>
+<ul>
+<li>
+<p>无参数、单个参数、多个参数、解构参数<code>(&#123;x, y&#125;) =&gt; &#123;&#125;</code>、</p>
 </li>
-<li><p>嵌套使用：部署管道机制</p>
+<li>
+<p>嵌套使用：部署管道机制</p>
 </li>
-<li>this指向固定化，这种特性很有利于封装回调函数<ul>
+<li>
+<p>this指向固定化，这种特性很有利于封装回调函数</p>
+<ul>
 <li>并非因为内部有绑定<code>this</code>的机制，而是根本没有自己的<code>this</code>，导致内部的<code>this</code>就是外层代码块的<code>this</code></li>
 <li>因为没有<code>this</code>，因此不能用作构造函数</li>
 <li>不可使用<code>Arguments对象</code>，此对象在函数体内不存在(可用<code>rest/spread参数</code>代替)</li>
@@ -338,29 +370,38 @@
 </ul>
 </li>
 </ul>
-<h5 id="4、尾调用优化：只保留内层函数的调用帧"><a href="#4、尾调用优化：只保留内层函数的调用帧" class="headerlink" title="4、尾调用优化：只保留内层函数的调用帧"></a>4、尾调用优化：只保留内层函数的调用帧</h5><ul>
-<li>尾调用<ul>
+<h5 id="4、尾调用优化：只保留内层函数的调用帧">4、尾调用优化：只保留内层函数的调用帧<a class="anchor" href="#4、尾调用优化：只保留内层函数的调用帧">·</a></h5>
+<ul>
+<li>尾调用
+<ul>
 <li>定义：某个函数的最后一步是调用另一个函数</li>
 <li>形式：<code>function f(x) &#123; return g(x); &#125;</code></li>
 </ul>
 </li>
-<li>尾递归<ul>
+<li>尾递归
+<ul>
 <li>定义：函数尾调用自身</li>
 <li>作用：只要使用尾递归就不会发生栈溢出，相对节省内存</li>
 <li>实现：把所有用到的内部变量改写成函数的参数并使用参数默认值</li>
 </ul>
 </li>
 </ul>
-<h4 id="6、正则扩展"><a href="#6、正则扩展" class="headerlink" title="6、正则扩展"></a>6、正则扩展</h4><h4 id="7、Symbol"><a href="#7、Symbol" class="headerlink" title="7、Symbol"></a>7、Symbol</h4><h4 id="8、Set"><a href="#8、Set" class="headerlink" title="8、Set"></a>8、Set</h4><h5 id="1、用法"><a href="#1、用法" class="headerlink" title="1、用法"></a>1、用法</h5><ul>
+<h4 id="6、正则扩展">6、正则扩展<a class="anchor" href="#6、正则扩展">·</a></h4>
+<h4 id="7、Symbol">7、Symbol<a class="anchor" href="#7、Symbol">·</a></h4>
+<h4 id="8、Set">8、Set<a class="anchor" href="#8、Set">·</a></h4>
+<h5 id="1、用法">1、用法<a class="anchor" href="#1、用法">·</a></h5>
+<ul>
 <li>定义：成员值都是唯一且没有重复的值</li>
 <li>声明：<code>const set = new Set(arr)</code></li>
 <li>入参：具有<code>Iterator接口</code>的数据结构</li>
-<li>属性<ul>
+<li>属性
+<ul>
 <li><strong>constructor</strong>：构造函数，返回Set</li>
 <li><strong>size</strong>：返回实例成员总数</li>
 </ul>
 </li>
-<li>方法<ul>
+<li>方法
+<ul>
 <li><strong>add()</strong>：添加值，返回实例            <strong>clear()</strong>：清除所有成员</li>
 <li><strong>delete()</strong>：删除值，返回布尔   <strong>has()</strong>：检查值，返回布尔</li>
 <li><strong>keys()</strong>：返回以属性值为遍历器的对象</li>
@@ -370,23 +411,27 @@
 </ul>
 </li>
 </ul>
-<h5 id="2、应用场景"><a href="#2、应用场景" class="headerlink" title="2、应用场景"></a>2、应用场景</h5><ul>
+<h5 id="2、应用场景-2">2、应用场景<a class="anchor" href="#2、应用场景-2">·</a></h5>
+<ul>
 <li>去重字符串：<code>[...new Set(str)].join(&quot;&quot;)</code></li>
 <li>去重数组：<code>[...new Set(arr)]</code>或<code>Array.from(new Set(arr))</code></li>
-<li>集合数组<ul>
+<li>集合数组
+<ul>
 <li>声明：<code>const a = new Set(arr1)</code>、<code>const b = new Set(arr2)</code></li>
 <li>并集：<code>new Set([...a, ...b])</code></li>
 <li>交集：<code>new Set([...a].filter(v =&gt; b.has(v)))</code></li>
 <li>差集：<code>new Set([...a].filter(v =&gt; !b.has(v)))</code></li>
 </ul>
 </li>
-<li>映射集合<ul>
+<li>映射集合
+<ul>
 <li>声明：<code>let set = new Set(arr)</code></li>
 <li>映射：<code>set = new Set([...set].map(v =&gt; v * 2))</code>或<code>set = new Set(Array.from(set, v =&gt; v * 2))</code></li>
 </ul>
 </li>
 </ul>
-<h5 id="3、重点难点-1"><a href="#3、重点难点-1" class="headerlink" title="3、重点难点"></a>3、重点难点</h5><ul>
+<h5 id="3、重点难点-2">3、重点难点<a class="anchor" href="#3、重点难点-2">·</a></h5>
+<ul>
 <li>遍历顺序：插入顺序</li>
 <li>没有键只有值，可认为键和值两值相等</li>
 <li>添加多个<code>NaN</code>时，只会存在一个<code>NaN</code></li>
@@ -394,42 +439,52 @@
 <li>添加值时不会发生类型转换(<code>5 !== &quot;5&quot;</code>)</li>
 <li><code>keys()</code>和<code>values()</code>的行为完全一致，<code>entries()</code>返回的遍历器同时包括键和值且两值相等</li>
 </ul>
-<h4 id="9、WeakSet"><a href="#9、WeakSet" class="headerlink" title="9、WeakSet"></a>9、WeakSet</h4><h5 id="1、用法-1"><a href="#1、用法-1" class="headerlink" title="1、用法"></a>1、用法</h5><ul>
+<h4 id="9、WeakSet">9、WeakSet<a class="anchor" href="#9、WeakSet">·</a></h4>
+<h5 id="1、用法-2">1、用法<a class="anchor" href="#1、用法-2">·</a></h5>
+<ul>
 <li>定义：和Set结构类似，成员值只能是对象</li>
 <li>声明：<code>const set = new WeakSet(arr)</code></li>
 <li>入参：具有<code>Iterator接口</code>的数据结构</li>
-<li>属性<ul>
+<li>属性
+<ul>
 <li><strong>constructor</strong>：构造函数，返回WeakSet</li>
 </ul>
 </li>
-<li>方法<ul>
+<li>方法
+<ul>
 <li><strong>add()</strong>：添加值，返回实例</li>
 <li><strong>delete()</strong>：删除值，返回布尔</li>
 <li><strong>has()</strong>：检查值，返回布尔</li>
 </ul>
 </li>
 </ul>
-<h5 id="2、应用场景-1"><a href="#2、应用场景-1" class="headerlink" title="2、应用场景"></a>2、应用场景</h5><ul>
+<h5 id="2、应用场景-3">2、应用场景<a class="anchor" href="#2、应用场景-3">·</a></h5>
+<ul>
 <li>储存DOM节点：DOM节点被移除时自动释放此成员，不用担心这些节点从文档移除时会引发内存泄漏</li>
 <li>临时存放一组对象或存放跟对象绑定的信息：只要这些对象在外部消失，它在<code>WeakSet结构</code>中的引用就会自动消失</li>
 </ul>
-<h5 id="3、重点难点-2"><a href="#3、重点难点-2" class="headerlink" title="3、重点难点"></a>3、重点难点</h5><ul>
+<h5 id="3、重点难点-3">3、重点难点<a class="anchor" href="#3、重点难点-3">·</a></h5>
+<ul>
 <li>成员都是<code>弱引用</code>，垃圾回收机制不考虑<code>WeakSet结构</code>对此成员的引用</li>
 <li>成员不适合引用，它会随时消失，因此ES6规定<code>WeakSet结构不可遍历</code></li>
 <li>其他对象不再引用成员时，垃圾回收机制会自动回收此成员所占用的内存，不考虑此成员是否还存在于<code>WeakSet结构</code>中</li>
 </ul>
-<h4 id="10、Map"><a href="#10、Map" class="headerlink" title="10、Map"></a>10、Map</h4><h5 id="1、用法-2"><a href="#1、用法-2" class="headerlink" title="1、用法"></a>1、用法</h5><ul>
+<h4 id="10、Map">10、Map<a class="anchor" href="#10、Map">·</a></h4>
+<h5 id="1、用法-3">1、用法<a class="anchor" href="#1、用法-3">·</a></h5>
+<ul>
 <li>定义：成员键是任何类型的值</li>
 <li>声明：<code>const set = new Map(arr)</code></li>
 <li>入参：具有<code>Iterator接口</code>且每个成员都是一个双元素数组的数据结构</li>
-<li>属性<ul>
+<li>属性
+<ul>
 <li><strong>constructor</strong>：构造函数，返回Map</li>
 <li><strong>size</strong>：返回实例成员总数</li>
 </ul>
 </li>
-<li>方法<ul>
-<li><strong>get()</strong>：返回键值对       <strong>set()</strong>：添加键值对，返回实例       <strong>has()</strong>：检查键值对，返回布尔</li>
-<li><strong>delete()</strong>：删除键值对，返回布尔        <strong>clear()</strong>：清除所有成员</li>
+<li>方法
+<ul>
+<li><strong>get()</strong>：返回键值对   	<strong>set()</strong>：添加键值对，返回实例       <strong>has()</strong>：检查键值对，返回布尔</li>
+<li><strong>delete()</strong>：删除键值对，返回布尔		<strong>clear()</strong>：清除所有成员</li>
 <li><strong>keys()</strong>：返回以键为遍历器的对象</li>
 <li><strong>values()</strong>：返回以值为遍历器的对象</li>
 <li><strong>entries()</strong>：返回以键和值为遍历器的对象</li>
@@ -437,7 +492,8 @@
 </ul>
 </li>
 </ul>
-<h5 id="2、重点难点"><a href="#2、重点难点" class="headerlink" title="2、重点难点"></a>2、重点难点</h5><ul>
+<h5 id="2、重点难点">2、重点难点<a class="anchor" href="#2、重点难点">·</a></h5>
+<ul>
 <li>遍历顺序：插入顺序</li>
 <li>对同一个键多次赋值，后面的值将覆盖前面的值</li>
 <li>对同一个对象的引用，被视为一个键</li>
@@ -446,15 +502,19 @@
 <li>添加多个以<code>NaN</code>作为键时，只会存在一个以<code>NaN</code>作为键的值</li>
 <li><code>Object结构</code>提供<code>字符串—值</code>的对应，<code>Map结构</code>提供<code>值—值</code>的对应</li>
 </ul>
-<h4 id="11、WeakMap"><a href="#11、WeakMap" class="headerlink" title="11、WeakMap"></a>11、WeakMap</h4><h5 id="1、用法-3"><a href="#1、用法-3" class="headerlink" title="1、用法"></a>1、用法</h5><ul>
+<h4 id="11、WeakMap">11、WeakMap<a class="anchor" href="#11、WeakMap">·</a></h4>
+<h5 id="1、用法-4">1、用法<a class="anchor" href="#1、用法-4">·</a></h5>
+<ul>
 <li>定义：和Map结构类似，成员键只能是对象</li>
 <li>声明：<code>const set = new WeakMap(arr)</code></li>
 <li>入参：具有<code>Iterator接口</code>且每个成员都是一个双元素数组的数据结构</li>
-<li>属性<ul>
+<li>属性
+<ul>
 <li><strong>constructor</strong>：构造函数，返回WeakMap</li>
 </ul>
 </li>
-<li>方法<ul>
+<li>方法
+<ul>
 <li><strong>get()</strong>：返回键值对</li>
 <li><strong>set()</strong>：添加键值对，返回实例</li>
 <li><strong>delete()</strong>：删除键值对，返回布尔</li>
@@ -462,11 +522,13 @@
 </ul>
 </li>
 </ul>
-<h5 id="2、应用场景-2"><a href="#2、应用场景-2" class="headerlink" title="2、应用场景"></a>2、应用场景</h5><ul>
+<h5 id="2、应用场景-4">2、应用场景<a class="anchor" href="#2、应用场景-4">·</a></h5>
+<ul>
 <li>储存DOM节点：DOM节点被移除时自动释放此成员键，不用担心这些节点从文档移除时会引发内存泄漏</li>
 <li>部署私有属性：内部属性是实例的弱引用，删除实例时它们也随之消失，不会造成内存泄漏</li>
 </ul>
-<h5 id="3、重点难点-3"><a href="#3、重点难点-3" class="headerlink" title="3、重点难点"></a>3、重点难点</h5><ul>
+<h5 id="3、重点难点-4">3、重点难点<a class="anchor" href="#3、重点难点-4">·</a></h5>
+<ul>
 <li>成员键都是<code>弱引用</code>，垃圾回收机制不考虑<code>WeakMap结构</code>对此成员键的引用</li>
 <li>成员键不适合引用，它会随时消失，因此ES6规定<code>WeakMap结构不可遍历</code></li>
 <li>其他对象不再引用成员键时，垃圾回收机制会自动回收此成员所占用的内存，不考虑此成员是否还存在于<code>WeakMap结构</code>中</li>
@@ -474,19 +536,23 @@
 <li>弱引用的<code>只是键而不是值</code>，值依然是正常引用</li>
 <li>即使在外部消除了成员键的引用，内部的成员值依然存在</li>
 </ul>
-<h4 id="12、Proxy"><a href="#12、Proxy" class="headerlink" title="12、Proxy"></a>12、Proxy</h4><ul>
+<h4 id="12、Proxy">12、Proxy<a class="anchor" href="#12、Proxy">·</a></h4>
+<ul>
 <li>定义：修改某些操作的默认行为</li>
 <li>声明：<code>const proxy = new Proxy(target, handler)</code></li>
-<li>入参<ul>
+<li>入参
+<ul>
 <li><strong>target</strong>：拦截的目标对象</li>
 <li><strong>handler</strong>：定制拦截行为</li>
 </ul>
 </li>
-<li>方法<ul>
+<li>方法
+<ul>
 <li><strong>Proxy.revocable()</strong>：返回可取消的Proxy实例(返回<code>&#123; proxy, revoke &#125;</code>，通过revoke()取消代理)</li>
 </ul>
 </li>
-<li>拦截方式<ul>
+<li>拦截方式
+<ul>
 <li><strong>get()</strong>：拦截对象属性读取</li>
 <li><strong>set()</strong>：拦截对象属性设置，返回布尔</li>
 <li><strong>has()</strong>：拦截对象属性检查<code>k in obj</code>，返回布尔</li>
@@ -524,9 +590,11 @@
 <li>属性被定义为<code>不可读写/扩展/配置/枚举</code>时，使用拦截方法会报错</li>
 <li>代理下的目标对象，内部<code>this</code>指向<code>Proxy代理</code></li>
 </ul>
-<h4 id="13、Reflect"><a href="#13、Reflect" class="headerlink" title="13、Reflect"></a>13、Reflect</h4><ul>
+<h4 id="13、Reflect">13、Reflect<a class="anchor" href="#13、Reflect">·</a></h4>
+<ul>
 <li>定义：保持<code>Object方法</code>的默认行为</li>
-<li>方法<ul>
+<li>方法
+<ul>
 <li><strong>get()</strong>：返回对象属性</li>
 <li><strong>set()</strong>：设置对象属性，返回布尔</li>
 <li><strong>has()</strong>：检查对象属性，返回布尔</li>
@@ -570,28 +638,37 @@
 <p>数据绑定：观察者模式</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> observerQueue = <span class="keyword">new</span> <span class="title class_">Set</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">observe</span> = fn =&gt; observerQueue.<span class="title function_">add</span>(fn);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">observable</span> = obj =&gt; <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, &#123;</span><br><span class="line">    <span class="title function_">set</span>(<span class="params">tgt, key, val, receiver</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> result = <span class="title class_">Reflect</span>.<span class="title function_">set</span>(tgt, key, val, receiver);</span><br><span class="line">        observerQueue.<span class="title function_">forEach</span>(<span class="function"><span class="params">v</span> =&gt;</span> <span class="title function_">v</span>());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = <span class="title function_">observable</span>(&#123; <span class="attr">age</span>: <span class="number">25</span>, <span class="attr">name</span>: <span class="string">&quot;Yajun&quot;</span> &#125;);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">print</span> = (<span class="params"></span>) =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person.name&#125;</span> is <span class="subst">$&#123;person.age&#125;</span> years old`</span>);</span><br><span class="line"><span class="title function_">observe</span>(print);</span><br><span class="line">person.<span class="property">name</span> = <span class="string">&quot;Joway&quot;</span>;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<h4 id="14、Class-15、Module-16、Iterator-17、Promise-18、Generator"><a href="#14、Class-15、Module-16、Iterator-17、Promise-18、Generator" class="headerlink" title="14、Class           15、Module    16、Iterator    17、Promise   18、Generator"></a>14、Class           15、Module    16、Iterator    17、Promise   18、Generator</h4><h2 id="ES2016"><a href="#ES2016" class="headerlink" title="ES2016"></a>ES2016</h2><p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a8b6131b43a2415e8deb82c53a054432~tplv-k3u1fbpfcp-watermark.image" alt="ES2016" style="zoom:25%;" /></p>
-<h2 id="ES2017"><a href="#ES2017" class="headerlink" title="ES2017"></a>ES2017</h2><p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/65ff57811aff4f0e884a9b250fa1b6fb~tplv-k3u1fbpfcp-watermark.image" alt="ES2017" style="zoom:25%;" /></p>
-<h3 id="1、声明"><a href="#1、声明" class="headerlink" title="1、声明"></a>1、声明</h3><ul>
+<h4 id="14、Class-15、Module-16、Iterator-17、Promise-18、Generator">14、Class           15、Module    16、Iterator    17、Promise   18、Generator<a class="anchor" href="#14、Class-15、Module-16、Iterator-17、Promise-18、Generator">·</a></h4>
+<h2 id="ES2016">ES2016<a class="anchor" href="#ES2016">·</a></h2>
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a8b6131b43a2415e8deb82c53a054432~tplv-k3u1fbpfcp-watermark.image" alt="ES2016" style="zoom:25%;" />
+<h2 id="ES2017">ES2017<a class="anchor" href="#ES2017">·</a></h2>
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/65ff57811aff4f0e884a9b250fa1b6fb~tplv-k3u1fbpfcp-watermark.image" alt="ES2017" style="zoom:25%;" />
+<h3 id="1、声明">1、声明<a class="anchor" href="#1、声明">·</a></h3>
+<ul>
 <li><strong>共享内存和原子操作</strong>：由全局对象<code>SharedArrayBuffer</code>和<code>Atomics</code>实现，将数据存储在一块共享内存空间中，这些数据可在<code>JS主线程</code>和<code>web-worker线程</code>之间共享</li>
 </ul>
-<h3 id="2、字符串扩展"><a href="#2、字符串扩展" class="headerlink" title="2、字符串扩展"></a>2、字符串扩展</h3><ul>
+<h3 id="2、字符串扩展">2、字符串扩展<a class="anchor" href="#2、字符串扩展">·</a></h3>
+<ul>
 <li><strong>padStart()</strong>：把指定字符串填充到字符串头部，返回新字符串</li>
 <li><strong>padEnd()</strong>：把指定字符串填充到字符串尾部，返回新字符串</li>
 </ul>
-<h3 id="3、对象扩展-1"><a href="#3、对象扩展-1" class="headerlink" title="3、对象扩展"></a>3、对象扩展</h3><ul>
+<h3 id="3、对象扩展-2">3、对象扩展<a class="anchor" href="#3、对象扩展-2">·</a></h3>
+<ul>
 <li><strong>Object.getOwnPropertyDescriptors()</strong>：返回对象所有自身属性(非继承属性)的描述对象</li>
 <li><strong>Object.values()</strong>：返回以值组成的数组</li>
 <li><strong>Object.entries()</strong>：返回以键和值组成的数组</li>
 </ul>
-<h3 id="4、函数扩展"><a href="#4、函数扩展" class="headerlink" title="4、函数扩展"></a>4、函数扩展</h3><ul>
+<h3 id="4、函数扩展">4、函数扩展<a class="anchor" href="#4、函数扩展">·</a></h3>
+<ul>
 <li><strong>函数参数尾逗号</strong>：允许函数最后一个参数有尾逗号</li>
 </ul>
-<h3 id="5、Async"><a href="#5、Async" class="headerlink" title="5、Async"></a>5、Async</h3><ul>
+<h3 id="5、Async">5、Async<a class="anchor" href="#5、Async">·</a></h3>
+<ul>
 <li>定义：使异步函数以同步函数的形式书写(Generator函数语法糖)</li>
 <li>原理：将<code>Generator函数</code>和自动执行器<code>spawn</code>包装在一个函数里</li>
 <li>形式：将<code>Generator函数</code>的<code>*</code>替换成<code>async</code>，将<code>yield</code>替换成<code>await</code></li>
-<li>声明<ul>
+<li>声明
+<ul>
 <li>具名函数：<code>async function Func() &#123;&#125;</code></li>
 <li>函数表达式：<code>const func = async function() &#123;&#125;</code></li>
 <li>箭头函数：<code>const func = async() =&gt; &#123;&#125;</code></li>
@@ -599,7 +676,8 @@
 <li>类方法：<code>class Cla &#123; async Func() &#123;&#125; &#125;</code></li>
 </ul>
 </li>
-<li>await命令：等待当前Promise对象状态变更完毕<ul>
+<li>await命令：等待当前Promise对象状态变更完毕
+<ul>
 <li>正常情况：后面是Promise对象则返回其结果，否则返回对应的值</li>
 <li>后随<code>Thenable对象</code>：将其等同于Promise对象返回其结果</li>
 </ul>
@@ -630,7 +708,8 @@
 <li>内部抛出错误会导致返回的Promise对象变为<code>rejected状态</code>，被<code>catch()</code>接收到</li>
 <li>返回的Promise对象必须等到内部所有<code>await命令Promise对象</code>执行完才会发生状态改变，除非遇到<code>return语句</code>或<code>抛出错误</code></li>
 <li>任何一个<code>await命令Promise对象</code>变为<code>rejected状态</code>，整个<code>Async函数</code>都会中断执行</li>
-<li>希望即使前一个异步操作失败也不要中断后面的异步操作<ul>
+<li>希望即使前一个异步操作失败也不要中断后面的异步操作
+<ul>
 <li>将<code>await命令Promise对象</code>放到<code>try-catch</code>中</li>
 <li><code>await命令Promise对象</code>跟一个<code>catch()</code></li>
 </ul>
@@ -641,11 +720,14 @@
 <li>数组使用<code>forEach()</code>执行<code>async/await</code>会失效，可使用<code>for-of</code>和<code>Promise.all()</code>代替</li>
 <li>可保留运行堆栈，函数上下文随着<code>Async函数</code>的执行而存在，执行完成就消失</li>
 </ul>
-<h2 id="ES2018"><a href="#ES2018" class="headerlink" title="ES2018"></a>ES2018</h2><p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5ee2ee331aa642c49fc3119bdf3eb974~tplv-k3u1fbpfcp-watermark.image" alt="ES2018" style="zoom: 25%;" /></p>
-<h3 id="字符串扩展"><a href="#字符串扩展" class="headerlink" title="字符串扩展"></a>字符串扩展</h3><ul>
+<h2 id="ES2018">ES2018<a class="anchor" href="#ES2018">·</a></h2>
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5ee2ee331aa642c49fc3119bdf3eb974~tplv-k3u1fbpfcp-watermark.image" alt="ES2018" style="zoom: 25%;" />
+<h3 id="字符串扩展">字符串扩展<a class="anchor" href="#字符串扩展">·</a></h3>
+<ul>
 <li><strong>放松对标签模板里字符串转义的限制</strong>：遇到不合法的字符串转义返回<code>undefined</code>，并且从<code>raw</code>上可获取原字符串</li>
 </ul>
-<h3 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h3><ul>
+<h3 id="对象扩展">对象扩展<a class="anchor" href="#对象扩展">·</a></h3>
+<ul>
 <li><strong>扩展运算符(…)</strong>：转换对象为用逗号分隔的参数序列(<code>&#123; ...obj &#125;</code>，相当于<code>rest/spread参数</code>的逆运算)</li>
 </ul>
 <blockquote>
@@ -659,16 +741,22 @@
 <li>与对象解构赋值结合：<code>const &#123; x, ...rest/spread &#125; = &#123; x: 1, y: 2, z: 3  &#125;</code>(不能复制继承自原型对象的属性)</li>
 <li>修改现有对象部分属性：<code>const obj = &#123; x: 1, ...&#123; x: 2 &#125; &#125;</code></li>
 </ul>
-<h3 id="正则扩展"><a href="#正则扩展" class="headerlink" title="正则扩展"></a>正则扩展</h3><ul>
-<li><p><strong>s修饰符</strong>：dotAll模式修饰符，使<code>.</code>匹配任意单个字符(<code>dotAll模式</code>)</p>
+<h3 id="正则扩展">正则扩展<a class="anchor" href="#正则扩展">·</a></h3>
+<ul>
+<li>
+<p><strong>s修饰符</strong>：dotAll模式修饰符，使<code>.</code>匹配任意单个字符(<code>dotAll模式</code>)</p>
 </li>
-<li><p><strong>dotAll</strong>：是否设置<code>s修饰符</code></p>
+<li>
+<p><strong>dotAll</strong>：是否设置<code>s修饰符</code></p>
 </li>
-<li><p><strong>后行断言</strong>：<code>x</code>只有在<code>y</code>后才匹配</p>
+<li>
+<p><strong>后行断言</strong>：<code>x</code>只有在<code>y</code>后才匹配</p>
 </li>
-<li><p><strong>后行否定断言</strong>：<code>x</code>只有不在<code>y</code>后才匹配</p>
+<li>
+<p><strong>后行否定断言</strong>：<code>x</code>只有不在<code>y</code>后才匹配</p>
 </li>
-<li><p>Unicode属性转义</p>
+<li>
+<p>Unicode属性转义</p>
 <p>：匹配符合</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Unicode某种属性</span><br></pre></td></tr></table></figure>
 <p>的所有字符</p>
@@ -678,13 +766,15 @@
 <li>限制：<code>\p&#123;...&#125;</code>和<code>\P&#123;...&#125;</code>只对<code>Unicode字符</code>有效，使用时需加上<code>u修饰符</code></li>
 </ul>
 </li>
-<li><p>具名组匹配</p>
+<li>
+<p>具名组匹配</p>
 <p>：为每组匹配指定名字(</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?&lt;GroupName&gt;</span><br></pre></td></tr></table></figure>
 <p>)</p>
 <ul>
 <li>形式：<code>str.exec().groups.GroupName</code></li>
-<li>解构赋值替换<ul>
+<li>解构赋值替换
+<ul>
 <li>声明：<code>const time = &quot;2017-09-11&quot;</code>、<code>const regexp = /(?\d&#123;4&#125;)-(?\d&#123;2&#125;)-(?\d&#123;2&#125;)/u</code></li>
 <li>匹配：<code>time.replace(regexp, &quot;$/$/$&quot;)</code></li>
 </ul>
@@ -692,37 +782,48 @@
 </ul>
 </li>
 </ul>
-<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><ul>
+<h3 id="Promise">Promise<a class="anchor" href="#Promise">·</a></h3>
+<ul>
 <li><strong>finally()</strong>：指定不管最后状态如何都会执行的回调函数</li>
 </ul>
-<h3 id="Async"><a href="#Async" class="headerlink" title="Async"></a>Async</h3><ul>
+<h3 id="Async">Async<a class="anchor" href="#Async">·</a></h3>
+<ul>
 <li><strong>异步迭代器(for-await-of)</strong>：循环等待每个<code>Promise对象</code>变为<code>resolved状态</code>才进入下一步</li>
 </ul>
-<h2 id="ES2019"><a href="#ES2019" class="headerlink" title="ES2019"></a>ES2019</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9ae43118d7ef4e1eb9b3aac7b0f89777~tplv-k3u1fbpfcp-watermark.image" alt="ES2019"></p>
-<h3 id="字符串扩展-1"><a href="#字符串扩展-1" class="headerlink" title="字符串扩展"></a>字符串扩展</h3><ul>
+<h2 id="ES2019">ES2019<a class="anchor" href="#ES2019">·</a></h2>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9ae43118d7ef4e1eb9b3aac7b0f89777~tplv-k3u1fbpfcp-watermark.image" alt="ES2019"></p>
+<h3 id="字符串扩展-2">字符串扩展<a class="anchor" href="#字符串扩展-2">·</a></h3>
+<ul>
 <li><strong>直接输入U+2028和U+2029</strong>：字符串可直接输入<code>行分隔符</code>和<code>段分隔符</code></li>
 <li><strong>JSON.stringify()改造</strong>：可返回不符合UTF-8标准的字符串</li>
 <li><strong>trimStart()</strong>：消除字符串头部空格，返回新字符串</li>
 <li><strong>trimEnd()</strong>：消除字符串尾部空格，返回新字符串</li>
 </ul>
-<h3 id="对象扩展-1"><a href="#对象扩展-1" class="headerlink" title="对象扩展"></a>对象扩展</h3><ul>
+<h3 id="对象扩展-2">对象扩展<a class="anchor" href="#对象扩展-2">·</a></h3>
+<ul>
 <li><strong>Object.fromEntries()</strong>：返回以键和值组成的对象(<code>Object.entries()</code>的逆操作)</li>
 </ul>
-<h3 id="数组扩展"><a href="#数组扩展" class="headerlink" title="数组扩展"></a>数组扩展</h3><ul>
+<h3 id="数组扩展">数组扩展<a class="anchor" href="#数组扩展">·</a></h3>
+<ul>
 <li><strong>sort()稳定性</strong>：排序关键字相同的项目其排序前后的顺序不变，默认为<code>稳定</code></li>
 <li><strong>flat()</strong>：扁平化数组，返回新数组</li>
 <li><strong>flatMap()</strong>：映射且扁平化数组，返回新数组(只能展开一层数组)</li>
 </ul>
-<h3 id="函数扩展"><a href="#函数扩展" class="headerlink" title="函数扩展"></a>函数扩展</h3><ul>
+<h3 id="函数扩展">函数扩展<a class="anchor" href="#函数扩展">·</a></h3>
+<ul>
 <li><strong>toString()改造</strong>：返回函数原始代码(与编码一致)</li>
 <li><strong>catch()参数可省略</strong>：<code>catch()</code>中的参数可省略</li>
 </ul>
-<h3 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h3><ul>
+<h3 id="Symbol">Symbol<a class="anchor" href="#Symbol">·</a></h3>
+<ul>
 <li><strong>description</strong>：返回<code>Symbol值</code>的描述</li>
 </ul>
-<h2 id="ES2020"><a href="#ES2020" class="headerlink" title="ES2020"></a>ES2020</h2><p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4762da8a25d242eb82da69576b05b035~tplv-k3u1fbpfcp-watermark.image" alt="ES2020" style="zoom:25%;" /></p>
-<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><ul>
-<li><p>globalThis</p>
+<h2 id="ES2020">ES2020<a class="anchor" href="#ES2020">·</a></h2>
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4762da8a25d242eb82da69576b05b035~tplv-k3u1fbpfcp-watermark.image" alt="ES2020" style="zoom:25%;" />
+<h3 id="声明">声明<a class="anchor" href="#声明">·</a></h3>
+<ul>
+<li>
+<p>globalThis</p>
 <p>：作为顶层对象，指向全局环境下的</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this</span><br></pre></td></tr></table></figure>
 <ul>
@@ -733,8 +834,10 @@
 </ul>
 </li>
 </ul>
-<h3 id="数值扩展"><a href="#数值扩展" class="headerlink" title="数值扩展"></a>数值扩展</h3><ul>
-<li><p>BigInt</p>
+<h3 id="数值扩展">数值扩展<a class="anchor" href="#数值扩展">·</a></h3>
+<ul>
+<li>
+<p>BigInt</p>
 <p>：任何位数的整数(新增的数据类型，使用</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">n</span><br></pre></td></tr></table></figure>
 <p>结尾)</p>
@@ -754,8 +857,10 @@
 <li>BigInt与普通整数是两种值，它们之间并不相等</li>
 <li>typeof运算符对于BigInt类型的数据返回<code>bigint</code></li>
 </ul>
-<h3 id="对象扩展-2"><a href="#对象扩展-2" class="headerlink" title="对象扩展"></a>对象扩展</h3><ul>
-<li><p>链判断操作符(?.)</p>
+<h3 id="对象扩展-3">对象扩展<a class="anchor" href="#对象扩展-3">·</a></h3>
+<ul>
+<li>
+<p>链判断操作符(?.)</p>
 <p>：是否存在对象属性(不存在返回</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">undefined</span><br></pre></td></tr></table></figure>
 <p>且不再往下执行)</p>
@@ -764,32 +869,40 @@
 <li>函数调用：<code>func?.(...args)</code></li>
 </ul>
 </li>
-<li><p><strong>空判断操作符(??)</strong>：是否值为<code>undefined</code>或<code>null</code>，是则使用默认值</p>
+<li>
+<p><strong>空判断操作符(??)</strong>：是否值为<code>undefined</code>或<code>null</code>，是则使用默认值</p>
 </li>
 </ul>
-<h3 id="正则扩展-1"><a href="#正则扩展-1" class="headerlink" title="正则扩展"></a>正则扩展</h3><ul>
+<h3 id="正则扩展-2">正则扩展<a class="anchor" href="#正则扩展-2">·</a></h3>
+<ul>
 <li><strong>matchAll()</strong>：返回所有匹配的遍历器</li>
 </ul>
-<h3 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h3><ul>
-<li><p>import()</p>
+<h3 id="Module">Module<a class="anchor" href="#Module">·</a></h3>
+<ul>
+<li>
+<p>import()</p>
 <p>：动态导入(返回</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Promise</span><br></pre></td></tr></table></figure>
 <ul>
 <li>背景：<code>import命令</code>被JS引擎静态分析，先于模块内的其他语句执行，无法取代<code>require()</code>的动态加载功能，提案建议引入<code>import()</code>来代替<code>require()</code></li>
 </ul>
 </li>
-<li><p>位置：可在任何地方使用</p>
+<li>
+<p>位置：可在任何地方使用</p>
 <ul>
 <li>区别：<code>require()</code>是<strong>同步加载</strong>，<code>import()</code>是<strong>异步加载</strong></li>
 <li>场景：按需加载、条件加载、模块路径动态化</li>
 </ul>
 </li>
 </ul>
-<h3 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h3><ul>
+<h3 id="Iterator">Iterator<a class="anchor" href="#Iterator">·</a></h3>
+<ul>
 <li><strong>for-in遍历顺序</strong>：不同的引擎已就如何迭代属性达成一致，从而使行为标准化</li>
 </ul>
-<h3 id="Promise-1"><a href="#Promise-1" class="headerlink" title="Promise"></a>Promise</h3><ul>
-<li><p>Promise.allSettled()</p>
+<h3 id="Promise-2">Promise<a class="anchor" href="#Promise-2">·</a></h3>
+<ul>
+<li>
+<p>Promise.allSettled()</p>
 <p>：将多个实例包装成一个新实例，返回全部实例状态变更后的状态数组(齐变更再返回)</p>
 <ul>
 <li>入参：具有<code>Iterator接口</code>的数据结构</li>
@@ -798,22 +911,29 @@
 </ul>
 </li>
 </ul>
-<h2 id="ES提案"><a href="#ES提案" class="headerlink" title="ES提案"></a>ES提案</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/68085d653c054f68a496cb158496ed8b~tplv-k3u1fbpfcp-watermark.image" alt="ES提案" style="zoom:33%;" /></p>
-<h3 id="声明-1"><a href="#声明-1" class="headerlink" title="声明"></a>声明</h3><ul>
+<h2 id="ES提案">ES提案<a class="anchor" href="#ES提案">·</a></h2>
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/68085d653c054f68a496cb158496ed8b~tplv-k3u1fbpfcp-watermark.image" alt="ES提案" style="zoom:33%;" />
+<h3 id="声明-2">声明<a class="anchor" href="#声明-2">·</a></h3>
+<ul>
 <li><strong>do表达式</strong>：封装块级作用域的操作，返回内部最后执行表达式的值(<code>do&#123;&#125;</code>)</li>
 <li><strong>throw表达式</strong>：直接使用<code>throw new Error()</code>，无需<code>()</code>或<code>&#123;&#125;</code>包括</li>
 <li><strong>!#命令</strong>：指定脚本执行器(写在文件首行)</li>
 </ul>
-<h3 id="数值扩展-1"><a href="#数值扩展-1" class="headerlink" title="数值扩展"></a>数值扩展</h3><ul>
+<h3 id="数值扩展-2">数值扩展<a class="anchor" href="#数值扩展-2">·</a></h3>
+<ul>
 <li><strong>数值分隔符(_)</strong>：使用<code>_</code>作为千分位分隔符(增加数值的可读性)</li>
 <li><strong>Math.signbit()</strong>：返回数值符号是否设置</li>
 </ul>
-<h3 id="函数扩展-1"><a href="#函数扩展-1" class="headerlink" title="函数扩展"></a>函数扩展</h3><ul>
-<li><p><strong>函数部分执行</strong>：复用函数功能(<code>?</code>表示单个参数占位符，<code>...</code>表示多个参数占位符)</p>
+<h3 id="函数扩展-2">函数扩展<a class="anchor" href="#函数扩展-2">·</a></h3>
+<ul>
+<li>
+<p><strong>函数部分执行</strong>：复用函数功能(<code>?</code>表示单个参数占位符，<code>...</code>表示多个参数占位符)</p>
 </li>
-<li><p><strong>管道操作符(|&gt;)</strong>：把左边表达式的值传入右边的函数进行求值(<code>f(x)</code> =&gt; <code>x |&gt; f</code>)</p>
+<li>
+<p><strong>管道操作符(|&gt;)</strong>：把左边表达式的值传入右边的函数进行求值(<code>f(x)</code> =&gt; <code>x |&gt; f</code>)</p>
 </li>
-<li><p>绑定运算符(::)</p>
+<li>
+<p>绑定运算符(:😃</p>
 <p>：函数绑定(左边是对象右边是函数，取代</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bind</span><br></pre></td></tr></table></figure>
 <p>、</p>
@@ -827,21 +947,26 @@
 </ul>
 </li>
 </ul>
-<h3 id="Realm"><a href="#Realm" class="headerlink" title="Realm"></a>Realm</h3><ul>
+<h3 id="Realm">Realm<a class="anchor" href="#Realm">·</a></h3>
+<ul>
 <li>定义：提供<code>沙箱功能</code>，允许隔离代码，防止被隔离的代码拿到全局对象</li>
 <li>声明：<code>new Realm().global</code></li>
 </ul>
-<h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><ul>
+<h3 id="Class">Class<a class="anchor" href="#Class">·</a></h3>
+<ul>
 <li><strong>静态属性</strong>：使用<code>static</code>定义属性，该属性<code>不会被实例继承</code>，只能通过类来调用</li>
 <li><strong>私有属性</strong>：使用<code>#</code>定义属性，该属性只能在类内部访问</li>
 <li><strong>私有方法</strong>：使用<code>#</code>定义方法，该方法只能在类内部访问</li>
 <li><strong>装饰器</strong>：使用<code>@</code>注释或修改类和类方法</li>
 </ul>
-<h3 id="Module-1"><a href="#Module-1" class="headerlink" title="Module"></a>Module</h3><ul>
+<h3 id="Module-2">Module<a class="anchor" href="#Module-2">·</a></h3>
+<ul>
 <li><strong>import.meta</strong>：返回脚本元信息</li>
 </ul>
-<h3 id="Promise-2"><a href="#Promise-2" class="headerlink" title="Promise"></a>Promise</h3><ul>
-<li><p>Promise.any()</p>
+<h3 id="Promise-3">Promise<a class="anchor" href="#Promise-3">·</a></h3>
+<ul>
+<li>
+<p>Promise.any()</p>
 <p>：将多个实例包装成一个新实例，返回全部实例状态变更后的结果数组(齐变更再返回)</p>
 <ul>
 <li>入参：具有<code>Iterator接口</code>的数据结构</li>
@@ -849,13 +974,15 @@
 <li>失败：只有全部实例状态变成<code>rejected</code>，最终状态才会变成<code>rejected</code></li>
 </ul>
 </li>
-<li><p><strong>Promise.try()</strong>：不想区分是否同步异步函数，包装函数为实例，使用<code>then()</code>指定下一步流程，使用<code>catch()</code>捕获错误</p>
+<li>
+<p><strong>Promise.try()</strong>：不想区分是否同步异步函数，包装函数为实例，使用<code>then()</code>指定下一步流程，使用<code>catch()</code>捕获错误</p>
 </li>
 </ul>
-<h3 id="Async-1"><a href="#Async-1" class="headerlink" title="Async"></a>Async</h3><ul>
+<h3 id="Async-2">Async<a class="anchor" href="#Async-2">·</a></h3>
+<ul>
 <li><strong>顶层Await</strong>：允许在模块的顶层独立使用<code>await命令</code>(借用<code>await</code>解决模块异步加载的问题)</li>
 </ul>
-</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>ES6的新特性</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-12-29</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-01-09</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/ES6.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>ES6的新特性</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-12-29</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-01-17</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/ES6.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
 wpac_init.push({widget: 'Rating', id: 33234});
 (function() {
   if ('WIDGETPACK_LOADED' in window) return;
@@ -866,7 +993,7 @@ wpac_init.push({widget: 'Rating', id: 33234});
   //- mc.src = '//embed.widgetpack.com/widget.js';
   var s = document.getElementsByTagName('script')[0];
   s?.parentNode?.insertBefore(mc, s?.nextSibling);
-})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/3998253138.html"><img class="prev-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/img/dd.avif" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">虾皮常考的驼峰命名转换</div></div></a></div><div class="next-post pull-right"><a href="/posts/179783341.html"><img class="next-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/数组去重.png" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">虾皮面试中的数组去重</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6%E6%A6%82%E6%8B%AC"><span class="toc-text">ES6概括</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2015"><span class="toc-text">ES2015</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">1、表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%A3%B0%E6%98%8E%EF%BC%9Aconst%E3%80%81let"><span class="toc-text">1、声明：const、let</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-text">2、解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-text">1、语法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9A"><span class="toc-text">2、应用场景：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E9%87%8D%E7%82%B9%E9%9A%BE%E7%82%B9"><span class="toc-text">3、重点难点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-text">2、内置对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="toc-text">1、字符串扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E6%95%B0%E5%80%BC%E6%89%A9%E5%B1%95"><span class="toc-text">2、数值扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81Number%EF%BC%9A"><span class="toc-text">1、Number：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81Math%EF%BC%9A"><span class="toc-text">2、Math：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95"><span class="toc-text">3、对象扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95"><span class="toc-text">4、数组扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E8%AF%AD%E6%B3%95%EF%BC%9A-1"><span class="toc-text">1、语法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E6%89%A9%E5%B1%95%E5%BA%94%E7%94%A8"><span class="toc-text">2、扩展应用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95"><span class="toc-text">5、函数扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC%EF%BC%9A%E4%B8%BA%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E6%8C%87%E5%AE%9A%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">1、参数默认值：为函数参数指定默认值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0-%E2%80%A6-%EF%BC%9A%E8%BF%94%E5%9B%9E%E5%87%BD%E6%95%B0%E5%A4%9A%E4%BD%99%E5%8F%82%E6%95%B0"><span class="toc-text">2、剩余参数(…)：返回函数多余参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-gt-%EF%BC%9A%E5%87%BD%E6%95%B0%E7%AE%80%E5%86%99"><span class="toc-text">3、箭头函数(&#x3D;&gt;)：函数简写</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81%E5%B0%BE%E8%B0%83%E7%94%A8%E4%BC%98%E5%8C%96%EF%BC%9A%E5%8F%AA%E4%BF%9D%E7%95%99%E5%86%85%E5%B1%82%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8%E5%B8%A7"><span class="toc-text">4、尾调用优化：只保留内层函数的调用帧</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%E6%AD%A3%E5%88%99%E6%89%A9%E5%B1%95"><span class="toc-text">6、正则扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81Symbol"><span class="toc-text">7、Symbol</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%E3%80%81Set"><span class="toc-text">8、Set</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%B3%95"><span class="toc-text">1、用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">2、应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E9%87%8D%E7%82%B9%E9%9A%BE%E7%82%B9-1"><span class="toc-text">3、重点难点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E3%80%81WeakSet"><span class="toc-text">9、WeakSet</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%B3%95-1"><span class="toc-text">1、用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="toc-text">2、应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E9%87%8D%E7%82%B9%E9%9A%BE%E7%82%B9-2"><span class="toc-text">3、重点难点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10%E3%80%81Map"><span class="toc-text">10、Map</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%B3%95-2"><span class="toc-text">1、用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E9%87%8D%E7%82%B9%E9%9A%BE%E7%82%B9"><span class="toc-text">2、重点难点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11%E3%80%81WeakMap"><span class="toc-text">11、WeakMap</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%B3%95-3"><span class="toc-text">1、用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-text">2、应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E9%87%8D%E7%82%B9%E9%9A%BE%E7%82%B9-3"><span class="toc-text">3、重点难点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12%E3%80%81Proxy"><span class="toc-text">12、Proxy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13%E3%80%81Reflect"><span class="toc-text">13、Reflect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14%E3%80%81Class-15%E3%80%81Module-16%E3%80%81Iterator-17%E3%80%81Promise-18%E3%80%81Generator"><span class="toc-text">14、Class           15、Module    16、Iterator    17、Promise   18、Generator</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2016"><span class="toc-text">ES2016</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2017"><span class="toc-text">ES2017</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%A3%B0%E6%98%8E"><span class="toc-text">1、声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="toc-text">2、字符串扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95-1"><span class="toc-text">3、对象扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95"><span class="toc-text">4、函数扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81Async"><span class="toc-text">5、Async</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2018"><span class="toc-text">ES2018</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="toc-text">字符串扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95"><span class="toc-text">对象扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E6%89%A9%E5%B1%95"><span class="toc-text">正则扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise"><span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Async"><span class="toc-text">Async</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2019"><span class="toc-text">ES2019</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95-1"><span class="toc-text">字符串扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95-1"><span class="toc-text">对象扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95"><span class="toc-text">数组扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95"><span class="toc-text">函数扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Symbol"><span class="toc-text">Symbol</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2020"><span class="toc-text">ES2020</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E"><span class="toc-text">声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%89%A9%E5%B1%95"><span class="toc-text">数值扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95-2"><span class="toc-text">对象扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E6%89%A9%E5%B1%95-1"><span class="toc-text">正则扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Module"><span class="toc-text">Module</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterator"><span class="toc-text">Iterator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise-1"><span class="toc-text">Promise</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES%E6%8F%90%E6%A1%88"><span class="toc-text">ES提案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E-1"><span class="toc-text">声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%89%A9%E5%B1%95-1"><span class="toc-text">数值扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95-1"><span class="toc-text">函数扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Realm"><span class="toc-text">Realm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class"><span class="toc-text">Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Module-1"><span class="toc-text">Module</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise-2"><span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Async-1"><span class="toc-text">Async</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/3998253138.html"><img class="prev-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/img/dd.avif" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">虾皮常考的驼峰命名转换</div></div></a></div><div class="next-post pull-right"><a href="/posts/179783341.html"><img class="next-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/数组去重.png" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">虾皮面试中的数组去重</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6%E6%A6%82%E6%8B%AC"><span class="toc-text">ES6概括</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2015"><span class="toc-text">ES2015</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">1、表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%A3%B0%E6%98%8E%EF%BC%9Aconst%E3%80%81let"><span class="toc-text">1、声明：const、let</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-text">2、解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-text">1、语法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9A-2"><span class="toc-text">2、应用场景：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E9%87%8D%E7%82%B9%E9%9A%BE%E7%82%B9"><span class="toc-text">3、重点难点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-text">2、内置对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="toc-text">1、字符串扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E6%95%B0%E5%80%BC%E6%89%A9%E5%B1%95"><span class="toc-text">2、数值扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81Number%EF%BC%9A"><span class="toc-text">1、Number：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81Math%EF%BC%9A"><span class="toc-text">2、Math：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95"><span class="toc-text">3、对象扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95"><span class="toc-text">4、数组扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E8%AF%AD%E6%B3%95%EF%BC%9A-2"><span class="toc-text">1、语法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E6%89%A9%E5%B1%95%E5%BA%94%E7%94%A8"><span class="toc-text">2、扩展应用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95"><span class="toc-text">5、函数扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC%EF%BC%9A%E4%B8%BA%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E6%8C%87%E5%AE%9A%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-text">1、参数默认值：为函数参数指定默认值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0-%E2%80%A6-%EF%BC%9A%E8%BF%94%E5%9B%9E%E5%87%BD%E6%95%B0%E5%A4%9A%E4%BD%99%E5%8F%82%E6%95%B0"><span class="toc-text">2、剩余参数(…)：返回函数多余参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-%EF%BC%9A%E5%87%BD%E6%95%B0%E7%AE%80%E5%86%99"><span class="toc-text">3、箭头函数(&#x3D;&gt;)：函数简写</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81%E5%B0%BE%E8%B0%83%E7%94%A8%E4%BC%98%E5%8C%96%EF%BC%9A%E5%8F%AA%E4%BF%9D%E7%95%99%E5%86%85%E5%B1%82%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8%E5%B8%A7"><span class="toc-text">4、尾调用优化：只保留内层函数的调用帧</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%E6%AD%A3%E5%88%99%E6%89%A9%E5%B1%95"><span class="toc-text">6、正则扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81Symbol"><span class="toc-text">7、Symbol</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8%E3%80%81Set"><span class="toc-text">8、Set</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%B3%95"><span class="toc-text">1、用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-text">2、应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E9%87%8D%E7%82%B9%E9%9A%BE%E7%82%B9-2"><span class="toc-text">3、重点难点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9%E3%80%81WeakSet"><span class="toc-text">9、WeakSet</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%B3%95-2"><span class="toc-text">1、用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="toc-text">2、应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E9%87%8D%E7%82%B9%E9%9A%BE%E7%82%B9-3"><span class="toc-text">3、重点难点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10%E3%80%81Map"><span class="toc-text">10、Map</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%B3%95-3"><span class="toc-text">1、用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E9%87%8D%E7%82%B9%E9%9A%BE%E7%82%B9"><span class="toc-text">2、重点难点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11%E3%80%81WeakMap"><span class="toc-text">11、WeakMap</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%B3%95-4"><span class="toc-text">1、用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-4"><span class="toc-text">2、应用场景</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E9%87%8D%E7%82%B9%E9%9A%BE%E7%82%B9-4"><span class="toc-text">3、重点难点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12%E3%80%81Proxy"><span class="toc-text">12、Proxy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13%E3%80%81Reflect"><span class="toc-text">13、Reflect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#14%E3%80%81Class-15%E3%80%81Module-16%E3%80%81Iterator-17%E3%80%81Promise-18%E3%80%81Generator"><span class="toc-text">14、Class           15、Module    16、Iterator    17、Promise   18、Generator</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2016"><span class="toc-text">ES2016</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2017"><span class="toc-text">ES2017</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%A3%B0%E6%98%8E"><span class="toc-text">1、声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="toc-text">2、字符串扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95-2"><span class="toc-text">3、对象扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95"><span class="toc-text">4、函数扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81Async"><span class="toc-text">5、Async</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2018"><span class="toc-text">ES2018</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="toc-text">字符串扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95"><span class="toc-text">对象扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E6%89%A9%E5%B1%95"><span class="toc-text">正则扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise"><span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Async"><span class="toc-text">Async</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2019"><span class="toc-text">ES2019</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95-2"><span class="toc-text">字符串扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95-2"><span class="toc-text">对象扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95"><span class="toc-text">数组扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95"><span class="toc-text">函数扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Symbol"><span class="toc-text">Symbol</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES2020"><span class="toc-text">ES2020</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E"><span class="toc-text">声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%89%A9%E5%B1%95"><span class="toc-text">数值扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95-3"><span class="toc-text">对象扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E6%89%A9%E5%B1%95-2"><span class="toc-text">正则扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Module"><span class="toc-text">Module</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterator"><span class="toc-text">Iterator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise-2"><span class="toc-text">Promise</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES%E6%8F%90%E6%A1%88"><span class="toc-text">ES提案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E-2"><span class="toc-text">声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%89%A9%E5%B1%95-2"><span class="toc-text">数值扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95-2"><span class="toc-text">函数扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Realm"><span class="toc-text">Realm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class"><span class="toc-text">Class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Module-2"><span class="toc-text">Module</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise-3"><span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Async-2"><span class="toc-text">Async</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
