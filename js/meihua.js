@@ -25,7 +25,6 @@ if (localStorage.getItem("reset_2") == undefined) {
     localStorage.removeItem('blogbg');
     localStorage.removeItem('universe');
     localStorage.removeItem('blur');
-    localStorage.removeItem('fpson');
     localStorage.removeItem('transNum');
     localStorage.removeItem('bing');
     localStorage.removeItem('blurRad');
@@ -99,19 +98,6 @@ if (localStorage.getItem("reset_2") == undefined) {
     } else {
       setUniverse2("none");
     }
-  }
-  
-  // 帧率监测开关
-  if (localStorage.getItem("fpson") == undefined) {
-    localStorage.setItem("fpson", "1");
-  }
-  function fpssw() {
-    if (document.getElementById("fpson").checked) {
-      localStorage.setItem("fpson", "1");
-    } else {
-      localStorage.setItem("fpson", "0");
-    }
-    setTimeout(reload, 600);
   }
   
   // 刷新窗口
@@ -416,7 +402,6 @@ if (localStorage.getItem("reset_2") == undefined) {
   </div>
   
   <div class="content" style="display:flex">
-    <div class="content-text" style="font-weight:bold; padding-left:10px"> 帧率监测 (刷新生效) </div><input type="checkbox" id="fpson" onclick="fpssw()">
     <div class="content-text" style="font-weight:bold; padding-left:20px"> 必应每日壁纸 </div><input type="checkbox" id="bingSet" onclick="setBing()">
   </div>
   
@@ -525,11 +510,6 @@ if (localStorage.getItem("reset_2") == undefined) {
       document.getElementById("universeSet").checked = true;
     } else if (localStorage.getItem("universe") == "none") {
       document.getElementById("universeSet").checked = false;
-    }
-    if (localStorage.getItem("fpson") == "1") {
-      document.getElementById("fpson").checked = true;
-    } else {
-      document.getElementById("fpson").checked = false;
     }
     if (localStorage.getItem("rs") == "block") {
       document.getElementById("rightSideSet").checked = true;
