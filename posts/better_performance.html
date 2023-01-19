@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>前后端链路的性能优化 | Nightwishのblog🧊</title><meta name="keywords" content="优化"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="全链路的性能优化整合·  前言： 前面的过程中，我们零零散散地提到了性能优化做的事情，恰巧内网最近一篇文章写的不错，仔细学习了下作者的微信公众号文章。但我不打算把他的文本简单copy一遍，因为自己最近刚刚做过相关的事，所以，更多的想结合自己的理解和其他资料学习总结一下   在介绍知识之前，我们需要交代一下背景。如果现在给你一个现成的项目要求做性能优化，你会怎么下手呢？这种感觉就好像，你要去体检，那">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>前后端链路的性能优化 | Nightwishのblog🧊</title><meta name="keywords" content="优化"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="全链路的性能优化整合 前言： 前面的过程中，我们零零散散地提到了性能优化做的事情，恰巧内网最近一篇文章写的不错，仔细学习了下作者的微信公众号文章。但我不打算把他的文本简单copy一遍，因为自己最近刚刚做过相关的事，所以，更多的想结合自己的理解和其他资料学习总结一下 在介绍知识之前，我们需要交代一下背景。如果现在给你一个现成的项目要求做性能优化，你会怎么下手呢？这种感觉就好像，你要去体检，那么知道你">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前后端链路的性能优化">
 <meta property="og:url" content="https://mynightwish.online/posts/better_performance.html">
 <meta property="og:site_name" content="Nightwishのblog🧊">
-<meta property="og:description" content="全链路的性能优化整合·  前言： 前面的过程中，我们零零散散地提到了性能优化做的事情，恰巧内网最近一篇文章写的不错，仔细学习了下作者的微信公众号文章。但我不打算把他的文本简单copy一遍，因为自己最近刚刚做过相关的事，所以，更多的想结合自己的理解和其他资料学习总结一下   在介绍知识之前，我们需要交代一下背景。如果现在给你一个现成的项目要求做性能优化，你会怎么下手呢？这种感觉就好像，你要去体检，那">
+<meta property="og:description" content="全链路的性能优化整合 前言： 前面的过程中，我们零零散散地提到了性能优化做的事情，恰巧内网最近一篇文章写的不错，仔细学习了下作者的微信公众号文章。但我不打算把他的文本简单copy一遍，因为自己最近刚刚做过相关的事，所以，更多的想结合自己的理解和其他资料学习总结一下 在介绍知识之前，我们需要交代一下背景。如果现在给你一个现成的项目要求做性能优化，你会怎么下手呢？这种感觉就好像，你要去体检，那么知道你">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/前端性能优化.png">
 <meta property="article:published_time" content="2022-05-24T05:31:50.000Z">
@@ -169,73 +169,53 @@
     background-size: cover!important;
     background-repeat: no-repeat!important;
   }
-</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/前端性能优化.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">前后端链路的性能优化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-24T05:31:50.000Z" title="发表于 2022-05-24 13:31:50">2022-05-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-17T11:47:30.986Z" title="更新于 2023-01-17 19:47:30">2023-01-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/3-2-%E6%B5%8F%E8%A7%88%E5%99%A8/">3.2-浏览器</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2112</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="前后端链路的性能优化"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="全链路的性能优化整合">全链路的性能优化整合<a class="anchor" href="#全链路的性能优化整合">·</a></h2>
-<blockquote>
+</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/前端性能优化.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">前后端链路的性能优化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-24T05:31:50.000Z" title="发表于 2022-05-24 13:31:50">2022-05-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-17T11:47:30.986Z" title="更新于 2023-01-17 19:47:30">2023-01-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/3-2-%E6%B5%8F%E8%A7%88%E5%99%A8/">3.2-浏览器</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2112</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="前后端链路的性能优化"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="全链路的性能优化整合"><a href="#全链路的性能优化整合" class="headerlink" title="全链路的性能优化整合"></a>全链路的性能优化整合</h2><blockquote>
 <p>前言：</p>
 <p>前面的过程中，我们零零散散地提到了性能优化做的事情，恰巧内网最近一篇文章写的不错，仔细学习了下作者的微信公众号文章。但我不打算把他的文本简单copy一遍，因为自己最近刚刚做过相关的事，所以，更多的想结合自己的理解和其他资料学习总结一下</p>
-</blockquote>
-<blockquote>
 <p>在介绍知识之前，我们需要交代一下背景。如果现在给你一个现成的项目要求做性能优化，你会怎么下手呢？这种感觉就好像，你要去体检，那么知道你哪里好，哪儿不好，不好需要吃什么药呢？开始之前，需要明确几点：</p>
 <ul>
-<li>
-<p>如何评价页面的性能好坏呢？</p>
+<li><p>如何评价页面的性能好坏呢？ </p>
 <p>当然不是直觉，必须有数据指标支撑，这就需要一些工具的帮助</p>
 </li>
-<li>
-<p>随后，问题就来了，如何使用各种性能相关工具？</p>
+<li><p>随后，问题就来了，如何使用各种性能相关工具？</p>
 <p>这个过程中，肯定会涉及到很多指标，我们需要读懂指标的含义，针对其对应的表现优化，要有针对性的理解指标，就要需要浏览器的基本知识了。</p>
 </li>
-<li>
-<p>页面是从哪里来的？又是怎么在浏览器上渲染出来的？</p>
+<li><p>页面是从哪里来的？又是怎么在浏览器上渲染出来的？</p>
 </li>
 </ul>
-</blockquote>
-<blockquote>
 <p>以上抛出的3个问题基本回答了：</p>
 <ol>
 <li>浏览器的网络请求环节发生了什么？</li>
 <li>页面渲染环节发生了什么？</li>
 <li>两个环节的我们如何下手优化？</li>
 </ol>
-</blockquote>
-<blockquote>
-<h3 id="完整过程"><strong>完整过程</strong><a class="anchor" href="#完整过程">·</a></h3>
-</blockquote>
+<h3 id="完整过程"><a href="#完整过程" class="headerlink" title="完整过程"></a><strong>完整过程</strong></h3></blockquote>
 <p><img src="https://cdn.jsdeliver.net/gh/myNightwish/CDN_res/img/640" alt="图片"></p>
-<h3 id="一、网络通信环节">一、网络通信环节<a class="anchor" href="#一、网络通信环节">·</a></h3>
-<h4 id="阶段0：用户输入">阶段0：用户输入<a class="anchor" href="#阶段0：用户输入">·</a></h4>
-<blockquote>
-<p>我们在搜索栏目巴拉巴拉输入…一个url，并回车后。浏览器小伙会暗中判断输入的url是不是正确的：</p>
+<h3 id="一、网络通信环节"><a href="#一、网络通信环节" class="headerlink" title="一、网络通信环节"></a>一、网络通信环节</h3><h4 id="阶段0：用户输入"><a href="#阶段0：用户输入" class="headerlink" title="阶段0：用户输入"></a>阶段0：用户输入</h4><blockquote>
+<p>我们在搜索栏目巴拉巴拉输入…..一个url，并回车后。浏览器小伙会暗中判断输入的url是不是正确的：</p>
 <ul>
-<li>
-<p>那什么是正确的url呢？</p>
-<p>那肯定要看标准的呀，安排：https://mynightwish.top/posts/URL_URI.html</p>
+<li><p>那什么是正确的url呢？</p>
+<p>那肯定要看标准的呀，安排：<a target="_blank" rel="noopener" href="https://mynightwish.top/posts/URL_URI.html">https://mynightwish.top/posts/URL_URI.html</a></p>
 </li>
-<li>
-<p>不标准是不是就搜不到了？</p>
+<li><p>不标准是不是就搜不到了？</p>
 <p>wrong，浏览器会用默认的搜索引擎将该关键字拼接成url</p>
 </li>
 </ul>
 </blockquote>
-<h4 id="阶段1：【Process-Unload-Event】、【Redirect】">阶段1：【Process Unload Event】、【Redirect】<a class="anchor" href="#阶段1：【Process-Unload-Event】、【Redirect】">·</a></h4>
-<blockquote>
+<h4 id="阶段1：【Process-Unload-Event】、【Redirect】"><a href="#阶段1：【Process-Unload-Event】、【Redirect】" class="headerlink" title="阶段1：【Process Unload Event】、【Redirect】"></a>阶段1：【Process Unload Event】、【Redirect】</h4><blockquote>
 <p>浏览器会将现有页面卸载掉并重定向到用户新输入的url页面；</p>
 <p>此时浏览器会准备一个<code>渲染进程</code>用于渲染即将到来的页面，和一个<code>网络进程</code>用于发送网络请求。</p>
 </blockquote>
-<h4 id="阶段2：Service-Worker">阶段2：Service Worker<a class="anchor" href="#阶段2：Service-Worker">·</a></h4>
-<blockquote>
+<h4 id="阶段2：Service-Worker"><a href="#阶段2：Service-Worker" class="headerlink" title="阶段2：Service Worker"></a>阶段2：Service Worker</h4><blockquote>
 <p>即图中：【Service Worker Init】与【Service Worker Fecth Event 】步骤</p>
 <p>如果当前页面注册了Service Worker那么它可以拦截当前网站所有的请求，进行判断是否需要向远程发送网络请求。</p>
 <p>如果不需要发送网络请求，则取本地文件。如果需要则进行下一步。</p>
 </blockquote>
-<h4 id="阶段3：网络请求">阶段3：网络请求<a class="anchor" href="#阶段3：网络请求">·</a></h4>
-<blockquote>
+<h4 id="阶段3：网络请求"><a href="#阶段3：网络请求" class="headerlink" title="阶段3：网络请求"></a>阶段3：网络请求</h4><blockquote>
 <p>包含了图中黄色的：【HTTP Cache】、【DNS】、【TCP】、【Request】、【Response】步骤</p>
 <p>OSI网络七层模型：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层</p>
 <p>在实际应用中物理层、数据链路层被统称为物理层，会话层、表示层、应用层被统称为应用层，所以实际使用时通常分为4个层级</p>
 <p>【物理层】&gt;【网络层(IP)】&gt;【传输层(TCP/UDP)】&gt;【应用层(HTTP)】</p>
-</blockquote>
-<blockquote>
 <p>刚刚阶段1：说浏览器会重定向到输入的url页面：</p>
 <ul>
 <li>它怎么知道这个url对应哪个页面呢？它又怎么拿到该页面对应的资源呢？</li>
@@ -244,37 +224,32 @@
 <p>浏览器小伙会拿着url通过<code>网络进程</code>进行如下步骤：</p>
 <p><img src="https://cdn.jsdeliver.net/gh/myNightwish/CDN_res/img/image-20220505225418696.png" alt="image-20220505225418696"></p>
 <ol>
-<li>
-<p>根据url查询本地是否已经有强制缓存，如果有则判断缓存是否过期，如果没过期则直接返回缓存内容，也就是图1中【HTTP Cache】步骤</p>
+<li><p>根据url查询本地是否已经有强制缓存，如果有则判断缓存是否过期，如果没过期则直接返回缓存内容，也就是图1中【HTTP Cache】步骤</p>
 <blockquote>
 <p>这里涉及到了强缓存、协商缓存的概念，需要补课的小伙伴，猛戳：</p>
-<p>https://mynightwish.top/posts/588825314.html</p>
+<p><a target="_blank" rel="noopener" href="https://mynightwish.top/posts/588825314.html">https://mynightwish.top/posts/588825314.html</a></p>
 </blockquote>
 </li>
-<li>
-<p>如果没有强制缓存或缓存已过期，则将该请求加入队列，排队准备发送网络请求，也就是图2中【正在排队】，然后进入DNS解析阶段，也就是图1中【DNS】以及图2中的【DNS查找】，DNS根据域名解析出对应的IP地址。(DNS基于UDP)。</p>
+<li><p>如果没有强制缓存或缓存已过期，则将该请求加入队列，排队准备发送网络请求，也就是图2中【正在排队】，然后进入DNS解析阶段，也就是图1中【DNS】以及图2中的【DNS查找】，DNS根据域名解析出对应的IP地址。(DNS基于UDP)。</p>
 <blockquote>
-<p>关于DNS解析，猛戳：https://mynightwish.top/posts/2124882507.html</p>
+<p>关于DNS解析，猛戳：<a target="_blank" rel="noopener" href="https://mynightwish.top/posts/2124882507.html">https://mynightwish.top/posts/2124882507.html</a></p>
 <p>说的俗一点：就是浏览器不认识这个url了，或者这个url已经变心了，浏览器需要重新去寻找该url对应的真正地址：ip地址，才能找到这个真实的资源，建立连接，才能正常的再一次一起happy工作~</p>
 </blockquote>
 </li>
-<li>
-<p>然后使用IP寻址找到对方，然后根据IP地址+端口号创建一个TCP连接(三次握手)，也就是图1中【TCP】以及图2中的【初始连接】创建完成后利用TCP连接来传输数据。(TCP会将数据拆分为多个数据包，进行有序传输，如果丢包会重发，TCP的特点是可靠、有序)</p>
+<li><p>然后使用IP寻址找到对方，然后根据IP地址+端口号创建一个TCP连接(三次握手)，也就是图1中【TCP】以及图2中的【初始连接】创建完成后利用TCP连接来传输数据。(TCP会将数据拆分为多个数据包，进行有序传输，如果丢包会重发，TCP的特点是可靠、有序)</p>
 <blockquote>
-<p>关于TCP的传输，猛戳：https://mynightwish.top/posts/2124882507.html</p>
+<p>关于TCP的传输，猛戳：<a target="_blank" rel="noopener" href="https://mynightwish.top/posts/2124882507.html">https://mynightwish.top/posts/2124882507.html</a></p>
 <p>终于找到伙计了，咱们打个招呼，握个手吧~</p>
 </blockquote>
 </li>
-<li>
-<p>判断当前协议是否为https，如果为https，则进行SSL协商，将数据进行加密，如果为http协议则不进行加密(明文传输)，也就是图2中的【SSL】。</p>
+<li><p>判断当前协议是否为https，如果为https，则进行SSL协商，将数据进行加密，如果为http协议则不进行加密(明文传输)，也就是图2中的【SSL】。</p>
 <blockquote>
 <p>关于为什么需要HTTPS、它为啥安全呢、怎么加密的呢？请再次戳我这儿：</p>
-<p>https://mynightwish.top/posts/HTTPS.html</p>
+<p><a target="_blank" rel="noopener" href="https://mynightwish.top/posts/HTTPS.html">https://mynightwish.top/posts/HTTPS.html</a></p>
 <p>一会我要跟伙计说话，可不能被别人偷听了，我该咋让你安全知道我说了啥呢？</p>
 </blockquote>
 </li>
-<li>
-<p>开始发送http请求(请求行/请求头/请求体)，也就是图1中【Request】以及图2中的【已发送请求】。HTTP协议有多个版本，目前使用最多的版本为HTTP/1.1，HTTP/1.1发送完成后默认不会断开。keep-alive 默认打开，为了下次传输数据时复用上次创建的连接。每个域名最多同时建立6个TCP连接，所以同一时间最多发生6个请求。</p>
+<li><p>开始发送http请求(请求行/请求头/请求体)，也就是图1中【Request】以及图2中的【已发送请求】。HTTP协议有多个版本，目前使用最多的版本为HTTP/1.1，HTTP/1.1发送完成后默认不会断开。keep-alive 默认打开，为了下次传输数据时复用上次创建的连接。每个域名最多同时建立6个TCP连接，所以同一时间最多发生6个请求。</p>
 <blockquote>
 <p>哎呀，废了半天劲，终于找到你了，手也握了，接下来我要跟你讨论一个惊天秘密，hhhh…</p>
 <p>可供我们选择的通讯方式太多了：</p>
@@ -282,44 +257,39 @@
 <li>BB机、老年机、智能机</li>
 </ul>
 <p>关于HTTP的版本升级路线，如果你想了解，仍然戳我：</p>
-<p>https://mynightwish.top/posts/2716721158.html</p>
+<p><a target="_blank" rel="noopener" href="https://mynightwish.top/posts/2716721158.html">https://mynightwish.top/posts/2716721158.html</a></p>
 </blockquote>
 </li>
-<li>
-<p>服务器收到数据后解析HTTP请求(请求行/请求头/请求体)，处理完成后生成状态码和HTTP响应(响应行/响应头/响应体)后返回给客户端，也就是图2的【等待中】在做的事情。</p>
+<li><p>服务器收到数据后解析HTTP请求(请求行/请求头/请求体)，处理完成后生成状态码和HTTP响应(响应行/响应头/响应体)后返回给客户端，也就是图2的【等待中】在做的事情。</p>
 <blockquote>
 <p>服务器端，收到你的请求后，要回应你啊。那么如何表示它的回应内容呢？都说男生很难读懂女朋友的心情，但服务器会很贴心的给你一个响应报文，他把自己关于回应的都写在这里啦，是不是更简单~</p>
 <ul>
-<li>关于请求报文、响应报文，安排：https://mynightwish.top/posts/2716721158.html</li>
-<li>关于状态码，猛戳我：https://mynightwish.top/posts/2716721158.html</li>
+<li>关于请求报文、响应报文，安排：<a target="_blank" rel="noopener" href="https://mynightwish.top/posts/2716721158.html">https://mynightwish.top/posts/2716721158.html</a></li>
+<li>关于状态码，猛戳我：<a target="_blank" rel="noopener" href="https://mynightwish.top/posts/2716721158.html">https://mynightwish.top/posts/2716721158.html</a></li>
 </ul>
 </blockquote>
 <p>服务端可以响应并返回给客户端很多种类型的资源，这里主要介绍<code>html</code>类型</p>
 <ul>
-<li>
-<p>目前前端处理服务端响应html请求主要分为SSR服务端渲染与CSR客户端渲染：</p>
+<li><p>目前前端处理服务端响应html请求主要分为SSR服务端渲染与CSR客户端渲染：</p>
 <p>CSR就是返回一个空的HTML模版，然后浏览器加载js后通过js动态渲染页面。</p>
 <p>SSR是服务端在接受到请求时事先在服务端渲染好html返回给客户端后，客户端再进行客户端激活。</p>
 </li>
-<li>
-<p>在打开一个站点的首屏页的完整链路中，使用<strong>SSR服务端渲染时的速度要远大于CSR客户端渲染，并且SSR对SEO友好</strong>。所以对于首屏加载速度比较敏感或者需要优化SEO的站点来说，使用SSR是更好的选择。比如我们的Next.js</p>
+<li><p>在打开一个站点的首屏页的完整链路中，使用<strong>SSR服务端渲染时的速度要远大于CSR客户端渲染，并且SSR对SEO友好</strong>。所以对于首屏加载速度比较敏感或者需要优化SEO的站点来说，使用SSR是更好的选择。比如我们的Next.js</p>
 </li>
 </ul>
 <blockquote>
 <p>这里又出现了服务端渲染、客户端渲染的概念，手拉手跟我一起学习下吧：</p>
-<p>https://mynightwish.top/posts/CSR_SSR.html</p>
+<p><a target="_blank" rel="noopener" href="https://mynightwish.top/posts/CSR_SSR.html">https://mynightwish.top/posts/CSR_SSR.html</a></p>
 </blockquote>
 </li>
-<li>
-<p>客户端接收到HTTP响应后根据状态码进行对应的处理，如果状态码为304则直接代表协商缓存生效，直接取本地的缓存文件。如果不是则下载内容。也就是图1中【Response】以及图2中的【下载内容】步骤。</p>
+<li><p>客户端接收到HTTP响应后根据状态码进行对应的处理，如果状态码为304则直接代表协商缓存生效，直接取本地的缓存文件。如果不是则下载内容。也就是图1中【Response】以及图2中的【下载内容】步骤。</p>
 <blockquote>
 <p>这里又涉及到了协商缓存的概念，点俺：</p>
-<p>https://mynightwish.top/posts/588825314.html</p>
+<p><a target="_blank" rel="noopener" href="https://mynightwish.top/posts/588825314.html">https://mynightwish.top/posts/588825314.html</a></p>
 </blockquote>
 </li>
 </ol>
-<h3 id="二、页面渲染">二、页面渲染<a class="anchor" href="#二、页面渲染">·</a></h3>
-<p>…待续</p>
+<h3 id="二、页面渲染"><a href="#二、页面渲染" class="headerlink" title="二、页面渲染"></a>二、页面渲染</h3><p>…..待续</p>
 </article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>前后端链路的性能优化</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-05-24</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-01-17</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://mynightwish.oss-cn-beijing.aliyuncs.com/Project/前端性能优化.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
 wpac_init.push({widget: 'Rating', id: 33234});
 (function() {

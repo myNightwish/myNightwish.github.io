@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目3：购物街项目:问题总结 | Nightwishのblog🧊</title><meta name="keywords" content="Vue"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2020年11月-12月大概 项目背景： 给师姐做的（首页功能+购物车） 问题总结篇，比较啰嗦  1. 吸顶效果· position属性的特性：5种定位方式   static：        默认值  正常文档流的位置（从上到下，从左到右）  浏览器会按照源码的顺序，决定每个元素的位置，这称为&quot;正常的页面流&quot;（normal flow）。每个块级元素占据自己的区块（">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目3：购物街项目:问题总结 | Nightwishのblog🧊</title><meta name="keywords" content="Vue"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2020年11月-12月大概 项目背景： 给师姐做的（首页功能+购物车） 问题总结篇，比较啰嗦  1. 吸顶效果position属性的特性：5种定位方式  static：        默认值  正常文档流的位置（从上到下，从左到右）  浏览器会按照源码的顺序，决定每个元素的位置，这称为”正常的页面流”（normal flow）。每个块级元素占据自己的区块（block），元素与元素之">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目3：购物街项目:问题总结">
 <meta property="og:url" content="https://mynightwish.online/posts/159855229.html">
 <meta property="og:site_name" content="Nightwishのblog🧊">
-<meta property="og:description" content="项目时间： 2020年11月-12月大概 项目背景： 给师姐做的（首页功能+购物车） 问题总结篇，比较啰嗦  1. 吸顶效果· position属性的特性：5种定位方式   static：        默认值  正常文档流的位置（从上到下，从左到右）  浏览器会按照源码的顺序，决定每个元素的位置，这称为&quot;正常的页面流&quot;（normal flow）。每个块级元素占据自己的区块（">
+<meta property="og:description" content="项目时间： 2020年11月-12月大概 项目背景： 给师姐做的（首页功能+购物车） 问题总结篇，比较啰嗦  1. 吸顶效果position属性的特性：5种定位方式  static：        默认值  正常文档流的位置（从上到下，从左到右）  浏览器会按照源码的顺序，决定每个元素的位置，这称为”正常的页面流”（normal flow）。每个块级元素占据自己的区块（block），元素与元素之">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://images.unsplash.com/photo-1636980015567-01c079ac7304?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
 <meta property="article:published_time" content="2021-12-12T16:17:19.000Z">
@@ -169,102 +169,77 @@
     background-size: cover!important;
     background-repeat: no-repeat!important;
   }
-</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1636980015567-01c079ac7304?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=435&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">项目3：购物街项目:问题总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T16:17:19.000Z" title="发表于 2021-12-13 00:17:19">2021-12-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.711Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4589</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="项目3：购物街项目:问题总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
+</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1636980015567-01c079ac7304?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=435&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">项目3：购物街项目:问题总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-12T16:17:19.000Z" title="发表于 2021-12-13 00:17:19">2021-12-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.711Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4583</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="项目3：购物街项目:问题总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ul>
 <li>项目时间： 2020年11月-12月大概</li>
 <li>项目背景： 给师姐做的（首页功能+购物车）</li>
 <li>问题总结篇，比较啰嗦</li>
 </ul>
-<h3 id="1-吸顶效果">1. 吸顶效果<a class="anchor" href="#1-吸顶效果">·</a></h3>
-<p>position属性的特性：5种定位方式</p>
+<h3 id="1-吸顶效果"><a href="#1-吸顶效果" class="headerlink" title="1. 吸顶效果"></a>1. 吸顶效果</h3><p>position属性的特性：5种定位方式</p>
 <ul>
-<li>
-<p><strong>static：</strong>        默认值  正常文档流的位置（从上到下，从左到右）</p>
+<li><p><strong>static：</strong>        默认值  正常文档流的位置（从上到下，从左到右）</p>
 <ul>
-<li>浏览器会按照源码的顺序，决定每个元素的位置，这称为&quot;正常的页面流&quot;（normal flow）。每个块级元素占据自己的区块（block），元素与元素之间不产生重叠，这个位置就是元素的默认位置。</li>
+<li>浏览器会按照源码的顺序，决定每个元素的位置，这称为”正常的页面流”（normal flow）。每个块级元素占据自己的区块（block），元素与元素之间不产生重叠，这个位置就是元素的默认位置。</li>
 <li><code>static</code>定位所导致的元素位置，是浏览器自主决定的，所以这时<code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>这四个属性无效。</li>
 </ul>
 </li>
-<li>
-<p><strong>relative：</strong>     不脱标， 相对于原本占据的位置，且占用原位置</p>
+<li><p><strong>relative：</strong>     不脱标， 相对于原本占据的位置，且占用原位置</p>
 </li>
-<li>
-<p><strong>absolute</strong>       脱标   相对于第一个不是static的父元素定位，如果没有，就以html元素为基准</p>
+<li><p><strong>absolute</strong>       脱标   相对于第一个不是static的父元素定位，如果没有，就以html元素为基准</p>
 </li>
-<li>
-<p><strong>fixed：</strong>          脱标        相对于浏览器窗口</p>
+<li><p><strong>fixed：</strong>          脱标        相对于浏览器窗口</p>
 </li>
-<li>
-<p><strong>sticky：</strong>  基于用户的滚动位置来定位，在 <strong>position:relative</strong> 与 <strong>position:fixed</strong> 定位之间切换</p>
+<li><p><strong>sticky：</strong>  基于用户的滚动位置来定位，在 <strong>position:relative</strong> 与 <strong>position:fixed</strong> 定位之间切换</p>
 <ul>
 <li>一般它的行为就像 <strong>position:relative</strong></li>
-<li>而当页面滚动超出目标区域（跨越特定阈值top, right, bottom 或 left 之一）时，它的表现就像 **position:fixed;**它会固定在目标位置</li>
+<li>而当页面滚动超出目标区域（跨越特定阈值top, right, bottom 或 left 之一）时，它的表现就像 <strong>position:fixed;</strong>它会固定在目标位置</li>
 <li>指定 top, right, bottom 或 left 四个阈值其中之一，才可使粘性定位生效。否则其行为与相对定位相同</li>
 </ul>
 <p>一个sticky元素会“固定”在离它最近的一个拥有“滚动机制”的祖先上（当该祖先的<code>overflow</code> 是 <code>hidden</code>, <code>scroll</code>, <code>auto</code>, 或 <code>overlay</code>时），即便这个祖先不是最近的真实可滚动祖先</p>
 </li>
 </ul>
-<h4 id="1-尝试1：">1. 尝试1：<a class="anchor" href="#1-尝试1：">·</a></h4>
-<ul>
-<li>
-<p>**做法：**position属性为sticky，BScroll的出现让绝对定位失效</p>
+<h4 id="1-尝试1："><a href="#1-尝试1：" class="headerlink" title="1. 尝试1："></a>1. 尝试1：</h4><ul>
+<li><p><strong>做法：</strong>position属性为sticky，BScroll的出现让绝对定位失效</p>
 </li>
-<li>
-<p>**失效原因：**bscroll容器内的fixed定位元素就全乱套了</p>
+<li><p><strong>失效原因：</strong>bscroll容器内的fixed定位元素就全乱套了</p>
 <ul>
-<li>
-<p>fixed固定定位的元素，如果父亲有transform样式，值不为none，那么fixed就会失效，比如：scale、translate等</p>
+<li><p>fixed固定定位的元素，如果父亲有transform样式，值不为none，那么fixed就会失效，比如：scale、translate等</p>
 </li>
-<li>
-<p>Better-scroll在滚动中的过程中，会往content上加transform属性。其中Translate属性在滚动的过程中，会不断地改变，所以滚动是通过修改Translate实现的</p>
+<li><p>Better-scroll在滚动中的过程中，会往content上加transform属性。其中Translate属性在滚动的过程中，会不断地改变，所以滚动是通过修改Translate实现的</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">element<span class="selector-class">.style</span> &#123;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">0ms</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0px</span>, <span class="number">0px</span>) <span class="built_in">scale</span>(<span class="number">1</span>) <span class="built_in">translateZ</span>(<span class="number">0px</span>);</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: <span class="built_in">cubic-bezier</span>(<span class="number">0.165</span>, <span class="number">0.84</span>, <span class="number">0.44</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>bscroll的滚动是用<code>transform</code>的<code>translate</code>来进行偏移，但是父元素设置了transform，所有子元素的position: fixed都不再相对于视口，而是相对于这个transform父元素！这不是什么bug，而是规范中规定。一直以为fixed定位霸道至极，没想到transform可以改变它的定位</p>
+<li><p>bscroll的滚动是用<code>transform</code>的<code>translate</code>来进行偏移，但是父元素设置了transform，所有子元素的position: fixed都不再相对于视口，而是相对于这个transform父元素！这不是什么bug，而是规范中规定。一直以为fixed定位霸道至极，没想到transform可以改变它的定位</p>
 </li>
-<li>
-<p>三种可以修改fixed上文基准的样式属性：</p>
+<li><p>三种可以修改fixed上文基准的样式属性：</p>
 <ul>
-<li>transform 属性不为 none 的元素
-perspective 的值不为 none 的元素在 will-change 中指定了任意 css 属性</li>
+<li>transform 属性不为 none 的元素<br>perspective 的值不为 none 的元素<br>在 will-change 中指定了任意 css 属性</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">#home &#123;</span><br><span class="line">    <span class="comment">/* 如果这里没有44px,轮播图会跑到最上面，他的一部分就会被导航栏遮盖 */</span></span><br><span class="line">   	padding-<span class="attr">top</span>: 44px;</span><br><span class="line">  &#125;</span><br><span class="line">  .<span class="property">home</span>-nav &#123;</span><br><span class="line">    <span class="comment">/* 首页上面的导航栏，向下滚动的时候他不要滚动。采用固定定位，一直在最上面 */</span></span><br><span class="line">    <span class="attr">position</span>: fixed;</span><br><span class="line">    <span class="attr">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attr">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attr">right</span>: <span class="number">0</span>;</span><br><span class="line">    z-<span class="attr">index</span>: <span class="number">9</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .<span class="property">tab</span>-control &#123;</span><br><span class="line">    <span class="comment">/* 想实现的功能是：页面向下滑，滑到一定高度后，顶部固定 */</span></span><br><span class="line">    <span class="attr">position</span>: sticky;</span><br><span class="line">    <span class="comment">// 距离顶部44px的时候，会变成fixed定位</span></span><br><span class="line">    <span class="attr">top</span>: 44px;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="2-得出总结：">2. 得出总结：<a class="anchor" href="#2-得出总结：">·</a></h4>
-<p>只要组件仍在better-scroll内，就不能由定位实现吸顶</p>
-<h4 id="3-尝试2：">3. 尝试2：<a class="anchor" href="#3-尝试2：">·</a></h4>
-<ul>
-<li>
-<p>复制tab-control2组件，到scroll外面。并用isTabFixed控制这个组件的显隐（v-show），吸顶效果出现的时：true、其他false。<strong>至此吸顶效果实现</strong></p>
+<h4 id="2-得出总结："><a href="#2-得出总结：" class="headerlink" title="2. 得出总结："></a>2. 得出总结：</h4><p>只要组件仍在better-scroll内，就不能由定位实现吸顶</p>
+<h4 id="3-尝试2："><a href="#3-尝试2：" class="headerlink" title="3. 尝试2："></a>3. 尝试2：</h4><ul>
+<li><p>复制tab-control2组件，到scroll外面。并用isTabFixed控制这个组件的显隐（v-show），吸顶效果出现的时：true、其他false。<strong>至此吸顶效果实现</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;tab-control :titles = &quot;titles&quot; </span><br><span class="line">              class=&quot;tab-control&quot; </span><br><span class="line">              @tabClick= &quot;tabClick&quot;</span><br><span class="line">              :class = &quot;&#123;fixed:isTabFixed&#125;&quot;</span><br><span class="line">              v-show = &quot;isTabFixed&quot;&gt;</span><br><span class="line">&lt;/tab-cotrol&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>要解决的问题：</p>
+<li><p>要解决的问题：</p>
 <ol>
-<li>
-<p>如何获取组件2号出现的<strong>位置</strong>：<code>this.$refs.tabcontrol.$el.offsetTop</code></p>
+<li><p>如何获取组件2号出现的<strong>位置</strong>：<code>this.$refs.tabcontrol.$el.offsetTop</code></p>
 </li>
-<li>
-<p><strong>何时获取这个数值？</strong></p>
+<li><p><strong>何时获取这个数值？</strong></p>
 <p>created不行，dom尚未挂载；mouted也不行，dom挂载但是网络请求的数据可能还没收到，所以要等所有图片数据都加载完毕再获取这个数值。在swiper加载完毕后，监听swiper组件emit的imgload事件，然后回调函数获取offsettop数据</p>
 </li>
-<li>
-<p><strong>位置怎么计算？</strong></p>
+<li><p><strong>位置怎么计算？</strong></p>
 <p>通过scroll组件的emit的scroll事件，回调函数判断position的y值，大于offsettop时，2号组件动态绑定class生效，显示出来</p>
 </li>
 </ol>
 </li>
 </ul>
-<h3 id="2-Vuex管理购物车">2. <strong>Vuex</strong>管理购物车<a class="anchor" href="#2-Vuex管理购物车">·</a></h3>
-<h4 id="1-加购逻辑：">1. 加购逻辑：<a class="anchor" href="#1-加购逻辑：">·</a></h4>
-<ul>
-<li>**用户点击后：**在回调函数中将点击商品的信息携带，并commit到mutation中</li>
-<li><strong>在commit中：</strong>
-<ul>
-<li>取出state中的carList遍历，判断传入的product的iid是否已存在，
-<ul>
+<h3 id="2-Vuex管理购物车"><a href="#2-Vuex管理购物车" class="headerlink" title="2. Vuex管理购物车"></a>2. <strong>Vuex</strong>管理购物车</h3><h4 id="1-加购逻辑："><a href="#1-加购逻辑：" class="headerlink" title="1. 加购逻辑："></a>1. 加购逻辑：</h4><ul>
+<li><strong>用户点击后：</strong>在回调函数中将点击商品的信息携带，并commit到mutation中</li>
+<li><strong>在commit中：</strong><ul>
+<li>取出state中的carList遍历，判断传入的product的iid是否已存在，<ul>
 <li>存在：说明之前已经加购过，此时只需改变对应的数量</li>
 <li>不存在：将这项product对象push到cartList数组中，且count属性赋值1，checked属性为true（这个用于全选购物车商品用，默认添加进购物车就被选中）</li>
 </ul>
@@ -272,13 +247,10 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ul>
 </li>
 </ul>
-<h4 id="2-优化">2. 优化<a class="anchor" href="#2-优化">·</a></h4>
-<ul>
-<li>
-<p>为了让mutations能够跟踪</p>
+<h4 id="2-优化"><a href="#2-优化" class="headerlink" title="2. 优化"></a>2. 优化</h4><ul>
+<li><p>为了让mutations能够跟踪</p>
 </li>
-<li>
-<p>为了逻辑不要混合在一起</p>
+<li><p>为了逻辑不要混合在一起</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$store.dispatch(&#x27;addCart&#x27;,product)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">   AddCounter(state, payload) &#123;</span><br><span class="line">     payload.count++;</span><br><span class="line">   &#125;,</span><br><span class="line">   AddToCar(state, payload)&#123;</span><br><span class="line">     state.carList.push(payload)</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">actions:&#123;</span><br><span class="line">    addCart(context, payload)&#123;</span><br><span class="line">      // 查找，传入参数是函数</span><br><span class="line">      let oldProduct = context.state.carList.find(function(item)&#123;</span><br><span class="line">        return item.iid === payload.iid</span><br><span class="line">      &#125;)</span><br><span class="line">      if (oldProduct) &#123;</span><br><span class="line">        context.commit(&#x27;AddCounter&#x27;, oldProduct)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        payload.count = 1</span><br><span class="line">        context.commit(&#x27;AddToCar&#x27;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
@@ -288,20 +260,15 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 <li><strong>选中商品总价计算</strong></li>
 </ul>
 <ul>
-<li><strong>价格：<strong>申明</strong>计算属性totalPrice</strong>，过滤cartList中所有checked属性为true的商品对象，对返回的数组调用reduce方法计算这些商品的总价，对总价数字调用toFixed方法保留两位数，然后‘¥’字符串拼
-<ul>
-<li><strong>数量：<strong>申明</strong>checkLength计算属性</strong>，对cartList调用filter方法先筛选出checked属性为true的商品，返回的是数组取length属性就OK了</li>
+<li><strong>价格：</strong>申明<strong>计算属性totalPrice</strong>，过滤cartList中所有checked属性为true的商品对象，对返回的数组调用reduce方法计算这些商品的总价，对总价数字调用toFixed方法保留两位数，然后‘¥’字符串拼<ul>
+<li><strong>数量：</strong>申明<strong>checkLength计算属性</strong>，对cartList调用filter方法先筛选出checked属性为true的商品，返回的是数组取length属性就OK了<h3 id="3-图片滚动卡顿EventBus"><a href="#3-图片滚动卡顿EventBus" class="headerlink" title="3. 图片滚动卡顿EventBus"></a>3. 图片滚动卡顿EventBus</h3></li>
 </ul>
 </li>
 </ul>
-<h3 id="3-图片滚动卡顿EventBus">3. 图片滚动卡顿EventBus<a class="anchor" href="#3-图片滚动卡顿EventBus">·</a></h3>
-<h4 id="1-问题：">1. 问题：<a class="anchor" href="#1-问题：">·</a></h4>
-<ul>
-<li>
-<p>**需求：**当滚到底的时候会发一次请求，新的图片会过来，可以继续向下滚动，不断展示新数据</p>
+<h4 id="1-问题："><a href="#1-问题：" class="headerlink" title="1. 问题："></a>1. 问题：</h4><ul>
+<li><p><strong>需求：</strong>当滚到底的时候会发一次请求，新的图片会过来，可以继续向下滚动，不断展示新数据</p>
 </li>
-<li>
-<p><strong>问题：</strong></p>
+<li><p><strong>问题：</strong></p>
 <ul>
 <li>当100张图片的数据请求过来后，新的data会concat到data数组中，数据改变Vue页面自动会更新展示新的数据。</li>
 <li>Vue中数据更新是异步的，在数据还没有加载完之前，BScroll是无法获取目标内容容器的高度的</li>
@@ -309,109 +276,81 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ul>
 </li>
 </ul>
-<h4 id="2-解决过程：">2. 解决过程：<a class="anchor" href="#2-解决过程：">·</a></h4>
-<ul>
-<li>
-<p>**所以根本原因：**BScroll的刷新时机问题，所以应该在图片加载完毕后去重新去refresh，内部重新计算高度</p>
+<h4 id="2-解决过程："><a href="#2-解决过程：" class="headerlink" title="2. 解决过程："></a>2. 解决过程：</h4><ul>
+<li><p><strong>所以根本原因：</strong>BScroll的刷新时机问题，所以应该在图片加载完毕后去重新去refresh，内部重新计算高度</p>
 </li>
-<li>
-<p>**解决：**监听图片加载完，回调函数中，拿到srcoll对象调用refresh方法进行刷新，此时真实可滚动高度   图片的load事件后，刷新</p>
+<li><p><strong>解决：</strong>监听图片加载完，回调函数中，拿到srcoll对象调用refresh方法进行刷新，此时真实可滚动高度   图片的load事件后，刷新</p>
 </li>
-<li>
-<p>**问题：**如何50张图片加载完成与refresh对应起来？    节流</p>
+<li><p><strong>问题：</strong>如何50张图片加载完成与refresh对应起来？    节流</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//home组件：等组件创建完成之后就要监听你的图片是不是加载完成了</span></span><br><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="comment">// 这里的refresh变量不会被销毁，因为被闭包引用</span></span><br><span class="line">   <span class="keyword">const</span> refresh = <span class="variable language_">this</span>.<span class="title function_">debounce</span>(<span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">scroll</span>.<span class="property">refresh</span>, <span class="number">10</span>)</span><br><span class="line">   <span class="comment">//等组件创建完成之后就要监听你的图片是不是加载完成了</span></span><br><span class="line">   <span class="variable language_">this</span>.<span class="property">$bus</span>.$on(<span class="string">&#x27;itemImageLoad&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">scroll</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">scroll</span>.<span class="title function_">refresh</span>();</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="3、优化点—并发解决">3、优化点—并发解决<a class="anchor" href="#3、优化点—并发解决">·</a></h4>
-<p>这种判断方法过于依赖每个图片本身的加载情况，可以用promise来优化这个过程，通过promise.all来拿到这个加载完成的消息：</p>
+<h4 id="3、优化点—-并发解决"><a href="#3、优化点—-并发解决" class="headerlink" title="3、优化点—-并发解决"></a>3、优化点—-并发解决</h4><p>这种判断方法过于依赖每个图片本身的加载情况，可以用promise来优化这个过程，通过promise.all来拿到这个加载完成的消息：</p>
 <ul>
-<li>
-<p>在请求完成后，拿到这个数据，也就是url的数组。遍历图片数组，每个都用promise包裹。当图片加载完成，resolve这个promsie</p>
+<li><p>在请求完成后，拿到这个数据，也就是url的数组。遍历图片数组，每个都用promise包裹。当图片加载完成，resolve这个promsie</p>
 </li>
-<li>
-<p>在promise.all中拿到这个promise数组的结果</p>
+<li><p>在promise.all中拿到这个promise数组的结果</p>
 </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="string">&quot;/static/img/123.png&quot;</span>,<span class="string">&quot;/static/img/123.png&quot;</span>]</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">callBack</span> = (<span class="params"></span>)=&gt;&#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;加载完毕做点啥吧&quot;</span>)</span><br><span class="line">&#125;    </span><br><span class="line"><span class="variable language_">this</span>.<span class="title function_">handleImgLoad</span>(arr, callBack)</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 加载图片事件</span></span><br><span class="line"><span class="title function_">handleImgLoad</span>(<span class="params">arr, callBack</span>)&#123;</span><br><span class="line">   <span class="keyword">const</span> brr = []</span><br><span class="line">   arr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item, index</span>)=&gt;</span>&#123;</span><br><span class="line">    brr[index] = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> imgReady = <span class="keyword">new</span> <span class="title class_">Image</span></span><br><span class="line">        imgReady.<span class="property">src</span> = item</span><br><span class="line">        imgReady.<span class="property">onload</span>=<span class="function">()=&gt;</span>&#123;</span><br><span class="line">          <span class="title function_">resolve</span>(index)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">   &#125;)</span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">all</span>(brr).<span class="title function_">then</span>(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">if</span>(result &amp;&amp; callBack) <span class="title function_">callBack</span>()</span><br><span class="line">   &#125;).<span class="title function_">catch</span>(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;加载图片-----&quot;</span>, error)</span><br><span class="line">   &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h4 id="4、图片加载的方式单一">4、图片加载的方式单一<a class="anchor" href="#4、图片加载的方式单一">·</a></h4>
-<ol>
+<h4 id="4、图片加载的方式单一"><a href="#4、图片加载的方式单一" class="headerlink" title="4、图片加载的方式单一"></a>4、图片加载的方式单一</h4><ol>
 <li>load事件</li>
 <li>readystatechange事件</li>
 <li>轮询不断监测img的complete属性，如果为true则表明图片已经加载完毕，停止轮询。该属性所有浏览器都支持</li>
 </ol>
-<h2 id="better-scroll的原理-☆☆☆☆">better-scroll的原理     ☆☆☆☆<a class="anchor" href="#better-scroll的原理-☆☆☆☆">·</a></h2>
-<p>https://zhuanlan.zhihu.com/p/27407024</p>
-<h4 id="1-基础">1. 基础<a class="anchor" href="#1-基础">·</a></h4>
-<ul>
-<li>**介绍：**重点解决移动端（已支持 PC）各种滚动场景需求的插件</li>
-<li><strong>浏览器的滚动原理：</strong>
-<ul>
+<h2 id="better-scroll的原理-☆☆☆☆"><a href="#better-scroll的原理-☆☆☆☆" class="headerlink" title="better-scroll的原理     ☆☆☆☆"></a>better-scroll的原理     ☆☆☆☆</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27407024">https://zhuanlan.zhihu.com/p/27407024</a></p>
+<h4 id="1-基础"><a href="#1-基础" class="headerlink" title="1. 基础"></a>1. 基础</h4><ul>
+<li><strong>介绍：</strong>重点解决移动端（已支持 PC）各种滚动场景需求的插件</li>
+<li><strong>浏览器的滚动原理：</strong><ul>
 <li>当页面内容的高度超过视口高度的时候，会出现纵向滚动条；</li>
 <li>当页面内容的宽度超过视口宽度的时候，会出现横向滚动条。</li>
 <li>也就是当我们的视口展示不下内容的时候，会通过滚动条的方式让用户滚动屏幕看到剩余的内容。</li>
 </ul>
 </li>
 </ul>
-<h4 id="2-滚动原理："><strong>2. 滚动原理：</strong><a class="anchor" href="#2-滚动原理：">·</a></h4>
-<img src="http://static.galileo.xiaojukeji.com/static/tms/shield/scroll-4.png" alt="布局" style="zoom:33%;" />
+<h4 id="2-滚动原理："><a href="#2-滚动原理：" class="headerlink" title="2. 滚动原理："></a><strong>2. 滚动原理：</strong></h4><p><img src="http://static.galileo.xiaojukeji.com/static/tms/shield/scroll-4.png" alt="布局" style="zoom:33%;" /></p>
 <ul>
-<li>
-<p>绿色部分为 wrapper，也就是父容器，它会有<strong>固定的高度</strong>，并且溢出隐藏</p>
+<li><p>绿色部分为 wrapper，也就是父容器，它会有<strong>固定的高度</strong>，并且溢出隐藏</p>
 </li>
-<li>
-<p>黄色部分为 content，它是父容器的<strong>第一个子元素</strong>（其他的元素会被忽略，如果里面需要滚动的部分有好几部分。一定要拿一个元素把他包裹起来），它的高度会随着内容的大小而撑高</p>
+<li><p>黄色部分为 content，它是父容器的<strong>第一个子元素</strong>（其他的元素会被忽略，如果里面需要滚动的部分有好几部分。一定要拿一个元素把他包裹起来），它的高度会随着内容的大小而撑高</p>
 </li>
-<li>
-<p>当 content 的高度不超过父容器的高度，是不能滚动的，而它一旦超过了父容器的高度，就可以滚动内容区了</p>
+<li><p>当 content 的高度不超过父容器的高度，是不能滚动的，而它一旦超过了父容器的高度，就可以滚动内容区了</p>
 </li>
-<li>
-<p>通过滑动的距离动态改变translate的值来实现，<strong>让它相对于父级移动</strong>，就有了一种滚动的效果，但是这里就又有了下一个坑</p>
+<li><p>通过滑动的距离动态改变translate的值来实现，<strong>让它相对于父级移动</strong>，就有了一种滚动的效果，但是这里就又有了下一个坑</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">element<span class="selector-class">.style</span> &#123;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">0ms</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0px</span>, <span class="number">0px</span>) <span class="built_in">scale</span>(<span class="number">1</span>) <span class="built_in">translateZ</span>(<span class="number">0px</span>);</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: <span class="built_in">cubic-bezier</span>(<span class="number">0.165</span>, <span class="number">0.84</span>, <span class="number">0.44</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="3-使用："><strong>3. 使用：</strong><a class="anchor" href="#3-使用：">·</a></h4>
-<ul>
+<h4 id="3-使用："><a href="#3-使用：" class="headerlink" title="3. 使用："></a><strong>3. 使用：</strong></h4><ul>
 <li>better-scroll 提供了一个类，实例化的第一个参数是一个原生的 DOM 对象，如果传递的是一个字符串，better-scroll 内部会尝试调用 querySelector 去获取这个 DOM 对象，初始化只需要 new 一个类的实例即可</li>
-<li><strong>better-scroll初始化的时机</strong>很重要：better-scroll 不能滚动的原因多半是初始化 better-scroll 的时机不对，或者是当 DOM 结构变化的时候并没有重新计算 better-scroll
-<ul>
+<li><strong>better-scroll初始化的时机</strong>很重要：better-scroll 不能滚动的原因多半是初始化 better-scroll 的时机不对，或者是当 DOM 结构变化的时候并没有重新计算 better-scroll<ul>
 <li>因为它在初始化的时候，会计算父元素和子元素的高度和宽度，来决定是否可以纵向和横向滚动</li>
-<li>我们在初始化它的时候，必须确保父元素和子元素的内容已经正确渲染了。如果子元素或者父元素 DOM 结构发生改变的时候，必须重新调用</li>
+<li>我们在初始化它的时候，必须确保父元素和子元素的内容已经正确渲染了。如果子元素或者父元素 DOM 结构发生改变的时候，必须重新调用 </li>
 <li>因此，scroll.refresh() 方法重新计算来确保滚动效果的正常</li>
 </ul>
 </li>
 </ul>
-<h4 id="4-应用场景">4. 应用场景<a class="anchor" href="#4-应用场景">·</a></h4>
-<h5 id="场景1：基础列表滚动"><strong>场景1：基础列表滚动</strong><a class="anchor" href="#场景1：基础列表滚动">·</a></h5>
-<ul>
-<li>
-<p><strong>vm.$refs</strong> 和<strong>this.$nextTick</strong></p>
+<h4 id="4-应用场景"><a href="#4-应用场景" class="headerlink" title="4. 应用场景"></a>4. 应用场景</h4><h5 id="场景1：基础列表滚动"><a href="#场景1：基础列表滚动" class="headerlink" title="场景1：基础列表滚动"></a><strong>场景1：基础列表滚动</strong></h5><ul>
+<li><p><strong>vm.$refs</strong> 和<strong>this.$nextTick</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    mounted() &#123;</span><br><span class="line">      this.$nextTick(() =&gt; &#123;</span><br><span class="line">        this.scroll = new Bscroll(this.$refs.wrapper, &#123;&#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">1. this.$refs.wrapper拿到这个 DOM 对象</span><br><span class="line">2. 在 mounted钩子函数里，this.$nextTick 的回调函数中初始化 better-scroll</span><br><span class="line">3. 此时wrapper的最新DOM已渲染，可以正确计算它以及它内层 content 的高度，以确保滚动正常</span><br><span class="line">4. 也可以将this.$nextTick换成setTimeout(fn, 20) 也是可以的，每一个 Tick 约为 17 ms，对用户体验而言都是无感知的</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="场景2：异步数据的处理"><strong>场景2：异步数据的处理</strong><a class="anchor" href="#场景2：异步数据的处理">·</a></h5>
-<ul>
-<li>
-<p>实际工作中，列表的数据往往都是异步获取的，因此初始化 better-scroll 的时机需要在数据获取后</p>
+<h5 id="场景2：异步数据的处理"><a href="#场景2：异步数据的处理" class="headerlink" title="场景2：异步数据的处理"></a><strong>场景2：异步数据的处理</strong></h5><ul>
+<li><p>实际工作中，列表的数据往往都是异步获取的，因此初始化 better-scroll 的时机需要在数据获取后</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">  requestData().then((res) =&gt; &#123;</span><br><span class="line">    this.data = res.data</span><br><span class="line">    this.$nextTick(() =&gt; &#123;</span><br><span class="line">      this.scroll = new Bscroll(this.$refs.wrapper, &#123;&#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>
-<p>获取到数据后，通过异步的方式再去初始化 better-scroll</p>
+<li><p>获取到数据后，通过异步的方式再去初始化 better-scroll</p>
 </li>
-<li>
-<p>因为 Vue 是数据驱动的， Vue 数据发生变化（this.data = res.data）到页面重新渲染是一个异步的过程，我们的初始化时机是要在 DOM 重新渲染后，所以这里用到了 this.$nextTick，当然替换成 setTimeout(fn, 20) 也是可以的</p>
+<li><p>因为 Vue 是数据驱动的， Vue 数据发生变化（this.data = res.data）到页面重新渲染是一个异步的过程，我们的初始化时机是要在 DOM 重新渲染后，所以这里用到了 this.$nextTick，当然替换成 setTimeout(fn, 20) 也是可以的</p>
 </li>
-<li>
-<p>为什么这里在 created 这个钩子函数里请求数据而不是放到 mounted 的钩子函数里？</p>
+<li><p>为什么这里在 created 这个钩子函数里请求数据而不是放到 mounted 的钩子函数里？</p>
 <p>为 requestData 是发送一个网络请求，这是一个异步过程，当拿到响应数据的时候，Vue 的 DOM 早就已经渲染好了</p>
 <p>但是数据改变 —&gt; DOM 重新渲染仍然是一个异步过程，所以即使在我们拿到数据后，也要异步初始化 better-scroll</p>
 </li>
 </ul>
 </li>
 </ul>
-<h5 id="场景3：数据的动态更新"><strong>场景3：数据的动态更新</strong><a class="anchor" href="#场景3：数据的动态更新">·</a></h5>
-<ul>
-<li>
-<p>实际开发中，除了数据异步获取，还有一些场景可以<strong>动态更新列表中的数据</strong>，比如常见的下拉加载，上拉刷新</p>
+<h5 id="场景3：数据的动态更新"><a href="#场景3：数据的动态更新" class="headerlink" title="场景3：数据的动态更新"></a><strong>场景3：数据的动态更新</strong></h5><ul>
+<li><p>实际开发中，除了数据异步获取，还有一些场景可以<strong>动态更新列表中的数据</strong>，比如常见的下拉加载，上拉刷新</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">  this.loadData()</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  loadData() &#123;</span><br><span class="line">    requestData().then((res) =&gt; &#123;</span><br><span class="line">      this.data = res.data.concat(this.data)</span><br><span class="line">      this.$nextTick(() =&gt; &#123;</span><br><span class="line">        if (!this.scroll) &#123;</span><br><span class="line">          this.scroll = new Bscroll(this.$refs.wrapper, &#123;&#125;)</span><br><span class="line">          this.scroll.on(&#x27;touchend&#x27;, (pos) =&gt; &#123;</span><br><span class="line">            // 下拉动作</span><br><span class="line">            if (pos.y &gt; 50) &#123;</span><br><span class="line">              this.loadData()</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          this.scroll.refresh()</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>滑动列表松开手指时，better-scroll 会对外派发一个 touchend 事件，我们监听了这个事件，并且判断了 pos.y &gt; 50（我们把这个行为定义成一次下拉的动作）</li>
@@ -420,11 +359,9 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ul>
 </li>
 </ul>
-<h4 id="5-封装">5. 封装<a class="anchor" href="#5-封装">·</a></h4>
-<p>目的解耦合。每个组件都用，对这个框架依赖性太强了。所以先封装，需要的组件只需要引入封装就可以。框架改变时，只需要修改封装就可以，而不需要每个组件都修改。</p>
+<h4 id="5-封装"><a href="#5-封装" class="headerlink" title="5. 封装"></a>5. 封装</h4><p>目的解耦合。每个组件都用，对这个框架依赖性太强了。所以先封装，需要的组件只需要引入封装就可以。框架改变时，只需要修改封装就可以，而不需要每个组件都修改。</p>
 <ul>
-<li>
-<p>scroll 组件本质上就是一个可滚动的列表组件，至于列表的 DOM 结构，用什么标签，都不是 scroll 组件关心的。</p>
+<li><p>scroll 组件本质上就是一个可滚动的列表组件，至于列表的 DOM 结构，用什么标签，都不是 scroll 组件关心的。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div ref=&quot;wrapper&quot;&gt;</span><br><span class="line">    &lt;slot&gt;   &lt;/slot&gt;         //插槽</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>对 better-scroll 做一层 Vue 的封装，通过 props 的形式，把一些对 better-scroll 定制化的控制权交给父组件；</li>
@@ -438,30 +375,20 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">scroll</span> <span class="attr">class</span>=<span class="string">&quot;wrapper&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">:data</span>=<span class="string">&quot;data&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">:pulldown</span>=<span class="string">&quot;pulldown&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          @<span class="attr">pulldown</span>=<span class="string">&quot;loadData&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;item in data&quot;</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;loading-wrapper&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">scroll</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">import</span> <span class="title class_">BScroll</span> <span class="keyword">from</span> <span class="string">&#x27;better-scroll&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">data</span>: [],</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">pulldown</span>: <span class="literal">true</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">created</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">this</span>.<span class="title function_">loadData</span>()</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">methods</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="title function_">loadData</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="title function_">requestData</span>().<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="variable language_">this</span>.<span class="property">data</span> = res.<span class="property">data</span>.<span class="title function_">concat</span>(<span class="variable language_">this</span>.<span class="property">data</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="toast插件封装">toast插件封装<a class="anchor" href="#toast插件封装">·</a></h2>
-<h3 id="1-index-js定义">1. index.js定义<a class="anchor" href="#1-index-js定义">·</a></h3>
-<ul>
+<h2 id="toast插件封装"><a href="#toast插件封装" class="headerlink" title="toast插件封装"></a>toast插件封装</h2><h3 id="1-index-js定义"><a href="#1-index-js定义" class="headerlink" title="1. index.js定义"></a>1. index.js定义</h3><ul>
 <li>导入对应的组件</li>
 <li>创建当前的插件对象</li>
 <li>定义装载方法install</li>
 <li>暴露插件对象</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//导入组件</span><br><span class="line">import Toast from &#x27;./Toast&#x27;</span><br><span class="line"></span><br><span class="line">const obj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">// install方法：main.js里面的Vue.use(toast)本质会来调用这里的install方法，执行这个函数</span><br><span class="line">obj.install = function(Vue) &#123;</span><br><span class="line">    // 1.创建组件构造器</span><br><span class="line">    const toastConstructor = Vue.extend(Toast)</span><br><span class="line"></span><br><span class="line">    // 2.new一个组件对象</span><br><span class="line">    const toast = new toastConstructor()</span><br><span class="line"></span><br><span class="line">    // 3.toast.$mount函数将组件对象手动挂载到某个元素上</span><br><span class="line">    toast.$mount(document.createElement(&#x27;div&#x27;))</span><br><span class="line"></span><br><span class="line">    // 4.将挂载了组件对象的元素添加到body，toast.$el对应的是div</span><br><span class="line">    document.body.appendChild(toast.$el)</span><br><span class="line"></span><br><span class="line">    // 5.将组件对象挂载到Vue的原型上</span><br><span class="line">    Vue.prototype.$toast = toast</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 暴露当前插件</span><br><span class="line">export default obj</span><br></pre></td></tr></table></figure>
-<h3 id="2-main-js使用">2. main.js使用<a class="anchor" href="#2-main-js使用">·</a></h3>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import toast from &#x27;./toast/index&#x27;</span><br><span class="line">Vue.use(toast)   // 会去执行index.js里面的install方法</span><br></pre></td></tr></table></figure>
-<h3 id="3-toast组件">3. toast组件<a class="anchor" href="#3-toast组件">·</a></h3>
-<ul>
-<li>
-<p>定义数据data：message：显示内容，isShow： 是否显示</p>
+<h3 id="2-main-js使用"><a href="#2-main-js使用" class="headerlink" title="2. main.js使用"></a>2. main.js使用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import toast from &#x27;./toast/index&#x27;</span><br><span class="line">Vue.use(toast)   // 会去执行index.js里面的install方法</span><br></pre></td></tr></table></figure>
+<h3 id="3-toast组件"><a href="#3-toast组件" class="headerlink" title="3. toast组件"></a>3. toast组件</h3><ul>
+<li>定义数据data：message：显示内容，isShow： 是否显示</li>
+<li>定义方法：控制是否显示、显示持续时间。（延迟定时器,时间一到，清空message，isShow变为false）</li>
+<li><p>定义样式：显示时候的样式，位置</p>
 </li>
-<li>
-<p>定义方法：控制是否显示、显示持续时间。（延迟定时器,时间一到，清空message，isShow变为false）</p>
-</li>
-<li>
-<p>定义样式：显示时候的样式，位置</p>
-</li>
-<li>
-<p>使用的地方用：this.$toast.show(‘hahaha’, 2000)</p>
+<li><p>使用的地方用：this.$toast.show(‘hahaha’, 2000)</p>
 </li>
 </ul>
 </article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>项目3：购物街项目:问题总结</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-12-13</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-01-09</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://images.unsplash.com/photo-1636980015567-01c079ac7304?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=435&amp;q=80" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
@@ -475,7 +402,7 @@ wpac_init.push({widget: 'Rating', id: 33234});
   //- mc.src = '//embed.widgetpack.com/widget.js';
   var s = document.getElementsByTagName('script')[0];
   s?.parentNode?.insertBefore(mc, s?.nextSibling);
-})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/265724518.html"><img class="prev-cover" src="https://images.unsplash.com/photo-1637691068786-e0b2e9186a0e?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">项目4:B实习：问题总结篇</div></div></a></div><div class="next-post pull-right"><a href="/posts/926905116.html"><img class="next-cover" src="https://images.unsplash.com/photo-1636980015567-01c079ac7304?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=435&amp;q=80" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">项目3：购物街项目:学习笔记</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%B8%E9%A1%B6%E6%95%88%E6%9E%9C"><span class="toc-text">1. 吸顶效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B0%9D%E8%AF%951%EF%BC%9A"><span class="toc-text">1. 尝试1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%BE%97%E5%87%BA%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">2. 得出总结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%B0%9D%E8%AF%952%EF%BC%9A"><span class="toc-text">3. 尝试2：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Vuex%E7%AE%A1%E7%90%86%E8%B4%AD%E7%89%A9%E8%BD%A6"><span class="toc-text">2. Vuex管理购物车</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8A%A0%E8%B4%AD%E9%80%BB%E8%BE%91%EF%BC%9A"><span class="toc-text">1. 加购逻辑：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BC%98%E5%8C%96"><span class="toc-text">2. 优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9B%BE%E7%89%87%E6%BB%9A%E5%8A%A8%E5%8D%A1%E9%A1%BFEventBus"><span class="toc-text">3. 图片滚动卡顿EventBus</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-text">1. 问题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-text">2. 解决过程：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BC%98%E5%8C%96%E7%82%B9%E2%80%94%E5%B9%B6%E5%8F%91%E8%A7%A3%E5%86%B3"><span class="toc-text">3、优化点—并发解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%96%B9%E5%BC%8F%E5%8D%95%E4%B8%80"><span class="toc-text">4、图片加载的方式单一</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#better-scroll%E7%9A%84%E5%8E%9F%E7%90%86-%E2%98%86%E2%98%86%E2%98%86%E2%98%86"><span class="toc-text">better-scroll的原理     ☆☆☆☆</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80"><span class="toc-text">1. 基础</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%BB%9A%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-text">2. 滚动原理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-text">3. 使用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">4. 应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF1%EF%BC%9A%E5%9F%BA%E7%A1%80%E5%88%97%E8%A1%A8%E6%BB%9A%E5%8A%A8"><span class="toc-text">场景1：基础列表滚动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF2%EF%BC%9A%E5%BC%82%E6%AD%A5%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">场景2：异步数据的处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF3%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0"><span class="toc-text">场景3：数据的动态更新</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%B0%81%E8%A3%85"><span class="toc-text">5. 封装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toast%E6%8F%92%E4%BB%B6%E5%B0%81%E8%A3%85"><span class="toc-text">toast插件封装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-index-js%E5%AE%9A%E4%B9%89"><span class="toc-text">1. index.js定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-main-js%E4%BD%BF%E7%94%A8"><span class="toc-text">2. main.js使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-toast%E7%BB%84%E4%BB%B6"><span class="toc-text">3. toast组件</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/265724518.html"><img class="prev-cover" src="https://images.unsplash.com/photo-1637691068786-e0b2e9186a0e?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">项目4:B实习：问题总结篇</div></div></a></div><div class="next-post pull-right"><a href="/posts/926905116.html"><img class="next-cover" src="https://images.unsplash.com/photo-1636980015567-01c079ac7304?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=435&amp;q=80" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">项目3：购物街项目:学习笔记</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%B8%E9%A1%B6%E6%95%88%E6%9E%9C"><span class="toc-text">1. 吸顶效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B0%9D%E8%AF%951%EF%BC%9A"><span class="toc-text">1. 尝试1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%BE%97%E5%87%BA%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="toc-text">2. 得出总结：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%B0%9D%E8%AF%952%EF%BC%9A"><span class="toc-text">3. 尝试2：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Vuex%E7%AE%A1%E7%90%86%E8%B4%AD%E7%89%A9%E8%BD%A6"><span class="toc-text">2. Vuex管理购物车</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8A%A0%E8%B4%AD%E9%80%BB%E8%BE%91%EF%BC%9A"><span class="toc-text">1. 加购逻辑：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BC%98%E5%8C%96"><span class="toc-text">2. 优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9B%BE%E7%89%87%E6%BB%9A%E5%8A%A8%E5%8D%A1%E9%A1%BFEventBus"><span class="toc-text">3. 图片滚动卡顿EventBus</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-text">1. 问题：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-text">2. 解决过程：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E4%BC%98%E5%8C%96%E7%82%B9%E2%80%94-%E5%B9%B6%E5%8F%91%E8%A7%A3%E5%86%B3"><span class="toc-text">3、优化点—-并发解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E7%9A%84%E6%96%B9%E5%BC%8F%E5%8D%95%E4%B8%80"><span class="toc-text">4、图片加载的方式单一</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#better-scroll%E7%9A%84%E5%8E%9F%E7%90%86-%E2%98%86%E2%98%86%E2%98%86%E2%98%86"><span class="toc-text">better-scroll的原理     ☆☆☆☆</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80"><span class="toc-text">1. 基础</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%BB%9A%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-text">2. 滚动原理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-text">3. 使用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">4. 应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF1%EF%BC%9A%E5%9F%BA%E7%A1%80%E5%88%97%E8%A1%A8%E6%BB%9A%E5%8A%A8"><span class="toc-text">场景1：基础列表滚动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF2%EF%BC%9A%E5%BC%82%E6%AD%A5%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">场景2：异步数据的处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF3%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0"><span class="toc-text">场景3：数据的动态更新</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%B0%81%E8%A3%85"><span class="toc-text">5. 封装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toast%E6%8F%92%E4%BB%B6%E5%B0%81%E8%A3%85"><span class="toc-text">toast插件封装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-index-js%E5%AE%9A%E4%B9%89"><span class="toc-text">1. index.js定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-main-js%E4%BD%BF%E7%94%A8"><span class="toc-text">2. main.js使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-toast%E7%BB%84%E4%BB%B6"><span class="toc-text">3. toast组件</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
