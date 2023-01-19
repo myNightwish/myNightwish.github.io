@@ -27,3 +27,13 @@ function scrollToTop() {
     document.getElementById("name-container").setAttribute("style", "display:none");
     btf.scrollToDest(0, 500);
 }
+
+// 使用hexo-offline-popup以后，如果还开启了pjax，可能遇到页面URL带着长长的后缀
+// 解决pwa导致链接后缀带sw-precache问题：重定向浏览器地址
+pjax.site_handleResponse = pjax.handleResponse;
+pjax.handleResponse = function(responseText, request, href, options){
+  Object.defineProperty(request,'responseURL',{
+    value: href
+  });
+  pjax.site_handleResponse(responseText,request,href,options);
+}
