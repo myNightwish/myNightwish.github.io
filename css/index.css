@@ -2254,16 +2254,12 @@ blockquote footer cite:before {
   }
 }
 #page .category-lists .category-title {
-  display: none;
   font-size: 2.57em;
 }
 @media screen and (max-width: 768px) {
   #page .category-lists .category-title {
     font-size: 2em;
   }
-}
-#page .category-lists .category-list {
-  display: none;
 }
 #page .category-lists .category-list a {
   color: var(--font-color);
