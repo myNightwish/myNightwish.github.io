@@ -7,7 +7,6 @@ Allow: /music/
 Allow: /movies/
 Allow: /books/  
 Allow: /charts/
-Allow: /census/
 Disallow: /js/
 Disallow: /css/ 
 Disallow: /lib/ 
