@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目5：Node用户管理接口：项目梳理篇 | Nightwishのblog🧊</title><meta name="keywords" content="Node、MySQL2"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2021年2月 项目背景： 春节在家，只是想简单了解下接口、数据库的概念 梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤  用户管理系统逻辑· 1. 用户注册· &#x2F;&#x2F; 用户注册userRouter.post(&amp;#x27;&#x2F;&amp;#x27;, verifyUser, handlePassword, create)   验证是否已有该账户： verifyUser 查询数据库，结">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目5：Node用户管理接口：项目梳理篇 | Nightwishのblog🧊</title><meta name="keywords" content="Node、MySQL2"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2021年2月 项目背景： 春节在家，只是想简单了解下接口、数据库的概念 梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤  用户管理系统逻辑 1. 用户注册 &#x2F;&#x2F; 用户注册userRouter.post(&amp;#x27;&#x2F;&amp;#x27;, verifyUser, handlePassword, create)   验证是否已有该账户： verifyUser 查询数据库，结果是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目5：Node用户管理接口：项目梳理篇">
 <meta property="og:url" content="https://mynightwish.online/posts/3253305718.html">
 <meta property="og:site_name" content="Nightwishのblog🧊">
-<meta property="og:description" content="项目时间： 2021年2月 项目背景： 春节在家，只是想简单了解下接口、数据库的概念 梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤  用户管理系统逻辑· 1. 用户注册· &#x2F;&#x2F; 用户注册userRouter.post(&amp;#x27;&#x2F;&amp;#x27;, verifyUser, handlePassword, create)   验证是否已有该账户： verifyUser 查询数据库，结">
+<meta property="og:description" content="项目时间： 2021年2月 项目背景： 春节在家，只是想简单了解下接口、数据库的概念 梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤  用户管理系统逻辑 1. 用户注册 &#x2F;&#x2F; 用户注册userRouter.post(&amp;#x27;&#x2F;&amp;#x27;, verifyUser, handlePassword, create)   验证是否已有该账户： verifyUser 查询数据库，结果是">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://images.unsplash.com/photo-1638645671264-82cae622dada?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDUwfHhIeFlUTUhMZ09jfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60">
 <meta property="article:published_time" content="2021-12-11T16:19:34.000Z">
@@ -174,12 +174,12 @@
 <li>项目背景： 春节在家，只是想简单了解下接口、数据库的概念</li>
 <li>梳理篇：大概梳理了哪些功能，实现思路。。吧，记忆丢失，嘤嘤嘤</li>
 </ul>
-<h2 id="用户管理系统逻辑">用户管理系统逻辑<a class="anchor" href="#用户管理系统逻辑">·</a></h2>
-<h4 id="1-用户注册">1. 用户注册<a class="anchor" href="#1-用户注册">·</a></h4>
+<h2 id="用户管理系统逻辑">用户管理系统逻辑</h2>
+<h4 id="1-用户注册">1. 用户注册</h4>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 用户注册</span><br><span class="line">userRouter.post(&#x27;/&#x27;, verifyUser, handlePassword, create)</span><br></pre></td></tr></table></figure>
 <ol>
 <li>
-<p>验证是否已有该账户： verifyUser
+<p>验证是否已有该账户： verifyUser<br>
 查询数据库，结果是否为空</p>
 </li>
 <li>
@@ -191,7 +191,7 @@
 <p>对users表插入数据</p>
 </li>
 </ol>
-<h4 id="2-用户登录">2. 用户登录<a class="anchor" href="#2-用户登录">·</a></h4>
+<h4 id="2-用户登录">2. 用户登录</h4>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 用户登录</span><br><span class="line">authRouter.post(&#x27;/login&#x27;, verifyLogin, login)</span><br><span class="line">// 验证是否授权的一个接口</span><br><span class="line">authRouter.get(&#x27;/test&#x27;, verifyAuth, success)</span><br></pre></td></tr></table></figure>
 <ol>
 <li>验证账户密码正确：verifyLogin
@@ -206,7 +206,7 @@
 </ul>
 </li>
 </ol>
-<h4 id="3-用户动态">3. 用户动态<a class="anchor" href="#3-用户动态">·</a></h4>
+<h4 id="3-用户动态">3. 用户动态</h4>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//发表动态之前要先验证登录，然后才是create创建动态</span><br><span class="line">momentRouter.post(&#x27;/&#x27;, verifyAuth, create)</span><br><span class="line">// 查看动态,不需要登录,需要知道动态对应的id</span><br><span class="line">momentRouter.get(&#x27;/:momentId&#x27;, momentDetail)</span><br><span class="line"></span><br><span class="line">// 修改动态 </span><br><span class="line">momentRouter.patch(&#x27;/:momentId&#x27;,verifyAuth, verifyPermission, update)</span><br><span class="line">// 删除动态</span><br><span class="line">momentRouter.delete(&#x27;/:momentId&#x27;,verifyAuth, verifyPermission, remove)</span><br><span class="line">// 给动态添加标签</span><br><span class="line">momentRouter.post(&#x27;/:momentId/labels&#x27;, verifyAuth, verifyPermission,</span><br><span class="line">                    verifyLabelExist,addLabels)</span><br></pre></td></tr></table></figure>
 <ol>
 <li>
@@ -238,7 +238,7 @@
 <p>验证登录verifyAuth</p>
 </li>
 <li>
-<p>验证是否具备修改权限verifyPermission
+<p>验证是否具备修改权限verifyPermission<br>
 拿到要删除的动态id（params中得到），登录用户的id，查询结果是否为空，判断是否具有权限</p>
 </li>
 <li>
@@ -256,14 +256,15 @@
 </ul>
 </li>
 </ol>
-<h4 id="4-用户评论：comment">4. 用户评论：comment<a class="anchor" href="#4-用户评论：comment">·</a></h4>
+<h4 id="4-用户评论：comment">4. 用户评论：comment</h4>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">commentRouter.post(&#x27;/&#x27;, verifyAuth, create)</span><br><span class="line">commentRouter.post(&#x27;/:commentId/reply&#x27;, verifyAuth, reply)</span><br><span class="line">// 修改评论,你只能修改自己发表的评论，而不能修改别人发表的评论</span><br><span class="line">commentRouter.patch(&#x27;/:commentId&#x27;, verifyAuth,verifyPermission, update)</span><br><span class="line">// 删除评论</span><br><span class="line">commentRouter.delete(&#x27;/:commentId&#x27;, verifyAuth, verifyPermission, remove)</span><br><span class="line">// 获取评论列表：不需要验证登录、权限</span><br><span class="line">commentRouter.get(&#x27;/&#x27;, list)</span><br></pre></td></tr></table></figure>
 <ol>
 <li>
 <p>发布评论</p>
 <ul>
 <li>验证登录</li>
-<li>创建评论从请求体里拿到动态id，内容content、用户id。也就是哪个用户对哪条动态做了怎样的评论</li>
+<li>创建评论<br>
+从请求体里拿到动态id，内容content、用户id。也就是哪个用户对哪条动态做了怎样的评论</li>
 </ul>
 </li>
 <li>
@@ -304,9 +305,9 @@
 </ul>
 </li>
 </ol>
-<h4 id="5-标签功能">5. 标签功能<a class="anchor" href="#5-标签功能">·</a></h4>
+<h4 id="5-标签功能">5. 标签功能</h4>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 创建标签时会先验证登录，</span><br><span class="line">labelRouter.post(&#x27;/&#x27;, verifyAuth,create)</span><br><span class="line"></span><br><span class="line">// 查询标签列表</span><br><span class="line">labelRouter.get(&#x27;/&#x27;, list)</span><br></pre></td></tr></table></figure>
-<h5 id="添加标签的过程">添加标签的过程<a class="anchor" href="#添加标签的过程">·</a></h5>
+<h5 id="添加标签的过程">添加标签的过程</h5>
 <ol>
 <li>
 <p>验证登录  √</p>
@@ -332,11 +333,11 @@
 <p>此时已有commentId、标签id，以及标签。在添加标签之前，hasLabel判断该动态是否已存在该标签，对没有某些标签的那个动态，再通过addLabels去添加标签。在关系表中添加</p>
 </li>
 </ol>
-<h5 id="展示标签">展示标签<a class="anchor" href="#展示标签">·</a></h5>
+<h5 id="展示标签">展示标签</h5>
 <ul>
 <li>从query中取出offset和size，去label表中查询结果</li>
 </ul>
-<h4 id="6-图片上传">6. 图片上传<a class="anchor" href="#6-图片上传">·</a></h4>
+<h4 id="6-图片上传">6. 图片上传</h4>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 用户上传头像</span><br><span class="line">userRouter.get(&#x27;/:userId/avatar&#x27;, avatarInfo)</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fileRouter.post(&#x27;/avatar&#x27;, verifyAuth, uploadHandle,saveAvatarInfo)</span><br><span class="line">fileRouter.post(&#x27;/picture&#x27;, verifyAuth, pictureHandle,pictureResize, savePictureInfo)</span><br></pre></td></tr></table></figure>
 <ol>
@@ -355,7 +356,7 @@
 <li>展示头像
 <ul>
 <li>ctx.body = result，不能直接去那个接口请求，会下载下来。而是先设置ctx.response.set()设置content-type为头像的mimetype。</li>
-<li>再修改ctx.body =为fs读取文件流的结果，读取的地址是http：//localhost:8000/…等接口下的某路径。但是这个地方不能写死了，所以可以将端口主机等修改为导入的量。</li>
+<li>再修改ctx.body =为fs读取文件流的结果，读取的地址是http：<a target="_blank" rel="noopener" href="//localhost:8000/">//localhost:8000/</a>…等接口下的某路径。但是这个地方不能写死了，所以可以将端口主机等修改为导入的量。</li>
 <li>为表users添加字段avatar_url，保存请求地址，此时修改获取头像时，只需要传入avatar_url和用户的id，就可以在users中查找到对应的头像</li>
 </ul>
 </li>

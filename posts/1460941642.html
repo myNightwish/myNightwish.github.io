@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目2：去哪儿网：问题总结篇 | Nightwishのblog🧊</title><meta name="keywords" content="Vue"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2020年10月大概   项目背景： 慕课网的项目学习时做的笔记   问题总结篇： 总结一些之前的问题（简洁版）   概述：去哪儿网的移动端页面的实现，其中有3大模块: 遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。在解决这些问题的过程中，又产生了新的问题并进行了优化。   1. localSto">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目2：去哪儿网：问题总结篇 | Nightwishのblog🧊</title><meta name="keywords" content="Vue"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2020年10月大概   项目背景： 慕课网的项目学习时做的笔记   问题总结篇： 总结一些之前的问题（简洁版）   概述：去哪儿网的移动端页面的实现，其中有3大模块: 遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。 在解决这些问题的过程中，又产生了新的问题并进行了优化。   1. localSt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目2：去哪儿网：问题总结篇">
 <meta property="og:url" content="https://mynightwish.online/posts/1460941642.html">
 <meta property="og:site_name" content="Nightwishのblog🧊">
-<meta property="og:description" content="项目时间： 2020年10月大概   项目背景： 慕课网的项目学习时做的笔记   问题总结篇： 总结一些之前的问题（简洁版）   概述：去哪儿网的移动端页面的实现，其中有3大模块: 遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。在解决这些问题的过程中，又产生了新的问题并进行了优化。   1. localSto">
+<meta property="og:description" content="项目时间： 2020年10月大概   项目背景： 慕课网的项目学习时做的笔记   问题总结篇： 总结一些之前的问题（简洁版）   概述：去哪儿网的移动端页面的实现，其中有3大模块: 遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。 在解决这些问题的过程中，又产生了新的问题并进行了优化。   1. localSt">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://images.unsplash.com/photo-1638454909775-82b870c6580d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80">
 <meta property="article:published_time" content="2021-12-12T16:13:14.000Z">
@@ -180,11 +180,12 @@
 <p>问题总结篇： 总结一些之前的问题（简洁版）</p>
 </li>
 <li>
-<p>概述：去哪儿网的移动端页面的实现，其中有3大模块:
-遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。在解决这些问题的过程中，又产生了新的问题并进行了优化。</p>
+<p>概述：去哪儿网的移动端页面的实现，其中有3大模块:<br>
+遇到的问题和优化点比较集中在搜索城市页面。主要包括：搜索城市的逻辑实现、手指滑动过程中的高度计算 和 更换城市过程中出现的一些问题。<br>
+在解决这些问题的过程中，又产生了新的问题并进行了优化。</p>
 </li>
 </ul>
-<h3 id="1-localStorage解决变更城市名后，首页无法更新的问题">1. localStorage解决变更城市名后，首页无法更新的问题<a class="anchor" href="#1-localStorage解决变更城市名后，首页无法更新的问题">·</a></h3>
+<h3 id="1-localStorage解决变更城市名后，首页无法更新的问题">1. localStorage解决变更城市名后，首页无法更新的问题</h3>
 <ul>
 <li>
 <p>**原本需求：**不选的时候有一个默认城市，展示该城市数据，实现选中一次，展示新的城市数据</p>
@@ -193,7 +194,7 @@
 <p>**原本实现逻辑：**当用户每次进入页面，都在mounted钩子里会发ajax请求，并将Vuex中城市名的数据带过去</p>
 </li>
 <li>
-<h4 id="出现的问题：刷新了页面，城市又回到了默认城市上海"><strong>出现的问题：刷新了页面，城市又回到了默认城市上海</strong><a class="anchor" href="#出现的问题：刷新了页面，城市又回到了默认城市上海">·</a></h4>
+<h4 id="出现的问题：刷新了页面，城市又回到了默认城市上海"><strong>出现的问题：刷新了页面，城市又回到了默认城市上海</strong></h4>
 <ul>
 <li>
 <p>**原因：**由于store里的数据是保存在运行内存中的,当页面刷新时，页面会重新加载vue实例，store里面的数据就会被重新赋值，就会使用state中默认保存的数据</p>
@@ -220,7 +221,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-实现手指滑动时的更准确的高度计算并优化计算性能；">2. 实现手指滑动时的更准确的高度计算并优化计算性能；<a class="anchor" href="#2-实现手指滑动时的更准确的高度计算并优化计算性能；">·</a></h3>
+<h3 id="2-实现手指滑动时的更准确的高度计算并优化计算性能；">2. 实现手指滑动时的更准确的高度计算并优化计算性能；</h3>
 <ul>
 <li>
 <p>需求：在右侧字母表上下拖拽时，左边对应的城市列表自动上下滚动</p>
@@ -242,7 +243,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-城市名搜索的逻辑实现">3. 城市名搜索的逻辑实现<a class="anchor" href="#3-城市名搜索的逻辑实现">·</a></h3>
+<h3 id="3-城市名搜索的逻辑实现">3. 城市名搜索的逻辑实现</h3>
 <ul>
 <li>
 <p>需求：</p>

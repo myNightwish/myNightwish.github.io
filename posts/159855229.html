@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目3：购物街项目:问题总结 | Nightwishのblog🧊</title><meta name="keywords" content="Vue"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2020年11月-12月大概 项目背景： 给师姐做的（首页功能+购物车） 问题总结篇，比较啰嗦  1. 吸顶效果· position属性的特性：5种定位方式   static：        默认值  正常文档流的位置（从上到下，从左到右）  浏览器会按照源码的顺序，决定每个元素的位置，这称为&quot;正常的页面流&quot;（normal flow）。每个块级元素占据自己的区块（">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>项目3：购物街项目:问题总结 | Nightwishのblog🧊</title><meta name="keywords" content="Vue"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目时间： 2020年11月-12月大概 项目背景： 给师姐做的（首页功能+购物车） 问题总结篇，比较啰嗦  1. 吸顶效果 position属性的特性：5种定位方式   static：        默认值  正常文档流的位置（从上到下，从左到右）  浏览器会按照源码的顺序，决定每个元素的位置，这称为&quot;正常的页面流&quot;（normal flow）。每个块级元素占据自己的区块（b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目3：购物街项目:问题总结">
 <meta property="og:url" content="https://mynightwish.online/posts/159855229.html">
 <meta property="og:site_name" content="Nightwishのblog🧊">
-<meta property="og:description" content="项目时间： 2020年11月-12月大概 项目背景： 给师姐做的（首页功能+购物车） 问题总结篇，比较啰嗦  1. 吸顶效果· position属性的特性：5种定位方式   static：        默认值  正常文档流的位置（从上到下，从左到右）  浏览器会按照源码的顺序，决定每个元素的位置，这称为&quot;正常的页面流&quot;（normal flow）。每个块级元素占据自己的区块（">
+<meta property="og:description" content="项目时间： 2020年11月-12月大概 项目背景： 给师姐做的（首页功能+购物车） 问题总结篇，比较啰嗦  1. 吸顶效果 position属性的特性：5种定位方式   static：        默认值  正常文档流的位置（从上到下，从左到右）  浏览器会按照源码的顺序，决定每个元素的位置，这称为&quot;正常的页面流&quot;（normal flow）。每个块级元素占据自己的区块（b">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://images.unsplash.com/photo-1636980015567-01c079ac7304?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
 <meta property="article:published_time" content="2021-12-12T16:17:19.000Z">
@@ -174,7 +174,7 @@
 <li>项目背景： 给师姐做的（首页功能+购物车）</li>
 <li>问题总结篇，比较啰嗦</li>
 </ul>
-<h3 id="1-吸顶效果">1. 吸顶效果<a class="anchor" href="#1-吸顶效果">·</a></h3>
+<h3 id="1-吸顶效果">1. 吸顶效果</h3>
 <p>position属性的特性：5种定位方式</p>
 <ul>
 <li>
@@ -203,7 +203,7 @@
 <p>一个sticky元素会“固定”在离它最近的一个拥有“滚动机制”的祖先上（当该祖先的<code>overflow</code> 是 <code>hidden</code>, <code>scroll</code>, <code>auto</code>, 或 <code>overlay</code>时），即便这个祖先不是最近的真实可滚动祖先</p>
 </li>
 </ul>
-<h4 id="1-尝试1：">1. 尝试1：<a class="anchor" href="#1-尝试1：">·</a></h4>
+<h4 id="1-尝试1：">1. 尝试1：</h4>
 <ul>
 <li>
 <p>**做法：**position属性为sticky，BScroll的出现让绝对定位失效</p>
@@ -224,17 +224,18 @@
 <li>
 <p>三种可以修改fixed上文基准的样式属性：</p>
 <ul>
-<li>transform 属性不为 none 的元素
-perspective 的值不为 none 的元素在 will-change 中指定了任意 css 属性</li>
+<li>transform 属性不为 none 的元素<br>
+perspective 的值不为 none 的元素<br>
+在 will-change 中指定了任意 css 属性</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">#home &#123;</span><br><span class="line">    <span class="comment">/* 如果这里没有44px,轮播图会跑到最上面，他的一部分就会被导航栏遮盖 */</span></span><br><span class="line">   	padding-<span class="attr">top</span>: 44px;</span><br><span class="line">  &#125;</span><br><span class="line">  .<span class="property">home</span>-nav &#123;</span><br><span class="line">    <span class="comment">/* 首页上面的导航栏，向下滚动的时候他不要滚动。采用固定定位，一直在最上面 */</span></span><br><span class="line">    <span class="attr">position</span>: fixed;</span><br><span class="line">    <span class="attr">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attr">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attr">right</span>: <span class="number">0</span>;</span><br><span class="line">    z-<span class="attr">index</span>: <span class="number">9</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  .<span class="property">tab</span>-control &#123;</span><br><span class="line">    <span class="comment">/* 想实现的功能是：页面向下滑，滑到一定高度后，顶部固定 */</span></span><br><span class="line">    <span class="attr">position</span>: sticky;</span><br><span class="line">    <span class="comment">// 距离顶部44px的时候，会变成fixed定位</span></span><br><span class="line">    <span class="attr">top</span>: 44px;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="2-得出总结：">2. 得出总结：<a class="anchor" href="#2-得出总结：">·</a></h4>
+<h4 id="2-得出总结：">2. 得出总结：</h4>
 <p>只要组件仍在better-scroll内，就不能由定位实现吸顶</p>
-<h4 id="3-尝试2：">3. 尝试2：<a class="anchor" href="#3-尝试2：">·</a></h4>
+<h4 id="3-尝试2：">3. 尝试2：</h4>
 <ul>
 <li>
 <p>复制tab-control2组件，到scroll外面。并用isTabFixed控制这个组件的显隐（v-show），吸顶效果出现的时：true、其他false。<strong>至此吸顶效果实现</strong></p>
@@ -257,8 +258,8 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ol>
 </li>
 </ul>
-<h3 id="2-Vuex管理购物车">2. <strong>Vuex</strong>管理购物车<a class="anchor" href="#2-Vuex管理购物车">·</a></h3>
-<h4 id="1-加购逻辑：">1. 加购逻辑：<a class="anchor" href="#1-加购逻辑：">·</a></h4>
+<h3 id="2-Vuex管理购物车">2. <strong>Vuex</strong>管理购物车</h3>
+<h4 id="1-加购逻辑：">1. 加购逻辑：</h4>
 <ul>
 <li>**用户点击后：**在回调函数中将点击商品的信息携带，并commit到mutation中</li>
 <li><strong>在commit中：</strong>
@@ -272,7 +273,7 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ul>
 </li>
 </ul>
-<h4 id="2-优化">2. 优化<a class="anchor" href="#2-优化">·</a></h4>
+<h4 id="2-优化">2. 优化</h4>
 <ul>
 <li>
 <p>为了让mutations能够跟踪</p>
@@ -294,8 +295,8 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ul>
 </li>
 </ul>
-<h3 id="3-图片滚动卡顿EventBus">3. 图片滚动卡顿EventBus<a class="anchor" href="#3-图片滚动卡顿EventBus">·</a></h3>
-<h4 id="1-问题：">1. 问题：<a class="anchor" href="#1-问题：">·</a></h4>
+<h3 id="3-图片滚动卡顿EventBus">3. 图片滚动卡顿EventBus</h3>
+<h4 id="1-问题：">1. 问题：</h4>
 <ul>
 <li>
 <p>**需求：**当滚到底的时候会发一次请求，新的图片会过来，可以继续向下滚动，不断展示新数据</p>
@@ -309,7 +310,7 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ul>
 </li>
 </ul>
-<h4 id="2-解决过程：">2. 解决过程：<a class="anchor" href="#2-解决过程：">·</a></h4>
+<h4 id="2-解决过程：">2. 解决过程：</h4>
 <ul>
 <li>
 <p>**所以根本原因：**BScroll的刷新时机问题，所以应该在图片加载完毕后去重新去refresh，内部重新计算高度</p>
@@ -322,7 +323,7 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//home组件：等组件创建完成之后就要监听你的图片是不是加载完成了</span></span><br><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span><br><span class="line"> <span class="comment">// 这里的refresh变量不会被销毁，因为被闭包引用</span></span><br><span class="line">   <span class="keyword">const</span> refresh = <span class="variable language_">this</span>.<span class="title function_">debounce</span>(<span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">scroll</span>.<span class="property">refresh</span>, <span class="number">10</span>)</span><br><span class="line">   <span class="comment">//等组件创建完成之后就要监听你的图片是不是加载完成了</span></span><br><span class="line">   <span class="variable language_">this</span>.<span class="property">$bus</span>.$on(<span class="string">&#x27;itemImageLoad&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">scroll</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">scroll</span>.<span class="title function_">refresh</span>();</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="3、优化点—并发解决">3、优化点—并发解决<a class="anchor" href="#3、优化点—并发解决">·</a></h4>
+<h4 id="3、优化点—并发解决">3、优化点—并发解决</h4>
 <p>这种判断方法过于依赖每个图片本身的加载情况，可以用promise来优化这个过程，通过promise.all来拿到这个加载完成的消息：</p>
 <ul>
 <li>
@@ -333,15 +334,15 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="string">&quot;/static/img/123.png&quot;</span>,<span class="string">&quot;/static/img/123.png&quot;</span>]</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">callBack</span> = (<span class="params"></span>)=&gt;&#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;加载完毕做点啥吧&quot;</span>)</span><br><span class="line">&#125;    </span><br><span class="line"><span class="variable language_">this</span>.<span class="title function_">handleImgLoad</span>(arr, callBack)</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 加载图片事件</span></span><br><span class="line"><span class="title function_">handleImgLoad</span>(<span class="params">arr, callBack</span>)&#123;</span><br><span class="line">   <span class="keyword">const</span> brr = []</span><br><span class="line">   arr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item, index</span>)=&gt;</span>&#123;</span><br><span class="line">    brr[index] = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> imgReady = <span class="keyword">new</span> <span class="title class_">Image</span></span><br><span class="line">        imgReady.<span class="property">src</span> = item</span><br><span class="line">        imgReady.<span class="property">onload</span>=<span class="function">()=&gt;</span>&#123;</span><br><span class="line">          <span class="title function_">resolve</span>(index)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">   &#125;)</span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">all</span>(brr).<span class="title function_">then</span>(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">if</span>(result &amp;&amp; callBack) <span class="title function_">callBack</span>()</span><br><span class="line">   &#125;).<span class="title function_">catch</span>(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;加载图片-----&quot;</span>, error)</span><br><span class="line">   &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h4 id="4、图片加载的方式单一">4、图片加载的方式单一<a class="anchor" href="#4、图片加载的方式单一">·</a></h4>
+<h4 id="4、图片加载的方式单一">4、图片加载的方式单一</h4>
 <ol>
 <li>load事件</li>
 <li>readystatechange事件</li>
 <li>轮询不断监测img的complete属性，如果为true则表明图片已经加载完毕，停止轮询。该属性所有浏览器都支持</li>
 </ol>
-<h2 id="better-scroll的原理-☆☆☆☆">better-scroll的原理     ☆☆☆☆<a class="anchor" href="#better-scroll的原理-☆☆☆☆">·</a></h2>
-<p>https://zhuanlan.zhihu.com/p/27407024</p>
-<h4 id="1-基础">1. 基础<a class="anchor" href="#1-基础">·</a></h4>
+<h2 id="better-scroll的原理-☆☆☆☆">better-scroll的原理     ☆☆☆☆</h2>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27407024">https://zhuanlan.zhihu.com/p/27407024</a></p>
+<h4 id="1-基础">1. 基础</h4>
 <ul>
 <li>**介绍：**重点解决移动端（已支持 PC）各种滚动场景需求的插件</li>
 <li><strong>浏览器的滚动原理：</strong>
@@ -352,7 +353,7 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ul>
 </li>
 </ul>
-<h4 id="2-滚动原理："><strong>2. 滚动原理：</strong><a class="anchor" href="#2-滚动原理：">·</a></h4>
+<h4 id="2-滚动原理："><strong>2. 滚动原理：</strong></h4>
 <img src="http://static.galileo.xiaojukeji.com/static/tms/shield/scroll-4.png" alt="布局" style="zoom:33%;" />
 <ul>
 <li>
@@ -369,7 +370,7 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">element<span class="selector-class">.style</span> &#123;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">0ms</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0px</span>, <span class="number">0px</span>) <span class="built_in">scale</span>(<span class="number">1</span>) <span class="built_in">translateZ</span>(<span class="number">0px</span>);</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: <span class="built_in">cubic-bezier</span>(<span class="number">0.165</span>, <span class="number">0.84</span>, <span class="number">0.44</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="3-使用："><strong>3. 使用：</strong><a class="anchor" href="#3-使用：">·</a></h4>
+<h4 id="3-使用："><strong>3. 使用：</strong></h4>
 <ul>
 <li>better-scroll 提供了一个类，实例化的第一个参数是一个原生的 DOM 对象，如果传递的是一个字符串，better-scroll 内部会尝试调用 querySelector 去获取这个 DOM 对象，初始化只需要 new 一个类的实例即可</li>
 <li><strong>better-scroll初始化的时机</strong>很重要：better-scroll 不能滚动的原因多半是初始化 better-scroll 的时机不对，或者是当 DOM 结构变化的时候并没有重新计算 better-scroll
@@ -380,15 +381,15 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ul>
 </li>
 </ul>
-<h4 id="4-应用场景">4. 应用场景<a class="anchor" href="#4-应用场景">·</a></h4>
-<h5 id="场景1：基础列表滚动"><strong>场景1：基础列表滚动</strong><a class="anchor" href="#场景1：基础列表滚动">·</a></h5>
+<h4 id="4-应用场景">4. 应用场景</h4>
+<h5 id="场景1：基础列表滚动"><strong>场景1：基础列表滚动</strong></h5>
 <ul>
 <li>
 <p><strong>vm.$refs</strong> 和<strong>this.$nextTick</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    mounted() &#123;</span><br><span class="line">      this.$nextTick(() =&gt; &#123;</span><br><span class="line">        this.scroll = new Bscroll(this.$refs.wrapper, &#123;&#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">1. this.$refs.wrapper拿到这个 DOM 对象</span><br><span class="line">2. 在 mounted钩子函数里，this.$nextTick 的回调函数中初始化 better-scroll</span><br><span class="line">3. 此时wrapper的最新DOM已渲染，可以正确计算它以及它内层 content 的高度，以确保滚动正常</span><br><span class="line">4. 也可以将this.$nextTick换成setTimeout(fn, 20) 也是可以的，每一个 Tick 约为 17 ms，对用户体验而言都是无感知的</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="场景2：异步数据的处理"><strong>场景2：异步数据的处理</strong><a class="anchor" href="#场景2：异步数据的处理">·</a></h5>
+<h5 id="场景2：异步数据的处理"><strong>场景2：异步数据的处理</strong></h5>
 <ul>
 <li>
 <p>实际工作中，列表的数据往往都是异步获取的，因此初始化 better-scroll 的时机需要在数据获取后</p>
@@ -408,7 +409,7 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ul>
 </li>
 </ul>
-<h5 id="场景3：数据的动态更新"><strong>场景3：数据的动态更新</strong><a class="anchor" href="#场景3：数据的动态更新">·</a></h5>
+<h5 id="场景3：数据的动态更新"><strong>场景3：数据的动态更新</strong></h5>
 <ul>
 <li>
 <p>实际开发中，除了数据异步获取，还有一些场景可以<strong>动态更新列表中的数据</strong>，比如常见的下拉加载，上拉刷新</p>
@@ -420,7 +421,7 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 </ul>
 </li>
 </ul>
-<h4 id="5-封装">5. 封装<a class="anchor" href="#5-封装">·</a></h4>
+<h4 id="5-封装">5. 封装</h4>
 <p>目的解耦合。每个组件都用，对这个框架依赖性太强了。所以先封装，需要的组件只需要引入封装就可以。框架改变时，只需要修改封装就可以，而不需要每个组件都修改。</p>
 <ul>
 <li>
@@ -438,8 +439,8 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">scroll</span> <span class="attr">class</span>=<span class="string">&quot;wrapper&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">:data</span>=<span class="string">&quot;data&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">:pulldown</span>=<span class="string">&quot;pulldown&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          @<span class="attr">pulldown</span>=<span class="string">&quot;loadData&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;item in data&quot;</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;loading-wrapper&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">scroll</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">import</span> <span class="title class_">BScroll</span> <span class="keyword">from</span> <span class="string">&#x27;better-scroll&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">data</span>: [],</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">pulldown</span>: <span class="literal">true</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">created</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">this</span>.<span class="title function_">loadData</span>()</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">methods</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="title function_">loadData</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="title function_">requestData</span>().<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="variable language_">this</span>.<span class="property">data</span> = res.<span class="property">data</span>.<span class="title function_">concat</span>(<span class="variable language_">this</span>.<span class="property">data</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="toast插件封装">toast插件封装<a class="anchor" href="#toast插件封装">·</a></h2>
-<h3 id="1-index-js定义">1. index.js定义<a class="anchor" href="#1-index-js定义">·</a></h3>
+<h2 id="toast插件封装">toast插件封装</h2>
+<h3 id="1-index-js定义">1. index.js定义</h3>
 <ul>
 <li>导入对应的组件</li>
 <li>创建当前的插件对象</li>
@@ -447,9 +448,9 @@ perspective 的值不为 none 的元素在 will-change 中指定了任意 css �
 <li>暴露插件对象</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//导入组件</span><br><span class="line">import Toast from &#x27;./Toast&#x27;</span><br><span class="line"></span><br><span class="line">const obj = &#123;&#125;</span><br><span class="line"></span><br><span class="line">// install方法：main.js里面的Vue.use(toast)本质会来调用这里的install方法，执行这个函数</span><br><span class="line">obj.install = function(Vue) &#123;</span><br><span class="line">    // 1.创建组件构造器</span><br><span class="line">    const toastConstructor = Vue.extend(Toast)</span><br><span class="line"></span><br><span class="line">    // 2.new一个组件对象</span><br><span class="line">    const toast = new toastConstructor()</span><br><span class="line"></span><br><span class="line">    // 3.toast.$mount函数将组件对象手动挂载到某个元素上</span><br><span class="line">    toast.$mount(document.createElement(&#x27;div&#x27;))</span><br><span class="line"></span><br><span class="line">    // 4.将挂载了组件对象的元素添加到body，toast.$el对应的是div</span><br><span class="line">    document.body.appendChild(toast.$el)</span><br><span class="line"></span><br><span class="line">    // 5.将组件对象挂载到Vue的原型上</span><br><span class="line">    Vue.prototype.$toast = toast</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 暴露当前插件</span><br><span class="line">export default obj</span><br></pre></td></tr></table></figure>
-<h3 id="2-main-js使用">2. main.js使用<a class="anchor" href="#2-main-js使用">·</a></h3>
+<h3 id="2-main-js使用">2. main.js使用</h3>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import toast from &#x27;./toast/index&#x27;</span><br><span class="line">Vue.use(toast)   // 会去执行index.js里面的install方法</span><br></pre></td></tr></table></figure>
-<h3 id="3-toast组件">3. toast组件<a class="anchor" href="#3-toast组件">·</a></h3>
+<h3 id="3-toast组件">3. toast组件</h3>
 <ul>
 <li>
 <p>定义数据data：message：显示内容，isShow： 是否显示</p>
