@@ -208,10 +208,7 @@ if (localStorage.getItem("reset_2") == undefined) {
   
   // 更换背景(自己的代码)
   if (localStorage.getItem("blogbg") != undefined) {
-
     let curBg = localStorage.getItem("blogbg");
-    console.log("web_bg--:", curBg)
-
     document.getElementById("defineBg").innerText = `:root{
       --default-bg: ${curBg};
       --darkmode-bg: ${curBg};
@@ -495,7 +492,7 @@ if (localStorage.getItem("reset_2") == undefined) {
   <h3>6. 适配手机</h3>
   <details class="folding-tag" cyan><summary> 查看适配手机的背景 </summary>
               <div class='content'>
-              <p><div class="bgbox"><br><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.ladydaily.com/img/mb4.webp)" class="pimgbox" onclick="changeBg('url(https\://sourcebucket.s3.ladydaily.com/img/mb4.webp)')"></a></p>
+              <div class="bgbox"><a href="javascript:;" rel="noopener external nofollow" style="background-image:url(https://sourcebucket.s3.ladydaily.com/img/mb4.webp)" class="pimgbox" onclick="changeBg('url(https\://sourcebucket.s3.ladydaily.com/img/mb4.webp)')"></a>
               </div>
             </details>
   
