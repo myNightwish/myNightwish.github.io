@@ -1,0 +1,518 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>基建(1)之CDN | Nightwishのblog🧊</title><meta name="keywords" content="前端基建,CDN"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基建(1)之CDN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基建(1)之CDN">
+<meta property="og:url" content="https://mynightwish.online/posts/basic_construct_1.html">
+<meta property="og:site_name" content="Nightwishのblog🧊">
+<meta property="og:description" content="基建(1)之CDN">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/官网基建.webp">
+<meta property="article:published_time" content="2022-04-02T12:42:32.000Z">
+<meta property="article:modified_time" content="2023-01-09T14:45:43.706Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="前端基建">
+<meta property="article:tag" content="CDN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/官网基建.webp"><link rel="shortcut icon" href="/img/favicon.webp"><link rel="canonical" href="https://mynightwish.online/posts/basic_construct_1"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基建(1)之CDN',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-09 22:45:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/double.css"><link rel="stylesheet" href="/css/beautify.css" media="async"><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/lastLoad.css" media="defer" onload="this.media='all'"><style id="themeColor"></style><style id="rightSide"></style><style id="transPercent"></style><style id="blurNum"></style><style id="settingStyle"></style><span id="fps"></span><style id="defineBg"></style><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.css" media="defer" onload="this.media='all'"><script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"><style>#web_bg{
+  background: var(--default-bg);
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+[data-theme="dark"]
+  #web_bg{
+    background: var(--darkmode-bg) !important;
+    background-attachment: local!important;
+    background-position: center!important;
+    background-size: cover!important;
+    background-repeat: no-repeat!important;
+  }
+</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/官网基建.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">基建(1)之CDN</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-02T12:42:32.000Z" title="发表于 2022-04-02 20:42:32">2022-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-09T14:45:43.706Z" title="更新于 2023-01-09 22:45:43">2023-01-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/2-4-%E9%A1%B9%E7%9B%AE/">2.4-项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2339</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基建(1)之CDN"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="center-开发中的基建配置-CDN-center"><center>开发中的基建配置 - CDN</center><a class="anchor" href="#center-开发中的基建配置-CDN-center">·</a></h2>
+<blockquote>
+<p>总结一下，开发中的基建配置相关，纯小白在开发过程中收获到了很多~</p>
+</blockquote>
+<h3 id="1-1-网站使用场景-为啥会有CDN">1.1 网站使用场景-为啥会有CDN<a class="anchor" href="#1-1-网站使用场景-为啥会有CDN">·</a></h3>
+<ul>
+<li>
+<p>网站吸引力好的关键特征：</p>
+<ol>
+<li>内容有吸引力</li>
+<li>访问速度快</li>
+<li>支持频繁的用户互动</li>
+<li>可以在各处浏览无障碍</li>
+<li>能在复杂的网络环境下运行，全球的用户访问体验</li>
+</ol>
+</li>
+<li>
+<p>网站面临的问题：</p>
+<p>随着使用越来越多的对象（如图片、帧、CSS及APIs）和形形色色的动作（分享、跟踪）而系统逐渐庞大，从而变慢带来用户的流失。如果网站是你的盈利渠道或是品牌窗口，那么网站速度慢将是一个致命的打击，因为用户对网站访问速度的忍受能力越来越差；</p>
+<p>噔噔噔噔~，CDN出现了，而它能够加速网站的访问；</p>
+</li>
+</ul>
+<h3 id="1-2-CDN是什么、工作流程">1.2 CDN是什么、工作流程<a class="anchor" href="#1-2-CDN是什么、工作流程">·</a></h3>
+<blockquote>
+<p>也叫内容分发网络，CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近的服务节点上。</p>
+<p>说人话：</p>
+<ul>
+<li>
+<p>无论你在天涯海角，只要连了网，CDN服务就如同把源站搬到你面前一样，世界触手可及！</p>
+</li>
+<li>
+<p>CDN就是护航者和加速者的角色，更快准狠的触发信息和触达每一个用户，带来极致体验</p>
+</li>
+</ul>
+<p>比如我的博客网站就用到了，目的只是为了提升页面图片加载速度</p>
+<p>如今的CDN可谓是大文件、小文件、点播、直播、动静皆宜！</p>
+</blockquote>
+<ul>
+<li>
+<p>目的：</p>
+<ol>
+<li>
+<p>通过在<strong>网络各处放置节点服务器</strong>所构成的在现有的互联网基础之上的一层智能虚拟网络，尽可能地避开影响数据<strong>传输速度和稳定性</strong>的瓶颈和环节，使内容传输的更快、更稳定</p>
+</li>
+<li>
+<p>解决因分布、带宽、服务器性能带来的访问延迟问题，适用于站点加速、点播、直播等场景。使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度和成功率。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="1-2-1-不同CDN工作流程：">1.2-1 不同CDN工作流程：<a class="anchor" href="#1-2-1-不同CDN工作流程：">·</a></h4>
+<p>用户在通过浏览器访问数据时：</p>
+<ul>
+<li>用户在浏览器中输入要访问的域名。</li>
+<li>浏览器向DNS服务器请求对该域名的解析，DNS服务器返回该域名的IP地址给浏览器。</li>
+<li>浏览器使用该IP地址向服务器请求内容，服务器将用户请求的内容返回给浏览器。</li>
+</ul>
+<img src="https://mynightwish.oss-cn-beijing.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTY4NDg2,size_16,color_FFFFFF,t_70-20220402203054278.png" alt="在这里插入图片描述" style="zoom: 50%;" />
+<h4 id="1-2-2-使用CDN加速：">1.2-2 使用CDN加速：<a class="anchor" href="#1-2-2-使用CDN加速：">·</a></h4>
+<ul>
+<li>
+<p>用户在浏览器中输入要访问的域名</p>
+</li>
+<li>
+<p>浏览器向DNS服务器请求对域名解析。而D<strong>NS服务器将域名的解析权交给 CDN专用DNS服务器</strong></p>
+</li>
+<li>
+<p>CDN专用DNS服务器将CDN负载均衡设备的IP地址返回给用户</p>
+</li>
+<li>
+<p>用户向 <strong>CDN负载均衡设备</strong> 发起内容URL访问请求：CDN负载均衡设备会为用户选择一台合适的 CDN缓存服务器 提供服务，选择的依据包括：</p>
+<ul>
+<li>根据用户IP地址，判断哪一台服务器距离用户最近；</li>
+<li>根据用户所请求的URL中携带的内容名称，判断哪一台服务器上有用户所需内容；</li>
+<li>查询各个服务器的负载情况，判断哪一台服务器的负载较小。</li>
+<li>基于以上这些依据的综合分析之后，<strong>负载均衡设置会把缓存服务器的IP地址返回给用户</strong>。</li>
+</ul>
+</li>
+<li>
+<p>用户向缓存服务器发出请求，缓存服务器响应用户请求，将用户所需内容传送到用户</p>
+</li>
+<li>
+<p><strong>如果这台缓存服务器上并没有用户想要的内容</strong>，而负载均衡设备依然将它分配给了用户，那么这台服务器就要向它的上一级缓存服务器请求内容，直至追溯到网站的源服务器将内容拉取到本地</p>
+<img src="https://mynightwish.oss-cn-beijing.aliyuncs.com/img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTY4NDg2,size_16,color_FFFFFF,t_70-20220402203020588-20220402203545041.png" alt="在这里插入图片描述" style="zoom: 50%;" />
+</li>
+</ul>
+<h3 id="1-3-项目中怎么用的？">1.3 项目中怎么用的？<a class="anchor" href="#1-3-项目中怎么用的？">·</a></h3>
+<blockquote>
+<p>ok，言归正传，回到需求开发中：将所有的cdn静态资源中心化到一个cdnPathMap</p>
+</blockquote>
+<h4 id="1-写一个CDN映射文件">1. 写一个CDN映射文件<a class="anchor" href="#1-写一个CDN映射文件">·</a></h4>
+<blockquote>
+<p>这里为甚要单独配置这个映射，每个资源直接记住绝对路径不就好了吗？</p>
+<ol>
+<li>将来cdn地址如果迁移，需要手动更改所有的地址，噩梦，这个是目的</li>
+<li>假如线上请求地址，与线下请求cdn地址不一样，可以支持配置；</li>
+</ol>
+</blockquote>
+<ul>
+<li>将cdn host 配置在环境变量里，在每次打包的时候可以更换此环境变量，不用再侵入式的改变单个资源的host，只需要保存静态资源的Path。</li>
+<li>提升了语义化，方便开发者了解该资源的意义，也不用开发者关心静态资源的host</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Host</span> = process.<span class="property">env</span>.<span class="property">NEXT_PUBLIC_CDN_HOST</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以键值对的形式设置cdn上对应资源的文件名：相对路径</span></span><br><span class="line"><span class="comment">// key代表一个语义化的静态资源名称，value代表静态资源的cdn Path</span></span><br><span class="line"><span class="keyword">const</span> cdnPathMap = &#123; </span><br><span class="line">  <span class="string">&#x27;dance-video&#x27;</span>: <span class="comment">// 自定义的映射名</span></span><br><span class="line">    <span class="string">&#x27;cdn-network/projectA/static/dance-video/myGirl.MP4&#x27;</span>,  <span class="comment">// cdn的资源远端链接</span></span><br><span class="line">  .....省略其他</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">staticFile</span> = (<span class="params">path</span>) =&gt; &#123; <span class="comment">// 拼接完整的url：设置成绝对路径，得到真实路径</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title class_">Url</span> = <span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">&#x27;/&#x27;</span>, <span class="title class_">Host</span>);</span><br><span class="line">  <span class="title class_">Url</span>.<span class="property">pathname</span> = path;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Url</span>.<span class="property">href</span>; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">cdnMap</span> = (<span class="params">sourceMap</span>) =&gt; &#123;</span><br><span class="line">	<span class="comment">// 遍历所有资源，得到所有的完整绝对路径  </span></span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Object</span>.<span class="title function_">keys</span>(sourceMap).<span class="title function_">reduce</span>(<span class="function">(<span class="params">_map, currentKey</span>) =&gt;</span> &#123;</span><br><span class="line">    _map[currentKey] = <span class="title function_">staticFile</span>(sourceMap[<span class="string">`<span class="subst">$&#123;currentKey&#125;</span>`</span>]);</span><br><span class="line">    <span class="keyword">return</span> _map;</span><br><span class="line">  &#125;, &#123;&#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> staticFileMap = <span class="title function_">cdnMap</span>(cdnPathMap); </span><br></pre></td></tr></table></figure>
+<h4 id="2-使用该文件">2. 使用该文件<a class="anchor" href="#2-使用该文件">·</a></h4>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; staticFileMap &#125; <span class="keyword">from</span> <span class="string">&#x27;/utils/staticFile&#x27;</span>;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&#123;staticFileMap[</span>&#x27;<span class="attr">dance-video</span>&#x27;]&#125;  &gt;</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="3-补充URL">3. 补充URL<a class="anchor" href="#3-补充URL">·</a></h4>
+<p><strong><code>URL()</code></strong> 构造函数返回一个新创建的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/URL"><code>URL</code></a> 对象，表示由一组参数定义的 URL。</p>
+<p>如果给定的基本 URL 或生成的 URL 不是有效的 URL 链接，则会抛出一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError"><code>TypeError</code></a>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="keyword">new</span> <span class="title function_">URL</span>(url [, base])</span><br></pre></td></tr></table></figure>
+<p><strong>参数</strong></p>
+<ul>
+<li><code>url</code>：是一个表示绝对或相对 URL 的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DOMString"><code>DOMString</code></a>。如果<code>url</code> 是相对 URL，则会将 <code>base</code> 用作基准 URL。如果 <code>url</code> 是绝对URL，则无论参数<code>base</code>是否存在，都将被忽略。</li>
+<li><code>base</code> 可选：是一个表示基准 URL 的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/DOMString"><code>DOMString</code></a>，在 <em>url</em> 是相对 URL 时，它才会起效。如果未指定，则默认为 <code>''</code>。</li>
+</ul>
+<h3 id="1-4-CDN的关键技术">1.4 CDN的关键技术<a class="anchor" href="#1-4-CDN的关键技术">·</a></h3>
+<img src="https://pic1.zhimg.com/80/v2-eaf80abf6a52913375d2ade0dde79ed0_1440w.jpg" alt="img" style="zoom: 67%;" />
+<ul>
+<li>内容发布：它借助于建立索引、缓存、流分裂、组播（Multicast）等技术</li>
+<li>内容路由：它是整体性的网络负载均衡技术，通过内容路由器中的重定向（DNS）机制，在多个远程POP上均衡用户的请求，以使用户请求得到最近内容源的响应；</li>
+<li>内容交换：它根据内容的可用性、服务器的可用性以及用户的背景，在POP的缓存服务器上，利用应用层交换、流分裂、重定向（ICP、WCCP）等技术，智能地平衡负载流量；</li>
+<li>性能管理：它通过内部和外部监控系统，获取网络部件的状况信息，测量内容发布的端到端性能（如包丢失、延时、平均带宽、启动时间、帧速率等），保证网络处于最佳的运行状态。</li>
+</ul>
+<h3 id="1-5-一些QA">1.5 一些QA<a class="anchor" href="#1-5-一些QA">·</a></h3>
+<ul>
+<li>
+<p><strong>1.CDN加速是对网站所在服务器加速，还是对其域名加速？</strong></p>
+<p>CDN是只对网站的<strong>某一个具体的域名加速</strong>。如果同一个网站有多个域名，则访客访问加入CDN的域名获得加速效果，访问未加入CDN的域名，或者直接访问IP地址，则无法获得CDN效果。</p>
+</li>
+<li>
+<p><strong>2.CDN和镜像站点比较有何优势？</strong></p>
+<ul>
+<li>CDN对网站访客完全透明，不需要访客手动选择要访问的镜像站点，保证了网站对访客的友好性</li>
+<li>CDN对每个节点都有可用性检查，不合格的节点会第一时间剔出，从而保证了极高的可用率，而镜像站点无法实现这一点。</li>
+<li>CDN部署简单，对原站基本不做任何改动即可生效。</li>
+</ul>
+</li>
+<li>
+<p><strong>3. 为什么我的网站更新后，通过CDN后看到网页还是旧网页，如何解决？</strong></p>
+<ul>
+<li>由于CDN采用各节点缓存的机制，网站的静态网页和图片修改后，如果CDN缓存没有做相应更新，则看到的还是旧的网页。为了解决这个问题，CDN管理面板中提供了URL推送服务，来通知CDN各节点刷新自己的缓存。　　在URL推送地址栏中，输入具体的网址或者图片地址，则各节点中的缓存内容即被统一删除，并且当即生效。</li>
+</ul>
+</li>
+<li>
+<p><strong>4. 能不能让CDN不缓存某些即时性要求很高的网页和图片？</strong></p>
+<ul>
+<li>
+<p>只需要使用动态页面，asp，php，jsp等动态技术做成的页面不被CDN缓存，无需每次都要刷新。</p>
+</li>
+<li>
+<p>或者采用一个网站两个域名，一个启用CDN，另外一个域名不用CDN，对即时性要求高的页面和图片放在不用CDN的域名下</p>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>基建(1)之CDN</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-04-02</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-01-09</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://mynightwish.oss-cn-beijing.aliyuncs.com/blogskin/官网基建.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 33234});
+(function() {
+  if ('WIDGETPACK_LOADED' in window) return;
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement('script');
+  mc.type = 'text/javascript';
+  mc.async = true;
+  //- mc.src = '//embed.widgetpack.com/widget.js';
+  var s = document.getElementsByTagName('script')[0];
+  s?.parentNode?.insertBefore(mc, s?.nextSibling);
+})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/requestAnimationFrame_1.html"><img class="prev-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/逐帧动画.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">RAF是什么？</div></div></a></div><div class="next-post pull-right"><a href="/posts/gap-property.html"><img class="next-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CSS中的gap属性</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#center-%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%9F%BA%E5%BB%BA%E9%85%8D%E7%BD%AE-CDN-center"><span class="toc-text">开发中的基建配置 - CDN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%BD%91%E7%AB%99%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF-%E4%B8%BA%E5%95%A5%E4%BC%9A%E6%9C%89CDN"><span class="toc-text">1.1 网站使用场景-为啥会有CDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-CDN%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%81%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">1.2 CDN是什么、工作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E4%B8%8D%E5%90%8CCDN%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-text">1.2-1 不同CDN工作流程：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E4%BD%BF%E7%94%A8CDN%E5%8A%A0%E9%80%9F%EF%BC%9A"><span class="toc-text">1.2-2 使用CDN加速：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%80%8E%E4%B9%88%E7%94%A8%E7%9A%84%EF%BC%9F"><span class="toc-text">1.3 项目中怎么用的？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%86%99%E4%B8%80%E4%B8%AACDN%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6"><span class="toc-text">1. 写一个CDN映射文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E8%AF%A5%E6%96%87%E4%BB%B6"><span class="toc-text">2. 使用该文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%A1%A5%E5%85%85URL"><span class="toc-text">3. 补充URL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-CDN%E7%9A%84%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF"><span class="toc-text">1.4 CDN的关键技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E4%B8%80%E4%BA%9BQA"><span class="toc-text">1.5 一些QA</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-hexo-vert.vercel.app/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-hexo-vert.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div defer class="aplayer no-destroy" data-id="31872922" data-server="netease" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script async data-pjax src="https://cdn.jsdelivr.net/npm/hexo-beautiful-page@latest/lib/asyncmodel.min.js"></script><div id="live3d" class="live3d" style="position: fixed; left: -110px; bottom: 30px;z-index: 98;"><canvas id="live2dm" class="live3d"style="max-width:500px;max-height:437.5px;"></canvas></div><script defer data-pjax src="/js/bottomTime.js"></script><script defer data-pjax src="/js/nav.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/emoji.js"></script><script defer data-pjax src="/js/sun_moon.js" async></script><script defer src="https://cdn1.tianli0.top/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script><script async src="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer data-pjax src="/js/meihua.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '#web_bg',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:24%;}.categoryBar-list{max-height: 570px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 480px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-1-CSS/&quot;);" href="javascript:void(0);">1.1-CSS</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr">CSS的酷炫多彩</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-2-JS/&quot;);" href="javascript:void(0);">1.2-JS</a><span class="categoryBar-list-count">29</span><span class="categoryBar-list-descr">数据、函数、异步</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-3-Ajax/&quot;);" href="javascript:void(0);">1.3-Ajax</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">Ajax的诞生</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-4-框架/&quot;);" href="javascript:void(0);">1.4-框架</a><span class="categoryBar-list-count">15</span><span class="categoryBar-list-descr">Vue&amp;React的世界</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-1-组件库/&quot;);" href="javascript:void(0);">2.1-组件库</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">组件库开发</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-2-基建/&quot;);" href="javascript:void(0);">2.2-基建</a><span class="categoryBar-list-count">5</span><span class="categoryBar-list-descr">前端工程化</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-3-实现Tricks/&quot;);" href="javascript:void(0);">2.3-实现Tricks</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">功能实现积累</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-4-项目/&quot;);" href="javascript:void(0);">2.4-项目</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr">项目总结</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-1-记录/&quot;);" href="javascript:void(0);">3.1-记录</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">bidaoTalk</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-2-浏览器/&quot;);" href="javascript:void(0);">3.2-浏览器</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr">浏览器渲染</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-3-基础/&quot;);" href="javascript:void(0);">3.3-基础</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr">计算机基础</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-4-Tool/&quot;);" href="javascript:void(0);">3.4-Tool</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">小工具</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-virtualDom.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-13</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">React的虚拟DOM</a><div class="blog-slider__text">兄弟篇React的虚拟DOM，包括了栈调和</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/hook1.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt="">React-Hook的出现</a><div class="blog-slider__text">为何Hooks是React的未来</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/浏览器异步.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfnIl0f3oUJLgGFb7Qgi97y1hY9uIQsHizXQ&amp;usqp=CAU" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">JS的异步解决方案</a><div class="blog-slider__text">前端异步之路</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><!-- hexo injector body_end end --><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

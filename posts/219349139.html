@@ -1,0 +1,706 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JS的数据类型转换 | Nightwishのblog🧊</title><meta name="keywords" content="JS"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="显示转换、隐士转换、转换的标准">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS的数据类型转换">
+<meta property="og:url" content="https://mynightwish.online/posts/219349139.html">
+<meta property="og:site_name" content="Nightwishのblog🧊">
+<meta property="og:description" content="显示转换、隐士转换、转换的标准">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.unsplash.com/photo-1639111503666-56295742ed85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80">
+<meta property="article:published_time" content="2021-12-10T15:10:27.000Z">
+<meta property="article:modified_time" content="2023-01-17T11:47:30.976Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1639111503666-56295742ed85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"><link rel="shortcut icon" href="/img/favicon.webp"><link rel="canonical" href="https://mynightwish.online/posts/219349139"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JS的数据类型转换',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-17 19:47:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/double.css"><link rel="stylesheet" href="/css/beautify.css" media="async"><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/lastLoad.css" media="defer" onload="this.media='all'"><style id="themeColor"></style><style id="rightSide"></style><style id="transPercent"></style><style id="blurNum"></style><style id="settingStyle"></style><span id="fps"></span><style id="defineBg"></style><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.css" media="defer" onload="this.media='all'"><script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"><style>#web_bg{
+  background: var(--default-bg);
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+[data-theme="dark"]
+  #web_bg{
+    background: var(--darkmode-bg) !important;
+    background-attachment: local!important;
+    background-position: center!important;
+    background-size: cover!important;
+    background-repeat: no-repeat!important;
+  }
+</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.unsplash.com/photo-1639111503666-56295742ed85?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=871&amp;q=80')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">JS的数据类型转换</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-10T15:10:27.000Z" title="发表于 2021-12-10 23:10:27">2021-12-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-17T11:47:30.976Z" title="更新于 2023-01-17 19:47:30">2023-01-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/1-2-JS/">1.2-JS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3328</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JS的数据类型转换"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="3-1、类型转换1-基本">3.1、类型转换1(基本)<a class="anchor" href="#3-1、类型转换1-基本">·</a></h3>
+<ul>
+<li>两种转换形式：<strong>显式类型转换</strong>和<strong>隐式类型转换</strong></li>
+<li>三种转换结果：<strong>Number</strong> 、<strong>String</strong> 、<strong>Boolean</strong></li>
+</ul>
+<h4 id="3-1-1、转string">3.1.1、转string<a class="anchor" href="#3-1-1、转string">·</a></h4>
+<h5 id="1、String-函数：强制转换">1、String()函数：强制转换<a class="anchor" href="#1、String-函数：强制转换">·</a></h5>
+<ul>
+<li><strong>对于Number Boolean String都会调用他们的toString()方法来将其转换为字符串；</strong></li>
+<li><strong>对于null值，直接转换为字符串&quot;null&quot;。对于undefined直接转换为字符串&quot;undefined&quot;</strong>  ，结果如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>参数类型</strong></th>
+<th><strong>结果</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Undefined</td>
+<td><strong>“undefined”</strong></td>
+</tr>
+<tr>
+<td>Null</td>
+<td><strong>“null”</strong></td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td><strong>true</strong>返回**“true”<strong>,<strong>false</strong>返回</strong>&quot;false&quot;**</td>
+</tr>
+<tr>
+<td><strong>Number</strong></td>
+<td>情况比较复杂</td>
+</tr>
+<tr>
+<td>String</td>
+<td>没转换</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Number的补充说明：
+<ol>
+<li>NaN，转换为&quot;NaN&quot;</li>
+<li>+0/-0，转换为&quot;0&quot;</li>
+<li>Infinity，转换为&quot;Infinity&quot;</li>
+<li><strong>会发生进制转换</strong></li>
+</ol>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(<span class="title class_">NaN</span>));         <span class="comment">//&quot;NaN&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(-<span class="number">0</span>));          <span class="comment">//&quot;0&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(+<span class="number">0</span>));          <span class="comment">//&quot;0&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(-<span class="title class_">Infinity</span>));   <span class="comment">//&quot;-Infinity&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(<span class="title class_">Infinity</span>));    <span class="comment">//&quot;Infinity&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(<span class="number">0xf</span>));         <span class="comment">//&quot;15&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(<span class="number">070</span>));         <span class="comment">//&quot;56&quot;  转成8进制</span></span><br></pre></td></tr></table></figure>
+<h5 id="2、-toString-方法：强制转换">2、.toString()方法：强制转换<a class="anchor" href="#2、-toString-方法：强制转换">·</a></h5>
+<ol>
+<li>Boolean、Number、String是基本包装类型，有toString方法，转换规则和String是一样的</li>
+<li>**null和undefined没有toString方法，**所以没法转换，会报错</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>((-<span class="number">0</span>).<span class="title function_">toString</span>());         <span class="comment">//&quot;0&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>((<span class="title class_">NaN</span>).<span class="title function_">toString</span>());        <span class="comment">//&#x27;NaN&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>((<span class="number">0xf</span>).<span class="title function_">toString</span>());        <span class="comment">//&#x27;15&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>((<span class="number">070</span>).<span class="title function_">toString</span>());        <span class="comment">//&#x27;56&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>((-<span class="title class_">Infinity</span>).<span class="title function_">toString</span>());  <span class="comment">//&#x27;-Infinity&#x27;</span></span><br></pre></td></tr></table></figure>
+<h5 id="3、隐式转换：">3、隐式转换： +<a class="anchor" href="#3、隐式转换：">·</a></h5>
+<ul>
+<li><strong>为任意的数据类型 +“”</strong>  ， 原理：和String()函数一样</li>
+</ul>
+<h4 id="3-1-2、转number">3.1.2、转number<a class="anchor" href="#3-1-2、转number">·</a></h4>
+<p><code>Number()</code> / <code>parseFloat()</code> / <code>parseInt()</code></p>
+<h5 id="1、Number-：强制转换">1、Number()：强制转换<a class="anchor" href="#1、Number-：强制转换">·</a></h5>
+<p>如果传入参数，调用底层函数<strong>ToNumber()</strong>，如果未传入参数，返回0：</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数类型</strong></th>
+<th><strong>结果</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Undefined</td>
+<td><strong>NaN</strong></td>
+</tr>
+<tr>
+<td>Null</td>
+<td><strong>+0</strong></td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td><strong>true</strong>返回<strong>1</strong>，<strong>false</strong>返回**+0**</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>就是输入的参数了</td>
+</tr>
+<tr>
+<td>String</td>
+<td><strong>情况比较复杂</strong></td>
+</tr>
+</tbody>
+</table>
+<p>补充String类型：</p>
+<ol>
+<li>
+<p>如果字符串中只包含数字**(包括前面带正号或负号的情况)**，则将其转换为十进制数值：</p>
+<p>即&quot;1&quot; 会变成 1，&quot;123&quot;会变成 123，而&quot;011&quot;会变成 11**(注意:前导的零被忽略了)**;</p>
+</li>
+<li>
+<p>如果字符串中包含<strong>有效的浮点格式</strong>，如&quot;1.1&quot;，则将其转换为对应的浮点数值(同样，也会忽略前导零);</p>
+</li>
+<li>
+<p>如果字符串中包含有效的<strong>十六进制格式</strong>，例如&quot;0xf&quot;，则将其转换为相同大小的<strong>十进制整数值</strong>;</p>
+</li>
+<li>
+<p>如果字符串是<strong>空串或纯空格</strong>，则将其转换为0;</p>
+</li>
+<li>
+<p>如果字符串中包含除上述格式之外的字符，则将其转换为NaN。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot;123&quot;</span>)) <span class="comment">// 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot;-123&quot;</span>)) <span class="comment">// -123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot;1.2&quot;</span>)) <span class="comment">// 1.2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot;000123&quot;</span>)) <span class="comment">// 123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot;-000123&quot;</span>)) <span class="comment">// -123</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot;0x11&quot;</span>)) <span class="comment">// 17</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot;&quot;</span>)) <span class="comment">// 0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot; &quot;</span>)) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot;123 123&quot;</span>)) <span class="comment">// NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot;foo&quot;</span>)) <span class="comment">// NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="string">&quot;100a&quot;</span>)) <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<h5 id="2、parseFloat-：强制转换">2、parseFloat() ：强制转换<a class="anchor" href="#2、parseFloat-：强制转换">·</a></h5>
+<p>专门针对<strong>字符串转数字</strong>的情况，因为用Number()转字符串的时候，复杂又不合理</p>
+<ul>
+<li>
+<p>忽略<strong>前导空格</strong>，第一个不为空的字符如果不是<strong>数字/正负号</strong>，就返回NaN；</p>
+</li>
+<li>
+<p>解析后续字符直到遇到不是数字的字符，后面的字符全部忽略，返回之前的数字</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">&#x27;  +3&#x27;</span>)     <span class="comment">//+3</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&#x27;&#x27;</span>)         <span class="comment">//空字符串，NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&#x27; &#x27;</span>)        <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&#x27;*12&#x27;</span>)      <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&#x27;123blue&#x27;</span>)  <span class="comment">//123</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="number">2.25</span>)       <span class="comment">//2，&#x27;.&#x27;不是数字，小数点后面都被忽略了</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&#x27;0xf&#x27;</span>)      <span class="comment">//15，十六进制</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&#x27;070&#x27;</span>)      <span class="comment">//70，八进制，但是ES5认为这是70</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>如果对非String使用parseInt()或parseFloat()，它会<strong>先将其转换为String</strong>然后在操作 parseInt() ，可以将<strong>一个字符串中的有效的整数位</strong>提取出来，并转换为Number ， 例子：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;123.456px&quot;</span>;  </span><br><span class="line">a = <span class="built_in">parseInt</span>(a); <span class="comment">//123  </span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>第二个参数可以指定进制</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">&#x27;070&#x27;</span>,<span class="number">8</span>)  <span class="comment">//56</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3、parseFloat-强制转换">3、parseFloat()  强制转换<a class="anchor" href="#3、parseFloat-强制转换">·</a></h5>
+<p>专门针对<strong>字符串转数字</strong>的情况，因为用Number()转字符串的时候，复杂又不合理</p>
+<ul>
+<li>
+<p>忽略<strong>前导0和空格</strong>，第一个不为空的字符如果不是<strong>数字/正负号</strong>，就返回NaN；</p>
+</li>
+<li>
+<p>解析后续字符，<strong>第一次遇到小数点有效，第二次就无效了</strong>，其他非数字字符第一次就无效，返回前面的数字</p>
+</li>
+<li>
+<p><strong>只解析十进制</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;  +3&#x27;</span>));    <span class="comment">//3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;  -3&#x27;</span>));    <span class="comment">//3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;&#x27;</span>));        <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27; &#x27;</span>));       <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;*12&#x27;</span>));     <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;123blue&#x27;</span>)); <span class="comment">//123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="number">2.25</span>));      <span class="comment">//2.25</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;2.25.4&#x27;</span>));  <span class="comment">//2.25</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;0xf&#x27;</span>));     <span class="comment">//0，遇到十六进制都是0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="built_in">parseFloat</span>(<span class="string">&#x27;070&#x27;</span>));     <span class="comment">//70</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="4、隐式转换">4、隐式转换  +<a class="anchor" href="#4、隐式转换">·</a></h5>
+<p>使用一元的+来进行隐式的类型转换，<strong>原理：和Number()函数一样</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;123&quot;</span>;  </span><br><span class="line">a = +a;  </span><br></pre></td></tr></table></figure>
+<h4 id="3-1-3、转boolean">3.1.3、转boolean<a class="anchor" href="#3-1-3、转boolean">·</a></h4>
+<ul>
+<li>字符串 &gt; 布尔   除了空串其余全是true</li>
+<li>数值 &gt; 布尔      除了0和NaN其余的全是true</li>
+<li>null、undefined &gt; 布尔 都是false</li>
+<li>对象 &gt; 布尔  ，都是true</li>
+</ul>
+<h5 id="1、显式转换">1、显式转换<a class="anchor" href="#1、显式转换">·</a></h5>
+<ul>
+<li>Boolean()：<strong>有6种值会被转换为false，其余均为true</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//以下都是false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>());  </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="literal">false</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="literal">undefined</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="literal">null</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="title class_">NaN</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="string">&#x27;&#x27;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(-<span class="number">0</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(+<span class="number">0</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="string">&#x27; &#x27;</span>));  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h5 id="2、隐式转换：！！">2、隐式转换：！！<a class="anchor" href="#2、隐式转换：！！">·</a></h5>
+<p><strong>为任意的数据类型做两次非运算，即可将其转换为布尔值</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;hello&quot;</span>;  </span><br><span class="line">a = !!a; <span class="comment">//true </span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2、如何隐式转换的？">3.2、如何隐式转换的？<a class="anchor" href="#3-2、如何隐式转换的？">·</a></h3>
+<h4 id="1、ToPrimitive方法：">1、<code>ToPrimitive</code>方法：<a class="anchor" href="#1、ToPrimitive方法：">·</a></h4>
+<ul>
+<li>
+<p><code>ToPrimitive</code>方法，这是 JavaScript 中每个值隐含的自带的方法，用来将值 （无论是基本类型值还是对象）转换为基本类型值</p>
+<ul>
+<li>如果值为基本类型，则直接返回值本身；</li>
+<li>如果值为对象，则：ToPrimitive(obj,type)</li>
+</ul>
+</li>
+<li>
+<p><code>type</code>的值为<code>number</code>或者<code>string</code>。</p>
+<p><strong>（1）当</strong><code>type</code><strong>为</strong><code>number</code><strong>时规则如下：</strong></p>
+<ul>
+<li>调用<code>obj</code>的<code>valueOf</code>方法，如果为原始值，则返回，否则下一步；</li>
+<li>调用<code>obj</code>的<code>toString</code>方法，后续同上；</li>
+<li>抛出<code>TypeError</code> 异常。</li>
+</ul>
+<p><strong>（2）当</strong><code>type</code><strong>为</strong><code>string</code><strong>时规则如下：</strong></p>
+<ul>
+<li>调用<code>obj</code>的<code>toString</code>方法，如果为原始值，则返回，否则下一步；</li>
+<li>调用<code>obj</code>的<code>valueOf</code>方法，后续同上；</li>
+<li>抛出<code>TypeError</code> 异常。</li>
+</ul>
+</li>
+</ul>
+<p>两者的主要区别在于调用<code>toString</code>和<code>valueOf</code>的先后顺序。默认情况下：</p>
+<ul>
+<li>如果对象为 Date 对象，则<code>type</code>默认为<code>string</code>；</li>
+<li>其他情况下，<code>type</code>默认为<code>number</code>。</li>
+</ul>
+<p>对于 Date 以外的对象，转换为基本类型的大概规则可以概括为一个函数：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title function_">objToNumber</span> = value =&gt; <span class="title class_">Number</span>(value.<span class="title function_">valueOf</span>().<span class="title function_">toString</span>())</span><br><span class="line"><span class="title function_">objToNumber</span>([]) === <span class="number">0</span></span><br><span class="line"><span class="title function_">objToNumber</span>(&#123;&#125;) === <span class="title class_">NaN</span></span><br></pre></td></tr></table></figure>
+<h5 id="2、toString">2、toString()<a class="anchor" href="#2、toString">·</a></h5>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">var</span> b = &#123;<span class="attr">val</span>:<span class="number">4</span>&#125;</span><br><span class="line"><span class="keyword">var</span> c = <span class="keyword">function</span>(<span class="params">x</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> x++</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line"><span class="keyword">var</span> e = <span class="regexp">/\d+/g</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">toString</span>());  <span class="comment">//&#x27;1,2,3&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b.<span class="title function_">toString</span>());  <span class="comment">//&quot;[object object]&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c.<span class="title function_">toString</span>());  <span class="comment">//&#x27;function(x)&#123; return x++ &#125;&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(d.<span class="title function_">toString</span>());  <span class="comment">//Thu Apr 09 2020 17:55:26 GMT+0800 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="title function_">toString</span>());  <span class="comment">///\d+/g</span></span><br></pre></td></tr></table></figure>
+<h5 id="3、valueOf">3、valueOf()<a class="anchor" href="#3、valueOf">·</a></h5>
+<ol>
+<li>无论是哪种数据类型，返回参数本身，类型也不会变化，唯一特殊的是<strong>Date对象</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">valueOf</span>());  <span class="comment">//1586426466217，1970.1.1距今的毫秒数</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>包装类型Number、String、Boolean，也是Object类，用valueOf后类型转换为<strong>基本数据类型</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> <span class="title class_">Number</span>(<span class="number">12</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c <span class="keyword">instanceof</span> <span class="title class_">Number</span>);  <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c <span class="keyword">instanceof</span> <span class="title class_">Object</span>);  <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c.<span class="title function_">valueOf</span>());          <span class="comment">//12</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> c.<span class="title function_">valueOf</span>());   <span class="comment">//Number</span></span><br></pre></td></tr></table></figure>
+<h5 id="4、隐式转换发生的场景">4、隐式转换发生的场景<a class="anchor" href="#4、隐式转换发生的场景">·</a></h5>
+<p>隐式类型转换主要发生在<code>+、-、*、/</code>以及<code>==、&gt;、&lt;</code>这些运算符之间。而<strong>这些运算符只能操作基本类型值</strong>，所以在进行这些运算前的第一步就是将两边的值用<code>ToPrimitive</code>转换成<strong>基本类型</strong>，再进行操作</p>
+<h4 id="1、-a">1、+a<a class="anchor" href="#1、-a">·</a></h4>
+<p>调用<strong>ToNumber()</strong>，对+后面的数据进行转换</p>
+<ul>
+<li>
+<h5 id="基本数据类型：">基本数据类型：<a class="anchor" href="#基本数据类型：">·</a></h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;12.3&#x27;</span>);    <span class="comment">//12.3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;-12.3&#x27;</span>);   <span class="comment">//-12.3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="string">&#x27;&#x27;</span>);        <span class="comment">//0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="literal">true</span>);      <span class="comment">//1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="literal">null</span>);      <span class="comment">//+0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="literal">undefined</span>); <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<h5 id="对象：">对象：<a class="anchor" href="#对象：">·</a></h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+[]);        <span class="comment">//0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+[ ]);       <span class="comment">//0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+[<span class="number">1</span>]);       <span class="comment">//1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+[<span class="number">1</span>,<span class="number">2</span>]);     <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+&#123;&#125;);        <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+&#123;<span class="attr">val</span>: <span class="string">&#x27;happy&#x27;</span>&#125;); <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="keyword">new</span> <span class="title class_">Date</span>());     <span class="comment">//1586433193168，1970.1.1距今毫秒数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="2、二元运算符a-b-、-、">2、二元运算符a+b <code>-</code>、<code>*</code>、<code>\</code><a class="anchor" href="#2、二元运算符a-b-、-、">·</a></h4>
+<p>left = ToPrimitive(a)，right = ToPrimitive(b)，a和b是基本数据类型的话，left = a，right = b</p>
+<ol>
+<li>
+<p><strong>当一侧为<code>String</code>类型，被识别为字符串拼接，并会优先将另一侧转换为字符串类型</strong></p>
+</li>
+<li>
+<p>其他情况下两边的变量都会被转换为数字。</p>
+<p>当一侧为<code>Number</code>类型，另一侧为<strong>原始类型</strong>，则将原始类型转换为<code>Number</code>类型</p>
+<p>两个数字相加遵循以下规则：</p>
+<ol>
+<li>如果有一个操作数是 NaN，则结果是 NaN</li>
+<li>Infinity + Infinity = Infinity、(-Infinity) + (-Infinity )= -Infinity、Infinity + (-Infinity) = NaN</li>
+<li>(+0) + (+0) = +0、(-0) +(-0) = -0、(+0) + (-0) = +0</li>
+</ol>
+</li>
+<li>
+<p>当一侧为<code>Number</code>类型，另一侧为<strong>引用类型</strong>，将引用类型和<code>Number</code>类型转换成字符串后拼接</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span>+<span class="number">123</span>);  <span class="comment">//&#x27;1123&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span>+<span class="number">1</span>);   <span class="comment">//1，两个都不是字符串，所以null转换为0，和1相加</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([]+[]);    <span class="comment">//&#x27;&#x27;，经过ToPrimitive得到&#x27;&#x27;+&#x27;&#x27; = &#x27;&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([<span class="string">&#x27;1&#x27;</span>]+<span class="number">1</span>);  <span class="comment">//&#x27;11&#x27;，经过ToPrimitive得到&#x27;1&#x27;+1 = &#x27;11&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([]+&#123;&#125;);    <span class="comment">//&#x27;[object Object]&#x27;，经ToPrimitive得&#x27;&#x27;+&#x27;[object Object]&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>NaN</code>也是一个数字</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span> * <span class="string">&#x27;23&#x27;</span> <span class="comment">// 23</span></span><br><span class="line"> <span class="number">1</span> * <span class="literal">false</span> <span class="comment">// 0</span></span><br><span class="line"> <span class="number">1</span> / <span class="string">&#x27;aa&#x27;</span> <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<h4 id="3、-、-、">3、==  、 === 、!=<a class="anchor" href="#3、-、-、">·</a></h4>
+<ul>
+<li>
+<p>三等号（===）相等判断时，如果两边类型不一致时，不会做强制类型准换，直接返false</p>
+</li>
+<li>
+<p>对于 <code>==</code> 来说，**若类型不同，否则会发生隐式转换： **    重要准则</p>
+<ul>
+<li>a和b为 String、Number、Boolean 中的某一类型，则使用 <strong>ToNumber</strong> 函数转化为 Number 类型再进行比较；</li>
+<li>有一个是Object，另一个是 String、Number、Boolean 中的某一类型，则**ToPrimitive(Object)**转换为基础数据类型，再按照上一步比较</li>
+</ul>
+</li>
+<li>
+<p>会先判断是否在对比 <code>null</code> 和 <code>undefined</code>，是的话就会返回 <code>true</code></p>
+</li>
+<li>
+<p>判断两者类型是否为 <code>string</code> 和 <code>number</code>，是的话就会将字符串转换为 <code>number</code></p>
+</li>
+<li>
+<p>判断其中一方是否为 <code>boolean</code>，是的话就会把 <code>boolean</code> 转为 <code>number</code> 再进行判断</p>
+</li>
+<li>
+<p>判断其中一方是否为 <code>object</code> 且另一方为 <code>string</code>、<code>number</code> 或者 <code>symbol</code>，是的话就会把 <code>object</code> 转为原始类型再进行判断</p>
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c451c19e23dd4726b3f36223b6c18a1e~tplv-k3u1fbpfcp-watermark.awebp" alt="img" style="zoom:50%;" />
+</li>
+</ul>
+<h5 id="1、准则1：NaN，和其他任何类型比较永远返回false-包括和他自己">1、准则1：NaN，和其他任何类型比较永远返回<code>false</code>(包括和他自己)<a class="anchor" href="#1、准则1：NaN，和其他任何类型比较永远返回false-包括和他自己">·</a></h5>
+<h5 id="2、准则2：Boolean-Boolean-Number">2、准则2：Boolean             Boolean &lt; Number<a class="anchor" href="#2、准则2：Boolean-Boolean-Number">·</a></h5>
+<p><code>Boolean</code>和其他任何类型比较，<code>Boolean</code>首先被转换为<code>Number</code>类型</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//规则3</span></span><br><span class="line"><span class="literal">true</span> == <span class="number">1</span>  <span class="comment">// true </span></span><br><span class="line"><span class="literal">true</span> == <span class="string">&#x27;2&#x27;</span>  <span class="comment">// false</span></span><br><span class="line"><span class="literal">true</span> == [<span class="string">&#x27;1&#x27;</span>]  <span class="comment">// true</span></span><br><span class="line"><span class="literal">true</span> == [<span class="string">&#x27;2&#x27;</span>]  <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(&#123;&#125; == &#123;&#125;);    </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([] == <span class="literal">false</span>);   <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([<span class="number">0</span>] == <span class="number">0</span>);      <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([<span class="string">&#x27;0&#x27;</span>] == <span class="number">0</span>);    <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>【注意】：</p>
+<p><code>undefined、null</code>和<code>Boolean</code>比较，虽然<code>undefined、null</code>和<code>false</code>都很容易被想象成假值，但他们比较结果是<code>false</code>，原因是**<code>false</code>首先被转换成<code>0</code>：**</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="literal">undefined</span> == <span class="literal">false</span>  <span class="comment">// false   bollean先被转换为number</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">false</span>       <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h5 id="3、准则3：String">3、准则3：String  :<a class="anchor" href="#3、准则3：String">·</a></h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//规则3.1</span></span><br><span class="line"><span class="number">123</span> == <span class="string">&#x27;123&#x27;</span> <span class="comment">// true</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span> == <span class="number">0</span> <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span> == <span class="literal">true</span>);    <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="literal">true</span>);  <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> == <span class="literal">false</span>);   <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>);     <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h5 id="4、准则4：null和undefined">4、准则4：null和undefined<a class="anchor" href="#4、准则4：null和undefined">·</a></h5>
+<p><code>null == undefined</code>比较结果是<code>true</code>，除此之外，<code>null、undefined</code>和其他任何结果的比较值都为<code>false</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">a∈&#123;<span class="literal">null</span>,<span class="literal">undefined</span>&#125;且b∈&#123;<span class="literal">null</span>,<span class="literal">undefined</span>&#125;，返回<span class="literal">true</span>，有一个不属于&#123;<span class="literal">null</span>,<span class="literal">undefined</span>&#125;，返回<span class="literal">false</span></span><br><span class="line"><span class="comment">//规则2</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span> <span class="comment">// true</span></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">false</span> <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="literal">null</span>);           <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> == <span class="literal">undefined</span>); <span class="comment">//true    </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == &#123;&#125;);             <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<h5 id="5、准则5：引用类型">5、准则5：引用类型<a class="anchor" href="#5、准则5：引用类型">·</a></h5>
+<ol>
+<li>a和b为 String、Number、Boolean 中的某一类型，则使用 <strong>ToNumber</strong> 函数转化为 Number 类型再进行比较</li>
+<li>有一个是Object，另一个是 String、Number、Boolean 中的某一类型，则ToPrimitive(Object)转换为基础数据类型，再按照上一步比较</li>
+</ol>
+<ul>
+<li>依照<code>ToPrimitive</code>规则转换为原始类型：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;[object Object]&#x27;</span> == &#123;&#125; <span class="comment">// true</span></span><br><span class="line"><span class="string">&#x27;1,2,3&#x27;</span> == [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断：<code>[] == ![] // true</code>
+<ol>
+<li><code>!</code>的优先级高于<code>==</code>，<code>![]</code>首先会被转换为<code>false</code></li>
+<li><code>false</code>转换成<code>Number</code>类型<code>0</code>，左侧<code>[]</code>转换为<code>0</code>，两侧比较相等</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[<span class="literal">null</span>] == <span class="literal">false</span> <span class="comment">// true</span></span><br><span class="line">[<span class="literal">undefined</span>] == <span class="literal">false</span> <span class="comment">// true</span></span><br><span class="line"><span class="comment">//规则4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([<span class="number">0</span>] == [<span class="string">&#x27;0&#x27;</span>]);  <span class="comment">//false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="number">0</span> == <span class="number">0</span>);       <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(-<span class="number">0</span> == <span class="number">0</span>);       <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="number">0</span> == -<span class="number">0</span>);      <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>根据数组的<code>ToPrimitive</code>规则：</p>
+<ul>
+<li>数组元素为<code>null</code>或<code>undefined</code>时，该元素被当做空字符串处理，所以<code>[null]、[undefined]</code>都会被转换为<code>0</code></li>
+</ul>
+<h4 id="3-2、逻辑运算符">3.2、逻辑运算符<a class="anchor" href="#3-2、逻辑运算符">·</a></h4>
+<ul>
+<li>
+<p>注意[]是为真的，所以在数组if判断时要用length</p>
+</li>
+<li>
+<p>在<code>if</code>语句和逻辑语句中，如果只有单个变量，会先将变量转换为<code>Boolean</code>值，只有下面6种情况会转换成<code>false</code>，其余被转换成<code>true</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="literal">null</span>  <span class="literal">undefined</span>  <span class="string">&#x27;&#x27;</span>   <span class="title class_">NaN</span>  <span class="number">0</span>  <span class="literal">false</span>   </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="4-1、对象转Number">4.1、对象转Number<a class="anchor" href="#4-1、对象转Number">·</a></h4>
+<p>对象转数字的过程：</p>
+<ol>
+<li>有**valueOf()**方法，就用，结果为基本数据类型就返回，否则下一步</li>
+<li>有**toString()**方法，就用，结果为基本数据类型就返回，否则报错</li>
+<li>得到基本数据类型后，调用<strong>ToNumber(primValue)</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]));  <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>([]));       <span class="comment">//0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>([<span class="number">0</span>]));      <span class="comment">//0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(&#123;<span class="attr">val</span>:<span class="number">4</span>&#125;));  <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(&#123;&#125;));       <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="keyword">function</span>(<span class="params">x</span>)&#123; <span class="keyword">return</span> x++ &#125;)); <span class="comment">//NaN</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="keyword">new</span> <span class="title class_">Date</span>()));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="regexp">/\d+/g</span>));   <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure>
+<p>试着分析[]和[1,2,3]的情况</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">[].<span class="title function_">valueOf</span>() == [],不是基本数据类型</span><br><span class="line">[].<span class="title function_">toString</span>() == <span class="string">&#x27;&#x27;</span>,是基本数据类型</span><br><span class="line"><span class="title class_">ToNumber</span>(<span class="string">&#x27;&#x27;</span>) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[1,2,3].valueOf() == [1,2,3],不是基本数据类型</span><br><span class="line">[1,2,3].toString() == &#x27;1,2,3&#x27;,是基本数据类型</span><br><span class="line">ToNumber(&#x27;1,2,3&#x27;) == NaN</span><br></pre></td></tr></table></figure>
+<h4 id="4-2、对象转字符串">4.2、对象转字符串<a class="anchor" href="#4-2、对象转字符串">·</a></h4>
+<p>参考转数字的过程，有</p>
+<ul>
+<li>有**toString()**方法，就用，结果为基本数据类型就返回，否则下一步</li>
+<li>有**valueOf()**方法，就用，结果为基本数据类型就返回，否则报错</li>
+<li>得到基本数据类型primValue后，调用<strong>ToString(primValue)</strong>，下面就很熟悉了</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]));    <span class="comment">//&#x27;1,2,3&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>([]));         <span class="comment">//一个空格</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>([<span class="number">0</span>]));        <span class="comment">//&#x27;0&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(&#123;<span class="attr">val</span>:<span class="number">4</span>&#125;));    <span class="comment">//&#x27;[object Object]&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(&#123;&#125;));         <span class="comment">//&#x27;[object Object]&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(<span class="keyword">function</span>(<span class="params">x</span>)&#123; <span class="keyword">return</span> x++ &#125;));  <span class="comment">//&#x27;function(x)&#123; return x++ &#125;&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(<span class="keyword">new</span> <span class="title class_">Date</span>()))<span class="comment">//&#x27;Thu Apr 09 2020 19:23:31 GMT+0800 (标准时间)&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(<span class="regexp">/\d+/g</span>));     <span class="comment">//&#x27;/\d+/g&#x27;</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-3、对象转布尔值">4.3、对象转布尔值<a class="anchor" href="#4-3、对象转布尔值">·</a></h4>
+<ul>
+<li><strong>都转为true！包装类型也是！</strong></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>JS的数据类型转换</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://mynightwish.online/posts/219349139.html">https://mynightwish.online/posts/219349139.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-12-10</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-01-17</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://images.unsplash.com/photo-1639111503666-56295742ed85?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=871&amp;q=80" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 33234});
+(function() {
+  if ('WIDGETPACK_LOADED' in window) return;
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement('script');
+  mc.type = 'text/javascript';
+  mc.async = true;
+  //- mc.src = '//embed.widgetpack.com/widget.js';
+  var s = document.getElementsByTagName('script')[0];
+  s?.parentNode?.insertBefore(mc, s?.nextSibling);
+})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/1405183845.html"><img class="prev-cover" src="https://images.unsplash.com/photo-1639084695940-40546c3262c2?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JS的Symbol特性</div></div></a></div><div class="next-post pull-right"><a href="/posts/611441247.html"><img class="next-cover" src="https://images.unsplash.com/photo-1639128107506-21cb4c6a2f90?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=870&amp;q=80" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JS的数据类型判断</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A21-%E5%9F%BA%E6%9C%AC"><span class="toc-text">3.1、类型转换1(基本)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1%E3%80%81%E8%BD%ACstring"><span class="toc-text">3.1.1、转string</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81String-%E5%87%BD%E6%95%B0%EF%BC%9A%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-text">1、String()函数：强制转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81-toString-%E6%96%B9%E6%B3%95%EF%BC%9A%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-text">2、.toString()方法：强制转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%EF%BC%9A"><span class="toc-text">3、隐式转换： +</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2%E3%80%81%E8%BD%ACnumber"><span class="toc-text">3.1.2、转number</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81Number-%EF%BC%9A%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-text">1、Number()：强制转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81parseFloat-%EF%BC%9A%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-text">2、parseFloat() ：强制转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81parseFloat-%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-text">3、parseFloat()  强制转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-text">4、隐式转换  +</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-3%E3%80%81%E8%BD%ACboolean"><span class="toc-text">3.1.3、转boolean</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-text">1、显式转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%EF%BC%9A%EF%BC%81%EF%BC%81"><span class="toc-text">2、隐式转换：！！</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E3%80%81%E5%A6%82%E4%BD%95%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E7%9A%84%EF%BC%9F"><span class="toc-text">3.2、如何隐式转换的？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81ToPrimitive%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="toc-text">1、ToPrimitive方法：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81toString"><span class="toc-text">2、toString()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81valueOf"><span class="toc-text">3、valueOf()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="toc-text">4、隐式转换发生的场景</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81-a"><span class="toc-text">1、+a</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-text">基本数据类型：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%EF%BC%9A"><span class="toc-text">对象：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E4%BA%8C%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6a-b-%E3%80%81-%E3%80%81"><span class="toc-text">2、二元运算符a+b -、*、\</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81-%E3%80%81-%E3%80%81"><span class="toc-text">3、&#x3D;&#x3D;  、 &#x3D;&#x3D;&#x3D; 、!&#x3D;</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E5%87%86%E5%88%991%EF%BC%9ANaN%EF%BC%8C%E5%92%8C%E5%85%B6%E4%BB%96%E4%BB%BB%E4%BD%95%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83%E6%B0%B8%E8%BF%9C%E8%BF%94%E5%9B%9Efalse-%E5%8C%85%E6%8B%AC%E5%92%8C%E4%BB%96%E8%87%AA%E5%B7%B1"><span class="toc-text">1、准则1：NaN，和其他任何类型比较永远返回false(包括和他自己)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E5%87%86%E5%88%992%EF%BC%9ABoolean-Boolean-Number"><span class="toc-text">2、准则2：Boolean             Boolean &lt; Number</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E5%87%86%E5%88%993%EF%BC%9AString"><span class="toc-text">3、准则3：String  :</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81%E5%87%86%E5%88%994%EF%BC%9Anull%E5%92%8Cundefined"><span class="toc-text">4、准则4：null和undefined</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5%E3%80%81%E5%87%86%E5%88%995%EF%BC%9A%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="toc-text">5、准则5：引用类型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">3.2、逻辑运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1%E3%80%81%E5%AF%B9%E8%B1%A1%E8%BD%ACNumber"><span class="toc-text">4.1、对象转Number</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2%E3%80%81%E5%AF%B9%E8%B1%A1%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">4.2、对象转字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3%E3%80%81%E5%AF%B9%E8%B1%A1%E8%BD%AC%E5%B8%83%E5%B0%94%E5%80%BC"><span class="toc-text">4.3、对象转布尔值</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-hexo-vert.vercel.app/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-hexo-vert.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div defer class="aplayer no-destroy" data-id="31872922" data-server="netease" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script async data-pjax src="https://cdn.jsdelivr.net/npm/hexo-beautiful-page@latest/lib/asyncmodel.min.js"></script><div id="live3d" class="live3d" style="position: fixed; left: -110px; bottom: 30px;z-index: 98;"><canvas id="live2dm" class="live3d"style="max-width:500px;max-height:437.5px;"></canvas></div><script defer data-pjax src="/js/bottomTime.js"></script><script defer data-pjax src="/js/nav.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/emoji.js"></script><script defer data-pjax src="/js/sun_moon.js" async></script><script defer src="https://cdn1.tianli0.top/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script><script async src="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer data-pjax src="/js/meihua.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '#web_bg',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:24%;}.categoryBar-list{max-height: 570px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 480px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-1-CSS/&quot;);" href="javascript:void(0);">1.1-CSS</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr">CSS的酷炫多彩</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-2-JS/&quot;);" href="javascript:void(0);">1.2-JS</a><span class="categoryBar-list-count">29</span><span class="categoryBar-list-descr">数据、函数、异步</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-3-Ajax/&quot;);" href="javascript:void(0);">1.3-Ajax</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">Ajax的诞生</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-4-框架/&quot;);" href="javascript:void(0);">1.4-框架</a><span class="categoryBar-list-count">15</span><span class="categoryBar-list-descr">Vue&amp;React的世界</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-1-组件库/&quot;);" href="javascript:void(0);">2.1-组件库</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">组件库开发</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-2-基建/&quot;);" href="javascript:void(0);">2.2-基建</a><span class="categoryBar-list-count">5</span><span class="categoryBar-list-descr">前端工程化</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-3-实现Tricks/&quot;);" href="javascript:void(0);">2.3-实现Tricks</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">功能实现积累</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-4-项目/&quot;);" href="javascript:void(0);">2.4-项目</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr">项目总结</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-1-记录/&quot;);" href="javascript:void(0);">3.1-记录</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">bidaoTalk</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-2-浏览器/&quot;);" href="javascript:void(0);">3.2-浏览器</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr">浏览器渲染</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-3-基础/&quot;);" href="javascript:void(0);">3.3-基础</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr">计算机基础</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-4-Tool/&quot;);" href="javascript:void(0);">3.4-Tool</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">小工具</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-virtualDom.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-13</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">React的虚拟DOM</a><div class="blog-slider__text">兄弟篇React的虚拟DOM，包括了栈调和</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/hook1.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt="">React-Hook的出现</a><div class="blog-slider__text">为何Hooks是React的未来</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/浏览器异步.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfnIl0f3oUJLgGFb7Qgi97y1hY9uIQsHizXQ&amp;usqp=CAU" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">JS的异步解决方案</a><div class="blog-slider__text">前端异步之路</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><!-- hexo injector body_end end --><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

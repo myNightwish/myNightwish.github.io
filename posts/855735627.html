@@ -1,0 +1,1141 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>移动端适配方案总结 | Nightwishのblog🧊</title><meta name="keywords" content="移动端适配"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="移动端适配·  前言：最近公司官网项目需要做移动端适配，所以借此机会对移动端的适配方案进行调研。本期分享内容主要包括一下几点：  我们为什么要做适配？  这里涉及适配的前置概念：例如像素、dpr等   如何适配？  都有哪些适配方案？ 它们是如何工作的？   对不同的项目需求，我们做技术评审时如何选择合适的方案？   1、前置知识· 1.1 尺寸、像素·  英寸：·  描述屏幕尺寸的物理单位，且是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端适配方案总结">
+<meta property="og:url" content="https://mynightwish.online/posts/855735627.html">
+<meta property="og:site_name" content="Nightwishのblog🧊">
+<meta property="og:description" content="移动端适配·  前言：最近公司官网项目需要做移动端适配，所以借此机会对移动端的适配方案进行调研。本期分享内容主要包括一下几点：  我们为什么要做适配？  这里涉及适配的前置概念：例如像素、dpr等   如何适配？  都有哪些适配方案？ 它们是如何工作的？   对不同的项目需求，我们做技术评审时如何选择合适的方案？   1、前置知识· 1.1 尺寸、像素·  英寸：·  描述屏幕尺寸的物理单位，且是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/移动端适配.webp">
+<meta property="article:published_time" content="2022-06-12T15:11:05.000Z">
+<meta property="article:modified_time" content="2023-01-17T11:47:30.969Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="移动端适配">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/移动端适配.webp"><link rel="shortcut icon" href="/img/favicon.webp"><link rel="canonical" href="https://mynightwish.online/posts/855735627"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '移动端适配方案总结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-17 19:47:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/double.css"><link rel="stylesheet" href="/css/beautify.css" media="async"><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/lastLoad.css" media="defer" onload="this.media='all'"><style id="themeColor"></style><style id="rightSide"></style><style id="transPercent"></style><style id="blurNum"></style><style id="settingStyle"></style><span id="fps"></span><style id="defineBg"></style><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.css" media="defer" onload="this.media='all'"><script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"><style>#web_bg{
+  background: var(--default-bg);
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+[data-theme="dark"]
+  #web_bg{
+    background: var(--darkmode-bg) !important;
+    background-attachment: local!important;
+    background-position: center!important;
+    background-size: cover!important;
+    background-repeat: no-repeat!important;
+  }
+</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/移动端适配.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">移动端适配方案总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-12T15:11:05.000Z" title="发表于 2022-06-12 23:11:05">2022-06-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-17T11:47:30.969Z" title="更新于 2023-01-17 19:47:30">2023-01-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/1-1-CSS/">1.1-CSS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9524</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>32分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="移动端适配方案总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="移动端适配">移动端适配<a class="anchor" href="#移动端适配">·</a></h2>
+<blockquote>
+<p>前言：最近公司官网项目需要做移动端适配，所以借此机会对移动端的适配方案进行调研。本期分享内容主要包括一下几点：</p>
+<ol>
+<li>我们为什么要做适配？
+<ul>
+<li>这里涉及适配的前置概念：例如像素、dpr等</li>
+</ul>
+</li>
+<li>如何适配？
+<ul>
+<li>都有哪些适配方案？</li>
+<li>它们是如何工作的？</li>
+</ul>
+</li>
+<li>对不同的项目需求，我们做技术评审时如何选择合适的方案？</li>
+</ol>
+</blockquote>
+<h3 id="1、前置知识">1、前置知识<a class="anchor" href="#1、前置知识">·</a></h3>
+<h4 id="1-1-尺寸、像素">1.1 尺寸、像素<a class="anchor" href="#1-1-尺寸、像素">·</a></h4>
+<blockquote>
+<h5 id="英寸：">英寸：<a class="anchor" href="#英寸：">·</a></h5>
+<ul>
+<li>描述屏幕尺寸的物理单位，且是屏幕对角线的长度</li>
+<li>英寸和厘米的换算单位是：<code>1英寸 = 2.54厘米</code></li>
+</ul>
+<h5 id="像素：">像素：<a class="anchor" href="#像素：">·</a></h5>
+<ul>
+<li>具有特定的位置和颜色的小方块，而图片、电子屏幕是由无数个像素拼接而成的</li>
+<li>可以说，作为图片或电子屏幕的最小组成单位</li>
+</ul>
+</blockquote>
+<h4 id="1-2-分辨率">1.2 分辨率<a class="anchor" href="#1-2-分辨率">·</a></h4>
+<h5 id="1-2-1-屏幕分辨率：">1.2.1 屏幕分辨率：<a class="anchor" href="#1-2-1-屏幕分辨率：">·</a></h5>
+<ul>
+<li>指一个屏幕具体由多少个像素点组成，比如：<code>iPhone XS Max</code> 和 <code>iPhone SE</code>的分辨率分别为<code>2688 x 1242</code>和<code>1136 x 640</code>。这表示手机分别在垂直和水平上所具有的像素点数。</li>
+<li>分辨率高不代表屏幕就清晰，屏幕的清晰程度还与尺寸有关。这是很好理解的嘛~必须以用一尺寸在有比较的意义</li>
+</ul>
+<h5 id="1-2-2-图像分辨率：">1.2.2 图像分辨率：<a class="anchor" href="#1-2-2-图像分辨率：">·</a></h5>
+<ul>
+<li>是指图片含有的<code>像素数</code>，比如一张图片的分辨率为<code>800 x 400</code>。这表示图片分别在垂直和水平上所具有的像素点数为<code>800</code>和<code>400</code></li>
+<li>同一尺寸的图片，分辨率越高，图片越清晰</li>
+</ul>
+<h5 id="1-2-3-PPI">1.2.3 PPI<a class="anchor" href="#1-2-3-PPI">·</a></h5>
+<ul>
+<li>
+<p><code>PPI(Pixel Per Inch)</code>：每英寸包括的像素数，描述<strong>屏幕的清晰度</strong>以及一张图片的质量</p>
+</li>
+<li>
+<p><code>PPI</code>越高，屏幕、图片越清晰：</p>
+<p><code>iPhone XS Max</code> 和 <code>iPhone SE</code>的<code>PPI</code>分别为<code>458</code>和<code>326</code>，前者屏幕更清晰</p>
+</li>
+</ul>
+<h5 id="1-2-4-DPI">1.2.4 DPI<a class="anchor" href="#1-2-4-DPI">·</a></h5>
+<ul>
+<li><code>DPI(Dot Per Inch)</code>：即每英寸包括的点数。</li>
+<li>这里的点是一个抽象的单位，它可以是屏幕像素点、图片像素点、打印机的墨点</li>
+<li>常用于描述打印机：
+<ul>
+<li>当打印时，打印机可能不会规则的将这些点打印出来，而是使用一个个打印点来呈现这张图像，这些打印点之间会有一定的空隙，这就是<code>DPI</code>所描述的：打印点的密度</li>
+<li>打印机的<code>DPI</code>越高，打印图像的精细程度就越高，会消耗更多的墨点和时间</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-像素">1.3 像素<a class="anchor" href="#1-3-像素">·</a></h4>
+<h5 id="1-3-1-物理像素">1.3.1 物理像素<a class="anchor" href="#1-3-1-物理像素">·</a></h5>
+<ul>
+<li>其实就是设备上真实的物理单元，上面我们描述的像素都是<code>物理像素</code>
+<ul>
+<li>显示屏是由一个个物理像素点组成的，通过控制每个像素点的颜色使屏幕显示出不同的图像</li>
+</ul>
+</li>
+<li>从屏幕出厂的那天起，它的物理像素点就确定了，</li>
+</ul>
+<h5 id="1-3-2-设备独立像素">1.3.2 设备独立像素<a class="anchor" href="#1-3-2-设备独立像素">·</a></h5>
+<blockquote>
+<p>智能机初期，分辨率低：</p>
+<ul>
+<li>比如<code>iPhone3</code>，分辨率是<code>320x480</code>，看到的内容都是“真实”的，<code>1px = 1px</code>，<code>iPhone3</code>屏幕上最多只能展示一个<code>320px</code>宽的元素</li>
+<li>但仔细观察，会在<code>iPhone3</code>的屏幕上发现有很多细小的发光点，也即是“颗粒感”。这一颗一颗的发光点就是真实的像素物理单元，也就是物理像素</li>
+</ul>
+<p>后期高分辨率手机出现：</p>
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/5/17/16ac3a6576e564d5~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp" alt="iPhone3和iPhone4对比" style="zoom: 25%;" />
+<ul>
+<li><code>iPhone4</code>分辨率是<code>640*960</code>，正好是<code>iPhone3</code>的两倍。然而尺寸是一样的</li>
+<li><code>iPhone4</code>是怎么做到把两倍的分辨率使用在同一物理尺寸的屏幕上的呢？
+<ul>
+<li>按理说，因为它的分辨率提高了一倍：白色手机上相同大小的图片和文字，在黑色手机上会被缩放一倍。但事实并不是</li>
+<li>不管分辨率多高，他们所展示的界面比例都是基本类似的</li>
+</ul>
+</li>
+</ul>
+<p>原因：</p>
+<ul>
+<li>在<code>iPhone4</code>使用的视网膜屏幕中，把<code>2x2</code>个像素当1个像素使用，这样让屏幕看起来更精致，但是元素的大小却不会改变。</li>
+<li>比如列表的宽度为300个像素：</li>
+<li>在一条水平线上，白色手机会用300个物理像素去渲染它，而黑色手机实际上会用600个物理像素去渲染它</li>
+</ul>
+<p>因此：设备独立像素的概念出来了</p>
+<ul>
+<li>我们需要用一种单位来同时告诉不同分辨率的手机，它们在界面上显示元素的大小是多少。设备独立像素(Device Independent Pixels)简称<code>DIP</code>或<code>DP</code>就是做这件事的</li>
+<li>列表的宽度为300个像素，实际上可以说：列表的宽度为300个设备独立像素</li>
+</ul>
+<p><code>chrome</code>的devtools：</p>
+<ul>
+<li>模拟各个手机型号的显示情况，每种型号上面会显示一个尺寸；</li>
+<li>比如<code>iPhone X</code>显示的尺寸是<code>375x812</code>，实际<code>iPhone X</code>的分辨率会比这高很多，这里显示的就是设备独立像素。</li>
+</ul>
+</blockquote>
+<h5 id="1-3-3-设备像素比（dpr）">1.3.3 设备像素比（dpr）<a class="anchor" href="#1-3-3-设备像素比（dpr）">·</a></h5>
+<ul>
+<li>
+<p>即物理像素和设备独立像素的比值，获取方法：</p>
+<ol>
+<li>
+<p><code>window.devicePixelRatio</code>的api</p>
+</li>
+<li>
+<p>通过媒体查询<code>min-device-pixel-ratio</code>，区分<code>dpr</code>：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">-webkit-min-device-pixel-ratio</span>: <span class="number">2</span>),(<span class="attribute">min-device-pixel-ratio</span>: <span class="number">2</span>)&#123; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li>
+<p>从苹果提出视网膜屏幕开始，才出现设备像素比这个概念。由于<code>Android</code>屏幕尺寸、分辨率高低跨度非常大，所以，为保证各种设备的显示效果，<code>Android</code>按照设备的像素密度将设备分成了几个区间：</p>
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/5/17/16ac3a6649f8d53a~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp" alt="img" style="zoom: 25%;" />
+<ul>
+<li>所有的<code>Android</code>设备不一定严格按照上面的分辨率，每个类型可能对应几种不同分辨率，所以各种<code>Android</code>设备仍然不能做到在展示上完全相等</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-3-4-像素-px">1.3.4 像素 px<a class="anchor" href="#1-3-4-像素-px">·</a></h5>
+<blockquote>
+<p>在CSS规范中，长度单位可以分为两类，绝对单位、相对单位。</p>
+<ul>
+<li>px是一个相对单位，相对的是设备像素(<code>device pixel</code>)，满足：
+<ol>
+<li>同一设备，每1个CSS像素代表的物理像素是可以变化的(即CSS像素的第一方面的相对性)</li>
+<li>不同设备间，每1个CSS像素所代表的物理像素是可以变化的(即CSS像素的第二方面的相对性)</li>
+</ol>
+</li>
+<li>css像素是一种虚拟像素，可以理解为“直觉”像素，单位是<code>px</code></li>
+<li>浏览器内的一切长度都是以CSS像素为单位的，所以CSS和JS使用的抽象单位</li>
+</ul>
+</blockquote>
+<p>在移动端浏览器中以及某些桌面浏览器中，<code>window</code>对象有一个<code>devicePixelRatio</code>(设备像素比)属性，而它的官方的定义为：设备物理像素和设备独立像素的比例： <code>dpr = dp / dips</code></p>
+<ul>
+<li>设备独立像素，<code>dips = css像素 / scale（缩放比例）</code>，在没有缩放的情况下，1个css像素等同于一个设备独立像素</li>
+<li>CSS像素在视觉上可以改变大小：比如缩放浏览器页面，就是改变的CSS像素：
+<ul>
+<li>当放大一倍，那么一个CSS像素在横向、纵向上会覆盖两个设备独立像素</li>
+<li>例如宽度<code>100px</code>，当页面放大一倍，它会在横向上由原本占据100个设备独立像素，变成占据200个设备独立像素；如果缩小，则恰好相反，只能占据50个设备独立像素</li>
+</ul>
+</li>
+<li>无论CSS像素是缩小还是放大，它是像素数目是不变的，比如<code>100px</code>，无论缩放，它依然是<code>100px</code>，只不过它占据的设备独立像素发生了变化（体积发生了变化，视觉大小上发生了变化而已）</li>
+</ul>
+<h4 id="1-4-视口viewport：">1.4 视口viewport：<a class="anchor" href="#1-4-视口viewport：">·</a></h4>
+<blockquote>
+<p>表示的是用户网页的可视范围（指页面能够被浏览的范围）</p>
+</blockquote>
+<h5 id="1-4-1-布局视口">1.4.1 布局视口<a class="anchor" href="#1-4-1-布局视口">·</a></h5>
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ce11243ea8b54da68c1b899a235c83d2~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp" alt="img" style="zoom: 25%;" />
+<blockquote>
+<p>为什么会有布局视口？</p>
+<ul>
+<li>移动设备上的浏览器认为自己必须能让所有的网站都正常显示，即使是那些不是为移动设备设计的网站。但如果以浏览器的可视区域作为<code>viewport</code>的话，那些为桌面浏览器设计的网站放到移动设备上显示时，必然会因为移动设备的<code>viewport</code>太窄，而挤作一团，甚至布局什么的都会乱掉</li>
+<li>如果把移动设备上浏览器的可视区域设为<code>viewport</code>的话，某些网站就会因为<code>viewport</code>太窄而显示错乱</li>
+<li>所以这些浏览器就决定**默认情况下把<code>viewport</code>设为一个较宽的值，比如<code>980px</code>，**这样的话即使是那些为桌面设计的网站也能在移动浏览器上正常显示了</li>
+<li>ppk把这个<strong>浏览器默认的viewport</strong>叫做<code>layout viewport</code>(布局视口)</li>
+<li>获取：<code>document.documentElement.clientWidth / clientHeight</code></li>
+</ul>
+<p>布局视口是网页布局的基准窗口：</p>
+<ul>
+<li>
+<p>在<code>PC</code>上，布局视口就等于当前浏览器的窗口大小（不包括<code>borders</code> 、<code>margins</code>、滚动条）</p>
+</li>
+<li>
+<p>在移动端，布局视口被赋予一个默认值，大部分为<code>980px</code>，这保证<code>PC</code>的网页可以在手机浏览器上呈现，但是非常小，用户可以手动对网页进行放大</p>
+</li>
+</ul>
+</blockquote>
+<h5 id="1-4-2-视觉视口：">1.4.2 视觉视口：<a class="anchor" href="#1-4-2-视觉视口：">·</a></h5>
+<blockquote>
+<p>将<code>layout viewport</code>想象为一个不会改变大小或形状的大图像。现在想象你有一个较小的框架，通过它你可以看到这个大图片。小框架由不透明的材料构成，通过它你只能看到大图像的一部分，这一部分就叫做 <code>visual viewport</code> .你可以拿着这个框架和图像拉开一定的距离(zoom out)看到整个图像，你也可以让自己离图像更近(zoom in)看到其中的一部分。你也可以旋转这个框架的方向，但是这个图片(<code>layout viewport</code>)的大小和形状永远不会改变。</p>
+</blockquote>
+<img src="https:////upload-images.jianshu.io/upload_images/18030682-d92903bf680a85cd.png?imageMogr2/auto-orient/strip|imageView2/2/w/500/format/webp" alt="img" style="zoom:50%;" />
+<blockquote>
+<p>布局视口宽度是大于浏览器可视区域的宽度的，所以还需要一个<code>viewport</code>来代表 <strong>浏览器可视区域的大小</strong>：<strong>视觉视口</strong></p>
+<ul>
+<li>用户可以缩放来查看网站的内容。
+<ul>
+<li>缩小网站，看到的网站区域将变大，此时视觉视口也变大了，反之亦然</li>
+<li>不管用户如何缩放，都不会影响到布局视口的宽度</li>
+</ul>
+</li>
+<li>调用<code>window.innerWidth / innerHeight</code>来获取</li>
+</ul>
+</blockquote>
+<h5 id="1-4-3-理想视口">1.4.3 理想视口<a class="anchor" href="#1-4-3-理想视口">·</a></h5>
+<blockquote>
+<p>为什么会有它？</p>
+<ul>
+<li>
+<p>越来越多的网站都会为移动设备单独设计，所以必须还要有一个能完美适配移动设备的<code>viewport</code></p>
+</li>
+<li>
+<p>理想视口并没有固定的尺寸，不同的设备理想视口不同：</p>
+<p>只要在css中把某一元素的宽度设为<code>ideal viewport</code>的宽度(单位用<code>px</code>)，那么这个元素的宽度就是设备屏幕的宽度了，也就是宽度为<code>100%</code>的效果</p>
+</li>
+<li>
+<p><code>deal viewport</code> 的意义在于，无论在何种分辨率的屏幕下，那些针对<code>ideal viewport</code> 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户</p>
+</li>
+<li>
+<p><code>window.screen.width / height</code>来获取</p>
+</li>
+</ul>
+<p>完美适配指的是:</p>
+<ol>
+<li>首先不需要用户缩放和横向滚动条就能正常的查看网站的所有内容；</li>
+<li>显示的文字的大小是合适，比如一段<code>14px</code>大小的文字，不会因为在一个高密度像素的屏幕里显示得太小而无法看清，理想的情况是这段<code>14px</code>的文字无论是在何种密度屏幕，何种分辨率下，显示出来的大小都是差不多的。当然，不只是文字，其他元素像图片什么的也是这个道理。</li>
+</ol>
+</blockquote>
+<h5 id="1-4-4-Meta-viewport">1.4.4 Meta viewport<a class="anchor" href="#1-4-4-Meta-viewport">·</a></h5>
+<blockquote>
+<p><meta> 元素表示那些不能由其它HTML元相关元素之一表示的任何元数据信息，它可以告诉浏览器如何解析页面</p>
+<p>借助<code>&lt;meta&gt;</code>元素的<code>viewport</code>来设置视口、缩放等，从而让移动端得到更好的展示效果</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">content</span>=<span class="string">&quot;width=device-width; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>让当前viewport的宽度等于设备的宽度，同时不允许用户手动缩放。如果你不这样的设定的话，那就会使用那个比屏幕宽的默认viewport，也就是说会出现横向滚动条</p>
+</li>
+<li>
+<p>缩放：</p>
+<ul>
+<li>
+<p>缩放是相对于<strong>理想视口</strong>来缩放的，缩放值越大，当前viewport的宽度就会越小</p>
+<p>例如在iphone中，理想视口的宽度是320px，如果设置 initial-scale=2 ，此时viewport的宽度会变为只有160px了</p>
+<ul>
+<li>原来1px的东西变成2px了，但是1px变为2px并不是把原来的320px变为640px了，而是在实际宽度不变的情况下，1px变得跟原来的2px的长度一样了，所以放大2倍后原来需要320px才能填满的宽度现在只需要160px就做到了</li>
+</ul>
+</li>
+<li>
+<p>另一点，initial-scale：在iphone和ipad上，无论你给viewport设的宽的是多少，如果没有指定默认的缩放值，则iphone和ipad会自动计算这个缩放值，以达到当前页面不会出现横向滚动条(或者说viewport的宽度就是屏幕的宽度)的目的。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>这样写也能达到同样达到了<strong>理想视口</strong>的效果：为什么？</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;initial-scale=1&quot;</span>&gt;</span> // IE 会横竖屏不分</span><br></pre></td></tr></table></figure>
+<ul>
+<li>因为缩放是相对于 <strong>理想视口</strong>来缩放的，当缩放值为1，不就是<strong>理想视口吗</strong></li>
+</ul>
+</li>
+<li>
+<p>**但如果 width 和 initial-scale=1 同时出现，并且还出现了冲突呢？**比如：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=400, initial-scale=1&quot;</span>&gt;</span></span><br><span class="line">  //iphone、ipad会横竖屏不分</span><br></pre></td></tr></table></figure>
+<ul>
+<li>width=400：把当前viewport的宽度设为400px</li>
+<li>initial-scale=1：把当前viewport的宽度设为<strong>理想视口</strong>的宽度，<code>= 理想视口宽度 / 视觉视口宽度</code></li>
+<li>**当遇到这种情况时，浏览器会取它们两个中较大的那个值：</li>
+<li>width=400，<strong>理想视口</strong>宽度为320时，取的是400；理想视口<strong>宽度为480时，取的是</strong>480</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><code>Value</code></th>
+<th>可能值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td>正整数或<code>device-width</code></td>
+<td>以<code>pixels</code>（像素）为单位， 定义布局视口的宽度。</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>正整数或<code>device-height</code></td>
+<td>以<code>pixels</code>（像素）为单位， 定义布局视口的高度。</td>
+</tr>
+<tr>
+<td><code>initial-scale</code></td>
+<td><code>0.0 - 10.0</code></td>
+<td>定义页面初始缩放比率=<code>理想视口宽度 / 视觉视口宽度</code></td>
+</tr>
+<tr>
+<td><code>minimum-scale</code></td>
+<td><code>0.0 - 10.0</code></td>
+<td>定义缩放的最小值；必须小于或等于<code>maximum-scale</code>的值。</td>
+</tr>
+<tr>
+<td><code>maximum-scale</code></td>
+<td><code>0.0 - 10.0</code></td>
+<td>定义缩放的最大值；必须大于或等于<code>minimum-scale</code>的值。</td>
+</tr>
+<tr>
+<td><code>user-scalable</code></td>
+<td>一个布尔值（<code>yes</code>或者<code>no</code>）</td>
+<td>如果设置为 <code>no</code>，用户将不能放大或缩小网页。默认值为 yes。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-5-获取浏览器大小">1.5 获取浏览器大小<a class="anchor" href="#1-5-获取浏览器大小">·</a></h4>
+<img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/21f5c4626ccf481cb0e026a8608e7284~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp" alt="img" style="zoom:33%;" />
+<blockquote>
+<ul>
+<li><code>window.innerHeight</code>：浏览器视觉视口高度（包括垂直滚动条）。</li>
+<li><code>window.outerHeight</code>：浏览器窗口外部的高度。表示整个浏览器窗口的高度，包括侧边栏、窗口镶边和调正窗口大小的边框。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>window.screen.Height</code>：获取获屏幕取理想视口高度，这个数值是固定的，`设备的分辨率/设备像素比</li>
+<li><code>window.screen.availHeight</code>：浏览器窗口可用的高度</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><code>document.documentElement.clientHeight</code>：获取浏览器布局视口高度，包括内边距，但不包括垂直滚动条、边框和外边距</li>
+<li><code>document.documentElement.offsetHeight</code>：包括内边距、滚动条、边框和外边距。</li>
+<li><code>document.documentElement.scrollHeight</code>：在不使用滚动条的情况下适合视口中的所有内容所需的最小宽度。测量方式与<code>clientHeight</code>相同：它包含元素的内边距，但不包括边框，外边距或垂直滚动条</li>
+</ul>
+</blockquote>
+<h4 id="1-6-rem、em、vm">1.6 rem、em、vm<a class="anchor" href="#1-6-rem、em、vm">·</a></h4>
+<ul>
+<li>
+<p>px：像素，固定</p>
+</li>
+<li>
+<p>em：</p>
+<ul>
+<li>相对于自己的字体大小；有继承的属性</li>
+<li>如果自己没有，<strong>相对于父元素字体大小</strong></li>
+</ul>
+</li>
+<li>
+<p>rem：相对于<strong>根元素的字体font-size大小</strong>,任意浏览器默认字体都是16px</p>
+<ul>
+<li>html根元素的获取方式 <code>document.getElementsByTagName('html')[0]</code></li>
+<li>Htmlfont-size：屏幕宽度 / 划分的份数</li>
+<li>页面元素的rem值：页面元素值（px）/（屏幕宽度 / 划分的份数）</li>
+</ul>
+</li>
+<li>
+<p>百分比：</p>
+<ul>
+<li>用在字体中，相对于<strong>父元素</strong>字体大小</li>
+<li>用在尺寸中，相对于父元素的width和height</li>
+</ul>
+</li>
+<li>
+<p>vm、vh</p>
+<ul>
+<li><code>1vw</code>等于视觉视口的<code>1%</code>，<code>1vh</code> 为视觉视口高度的<code>1%</code></li>
+<li>如果视觉视口为<code>375px</code>，那么<code>1vw = 3.75px</code>，这时<code>UI</code>给定一个元素的宽为<code>75px</code>（设备独立像素），我们只需要将它设置为<code>75 / 3.75 = 20vw</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="2、Why适配？">2、Why适配？<a class="anchor" href="#2、Why适配？">·</a></h3>
+<blockquote>
+<p>其实，到这里已经有了第一种适配方案：meta标签的做法。但我认为这种方案只适合纯移动端web页面，并不合适与PC端的页面：尤其是pc端与web端不完全相同的布局：</p>
+<ul>
+<li>我们可以在官网项目中验证：</li>
+</ul>
+<p>但尽管我们可以使用设备独立像素来保证各个设备在不同手机上显示的效果类似，但这并不能保证它们显示完全一致，我们需要一种方案来让设计稿得到更完美的适配</p>
+</blockquote>
+<h4 id="常见的布局方案">常见的布局方案<a class="anchor" href="#常见的布局方案">·</a></h4>
+<h5 id="固定布局：">固定布局：<a class="anchor" href="#固定布局：">·</a></h5>
+<ul>
+<li>做法1：<strong>以像素作为页面的基本单位</strong>，不管设备屏幕及浏览器宽度，只设计一套尺寸；</li>
+<li>做法2：同样以像素作为页面单位，参考主流设备尺寸，设计几套不同宽度的布局。通过识别的屏幕尺寸或浏览器宽度，选择最合适的那套宽度布局；</li>
+</ul>
+<h5 id="弹性布局：">弹性布局：<a class="anchor" href="#弹性布局：">·</a></h5>
+<ul>
+<li><strong>以百分比作为页面的基本单位</strong>，可以适应一定范围内所有尺寸的设备屏幕及浏览器宽度，并能完美利用有效空间展现最佳效果；</li>
+</ul>
+<h5 id="混合布局：">混合布局：<a class="anchor" href="#混合布局：">·</a></h5>
+<ul>
+<li>同弹性布局类似，可以适应一定范围内所有尺寸的设备屏幕及浏览器宽度，并能完美利用有效空间展现最佳效果；<strong>只是混合像素、和百分比两种单位作为页面单位</strong>。</li>
+</ul>
+<h5 id="布局响应：">布局响应：<a class="anchor" href="#布局响应：">·</a></h5>
+<ul>
+<li>
+<p><strong>对页面进行响应式的设计实现，需要对相同内容进行不同宽度的布局设计</strong></p>
+</li>
+<li>
+<p>有两种方式：</p>
+<ul>
+<li>pc优先（从pc端开始向下设计）；</li>
+<li>移动优先（从移动端向上设计）；</li>
+</ul>
+<p>无论基于那种模式的设计，要兼容所有设备，布局响应时不可避免地需要对模块布局做一些变化（发生布局改变的临界点称之为断点）</p>
+</li>
+</ul>
+<h3 id="3、How适配-pc">3、How适配-pc?<a class="anchor" href="#3、How适配-pc">·</a></h3>
+<h4 id="3-1-viewport方案">3.1 viewport方案<a class="anchor" href="#3-1-viewport方案">·</a></h4>
+<blockquote>
+<p>对设计稿还原时不关注屏幕尺寸的差异，而是直接按设计稿的标注来开发。</p>
+<ul>
+<li>
+<p>比如设计稿里标注的文字字号是30px，CSS里就设置文字字号30px。</p>
+</li>
+<li>
+<p>页面开发好后，在HTML的head标签里加入 <meta name="viewport" content="width={设计稿宽度}, initial-scale={屏幕逻辑像素宽度/设计稿宽度}" ></p>
+<ul>
+<li>
+<p>设计稿宽度是750px，设计稿上一个标题字号标注的是32px 、margin是20px，我们以标注的大小来写CSS</p>
+</li>
+<li>
+<p>之后需要通过JS计算获取屏幕的宽度（假设需要适配逻辑像素宽度是428px的屏幕），在HTML的head里添加 <meta name="viewport" content="width=750px, initial-scale=0.57" > 即可（428/750 = 0.57）。</p>
+<p>意思是：设置布局视口(layout viewport)的宽度为750px（此时页面一般会超出屏幕），再缩放页面（initial-scale）使其恰好撑满屏幕</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> <span class="variable constant_">WIDTH</span> = <span class="number">750</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> <span class="title function_">mobileAdapter</span> = (<span class="params"></span>) =&gt; &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> scale = screen.<span class="property">width</span>/<span class="variable constant_">WIDTH</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> content = <span class="string">`width=<span class="subst">$&#123;WIDTH&#125;</span>, initial-scale=<span class="subst">$&#123;scale&#125;</span>, maximum-scale=<span class="subst">$&#123;scale&#125;</span>, minimum-scale=<span class="subst">$&#123;scale&#125;</span>`</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> meta = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;meta[name=viewport]&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span>(!meta) &#123;</span></span><br><span class="line"><span class="language-javascript">        meta = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;meta&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        meta.<span class="title function_">setAttribute</span>(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;viewport&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="property">head</span>.<span class="title function_">appendChild</span>(meta)</span></span><br><span class="line"><span class="language-javascript">      &#125; </span></span><br><span class="line"><span class="language-javascript">      meta.<span class="title function_">setAttribute</span>(<span class="string">&#x27;content&#x27;</span>, content)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">mobileAdapter</span>();</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">onorientationchange</span> = mobileAdapter;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>优点： 开发流程很简单，工程师只需根据设计稿标注还原页面，不需要额外计算。适配范围广。</p>
+</li>
+<li>
+<p>缺点： 页面整体放大缩小，对于不想缩放的元素无法控制。比如边框在大屏手机下显得很粗，在小屏手机下显得很细</p>
+<p>更需要一种<strong>既能整体缩放，又能个性化控制某些元素不缩放</strong>的方案:<strong>动态REM方案</strong></p>
+</li>
+</ul>
+<h4 id="3-2-动态rem方案">3.2 动态rem方案<a class="anchor" href="#3-2-动态rem方案">·</a></h4>
+<p>只要调整html标签的font-size，就能让所有使用rem单位的元素跟随着发生变化，而使用px单位的元素不受影响。问题的关键在于如何根据屏幕尺寸跳转html标签的font-size。</p>
+<ul>
+<li>
+<p>基于上一种方案的兼容问题，我们引入了rem+媒体查询结合来做：设置html的fontsize=100；将页面分为100份，然后媒体查询区分移动与PC，移动端单位采用rem做单位即可；</p>
+</li>
+<li>
+<p>此外，为了简化rem值的计算，只需要将设计稿的px移动小数点即可；</p>
+</li>
+<li>
+<p>由于插件不能限制生效设备，因此，没有采用插件的方式；</p>
+<p>rem：相对于<strong>根元素的字体font-size大小</strong>,任意浏览器默认字体都是16px</p>
+<ul>
+<li>html根元素的获取方式 <code>document.getElementsByTagName('html')[0]</code></li>
+<li>Htmlfont-size：屏幕宽度 / 划分的份数</li>
+<li>页面元素的rem值：页面元素值（px）/（屏幕宽度 / 划分的份数）</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, </span></span></span><br><span class="line"><span class="string"><span class="tag">  initial-scale=1, maximum-scale=1, minimum-scale=1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> <span class="variable constant_">WIDTH</span> = <span class="number">750</span>  <span class="comment">//如果是尺寸的设计稿在这里修改</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> <span class="title function_">setView</span> = (<span class="params"></span>) =&gt; &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">//设置html标签的fontSize</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">style</span>.<span class="property">fontSize</span> = (<span class="number">100</span>*screen.<span class="property">width</span>/<span class="variable constant_">WIDTH</span>) + <span class="string">&#x27;px&#x27;</span></span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">window</span>.<span class="property">onorientationchange</span> = setView</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">setView</span>()</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/* 需要随屏幕等比缩放，使用rem单位，比如设计稿中标注的32px这里写成0.32rem */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">3.75rem</span>; </span></span><br><span class="line"><span class="language-css">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>; <span class="comment">/*不需要缩放的部分用px*/</span></span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3-3-vw方案">3.3 vw方案<a class="anchor" href="#3-3-vw方案">·</a></h4>
+<blockquote>
+<p><strong>不需要JavaScript即可实现动态Rem方案类似的效果</strong></p>
+</blockquote>
+<ul>
+<li>
+<p><code>vh、vw</code>方案即将视觉视口宽度 <code>window.innerWidth</code>和视觉视口高度 <code>window.innerHeight</code> 等分为 100 份。</p>
+<ul>
+<li><code>1vw</code>等于视觉视口的<code>1%</code>，<code>1vh</code> 为视觉视口高度的<code>1%</code></li>
+<li><code>vmin</code> : <code>vw</code> 和 <code>vh</code> 中的较小值、较大值</li>
+<li>如果视觉视口为<code>375px</code>，那么<code>1vw = 3.75px</code>，这时<code>UI</code>给定一个元素的宽为<code>75px</code>（设备独立像素），只需要将它设置为<code>75 / 3.75 = 20vw</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.button</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">16vw</span>;        <span class="comment">/*  100vw*120/750  */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">font-size</span>: <span class="number">3.73vw</span>;  <span class="comment">/*  100vw*28/750  */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">line-height</span>: <span class="number">6.4vw</span>; <span class="comment">/*  100vw*48/750  */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>; <span class="comment">/*不需要缩放的部分用px*/</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>虽然不用写JS做适配，但标注尺寸换算为vw又麻烦又不直观。可以在CSS里使用calc来换算换，只不过需要注意新语法的兼容性</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attr">--ratio</span>: <span class="built_in">calc</span>(<span class="number">100vw</span>/<span class="number">750</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">calc</span>(<span class="number">100vw</span>*<span class="number">28</span>/<span class="number">750</span>);  <span class="comment">/* 可以直接用calc */</span></span><br><span class="line">  <span class="attribute">line-height</span>: <span class="built_in">calc</span>(<span class="number">100vw</span>*<span class="number">48</span>/<span class="number">750</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">120</span>*<span class="built_in">var</span>(--ratio));  <span class="comment">/* 也可以用calc配合var使用，IE不支持var */</span>     </span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>; <span class="comment">/*不需要缩放的部分用px*/</span></span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正式的项目里也可以用SCSS，把换算交给预处理器</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@function</span> px2vw($px) &#123;</span><br><span class="line">  <span class="keyword">@return</span> $px * <span class="number">100vw</span> / <span class="number">750</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="built_in">px2vw</span>(<span class="number">120</span>);</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">px2vw</span>(<span class="number">28</span>);</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="built_in">px2vw</span>(<span class="number">48</span>);</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>缺陷：</p>
+<ul>
+<li><code>px</code>转换成<code>vw</code>不一定能完全整除，因此有一定的像素差。</li>
+<li>比如当容器使用<code>vw</code>，<code>margin</code>采用<code>px</code>时，很容易造成整体宽度超过<code>100vw</code>，从而影响布局效果。当然我们也是可以避免的，例如使用<code>padding</code>代替<code>margin</code>，结合<code>calc()</code>函数使用等等…</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-4-媒体查询">3.4 媒体查询<a class="anchor" href="#3-4-媒体查询">·</a></h4>
+<ul>
+<li>
+<p>使用媒体查询的方式：</p>
+<ol>
+<li>可以用 <strong>link 与 style</strong> 中定义媒体查询</li>
+<li>也可以用 <code>@import url(screen.css) screen</code> 形式媒体使用的样式</li>
+</ol>
+</li>
+<li>
+<p>可以用逗号分隔同时支持多个媒体设备，未指定媒体设备时等同于all</p>
+</li>
+</ul>
+<h5 id="3-4-1-style">3.4.1 style<a class="anchor" href="#3-4-1-style">·</a></h5>
+<ul>
+<li>
+<p>常用的：一般并不会写media=“screen”，其实是默认了media=“all”</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;style media=&quot;screen&quot;&gt;  //可以指定别的设备</span><br><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">font-size</span>: <span class="number">3em</span>;&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-4-2-link">3.4.2 link<a class="anchor" href="#3-4-2-link">·</a></h5>
+<ul>
+<li>
+<p>在 <code>link</code> 标签中通过 <code>media</code> 属性设置样式使用的媒体设备</p>
+</li>
+<li>
+<p>不推荐使用，缺点：</p>
+<ul>
+<li>要写很多link标签，不太方便</li>
+<li>更多的是针对页面中某块区域，来单独写个样式控制其响应</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;common<span class="selector-class">.css</span>&quot;&gt; //没有指定媒体所以全局应用</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;screen<span class="selector-class">.css</span>&quot; media=&quot;screen&quot;&gt; //在屏幕设备</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;print<span class="selector-class">.css</span>&quot; media=&quot;print&quot;&gt; //在打印设备</span><br><span class="line"> <span class="comment">/* 多设备支持，逗号分隔 */</span></span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;screen<span class="selector-class">.css</span>&quot; media=&quot;screen,print&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-4-3-import">3.4.3 @import<a class="anchor" href="#3-4-3-import">·</a></h5>
+<ul>
+<li>
+<p>相比于link，更多的是针对页面中某块区域，来单独写个样式控制其响应</p>
+</li>
+<li>
+<p>此时就可以在文件中<strong>引入一个样式文件</strong>，在这个文件中**再引入其他媒体的样式文件。**用<code>@import</code> ，引入指定设备的样式规则</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;style<span class="selector-class">.css</span>&quot;&gt;  //这样就可以只有一个link了</span><br></pre></td></tr></table></figure>
+<p><strong>style.css</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(screen.css) screen;</span><br><span class="line"><span class="keyword">@import</span> url(print.css) print;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(screen.css) screen,print; <span class="comment">/* 多设备支持，逗号分隔 */</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-4-4-media">3.4.4 @media<a class="anchor" href="#3-4-4-media">·</a></h5>
+<ul>
+<li>
+<p><code>@media</code> 可以更细的控制，即<strong>在一个样式表中为多个媒体设备定义样式</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@media</span> mediatype 关键字 (media feature)  &#123;...&#125;</span><br><span class="line"><span class="keyword">@media</span> screen,print &#123;...&#125;  <span class="comment">/* 多设备支持，逗号分隔 */</span></span><br><span class="line"></span><br><span class="line">media (<span class="attribute">min-width</span>: <span class="number">500px</span>), (max-width: <span class="number">700px</span>) &#123;....&#125;</span><br><span class="line">media only screen and (<span class="attribute">min-width</span>: <span class="number">500px</span>) and (max-width: <span class="number">700px</span>) &#123;....&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>mediatype：常用媒体类型还是screen</p>
+<ul>
+<li>all：所有媒体类型</li>
+<li>screen：电脑屏幕，平板电脑，智能手机等</li>
+<li>print：打印设备  speech：屏幕阅读器等发声设备</li>
+</ul>
+</li>
+<li>
+<p>and|or|not|only：关键字，实际使用3选1</p>
+<ul>
+<li>not：必须将not写在查询的最前面，表示不应用样式，即所有条件<strong>都满足</strong>时<strong>不应用</strong>样式</li>
+<li>only：用来排除不支持媒体查询的浏览器
+<ul>
+<li>only 和 not 一样只能出现在媒体查询的开始</li>
+<li>对支持媒体查询的设备，正常调用样式，此时就当only不存在</li>
+<li>对不支持媒体查询的设备不使用样式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>media feature：width、min-width、max-width（布局视口的宽度、最小宽度…）</p>
+</li>
+<li>
+<p>断点：样式切换的分界点，常用断点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">手机 ---- 768 ---- 小屏幕 ---- 992 ---- 中屏幕 ---- 1200 --- 大屏幕</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-5-Flexible方案">3.5 Flexible方案<a class="anchor" href="#3-5-Flexible方案">·</a></h4>
+<h5 id="3-5-1-核心思想：">3.5.1 核心思想：<a class="anchor" href="#3-5-1-核心思想：">·</a></h5>
+<ul>
+<li>
+<p>Flexible方案主要借助JS控制<code>viewport</code>的能力，用<code>rem</code>模拟<code>vw</code>的特性从而达到适配目的</p>
+</li>
+<li>
+<p><code>rem</code>是相对于<code>html</code>元素的<code>font-size</code>来做计算的计算属性值。通过设置<code>documentElement</code>的<code>fontSize</code>属性值就可以统一整个页面的布局标准。</p>
+</li>
+</ul>
+<h5 id="3-5-2-核心代码：">3.5.2 核心代码：<a class="anchor" href="#3-5-2-核心代码：">·</a></h5>
+<ul>
+<li>Flexible将整个页面的宽度切成了10份，然后将计算出来的页面宽度的<code>1/10</code>设置为<code>html</code>节点的<code>fontSize</code></li>
+<li>也就意味着，之后在当前页面的<code>html</code>节点的子节点上应用<code>rem</code>为单位时都是按照页面比例来计算的</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// set 1rem = viewWidth / 10</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setRemUnit</span> () &#123;</span><br><span class="line">    <span class="keyword">var</span> rem = docEl.<span class="property">clientWidth</span> / <span class="number">10</span>;</span><br><span class="line">    <span class="comment">// docEl为document.documentElement，即html元素</span></span><br><span class="line">    docEl.<span class="property">style</span>.<span class="property">fontSize</span> = rem + <span class="string">&#x27;px&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">setRemUnit</span>();</span><br></pre></td></tr></table></figure>
+<h5 id="3-5-3-Flexible配合的PostCSS-px2rem">3.5.3 Flexible配合的PostCSS-px2rem<a class="anchor" href="#3-5-3-Flexible配合的PostCSS-px2rem">·</a></h5>
+<blockquote>
+<ul>
+<li>
+<p>Flexible使用了<code>rem</code>作为统一页面布局标准的布局单位，且把页面宽度等分为了10份，那么在写css代码时就需要去计算当前<code>px</code>单位在当前设计稿上对应的<code>rem</code>值应该是多少</p>
+</li>
+<li>
+<p>以iPhone6为例：布局视口为<code>375px</code>，则<code>1rem = 37.5px</code>，这时设计稿上给定一个元素的宽为<code>75px</code>（设备独立像素），我们只需要将它设置为<code>75 / 37.5 = 2rem</code>即可</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>
+<p>当然，以上的工作方式显然低效。借助PostCSS的<code>pxtorem</code>插件<code>postcss.config.js</code>中完成这个计算过程:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">plugins</span>: &#123;</span><br><span class="line">    ...,</span><br><span class="line">    <span class="string">&#x27;postcss-pxtorem&#x27;</span>: &#123;</span><br><span class="line">        <span class="comment">// 750设计标准</span></span><br><span class="line">        <span class="attr">rootValue</span>: <span class="number">75</span>,</span><br><span class="line">        <span class="comment">// 转换成的rem后，保留小数点后几位</span></span><br><span class="line">        <span class="attr">unitPrecision</span>: <span class="number">5</span>,</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * 将会被转换的css属性列表，</span></span><br><span class="line"><span class="comment">        * 设置为*表示全部，[&#x27;*&#x27;,&#x27;*position*&#x27;,&#x27;!letter-spacing&#x27;,&#x27;!font*&#x27;]</span></span><br><span class="line"><span class="comment">        * *position* 表示所有包含 position 的属性</span></span><br><span class="line"><span class="comment">        * !letter-spacing 表示非 letter-spacing 属性</span></span><br><span class="line"><span class="comment">        * !font* 表示非font-size font-weight ... 等的属性</span></span><br><span class="line"><span class="comment">        * */</span></span><br><span class="line">        <span class="attr">propList</span>: [<span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;!letter-spacing&#x27;</span>],</span><br><span class="line">        <span class="comment">// 不会被转换的class选择器名，支持正则</span></span><br><span class="line">        <span class="attr">selectorBlackList</span>: [<span class="string">&#x27;.rem-&#x27;</span>],</span><br><span class="line">        <span class="attr">replace</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">// 允许在媒体查询中转换`px`</span></span><br><span class="line">        <span class="attr">mediaQuery</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="comment">// 小于1px的将不会被转换</span></span><br><span class="line">        <span class="attr">minPixelValue</span>: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>postcss-pxtorem</code>可以把需要转的px值计算转换为对应的<code>rem</code>值，如：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.name-item</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">56px</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">144px</span>;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">1PX</span> solid <span class="number">#eeeeee</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#333333</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>转换后是这个样子：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.name-item</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: .<span class="number">53333rem</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: .<span class="number">74667rem</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">700</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">1.92rem</span>;</span><br><span class="line">  <span class="attribute">border-top</span>: <span class="number">1px</span> solid <span class="number">#eee</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="3-5-4-Flexible的缺陷">3.5.4 Flexible的缺陷<a class="anchor" href="#3-5-4-Flexible的缺陷">·</a></h5>
+<ul>
+<li>
+<p><strong>PC与移动兼容问题：</strong></p>
+<p>在写好PC端页面后，移动端设备适配时，此插件会影响到PC端，不能只限制它在移动端工作；</p>
+</li>
+<li>
+<p><strong>对iframe的使用不兼容：</strong></p>
+<p>即<code>iframe</code>中展示的内容依然使用的是<code>css</code>像素，在高倍屏下会出问题，如我们在使用<code>iframe</code>引用一个腾讯视频的视频播放资源时，该视频播放器的播放按钮在不同<code>dpr</code>的设备上展示差异很大：</p>
+</li>
+<li>
+<p><strong>对高倍屏的安卓手机没做适配处理</strong>：</p>
+<p><code>lib-flexible</code>对安卓手机的特殊处理，即：一律按<code>dpr = 1</code>处理</p>
+</li>
+<li>
+<p><strong>不兼容响应式布局</strong></p>
+<p>响应式布局，其实质性做法就是结合<code>css3</code>媒体查询<code>@media</code>对一些不同尺寸阈值做特定的布局设计，如对<code>768px</code>以下屏幕的使用紧凑型布局，对<code>769px</code>到<code>992px</code>的屏幕做图文混排型布局，对大于<code>992px</code>的屏幕做富元素、多元素布局等。</p>
+<p>其中，<code>@media</code>语法中涉及到的尺寸查询语句，查询的尺寸依据是当前设备的物理像素，和Flexible的布局理论（即针对不同<code>dpr</code>设备等比缩放视口的<code>scale</code>值，从而同时改变布局视口和视觉视口大小）相悖，因此响应式布局在“等比缩放视口大小”的情境下是无法正常工作的。</p>
+</li>
+<li>
+<p><strong>无法正确响应系统字体大小</strong></p>
+<p>在微信环境（或其他可设置字体大小的Web浏览器中，如Safari）下，设置微信的字体大小（调大）后再打开使用Flexible技术适配的Web页面，你会发现页面布局错乱了，所有使用<code>rem</code>设置大小的元素都变大了，此时<code>html</code>的<code>font-size</code>还是原来的大小，但元素就是变大了，这是为什么呢？</p>
+<ul>
+<li>虽然Flexible帮我们使用<code>&lt;meta/&gt;</code>标签设置了<code>width=device-width</code>和<code>user-scalable=no</code>以及对应的<code>scale</code>缩放值以保证我们的元素大小在高倍屏下（<code>dpr &gt;= 2</code> ）正常展示，</li>
+<li>但在调整Web浏览器的字体大小后，我们的&quot;视口&quot;也响应的等比缩小了，即视觉视口(<code>window.innerWidth</code>)。并不是元素变大了，而是视觉视口变小了！在Flexible方案下毫无办法</li>
+</ul>
+</li>
+</ul>
+<h3 id="4、how-to-pick">4、how to pick<a class="anchor" href="#4、how-to-pick">·</a></h3>
+<blockquote>
+<p>那在开发中，如何为我们的项目选择合适的适配方案呢？总的来说，看适配设备、布局差异等：</p>
+<ul>
+<li>
+<p>如果是PC与移动同时兼容，需要考虑的点：不能互相影响，所以不能粗暴的上插件</p>
+<ul>
+<li>rem+媒体查询</li>
+<li>vw+媒体查询</li>
+</ul>
+</li>
+<li>
+<p>如果是纯移动端，那可选的方案更多了，这时候目光更多的是聚焦在设备多样性中，布局差异</p>
+<ul>
+<li>
+<p>大的话：可以直接媒体查询，不同的设备引入一套</p>
+</li>
+<li>
+<p>小的话：</p>
+<ul>
+<li>
+<p>viewport缩放方案</p>
+</li>
+<li>
+<ul>
+<li>适配原理简单</li>
+<li>需要使用JS</li>
+<li>直接使用设计稿标注无需换算</li>
+<li>方案死板只能实现页面级别整体缩放</li>
+</ul>
+</li>
+<li>
+<p>动态REM方案</p>
+</li>
+<li>
+<ul>
+<li>适配原理稍复杂</li>
+<li>需要使用JS</li>
+<li>设计稿标注的px换算到CSS的rem计算简单</li>
+<li>方案灵活技能实现整体缩放又能实现局部不缩放</li>
+</ul>
+</li>
+<li>
+<p>vw方案</p>
+</li>
+<li>
+<ul>
+<li>适配原理简单</li>
+<li>不需要JS即可适配</li>
+<li>设计稿标注的px换算到CSS的vw计算复杂</li>
+<li>方案灵活技能实现整体缩放又能实现局部不缩放</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="5、可能遇到的问题">5、可能遇到的问题<a class="anchor" href="#5、可能遇到的问题">·</a></h3>
+<h4 id="5-1-手机1px问题">5.1 手机1px问题<a class="anchor" href="#5-1-手机1px问题">·</a></h4>
+<blockquote>
+<h4 id="问题及原因：">问题及原因：<a class="anchor" href="#问题及原因：">·</a></h4>
+<ul>
+<li>
+<p>1px 问题指的是：在一些 <code>Retina屏幕</code> 的机型上，移动端页面的 1px 会变得很粗，呈现出不止 1px 的效果。</p>
+</li>
+<li>
+<p>原因——CSS 中的 1px 并不能和移动设备的 1px 划等号。它们之间的比例关系有一个属性描述</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">window.devicePixelRatio = 设备的物理像素 / CSS像素。</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>打开 Chrome 浏览器，启动移动端调试模式，在控制台去输出这个 <code>devicePixelRatio</code> 的值。这里选中 iPhone6/7/8 这系列的机型，输出的结果就是2： <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a8af7dca29f84b7e9d1f94232713ef07~tplv-k3u1fbpfcp-watermark.awebp" alt="img"> 这就意味着设置的 1px CSS 像素，在这个设备上实际会用 2 个物理像素单元来进行渲染，所以实际看到的一定会比 1px 粗一些。 <strong>解决1px 问题的三种思路：</strong></p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<h4 id="解决：">解决：<a class="anchor" href="#解决：">·</a></h4>
+<h4 id="解决1：直接写-0-5px">解决1：直接写 0.5px<a class="anchor" href="#解决1：直接写-0-5px">·</a></h4>
+<p>如果之前 1px 的样式这样写：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#333</span></span><br></pre></td></tr></table></figure>
+<p>可以先在 JS 中拿到 window.devicePixelRatio 的值，然后把这个值通过 JSX 或者模板语法给到 CSS 的 data 里，达到这样的效果（这里用 JSX 语法做示范）：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;container&quot;</span> data-device=&#123;&#123;<span class="variable language_">window</span>.<span class="property">devicePixelRatio</span>&#125;&#125;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>然后就可以在 CSS 中用属性选择器来命中 devicePixelRatio 为某一值的情况，比如说这里尝试命中 devicePixelRatio 为2的情况：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#container</span><span class="selector-attr">[data-device=<span class="string">&quot;2&quot;</span>]</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">0.5px</span> solid <span class="number">#333</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接把 1px 改成 1/devicePixelRatio 后的值，这是目前为止最简单的一种方法。这种方法的缺陷在于兼容性不行，IOS 系统需要8及以上的版本，安卓系统则直接不兼容。</p>
+<h4 id="解决2：伪元素先放大后缩小">解决2：伪元素先放大后缩小<a class="anchor" href="#解决2：伪元素先放大后缩小">·</a></h4>
+<ul>
+<li>这个方法的可行性会更高，兼容性也更好。唯一的缺点是代码会变多。</li>
+</ul>
+<p>思路是<strong>先放大、后缩小：</strong></p>
+<ul>
+<li>在目标元素的后面追加一个 ::after 伪元素，让这个元素布局为 absolute 之后、整个伸展开铺在目标元素上，然后把它的宽和高都设置为目标元素的两倍，border值设为 1px。</li>
+<li>接着借助 CSS 动画特效中的放缩能力，把整个伪元素缩小为原来的 50%。此时，伪元素的宽高刚好可以和原有的目标元素对齐，而 border 也缩小为了 1px 的二分之一，间接地实现了 0.5px 的效果。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#container</span><span class="selector-attr">[data-device=<span class="string">&quot;2&quot;</span>]</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#container</span><span class="selector-attr">[data-device=<span class="string">&quot;2&quot;</span>]</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">      <span class="attribute">position</span>:absolute;</span><br><span class="line">      <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">      <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">      <span class="attribute">width</span>: <span class="number">200%</span>;</span><br><span class="line">      <span class="attribute">height</span>: <span class="number">200%</span>;</span><br><span class="line">      <span class="attribute">content</span>:<span class="string">&quot;&quot;</span>;</span><br><span class="line">      <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0.5</span>);</span><br><span class="line">      <span class="attribute">transform-origin</span>: left top;</span><br><span class="line">      <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">      <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="思路三：viewport-缩放">思路三：viewport 缩放<a class="anchor" href="#思路三：viewport-缩放">·</a></h4>
+<p>这个思路就是对 meta 标签里几个关键属性下手：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里针对像素比为2的页面，把整个页面缩放为了原来的1/2大小。这样，本来占用2个物理像素的 1px 样式，现在占用的就是标准的一个物理像素。根据像素比的不同，这个缩放比例可以被计算为不同的值，用 js 代码实现如下：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> scale = <span class="number">1</span> / <span class="variable language_">window</span>.<span class="property">devicePixelRatio</span>;</span><br><span class="line"><span class="comment">// 这里 metaEl 指的是 meta 标签对应的 Dom</span></span><br><span class="line">metaEl.<span class="title function_">setAttribute</span>(<span class="string">&#x27;content&#x27;</span>, <span class="string">`width=device-width,user-scalable=no,initial-scale=<span class="subst">$&#123;scale&#125;</span>,maximum-scale=<span class="subst">$&#123;scale&#125;</span>,minimum-scale=<span class="subst">$&#123;scale&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<p>这样解决了，但这样做的副作用也很大，整个页面被缩放了。这时 1px 已经被处理成物理像素大小，这样的大小在手机上显示边框很合适。但是，一些原本不需要被缩小的内容，比如文字、图片等，也被无差别缩小掉了</p>
+</blockquote>
+<h4 id="5-2-细-1px-0-5px边框">5.2 细/1px/0.5px边框<a class="anchor" href="#5-2-细-1px-0-5px边框">·</a></h4>
+<p>有几种方法能实现0.5px边框：</p>
+<ol>
+<li>
+<p>直接设置 border-width: 0.5px；使用方便，但兼容性很差，不推荐使用</p>
+</li>
+<li>
+<p>用阴影代替边框，设置阴影box-shadow: 0 0 0 .5px #000; 使用方便，能正常展示圆角，兼容性一般。</p>
+</li>
+<li>
+<p>给容器设置伪元素，设置绝对定位，高度为1px，背景图为线性渐变，一半有颜色，一半透明。视觉上宽度只有0.5px。这种方法适合设置一条边框，没法展示圆角。</p>
+</li>
+<li>
+<p>给容器内设置伪元素，设置绝对定位，宽、高是200%，边框是1px，然后使用transform: scale(0.5) 让伪元素缩小原来的一半，这时候伪元素的边框和容器的边缘重合，视觉上宽度只有0.5px。这种方法兼容性最好，4个边框都能一次性设置，能正常展示圆角，<strong>推荐使用</strong>。</p>
+</li>
+<li>
+<p><strong>采用meta viewport的方式</strong></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; <span class="attribute">content</span>=&quot;<span class="attribute">width</span>=device-<span class="attribute">width</span>, initial-scale=<span class="number">0.5</span>, minimum-scale=<span class="number">0.5</span>, maximum-scale=<span class="number">0.5</span>&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>这样就能缩放到原来的0.5倍，如果是1px那么就会变成0.5px。viewport只针对于移动端，只在移动端上才能看到效果</p>
+</li>
+</ol>
+<h4 id="5-3、12px字体问题">5.3、12px字体问题<a class="anchor" href="#5-3、12px字体问题">·</a></h4>
+<p>chrome不支持12px以下的中文，属性-webkit-text-size-adjust也已失效</p>
+<h5 id="1、测试代码：">1、测试代码：<a class="anchor" href="#1、测试代码：">·</a></h5>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line"> 	<span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line"> 	<span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line"> 	<span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line"> 	<span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">   <span class="attribute">text-align</span>: center;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="selector-class">.content</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line"> 	<span class="attribute">font-size</span>: <span class="number">10px</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2、法1：transform">2、法1：transform<a class="anchor" href="#2、法1：transform">·</a></h5>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">transform</span>:<span class="built_in">scale</span>(<span class="number">0.875</span>);</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>问题：如果这个<p>元素有背景bgc的话，这个属性会使背景也随着变化，所以，可以给<p>标签里再套个<span></p>
+<p>但此时不会生效：因为**transform:scale()**属性只为可以定义宽高的元素缩放，而span是行内元素；可以给span元素定义一个display:block、inline-block也可以</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">p</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="comment">/* font-size: 10px; */</span></span><br><span class="line">  <span class="attribute">transform</span>:<span class="built_in">scale</span>(<span class="number">0.875</span>);</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>此时PC端正常显示，但ios显示的字体比10px更小：</p>
+</li>
+</ul>
+<h5 id="3、法2：svg">3、法2：svg<a class="anchor" href="#3、法2：svg">·</a></h5>
+<ul>
+<li>
+<p>SVG由于是矢量的，再怎么拉伸文字效果都是清晰细腻的：可能多行字体换行问题还需要解决</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">div class=&quot;content&quot;&gt;</span><br><span class="line">	<span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">&quot;150&quot;</span> <span class="attr">height</span>=<span class="string">&quot;14&quot;</span> <span class="attr">viewBox</span>=<span class="string">&quot;0 0 150 14&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span>  <span class="attr">font-size</span>=<span class="string">&quot;10&quot;</span> <span class="attr">x</span>=<span class="string">&quot;4&quot;</span> <span class="attr">y</span>=<span class="string">&quot;1em&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;#cd0000&quot;</span>&gt;</span></span><br><span class="line">      测试测试测试测试测试十四个字</span><br><span class="line">    <span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">&lt;/div</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>移动端适配方案总结</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-06-12</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-01-17</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/移动端适配.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 33234});
+(function() {
+  if ('WIDGETPACK_LOADED' in window) return;
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement('script');
+  mc.type = 'text/javascript';
+  mc.async = true;
+  //- mc.src = '//embed.widgetpack.com/widget.js';
+  var s = document.getElementsByTagName('script')[0];
+  s?.parentNode?.insertBefore(mc, s?.nextSibling);
+})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/privateGame.html"><img class="prev-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">来跟我玩个游戏吧~</div></div></a></div><div class="next-post pull-right"><a href="/posts/CSStricks-2.html"><img class="next-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/CSS-tricks1.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CSS tricks-2</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D"><span class="toc-text">移动端适配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-text">1、前置知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E5%B0%BA%E5%AF%B8%E3%80%81%E5%83%8F%E7%B4%A0"><span class="toc-text">1.1 尺寸、像素</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8B%B1%E5%AF%B8%EF%BC%9A"><span class="toc-text">英寸：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%83%8F%E7%B4%A0%EF%BC%9A"><span class="toc-text">像素：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E5%88%86%E8%BE%A8%E7%8E%87"><span class="toc-text">1.2 分辨率</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-1-%E5%B1%8F%E5%B9%95%E5%88%86%E8%BE%A8%E7%8E%87%EF%BC%9A"><span class="toc-text">1.2.1 屏幕分辨率：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-2-%E5%9B%BE%E5%83%8F%E5%88%86%E8%BE%A8%E7%8E%87%EF%BC%9A"><span class="toc-text">1.2.2 图像分辨率：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-3-PPI"><span class="toc-text">1.2.3 PPI</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-2-4-DPI"><span class="toc-text">1.2.4 DPI</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E5%83%8F%E7%B4%A0"><span class="toc-text">1.3 像素</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-1-%E7%89%A9%E7%90%86%E5%83%8F%E7%B4%A0"><span class="toc-text">1.3.1 物理像素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-2-%E8%AE%BE%E5%A4%87%E7%8B%AC%E7%AB%8B%E5%83%8F%E7%B4%A0"><span class="toc-text">1.3.2 设备独立像素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-3-%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E6%AF%94%EF%BC%88dpr%EF%BC%89"><span class="toc-text">1.3.3 设备像素比（dpr）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-3-4-%E5%83%8F%E7%B4%A0-px"><span class="toc-text">1.3.4 像素 px</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-%E8%A7%86%E5%8F%A3viewport%EF%BC%9A"><span class="toc-text">1.4 视口viewport：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-1-%E5%B8%83%E5%B1%80%E8%A7%86%E5%8F%A3"><span class="toc-text">1.4.1 布局视口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-2-%E8%A7%86%E8%A7%89%E8%A7%86%E5%8F%A3%EF%BC%9A"><span class="toc-text">1.4.2 视觉视口：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-3-%E7%90%86%E6%83%B3%E8%A7%86%E5%8F%A3"><span class="toc-text">1.4.3 理想视口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-4-4-Meta-viewport"><span class="toc-text">1.4.4 Meta viewport</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-%E8%8E%B7%E5%8F%96%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%A7%E5%B0%8F"><span class="toc-text">1.5 获取浏览器大小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-rem%E3%80%81em%E3%80%81vm"><span class="toc-text">1.6 rem、em、vm</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Why%E9%80%82%E9%85%8D%EF%BC%9F"><span class="toc-text">2、Why适配？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%B8%83%E5%B1%80%E6%96%B9%E6%A1%88"><span class="toc-text">常见的布局方案</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E5%B8%83%E5%B1%80%EF%BC%9A"><span class="toc-text">固定布局：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80%EF%BC%9A"><span class="toc-text">弹性布局：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E5%B8%83%E5%B1%80%EF%BC%9A"><span class="toc-text">混合布局：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%83%E5%B1%80%E5%93%8D%E5%BA%94%EF%BC%9A"><span class="toc-text">布局响应：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81How%E9%80%82%E9%85%8D-pc"><span class="toc-text">3、How适配-pc?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-viewport%E6%96%B9%E6%A1%88"><span class="toc-text">3.1 viewport方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E5%8A%A8%E6%80%81rem%E6%96%B9%E6%A1%88"><span class="toc-text">3.2 动态rem方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-vw%E6%96%B9%E6%A1%88"><span class="toc-text">3.3 vw方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2"><span class="toc-text">3.4 媒体查询</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-1-style"><span class="toc-text">3.4.1 style</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-2-link"><span class="toc-text">3.4.2 link</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-3-import"><span class="toc-text">3.4.3 @import</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-4-media"><span class="toc-text">3.4.4 @media</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-Flexible%E6%96%B9%E6%A1%88"><span class="toc-text">3.5 Flexible方案</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-1-%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%EF%BC%9A"><span class="toc-text">3.5.1 核心思想：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-2-%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-text">3.5.2 核心代码：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-3-Flexible%E9%85%8D%E5%90%88%E7%9A%84PostCSS-px2rem"><span class="toc-text">3.5.3 Flexible配合的PostCSS-px2rem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-4-Flexible%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-text">3.5.4 Flexible的缺陷</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81how-to-pick"><span class="toc-text">4、how to pick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">5、可能遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-%E6%89%8B%E6%9C%BA1px%E9%97%AE%E9%A2%98"><span class="toc-text">5.1 手机1px问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%8F%8A%E5%8E%9F%E5%9B%A0%EF%BC%9A"><span class="toc-text">问题及原因：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%EF%BC%9A"><span class="toc-text">解决：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B31%EF%BC%9A%E7%9B%B4%E6%8E%A5%E5%86%99-0-5px"><span class="toc-text">解决1：直接写 0.5px</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%86%B32%EF%BC%9A%E4%BC%AA%E5%85%83%E7%B4%A0%E5%85%88%E6%94%BE%E5%A4%A7%E5%90%8E%E7%BC%A9%E5%B0%8F"><span class="toc-text">解决2：伪元素先放大后缩小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E4%B8%89%EF%BC%9Aviewport-%E7%BC%A9%E6%94%BE"><span class="toc-text">思路三：viewport 缩放</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-%E7%BB%86-1px-0-5px%E8%BE%B9%E6%A1%86"><span class="toc-text">5.2 细&#x2F;1px&#x2F;0.5px边框</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3%E3%80%8112px%E5%AD%97%E4%BD%93%E9%97%AE%E9%A2%98"><span class="toc-text">5.3、12px字体问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-text">1、测试代码：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E6%B3%951%EF%BC%9Atransform"><span class="toc-text">2、法1：transform</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E6%B3%952%EF%BC%9Asvg"><span class="toc-text">3、法2：svg</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-hexo-vert.vercel.app/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-hexo-vert.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div defer class="aplayer no-destroy" data-id="31872922" data-server="netease" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script async data-pjax src="https://cdn.jsdelivr.net/npm/hexo-beautiful-page@latest/lib/asyncmodel.min.js"></script><div id="live3d" class="live3d" style="position: fixed; left: -110px; bottom: 30px;z-index: 98;"><canvas id="live2dm" class="live3d"style="max-width:500px;max-height:437.5px;"></canvas></div><script defer data-pjax src="/js/bottomTime.js"></script><script defer data-pjax src="/js/nav.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/emoji.js"></script><script defer data-pjax src="/js/sun_moon.js" async></script><script defer src="https://cdn1.tianli0.top/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script><script async src="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer data-pjax src="/js/meihua.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '#web_bg',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:24%;}.categoryBar-list{max-height: 570px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 480px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-1-CSS/&quot;);" href="javascript:void(0);">1.1-CSS</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr">CSS的酷炫多彩</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-2-JS/&quot;);" href="javascript:void(0);">1.2-JS</a><span class="categoryBar-list-count">29</span><span class="categoryBar-list-descr">数据、函数、异步</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-3-Ajax/&quot;);" href="javascript:void(0);">1.3-Ajax</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">Ajax的诞生</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-4-框架/&quot;);" href="javascript:void(0);">1.4-框架</a><span class="categoryBar-list-count">15</span><span class="categoryBar-list-descr">Vue&amp;React的世界</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-1-组件库/&quot;);" href="javascript:void(0);">2.1-组件库</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">组件库开发</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-2-基建/&quot;);" href="javascript:void(0);">2.2-基建</a><span class="categoryBar-list-count">5</span><span class="categoryBar-list-descr">前端工程化</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-3-实现Tricks/&quot;);" href="javascript:void(0);">2.3-实现Tricks</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">功能实现积累</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-4-项目/&quot;);" href="javascript:void(0);">2.4-项目</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr">项目总结</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-1-记录/&quot;);" href="javascript:void(0);">3.1-记录</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">bidaoTalk</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-2-浏览器/&quot;);" href="javascript:void(0);">3.2-浏览器</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr">浏览器渲染</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-3-基础/&quot;);" href="javascript:void(0);">3.3-基础</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr">计算机基础</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-4-Tool/&quot;);" href="javascript:void(0);">3.4-Tool</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">小工具</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-virtualDom.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-13</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">React的虚拟DOM</a><div class="blog-slider__text">兄弟篇React的虚拟DOM，包括了栈调和</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/hook1.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt="">React-Hook的出现</a><div class="blog-slider__text">为何Hooks是React的未来</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/浏览器异步.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfnIl0f3oUJLgGFb7Qgi97y1hY9uIQsHizXQ&amp;usqp=CAU" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">JS的异步解决方案</a><div class="blog-slider__text">前端异步之路</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><!-- hexo injector body_end end --><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>

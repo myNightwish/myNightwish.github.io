@@ -1,0 +1,848 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vue&amp;&amp;React的数据流管理 | Nightwishのblog🧊</title><meta name="keywords" content="数据流管理"><meta name="author" content="飞儿"><meta name="copyright" content="飞儿"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一起学习下主流的数据管理思想：Flux、redux、Vuex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue&amp;&amp;React的数据流管理">
+<meta property="og:url" content="https://mynightwish.online/posts/react_vue_data.html">
+<meta property="og:site_name" content="Nightwishのblog🧊">
+<meta property="og:description" content="一起学习下主流的数据管理思想：Flux、redux、Vuex">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-data.png">
+<meta property="article:published_time" content="2021-12-11T14:56:21.000Z">
+<meta property="article:modified_time" content="2023-01-17T11:47:30.982Z">
+<meta property="article:author" content="飞儿">
+<meta property="article:tag" content="数据流管理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-data.png"><link rel="shortcut icon" href="/img/favicon.webp"><link rel="canonical" href="https://mynightwish.online/posts/react_vue_data"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?41dc163acde19f0f2684b23f1468c5dc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Vue&&React的数据流管理',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-17 19:47:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/double.css"><link rel="stylesheet" href="/css/beautify.css" media="async"><link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/lastLoad.css" media="defer" onload="this.media='all'"><style id="themeColor"></style><style id="rightSide"></style><style id="transPercent"></style><style id="blurNum"></style><style id="settingStyle"></style><span id="fps"></span><style id="defineBg"></style><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.css" media="defer" onload="this.media='all'"><script async src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/dist/echarts.min.js"></script><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card/lib/categorybar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/css/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"><style>#web_bg{
+  background: var(--default-bg);
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+[data-theme="dark"]
+  #web_bg{
+    background: var(--darkmode-bg) !important;
+    background-attachment: local!important;
+    background-position: center!important;
+    background-size: cover!important;
+    background-repeat: no-repeat!important;
+  }
+</style></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avartor.webp" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">112</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-data.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Nightwishのblog🧊</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-food-strawberry"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-strawberry"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-food-eggyolkcake"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-eggyolkcake"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon-food-popsicle"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-popsicle"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-doughnut"></use></svg><span> 足迹</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/charts/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-xiangjiB">                   </use></svg><span> 文章</span></a></li></ul></div><div class="menus_item"><a class="site-page group faa-parent animated-hover hide" href="javascript:void(0);"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-diannaoB"></use></svg><span> 媒体</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-erjiB">                   </use></svg><span> 音乐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/movies/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dianshijiB">                   </use></svg><span> 视频</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/books/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shouyinjiB">                   </use></svg><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw icon-food-macaron"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-food-macaron"></use></svg><span> 留言板</span></a></div></div><center id="name-container"><a id="page-name" href="javascript:scrollToTop()"></a></center><div id="nav-right"><div id="search-button"><a class="search faa-parent animated-hover" title="检索站内任何你想要的信息"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> search.title</span></a></div><a class="meihua faa-parent animated-hover" onclick="toggleWinbox()" title="美化设置-自定义你的风格" id="meihua-button"><svg class="faa-tada icon" style="height:28px;width:28px;fill:currentColor;position:relative;margin-left:25px;margin-right:25px;" aria-hidden="true"><use xlink:href="#icon-food-cookie"></use></svg></a><a class="sun_moon faa-parent animated-hover" onclick="switchNightMode()" title="浅色和深色模式转换" id="nightmode-button"><svg class="faa-tada" style="height:28px;width:28px;fill:currentColor;position:relative;" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-xiuxi">        </use></svg></a><div id="toggle-menu"><a><i class="fas fa-bars fa-fw"></i></a></div></div></div></nav><div id="post-info"><h1 class="post-title">Vue&amp;&amp;React的数据流管理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T14:56:21.000Z" title="发表于 2021-12-11 22:56:21">2021-12-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-17T11:47:30.982Z" title="更新于 2023-01-17 19:47:30">2023-01-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/1-4-%E6%A1%86%E6%9E%B6/">1.4-框架</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5945</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>20分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Vue&amp;&amp;React的数据流管理"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Redux">Redux<a class="anchor" href="#Redux">·</a></h2>
+<h3 id="1、Flux">1、Flux<a class="anchor" href="#1、Flux">·</a></h3>
+<p>redux的问题背景和架构思想是什么？</p>
+<p>虽然它并不严格遵循flux的设定，但Redux可被认定为Flux的一种实现方式</p>
+<h4 id="1、Flux4部分">1、Flux4部分<a class="anchor" href="#1、Flux4部分">·</a></h4>
+<p>有FB提出的一套应用架构，并不是一套具体的框架，这套架构约束的是“应用处理数据的模式”。</p>
+<p><strong>把组件之间需要共享的状态抽取出来，遵循特定的约定，统一来管理，让状态的变化可以预测</strong>。</p>
+<p>在Flux架构中，一个应用被拆解为4部分：</p>
+<ul>
+<li>
+<h4 id="View：用户界面，可以以任何形式展示">View：用户界面，可以以任何形式展示<a class="anchor" href="#View：用户界面，可以以任何形式展示">·</a></h4>
+<ol>
+<li>特性：store改变了VIew也要跟着改变</li>
+<li>如何改变view：一般 Store 一旦发生改变，都会往外面发送一个事件，比如 change，通知所有的订阅者。View 通过订阅也好，监听也好，不同的框架有不同的技术，反正 Store 变了，View 就会变。</li>
+</ol>
+</li>
+<li>
+<h4 id="Action：视图层发出的消息，会触发应用状态的改变">Action：视图层发出的消息，会触发应用状态的改变<a class="anchor" href="#Action：视图层发出的消息，会触发应用状态的改变">·</a></h4>
+<ol>
+<li>必须经过一套流程，视图先要通过action告诉 Dispatcher，让 Dispatcher dispatch 一个 action</li>
+<li>Dispatcher 会把 addUser 这个 action 发给所有的 store，store 就会触发 addUser 这个 action，来更新数据</li>
+<li>数据一更新，那么 View 也就跟着更新了</li>
+</ol>
+</li>
+<li>
+<h4 id="Dispatcher：派发器，负责action的派发">Dispatcher：派发器，负责action的派发<a class="anchor" href="#Dispatcher：派发器，负责action的派发">·</a></h4>
+</li>
+<li>
+<h4 id="store：数据层，应用状态的仓库，此外还定义修改状态的逻辑">store：数据层，应用状态的仓库，此外还定义修改状态的逻辑<a class="anchor" href="#store：数据层，应用状态的仓库，此外还定义修改状态的逻辑">·</a></h4>
+</li>
+</ul>
+<h4 id="2、Flux工作流">2、Flux工作流<a class="anchor" href="#2、Flux工作流">·</a></h4>
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/12/18/167c11c13ef4e9a8~tplv-t2oaga2asx-watermark.awebp" alt="image.png | center | 827x250" style="zoom:50%;" />
+<ol>
+<li>用户与 view之间产生交互，通过view发起一个action，通过dispatch会把该action派发给store，通过store相应的状态更新</li>
+<li>store完成更新后，会进一步通知View更新界面；</li>
+</ol>
+<p>【注意】：图中的箭头都是单向的，这也是Flux架构一个特点，<strong>单向数据流</strong></p>
+<h4 id="3、Flux解决了什么">3、Flux解决了什么<a class="anchor" href="#3、Flux解决了什么">·</a></h4>
+<p>Flux的核心特征是：<strong>单向数据流</strong>，那么双向数据流会有什么问题呢？</p>
+<ol>
+<li>
+<p>典型应用场景：MVC架构，</p>
+<ul>
+<li>
+<p>除了通过用户通过view层来触发数据以外，还可以通过control来触发逻辑</p>
+</li>
+<li>
+<p>model：程序需要操作的数据或信息；</p>
+</li>
+<li>
+<p>view视图：视图</p>
+</li>
+<li>
+<p>controller：控制器，用于连接view和model，管理model与view之间的逻辑</p>
+</li>
+<li>
+<p>用户操作view后，control来处理逻辑，将改变应用到model上，再反馈到view中，这个过程中，是单向的。在服务端的应用中，数据流确实能够保持单向。但是在前端场景下，处于交互的需要往往允许view和model进行直接通信。这就允许了数据流的存在，当业务场景比较复杂时，数据流就会比较混乱，出现这样：</p>
+<p>这样即使一个小小的修改，也可能造成蝴蝶效应问题。因为你很难区分数据是哪个control，哪个view引发的。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>而Flux的架构模式，最核心的是严格的单向数据流，在单向数据流下，状态的变化是可预测的，避免了混乱的数据结构</strong></p>
+</li>
+<li>
+<p>缺点：</p>
+<ol>
+<li>
+<p>对数据流约束的背后是成本，因此也只在大型的项目中才会使用，这一点对redux也是一样的。</p>
+<p>Store 封装了数据还有处理数据的逻辑等等</p>
+</li>
+<li>
+<p>比如一个应用可以拥有多个 Store，多个Store之间可能有依赖关系；</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="2、Redux">2、Redux<a class="anchor" href="#2、Redux">·</a></h3>
+<p>它与Flux设计思想上一脉相承</p>
+<p>官网描述：是JS的状态容器，它提供可预测的状态管理；Vue、React可以用</p>
+<img src="https://tomoya92.github.io/assets/2021-04-29-09-56-16.png" alt="img" style="zoom:50%;" />
+<h4 id="1、角色：-2">1、角色：<a class="anchor" href="#1、角色：-2">·</a></h4>
+<ul>
+<li>store：单一的数据源，而且是只读的；</li>
+<li>action：对变化的描述</li>
+<li>reducer：负责对变化进行分发、处理</li>
+</ul>
+<p>在Redux的整个工作过程中，数据流是严格单向的，很重要一定要说！！！</p>
+<ul>
+<li>如果想修改数据，只有一种方式：派发action，action会被reducer读取，进而根据action的不同对数据修改，返回新的state，新的state会更新到store里，进而驱动视图层做出对应的改变；</li>
+<li>因此，任何组件都可以通过store读取到全局的状态；也可以通过合理地派发action，来修改全局的状态。redux提供了状态容器，使得状态能够自由地在组件之间穿梭；这就是redux实现的思路。</li>
+</ul>
+<h4 id="2、redux工作流-2">2、redux工作流<a class="anchor" href="#2、redux工作流-2">·</a></h4>
+<ol>
+<li>
+<p>createStore：使用createStore创建包含指定reducer的store对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>)   <span class="keyword">import</span> &#123;createStore&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span></span><br><span class="line"><span class="number">2</span>)   <span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">&#x27;./reducers&#x27;</span></span><br><span class="line"><span class="number">3</span>)   <span class="keyword">const</span> store = <span class="title function_">createStore</span>(reducer)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>reducer的作用：将新的state返回给store</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">reducer</span>=  (<span class="params">state, action</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">return</span> new_state;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>action:通知reducer，让改变发生</p>
+<p>如何在众多的store状态库中，准确地希望他改变state呢？将action对比，因此必须要用正确的action</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> action = &#123;</span><br><span class="line">	<span class="attr">type</span>: <span class="string">&#x27;add_mm&#x27;</span>,</span><br><span class="line">	<span class="attr">payload</span>: <span class="string">&quot;ss&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>action只是一个对象，要想让action真正产生动作，还要靠store的dispatch</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">store.<span class="title function_">dispatch</span>(action);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="3、redux源码分析">3、redux源码分析<a class="anchor" href="#3、redux源码分析">·</a></h3>
+<ul>
+<li>utils文件夹：工具方法库</li>
+<li>index.js：入口文件，主要做模块导出</li>
+<li>真正干活的文件：
+<ul>
+<li>applyMiddleWare.js：中间件模块，将在后面单独讲解</li>
+<li>bingActionCreator.js：用于将传入的actionCreator与dispatch方法相结合，揉成一个新的方法。工具性质的方法（即使不理解它也不影响了解redux）</li>
+<li>combineReducer.js：用于将多个reducer合并起来。工具性质的方法</li>
+<li>compose.js：用于把接收到的函数，从右向左进行结合。工具性质的方法</li>
+<li><strong>createStore.js：了解redux的主要模块。使用redux最先调用的方法，是整个流程的入口，也是Redux中最核心的API</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="1、createStore-js分析">1、createStore.js分析<a class="anchor" href="#1、createStore-js分析">·</a></h4>
+<ul>
+<li>使用</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">createStore</span>(</span><br><span class="line">  reducer,   </span><br><span class="line">  initial_state, <span class="comment">//初始状态内容</span></span><br><span class="line">  <span class="title function_">applyMiddleware</span>(middleware1, middleware2,...)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>源码截图
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127225633907.png" alt="image-20211127225633907" style="zoom:15%;" /><img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127225732058.png" alt="image-20211127225732058" style="zoom:15%;" />
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127225800737.png" alt="image-20211127225800737" style="zoom:15%;" /><img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230121583.png" alt="image-20211127230121583" style="zoom:15%;" />
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230134769.png" alt="image-20211127230134769" style="zoom:15%;" /><img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230309854.png" alt="image-20211127230309854" style="zoom:15%;" />
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230558433.png" alt="image-20211127230558433" style="zoom:15%;" /><img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230626348.png" alt="image-20211127230626348" style="zoom:15%;" />
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230634791.png" alt="image-20211127230634791" style="zoom:15%;" /><img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230646868.png" alt="image-20211127230646868" style="zoom:15%;" /></li>
+</ul>
+<h5 id="1、整体流程">1、整体流程<a class="anchor" href="#1、整体流程">·</a></h5>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230657392.png" alt="image-20211127230657392" style="zoom: 33%;" />
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230746655.png" alt="image-20211127230746655" style="zoom:33%;" />
+<ul>
+<li>
+<p>与redux主流程强相关的，也是使用较多的：getState、subscribe、dispatch</p>
+<p>getState的源码：</p>
+<p>subscribe、dispatch：关键的分发动作，最核心的</p>
+</li>
+</ul>
+<h4 id="2、dispatch">2、dispatch<a class="anchor" href="#2、dispatch">·</a></h4>
+<h5 id="源码">源码<a class="anchor" href="#源码">·</a></h5>
+<p>redux关键要素：action   reducer   store    而dispatch刚好能够将这三位主角串起来：</p>
+<p><img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230309854.png" alt="image-20211127230309854" style="zoom:20%;" /><img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230558433.png" alt="image-20211127230558433" style="zoom:20%;" /><img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230626348.png" alt="image-20211127230626348" style="zoom:20%;" /></p>
+<h5 id="dispatch核心工作流">dispatch核心工作流<a class="anchor" href="#dispatch核心工作流">·</a></h5>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127232248297.png" alt="image-20211127232248297" style="zoom:25%;" />
+<p><strong>通过上锁避免套娃式的dispatch</strong></p>
+<p>最关键的是执行reducer，它通过reducer的更新规则，指定了应用状态的变化如何响应action，并发送到store。currentReducer包裹的try部分代码</p>
+<ul>
+<li>
+<p>在调用dispatch之前会通过isDispatching变量设置为true，待reducer执行完毕后，再将isDispatching变量设置为false；这跟setState的批处理也很相似</p>
+</li>
+<li>
+<p>这里这样做的目的是：<strong>避免套娃式的dispatch</strong>，也就是避免开发者在开发中手动调用dispatch</p>
+</li>
+<li>
+<p><strong>为什么要这样设计呢？</strong></p>
+<p>redux在设计reducer时就强调了它必须是纯净的，它不应该执行除了计算之外的任何脏操作。dispatch是一个脏操作；</p>
+<p>其次从执行的角度看，若真的在reducer中调用dispatch，那么dispatch又会返过来调用reducer、reducer又会再次调用，陷入死循环。</p>
+<p>因此，在dispatch中做了if判断，一旦识别isDispatching为true，直接抛错</p>
+</li>
+</ul>
+<h4 id="3、subscribe触发订阅">3、subscribe触发订阅<a class="anchor" href="#3、subscribe触发订阅">·</a></h4>
+<p>在reducer执行完毕后，会触发订阅执行的过程。</p>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230626348.png" alt="image-20211127230626348" style="zoom:20%;" />
+<ul>
+<li>
+<p>subscribe这个API执行订阅。接收一个function类型的listener做入参，返回是对应listener的解绑函数</p>
+<p>因为redux中已经默认了订阅的对象就是<strong>状态的变化</strong>，准确来说是dispatch函数的调用这个事件</p>
+</li>
+<li>
+<p>subscribe的工作流程：</p>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127234248963.png" alt="image-20211127234248963" style="zoom:25%;" />
+</li>
+</ul>
+<p><strong>问题：</strong></p>
+<ol>
+<li>
+<p><strong>subscribe是如何与redux主流程相结合的呢？</strong></p>
+<p>在store对象创建成功后，通过调用store.subscribe来注册监听函数，也可以通过subscribe的返回函数来解绑监听函数。</p>
+<p>listeners数组用来维护监听函数。</p>
+<p>当diapatch action发生变化时，redux会在reducer执行完毕后，将listeners数组中的监听函数逐个执行。</p>
+</li>
+<li>
+<p>为什么会有currentListeners、nextListeners这两个数组呢？</p>
+<p>redux中的订阅过程和发布过程是如何处理数组的？</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> nextListeners = currentListeners;<span class="comment">// 二者指向同一个引用</span></span><br></pre></td></tr></table></figure>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127225732058.png" alt="image-20211127225732058" style="zoom: 25%;" />
+<ul>
+<li>
+<p>但ensureCanMutateNextListener每次都会在注册listener之前无条件调用：用来确保两个数组引用不同。</p>
+</li>
+<li>
+<p>在这个函数执行的是listener的注册逻辑： nextListener.push(listener)，注册到这个数组中。</p>
+</li>
+<li>
+<p>触发订阅的逻辑：</p>
+<p>在触发订阅的过程中，currentListeners会被赋值为nextListener，而即将被执行的数组listeners又被赋值为currentListeners。因此最终被执行的数组指向nextListener的同一个引用。</p>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230626348.png" alt="image-20211127230626348" style="zoom:20%;" />
+<p>既然注册监听使用nextListener、触发订阅也是nextListener。<strong>为什么还需要currentListeners数组呢？</strong></p>
+<p>currentListeners用于确保监听函数执行过程中的稳定性。因为任何变更都是在nextListener上发生的，因此需要一个不会被变更的稳定的listener保证不出乱子</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">listenerA</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> unSubscribeA = store.<span class="title function_">subscribe</span>(listenerA);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">listenerB</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="title function_">unSubscribeA</span>();<span class="comment">//在B中解绑A</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">listenerC</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">store.<span class="title function_">subscribe</span>(listenerB);<span class="comment">//订阅B</span></span><br><span class="line">store.<span class="title function_">subscribe</span>(listenerC);<span class="comment">//订阅C</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>这种操作在redux是合法的。执行完毕后，listeners数组中[listenerA,  listenerB, listenerC]</p>
+</li>
+<li>
+<p>触发订阅逻辑：遍历listener数组，分别执行自己的函数。而listenerB中执行了unSubscribeA这个动作，而监听、触发、解绑触发影响的都是nextListener数组</p>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127230134769.png" alt="image-20211127230134769" style="zoom: 25%;" />
+</li>
+<li>
+<p>假如不要currentListeners这个数组，也就不需要执行解绑函数中的ensureCanMutateNextListener这个调用。而没有这个动作，unSubscribeA执行完之后，listenerA会同时从listeners数组和nextListener数组中移除，那么listeners数组就只剩下listenerB、listenerC。也就是listeners数组的长度发生了改变，但for循环并不会感知到，它将继续循环下去。下一步索引对应的会出现undefined，进而导致函数异常。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>那怎么办呢？</p>
+<ul>
+<li>
+<p>因此需要将当前正在执行的listeners数组与nextListener数组隔离开，将两者指向不同的引用。这也是ensureCanMutateNextListener所执行的事情，这个函数执行前：三者关系：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">listeners === nextListener === currentListeners</span><br></pre></td></tr></table></figure>
+<p>执行后：nextListener上的任何改变都无法再影响正在执行中的listeners。而currentListeners就是为了记录下当前正在工作中的listeners数组的引用，将它与可能发生改变的nextListener区分开来，以确保监听函数在执行过程中的稳定性</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">nextListener = currentListeners.<span class="title function_">slice</span>()</span><br><span class="line">listeners === nextListener !== currentListeners</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="4、redux中间件">4、redux中间件<a class="anchor" href="#4、redux中间件">·</a></h3>
+<h4 id="1、用法-5">1、用法<a class="anchor" href="#1、用法-5">·</a></h4>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">createStore</span>(</span><br><span class="line">  reducer,   </span><br><span class="line">  initial_state, <span class="comment">//初始状态内容</span></span><br><span class="line">  <span class="title function_">applyMiddleware</span>(middleware1, middleware2,...)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4 id="2、中间件的引入，为redux工作流带来什么改变？">2、中间件的引入，为redux工作流带来什么改变？<a class="anchor" href="#2、中间件的引入，为redux工作流带来什么改变？">·</a></h4>
+<ul>
+<li>
+<p>redux-thunk  经典的<strong>异步action场景</strong></p>
+<p>在redux源码中可以看出，只有同步操作，当我们dispatch一个action时，会立即更新，因此如果想在redux中引入异步数据流，该怎么办？</p>
+<p>使用中间件来支持，其中最受欢迎的是redux-thunk</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> thunkMiddleWare <span class="keyword">for</span> <span class="string">&#x27;redux-thunk&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">&#x27;./reducer.js&#x27;</span></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">createStore</span>(reducer, <span class="title function_">applyMiddleware</span>(thunkMiddleware));</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>异步action的例子：</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">for</span> <span class="string">&#x27;redux-thunk&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> reducer <span class="keyword">from</span> <span class="string">&#x27;./reducer.js&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">createStore</span>(reducer, <span class="title function_">applyMiddleware</span>(thunk));</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">payMoney</span> = payInfo =&gt; <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">dispatch</span>(&#123;<span class="attr">type</span>: <span class="string">&#x27;payStart&#x27;</span>&#125;);</span><br><span class="line">  <span class="title function_">fetch</span>().<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">dispatch</span>();</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> axios.<span class="title function_">post</span>(<span class="string">&#x27;./api/payMoney&#x27;</span>, &#123;</span><br><span class="line">    payInfo</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response);</span><br><span class="line">    <span class="title function_">dispatch</span>(&#123;<span class="attr">type</span>: <span class="string">&#x27;paySuccess&#x27;</span>&#125;);<span class="comment">//付款成功</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">    <span class="title function_">dispatch</span>(&#123;<span class="attr">type</span>: <span class="string">&#x27;payError&#x27;</span>&#125;); <span class="comment">// 付款失败</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> payInfo = &#123;</span><br><span class="line">  <span class="attr">username</span>: <span class="string">&#x27;ss&#x27;</span>,</span><br><span class="line">  <span class="attr">password</span>: <span class="string">&#x27;123&#x27;</span>,</span><br><span class="line">  <span class="attr">count</span>: <span class="number">5</span>,</span><br><span class="line">  ....</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 注意action是函数这里</span></span><br><span class="line">store.<span class="title function_">dispatch</span>(<span class="title function_">payMoney</span>(payInfo));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>createStore的源码中，初始化时会检查中间件，使得即使写在第2个参数也可以识别</li>
+</ul>
+</li>
+</ul>
+<p>dispatch的入参从action对象，变成了一个函数，源码中是有校验的action入参必须是一个对象，thunk似乎绕开了这层校验，为什么呢？</p>
+<h4 id="3、redux中间件的工作流程">3、redux中间件的工作流程<a class="anchor" href="#3、redux中间件的工作流程">·</a></h4>
+<ul>
+<li>
+<p>当只有一个中间件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">action -- middleWare -- dispatch -- reducer -- nextState</span><br></pre></td></tr></table></figure>
+<p>middleWare会在action分发之后，到达reducer之前执行；</p>
+</li>
+<li>
+<p>当有多个中间件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">action -- middleWare1 （安装的执行顺序）</span><br><span class="line">			 -- middleWare2</span><br><span class="line">			 -- middleWare3...</span><br><span class="line">-- dispatch -- reducer -- nextState</span><br></pre></td></tr></table></figure>
+<p>中间件的执行时机使得它能在状态正在发生之前结合action信息，做一些自己的处理。</p>
+</li>
+<li>
+<h5 id="中间件如何绕过主流程的校验逻辑呢？">中间件如何绕过主流程的校验逻辑呢？<a class="anchor" href="#中间件如何绕过主流程的校验逻辑呢？">·</a></h5>
+<p>其实并没有被绕过，而是被<strong>applyMiddleWare</strong>改写了，使得dispatch，在触发reducer之前首先执行对redux中间件的链式调用</p>
+</li>
+</ul>
+<h3 id="5、redux-thunk源码">5、redux-thunk源码<a class="anchor" href="#5、redux-thunk源码">·</a></h3>
+<p>主要做的事情：</p>
+<ul>
+<li>
+<p>在拦截到action后，会检查它是否为一个函数：</p>
+<p>若为函数，就会执行它；并且返回执行结果</p>
+<p>若不是函数，就不处理它，直接调用next，工作流可以继续往下走</p>
+</li>
+</ul>
+<p><img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211128140700555.png" alt="image-20211128140700555" style="zoom:25%;" /><img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211128141206440.png" alt="image-20211128141206440" style="zoom:25%;" /></p>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211127225633907.png" alt="image-20211127225633907" style="zoom:15%;" />
+<ol>
+<li>
+<p><strong>applyMiddleWare</strong>是如何配合createStore工作的？</p>
+<ul>
+<li>
+<p><strong>applyMiddleWare</strong>返回的是一个接收createStore作为入参的函数，这个函数将会作为入参传递给createStore</p>
+</li>
+<li>
+<p>createStore中，会判断enhancer存在，就会返回一个针对enhancer的调用，调用中第一层入参是createStore，第二层入参是reducer、preloadedState</p>
+</li>
+<li>
+<p>对应到applymiddelware中的逻辑：</p>
+<p>这个函数中的return 的createStore对应createStore本身，args对应的就是reducer、preloadedState</p>
+</li>
+<li>
+<p>applyMiddeware是enhancer的一种，而enhancer的意思是增强，增强的是createStore的能力。因此入参是传入这个函数是有必要的</p>
+</li>
+</ul>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211128141742510.png" alt="image-20211128141742510" style="zoom:20%;" />
+<ol start="2">
+<li>
+<p>dispatch函数是如何改写的？</p>
+<p>做了两件事，以，，aPI作为入参逐个调用传入的middleWare函数，获取一个由内层函数组成的数组chain；</p>
+<p>然后调用compose函数，将内层函数逐个组合起来。并调用最终组合出来的函数</p>
+<p>内层函数：creatThunk函数的返回值 return next(action) 仍然是一个函数，高阶函数，要求redux中间节都是高阶函数，内层的就是内层函数。</p>
+</li>
+</ol>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211128141804611.png" alt="image-20211128141804611" style="zoom:20%;" />
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211128141819905.png" alt="image-20211128141819905" style="zoom:20%;" />
+</li>
+<li>
+<p>compose函数是如何组合起来的？</p>
+</li>
+</ol>
+<p><strong>redux中间件是如何实现的？</strong></p>
+<p>​	<strong>函数合成（组合函数</strong>）并不是redux的专利，而是<strong>函数式编程</strong>中的一个通用概念，它其实作为一个工具类的文件存在。源码：</p>
+<ul>
+<li>
+<p>函数组合是通过调用reduce来实现的；特点是对数组中每个元素执行指定的逻辑，并将结果汇总为单个返回值。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">(...args) =&gt; <span class="title function_">f1</span>(<span class="title function_">f2</span>(<span class="title function_">f3</span>(<span class="title function_">f4</span>(...args)))) <span class="comment">//最后一行等效为</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="C:\Users\小虎牙\AppData\Roaming\Typora\typora-user-images\image-20211128020307931.png" alt="image-20211128020307931" style="zoom:25%;" />
+<h3 id="6、中间件背后的AOP">6、中间件背后的AOP<a class="anchor" href="#6、中间件背后的AOP">·</a></h3>
+<ol>
+<li>为什么中间件可以流行？</li>
+<li>为什么我们的应用需要中间件？</li>
+</ol>
+<p>AOP的存在恰恰是为了解决OOP的局限性。AOP可以被看成是OOP的补充，在OOP模式下，想要拓展一个类的逻辑时，最常见的思路是：</p>
+<ul>
+<li>Class A继承Class B  classB继承classC，这样一层层 将逻辑向下传递</li>
+<li>当我们想要为某几个类追加一段共同的逻辑时，可以通过修改他们的父类来实现，这会导致公共类越来越臃肿。但也没有更好的办法</li>
+</ul>
+<p>面向切面就登场了。切面是一个相对于执行流程来说的概念，以redux为例，其自上而下的工作流：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">action</span><br><span class="line"> reducer</span><br><span class="line"> store</span><br></pre></td></tr></table></figure>
+<ul>
+<li>假如在每个action被派发后，都打印一个action被派发的记录，这样的逻辑通用性很强，但业务属性很弱，因此不适合与任何的业务逻辑耦合在一起。因此就可以以切面的方式，将其与业务功能剥离开来。扩展功能在工作流中的执行节点可以看做一个单独切点，我们把扩展功能的逻辑放到这个切点上来，形成的就是一个可以拦截连续逻辑的切面，如下图：</li>
+<li>切面与业务逻辑是分离的，因此AOP是一种典型的非侵入式的逻辑扩容思路。在日常开发中，日志追溯、性能打点、异步工作流处理这种和业务逻辑关系不大的功能，都可以抽取到切面中去做。</li>
+</ul>
+<p>切面编程的收益？</p>
+<ol>
+<li>可以很大程度上提升了组织逻辑的灵活度与干净度、帮助了我们规避掉了逻辑冗余、逻辑耦合问题</li>
+<li>通过将业务逻辑与切面剥离，更高地专注与开发。而切面这种即插即用的方式，自由组织想要的扩展功能</li>
+</ol>
+<h3 id="7、Vuex">7、Vuex<a class="anchor" href="#7、Vuex">·</a></h3>
+<img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2018/12/18/167c11c13fc70df1~tplv-t2oaga2asx-watermark.awebp" alt="image.png | center | 701x551" style="zoom: 50%;" />
+<h4 id="1、Vuex的设计">1、Vuex的设计<a class="anchor" href="#1、Vuex的设计">·</a></h4>
+<ul>
+<li>
+<h5 id="五个核心属性：state、mutations、actions、Getter、modules">五个核心属性：state、mutations、actions、Getter、modules<a class="anchor" href="#五个核心属性：state、mutations、actions、Getter、modules">·</a></h5>
+</li>
+<li>
+<p>把同步和异步拆分开，不要互相干涉</p>
+</li>
+<li>
+<p>store的改变流程：</p>
+<p><strong>在 vuex 中只有 mutations 可以更新state</strong></p>
+<ul>
+<li>commit 一个 mutation，mutation 负责更改 state（store状态更新的唯一方式）</li>
+<li>dispatch 一个 action，在 action 中 commit 一个 mutation</li>
+</ul>
+</li>
+<li>
+<p>引入 Getter，mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性</p>
+</li>
+<li>
+<p>引入 Module 的概念，把一个大 Store 拆开，每个 Module 有自己的 state、mutation、action、getter：</p>
+</li>
+</ul>
+<h4 id="1、Store">1、Store<a class="anchor" href="#1、Store">·</a></h4>
+<ul>
+<li>每一个 Vuex 里面有一个全局的 Store，包含着应用中的状态 <strong>State</strong></li>
+<li>Vuex通过 store 选项，把 state 注入到整个应用中，这样子组件能通过 this.$store 访问到 state 了</li>
+<li><strong>State 改变，View 就会跟着改变，这个改变利用的是 Vue 的响应式机制</strong></li>
+</ul>
+<h4 id="2、Mutation-同步-store状态更新的唯一方式">2、Mutation           同步    store状态更新的唯一方式<a class="anchor" href="#2、Mutation-同步-store状态更新的唯一方式">·</a></h4>
+<ul>
+<li>
+<h5 id="改变state的唯一方法是提交commit来触发-mutations">改变state的唯一方法是提交commit来触发_mutations<a class="anchor" href="#改变state的唯一方法是提交commit来触发-mutations">·</a></h5>
+</li>
+<li>
+<p>每个 mutation 都有一个字符串的 事件类型和 一个 回调函数</p>
+</li>
+<li>
+<p>mutation 有些类似 Redux 的 Reducer，<strong>但Vuex直接修改 State</strong></p>
+<ol>
+<li><strong>Redux 强调的 immutability</strong>，在保证了每一次状态变化都能追踪，收益很有限</li>
+<li>为了同构而设计的 API 很繁琐，必须依赖第三方库才能相对高效率地获得状态树的局部状态，这些不足的地方，所以也被 Vuex 舍掉了</li>
+</ol>
+</li>
+</ul>
+<h4 id="3、假如在mutation里面提交异步">3、假如在mutation里面提交异步<a class="anchor" href="#3、假如在mutation里面提交异步">·</a></h4>
+<h5 id="1、问题、坑">1、问题、坑<a class="anchor" href="#1、问题、坑">·</a></h5>
+<ul>
+<li>
+<p>提交的时候页面状态view发生变化，但是真正的状态是没有变化的，<strong>页面改变了</strong>，<strong>而devtool工具里面的state状态不一致</strong> 如下面图片</p>
+</li>
+<li>
+<p>在/src/store/index.js 的mutations里面模拟异步发现状态是混乱的
+<img src="https://segmentfault.com/img/remote/1460000011528057?w=1406&amp;h=538" alt="image_1bs7rnpdd1slf119n1k6k1ltt1o8m9.png-73.7kB" style="zoom:50%;" /></p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> store = <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">    <span class="attr">state</span>: &#123;</span><br><span class="line">        <span class="attr">num</span>: <span class="number">100</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">mutations</span>: &#123;</span><br><span class="line">        <span class="comment">// 任何时候改变state的状态都通过提交 mutation 来改变</span></span><br><span class="line">        <span class="comment">// 里面可以定义多个函数，当触发这个函数就会改变state状态</span></span><br><span class="line">        <span class="title function_">addIncrement</span>(<span class="params">state, stark</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(stark);</span><br><span class="line">            <span class="comment">// 接收一个state作为参数， 相当于上面的state</span></span><br><span class="line">            <span class="comment">// 模拟异步，状态会发生混乱</span></span><br><span class="line">            <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                state.<span class="property">num</span> += stark.<span class="property">n</span>;</span><br><span class="line">            &#125;, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">minIncrement</span>(<span class="params">state</span>) &#123;</span><br><span class="line">            state.<span class="property">num</span> -= <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<h5 id="2、解决：">2、解决：<a class="anchor" href="#2、解决：">·</a></h5>
+<ol>
+<li>在组件里面利用this.$store.dispatch(“addAction”); 提交actions</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;h2&gt;加减法计算器&lt;/h2&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;-&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;minHandle&quot;</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;num&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;+&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;addHandle&quot;</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">computed</span>:&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="title function_">num</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">state</span>.<span class="property">num</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">methods</span>:&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="title function_">addHandle</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// this.num += 5;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// 点击的时候需要改变状态，提交mutation addIncrement</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// 利用$store.commit 里面 写参数相当于 mutation的函数名字</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// this.$store.commit(&quot;addIncrement&quot;,&#123;name:&#x27;stark&#x27;,age:18,n:5&#125;)</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// this.$store.commit(&#123;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">//     type:&quot;addIncrement&quot;,</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">//     n:5,</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">//     age:18,</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">//     name:&#x27;stark.wang&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// &#125;)</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="title function_">dispatch</span>(<span class="string">&quot;addAction&quot;</span>); <span class="comment">// 在这提交 actions</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="title function_">minHandle</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// this.num -= 5;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="title function_">commit</span>(<span class="string">&quot;minIncrement&quot;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// this.$store.         </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h5 id="3、为什么呢？">3、为什么呢？<a class="anchor" href="#3、为什么呢？">·</a></h5>
+<ul>
+<li>
+<p>在vuex里，改变state的唯一方法是提交commit来触发_mutations，而调用actions时会判断是不是Promise，调用异步处理，你在mutations里写情求他都不会跑then方法，你怎么改变</p>
+</li>
+<li>
+<h5 id="源码：">源码：<a class="anchor" href="#源码：">·</a></h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这个就是 Store 类的 commit 方法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">commit</span> (_type, _payload, _options) &#123;</span><br><span class="line">    <span class="comment">// check object-style commit</span></span><br><span class="line">    <span class="keyword">const</span> &#123;type, payload, options&#125; = <span class="title function_">unifyObjectStyle</span>(_type, _payload, _options)</span><br><span class="line">    <span class="comment">// 定义mutation对象，type 其实就是我们要操作的 mutation 的方法名， payload 是参数（载荷）</span></span><br><span class="line">    <span class="keyword">const</span> mutation = &#123; type, payload &#125;</span><br><span class="line">    <span class="comment">// entry 就是要被执行的 mutation 方法</span></span><br><span class="line">    <span class="keyword">const</span> entry = <span class="variable language_">this</span>.<span class="property">_mutations</span>[type]</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 省略了一些中间不影响逻辑的代码</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 注册一些回调函数，可以看到 mutation 方法（entry）最终是在这个回调函数中执行，直接就执行结束，没有任何的 return 以及 异步处理，这样也就是说在 commit 中不可以写异步逻辑</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">_withCommit</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        entry.<span class="title function_">forEach</span>(<span class="keyword">function</span> <span class="title function_">commitIterator</span> (handler) &#123;</span><br><span class="line">            <span class="title function_">handler</span>(payload)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_subscribers</span></span><br><span class="line">    .<span class="title function_">slice</span>() <span class="comment">// shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe</span></span><br><span class="line">    .<span class="title function_">forEach</span>(<span class="function"><span class="params">sub</span> =&gt;</span> <span class="title function_">sub</span>(mutation, <span class="variable language_">this</span>.<span class="property">state</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="4、在组件中执行异步操作，在异步的回调中执行commit可以吗？">4、在组件中执行异步操作，在异步的回调中执行commit可以吗？<a class="anchor" href="#4、在组件中执行异步操作，在异步的回调中执行commit可以吗？">·</a></h5>
+<p>可以，但是一般不这么做</p>
+<ul>
+<li>
+<p>state状态更新逻辑是可复用的，但是如果把这部分逻辑写在了组件内：</p>
+<p>比如写在了组件A中，这时候另外一个组件B也需要更新这个状态，你就需要把组件A中的那段异步代码复制到组件B中</p>
+<p>这个不是一个合理的方式（代码冗余，应该将公共逻辑抽离出来），虽然可以这么做，但是不推荐</p>
+</li>
+</ul>
+<h4 id="4、vuex中为什么把异步操作封装在action，把同步操作放在mutations？">4、vuex中为什么把异步操作封装在action，把同步操作放在mutations？<a class="anchor" href="#4、vuex中为什么把异步操作封装在action，把同步操作放在mutations？">·</a></h4>
+<ul>
+<li>
+<p>官方文档说明：“在 mutation 中混合异步调用会导致你的程序很难调试</p>
+<p>例如，当你能调用了两个包含异步回调的 mutation 来改变状态，你怎么知道什么时候回调和哪个先回调呢？这就是为什么我们要区分这两个概念</p>
+<p>在 Vuex 中，我们将全部的改变都用同步方式实现。我们将全部的异步操作都放在<a href="https://link.zhihu.com/?target=http%3A//vuex.vuejs.org/zh-cn/actions.html">Actions</a>中。”</p>
+</li>
+<li>
+<p>如果同时出发了两个异步的actions，那么这两个回调的时间不一样，那么对于state的更新还是存在竞态的。所以我觉得这样进行区分并不能解决“那么先回调，哪个后回调”来更新state的问题</p>
+</li>
+<li>
+<p>尤大的回答：区分 actions 和 mutations 并不是为了解决竞态问题，而是为了能用 devtools 追踪状态变化</p>
+<ol>
+<li>
+<p>vuex 里面 actions 只是一个架构性的概念，并不是必须的，说到底只是一个函数，你在里面想干嘛都可以，只要最后触发 mutation 就行</p>
+</li>
+<li>
+<p>异步竞态怎么处理那是用户自己的事情。vuex 真正限制你的只有 mutation 必须是同步的这一点（在 redux 里面就好像 reducer 必须同步返回下一个状态一样）</p>
+</li>
+<li>
+<p>同步的意义在于这样每一个 mutation 执行完成后都可以对应到一个新的状态（和 reducer 一样），这样 devtools 就可以打个 snapshot 存下来，然后就可以随便 time-travel 了</p>
+</li>
+<li>
+<p>如果你开着 devtool 调用一个异步的 action，你可以清楚地看到它所调用的 mutation 是何时被记录下来的，并且可以立刻查看它们对应的状态</p>
+</li>
+<li>
+<p>尤大没有做的：</p>
+<p>把记录下来的 mutations 做成类似 rx-marble 那样的时间线图，对于理解应用的异步状态变化很有帮助</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="5、Action">5、Action<a class="anchor" href="#5、Action">·</a></h4>
+<ul>
+<li>
+<h5 id="源码：-2">源码：<a class="anchor" href="#源码：-2">·</a></h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dispatch</span> (_type, _payload) &#123;</span><br><span class="line">    <span class="comment">// check object-style dispatch</span></span><br><span class="line">    <span class="keyword">const</span> &#123;type,payload&#125; = <span class="title function_">unifyObjectStyle</span>(\type, _payload)</span><br><span class="line">    <span class="comment">// 定义 action 对象，type 是 actions 对象中的一个属性，payload 是载荷</span></span><br><span class="line">    <span class="keyword">const</span> action = &#123; type, payload &#125;</span><br><span class="line">    <span class="comment">// 待执行的 action 方法</span></span><br><span class="line">    <span class="keyword">const</span> entry = <span class="variable language_">this</span>.<span class="property">_actions</span>[type]</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">_actionSubscribers</span></span><br><span class="line">        .<span class="title function_">slice</span>() <span class="comment">// shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe</span></span><br><span class="line">        .<span class="title function_">filter</span>(<span class="function"><span class="params">sub</span> =&gt;</span> sub.<span class="property">before</span>)</span><br><span class="line">        .<span class="title function_">forEach</span>(<span class="function"><span class="params">sub</span> =&gt;</span> sub.<span class="title function_">before</span>(action, <span class="variable language_">this</span>.<span class="property">state</span>))</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 在这里执行了 action 方法，并将结果用 Promise.all 方法处理</span></span><br><span class="line">    <span class="keyword">const</span> result = entry.<span class="property">length</span> &gt; <span class="number">1</span></span><br><span class="line">    ? <span class="title class_">Promise</span>.<span class="title function_">all</span>(entry.<span class="title function_">map</span>(<span class="function"><span class="params">handler</span> =&gt;</span> <span class="title function_">handler</span>(payload)))</span><br><span class="line">    : entry[<span class="number">0</span>](payload)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 这里的 result.then 执行完以后会 return 一个结果出去（其实就是我们自己调用的异步逻辑的结果）</span></span><br><span class="line">    <span class="keyword">return</span> result.<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">_actionSubscribers</span></span><br><span class="line">            .<span class="title function_">filter</span>(<span class="function"><span class="params">sub</span> =&gt;</span> sub.<span class="property">after</span>)</span><br><span class="line">            .<span class="title function_">forEach</span>(<span class="function"><span class="params">sub</span> =&gt;</span> sub.<span class="title function_">after</span>(action, <span class="variable language_">this</span>.<span class="property">state</span>))</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="6、对比Redux">6、对比Redux<a class="anchor" href="#6、对比Redux">·</a></h4>
+<ul>
+<li>
+<p>Redux： view——&gt;actions——&gt;reducer——&gt;state变化——&gt;view变化（同步异步一样）</p>
+</li>
+<li>
+<p>Vuex： view——&gt;commit——&gt;mutations——&gt;state变化——&gt;view变化（同步操作）</p>
+<p>​             view——&gt;dispatch——&gt;actions——&gt;mutations——&gt;state变化——&gt;view变化（异步操作）</p>
+</li>
+</ul>
+<h4 id="3者总的思想：">3者总的思想：<a class="anchor" href="#3者总的思想：">·</a></h4>
+<p><strong>总的来说都是让 View 通过某种方式触发 Store 的事件或方法，Store 的事件或方法对 State 进行修改或返回一个新的 State，State 改变之后，View 发生响应式改变</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Vue&amp;&amp;React的数据流管理</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://www.nesxc.com/post/hexocc.html">https://www.nesxc.com/post/hexocc.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>飞儿</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-12-11</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-01-17</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-data.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div id="wpac-rating"></div><script>wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 33234});
+(function() {
+  if ('WIDGETPACK_LOADED' in window) return;
+  WIDGETPACK_LOADED = true;
+  var mc = document.createElement('script');
+  mc.type = 'text/javascript';
+  mc.async = true;
+  //- mc.src = '//embed.widgetpack.com/widget.js';
+  var s = document.getElementsByTagName('script')[0];
+  s?.parentNode?.insertBefore(mc, s?.nextSibling);
+})();</script><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/react_components.html"><img class="prev-cover" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-component-communication.png" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">React的组件通信</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E8%B7%AF%E7%94%B1.html"><img class="next-cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='https://mynightwish.oss-cn-beijing.aliyuncs.com/staticResource/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vue&amp;&amp;React的路由管理</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redux"><span class="toc-text">Redux</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Flux"><span class="toc-text">1、Flux</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81Flux4%E9%83%A8%E5%88%86"><span class="toc-text">1、Flux4部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#View%EF%BC%9A%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%EF%BC%8C%E5%8F%AF%E4%BB%A5%E4%BB%A5%E4%BB%BB%E4%BD%95%E5%BD%A2%E5%BC%8F%E5%B1%95%E7%A4%BA"><span class="toc-text">View：用户界面，可以以任何形式展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Action%EF%BC%9A%E8%A7%86%E5%9B%BE%E5%B1%82%E5%8F%91%E5%87%BA%E7%9A%84%E6%B6%88%E6%81%AF%EF%BC%8C%E4%BC%9A%E8%A7%A6%E5%8F%91%E5%BA%94%E7%94%A8%E7%8A%B6%E6%80%81%E7%9A%84%E6%94%B9%E5%8F%98"><span class="toc-text">Action：视图层发出的消息，会触发应用状态的改变</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dispatcher%EF%BC%9A%E6%B4%BE%E5%8F%91%E5%99%A8%EF%BC%8C%E8%B4%9F%E8%B4%A3action%E7%9A%84%E6%B4%BE%E5%8F%91"><span class="toc-text">Dispatcher：派发器，负责action的派发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#store%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%B1%82%EF%BC%8C%E5%BA%94%E7%94%A8%E7%8A%B6%E6%80%81%E7%9A%84%E4%BB%93%E5%BA%93%EF%BC%8C%E6%AD%A4%E5%A4%96%E8%BF%98%E5%AE%9A%E4%B9%89%E4%BF%AE%E6%94%B9%E7%8A%B6%E6%80%81%E7%9A%84%E9%80%BB%E8%BE%91"><span class="toc-text">store：数据层，应用状态的仓库，此外还定义修改状态的逻辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81Flux%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-text">2、Flux工作流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81Flux%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-text">3、Flux解决了什么</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Redux"><span class="toc-text">2、Redux</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E8%A7%92%E8%89%B2%EF%BC%9A-2"><span class="toc-text">1、角色：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81redux%E5%B7%A5%E4%BD%9C%E6%B5%81-2"><span class="toc-text">2、redux工作流</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81redux%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">3、redux源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81createStore-js%E5%88%86%E6%9E%90"><span class="toc-text">1、createStore.js分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-text">1、整体流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81dispatch"><span class="toc-text">2、dispatch</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-text">源码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#dispatch%E6%A0%B8%E5%BF%83%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-text">dispatch核心工作流</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81subscribe%E8%A7%A6%E5%8F%91%E8%AE%A2%E9%98%85"><span class="toc-text">3、subscribe触发订阅</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81redux%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">4、redux中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E7%94%A8%E6%B3%95-5"><span class="toc-text">1、用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E5%BC%95%E5%85%A5%EF%BC%8C%E4%B8%BAredux%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B8%A6%E6%9D%A5%E4%BB%80%E4%B9%88%E6%94%B9%E5%8F%98%EF%BC%9F"><span class="toc-text">2、中间件的引入，为redux工作流带来什么改变？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81redux%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">3、redux中间件的工作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%A6%82%E4%BD%95%E7%BB%95%E8%BF%87%E4%B8%BB%E6%B5%81%E7%A8%8B%E7%9A%84%E6%A0%A1%E9%AA%8C%E9%80%BB%E8%BE%91%E5%91%A2%EF%BC%9F"><span class="toc-text">中间件如何绕过主流程的校验逻辑呢？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81redux-thunk%E6%BA%90%E7%A0%81"><span class="toc-text">5、redux-thunk源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%83%8C%E5%90%8E%E7%9A%84AOP"><span class="toc-text">6、中间件背后的AOP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81Vuex"><span class="toc-text">7、Vuex</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81Vuex%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">1、Vuex的设计</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%94%E4%B8%AA%E6%A0%B8%E5%BF%83%E5%B1%9E%E6%80%A7%EF%BC%9Astate%E3%80%81mutations%E3%80%81actions%E3%80%81Getter%E3%80%81modules"><span class="toc-text">五个核心属性：state、mutations、actions、Getter、modules</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81Store"><span class="toc-text">1、Store</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81Mutation-%E5%90%8C%E6%AD%A5-store%E7%8A%B6%E6%80%81%E6%9B%B4%E6%96%B0%E7%9A%84%E5%94%AF%E4%B8%80%E6%96%B9%E5%BC%8F"><span class="toc-text">2、Mutation           同步    store状态更新的唯一方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%94%B9%E5%8F%98state%E7%9A%84%E5%94%AF%E4%B8%80%E6%96%B9%E6%B3%95%E6%98%AF%E6%8F%90%E4%BA%A4commit%E6%9D%A5%E8%A7%A6%E5%8F%91-mutations"><span class="toc-text">改变state的唯一方法是提交commit来触发_mutations</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E5%81%87%E5%A6%82%E5%9C%A8mutation%E9%87%8C%E9%9D%A2%E6%8F%90%E4%BA%A4%E5%BC%82%E6%AD%A5"><span class="toc-text">3、假如在mutation里面提交异步</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E9%97%AE%E9%A2%98%E3%80%81%E5%9D%91"><span class="toc-text">1、问题、坑</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E8%A7%A3%E5%86%B3%EF%BC%9A"><span class="toc-text">2、解决：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%91%A2%EF%BC%9F"><span class="toc-text">3、为什么呢？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%EF%BC%9A"><span class="toc-text">源码：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81%E5%9C%A8%E7%BB%84%E4%BB%B6%E4%B8%AD%E6%89%A7%E8%A1%8C%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%EF%BC%8C%E5%9C%A8%E5%BC%82%E6%AD%A5%E7%9A%84%E5%9B%9E%E8%B0%83%E4%B8%AD%E6%89%A7%E8%A1%8Ccommit%E5%8F%AF%E4%BB%A5%E5%90%97%EF%BC%9F"><span class="toc-text">4、在组件中执行异步操作，在异步的回调中执行commit可以吗？</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81vuex%E4%B8%AD%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%8A%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E5%B0%81%E8%A3%85%E5%9C%A8action%EF%BC%8C%E6%8A%8A%E5%90%8C%E6%AD%A5%E6%93%8D%E4%BD%9C%E6%94%BE%E5%9C%A8mutations%EF%BC%9F"><span class="toc-text">4、vuex中为什么把异步操作封装在action，把同步操作放在mutations？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81Action"><span class="toc-text">5、Action</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%EF%BC%9A-2"><span class="toc-text">源码：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81%E5%AF%B9%E6%AF%94Redux"><span class="toc-text">6、对比Redux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E8%80%85%E6%80%BB%E7%9A%84%E6%80%9D%E6%83%B3%EF%BC%9A"><span class="toc-text">3者总的思想：</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2023 By 飞儿</div><div id="running-time"></div><div class="footer_custom_text"><p><a style="margin-inline:5px"target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a><a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a><a style="margin-inline:5px"target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用 Jsdelivr 为静态资源提供CDN加速" alt="Jsdelivr"></a><a style="margin-inline:5px"target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a><a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="to_comment" type="button" title="直达评论" onclick="FixedCommentBtn();"><i class="fas fa-comments"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-hexo-vert.vercel.app/',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-hexo-vert.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div defer class="aplayer no-destroy" data-id="31872922" data-server="netease" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script async data-pjax src="https://cdn.jsdelivr.net/npm/hexo-beautiful-page@latest/lib/asyncmodel.min.js"></script><div id="live3d" class="live3d" style="position: fixed; left: -110px; bottom: 30px;z-index: 98;"><canvas id="live2dm" class="live3d"style="max-width:500px;max-height:437.5px;"></canvas></div><script defer data-pjax src="/js/bottomTime.js"></script><script defer data-pjax src="/js/nav.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/emoji.js"></script><script defer data-pjax src="/js/sun_moon.js" async></script><script defer src="https://cdn1.tianli0.top/gh/nextapps-de/winbox/dist/winbox.bundle.min.js"></script><script async src="//at.alicdn.com/t/c/font_3859043_rw1ayonelb.js"></script><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script><script defer data-pjax src="/js/meihua.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '#web_bg',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:24%;}.categoryBar-list{max-height: 570px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 480px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-1-CSS/&quot;);" href="javascript:void(0);">1.1-CSS</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr">CSS的酷炫多彩</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-2-JS/&quot;);" href="javascript:void(0);">1.2-JS</a><span class="categoryBar-list-count">29</span><span class="categoryBar-list-descr">数据、函数、异步</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-3-Ajax/&quot;);" href="javascript:void(0);">1.3-Ajax</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">Ajax的诞生</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/1-4-框架/&quot;);" href="javascript:void(0);">1.4-框架</a><span class="categoryBar-list-count">15</span><span class="categoryBar-list-descr">Vue&amp;React的世界</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-1-组件库/&quot;);" href="javascript:void(0);">2.1-组件库</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">组件库开发</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-2-基建/&quot;);" href="javascript:void(0);">2.2-基建</a><span class="categoryBar-list-count">5</span><span class="categoryBar-list-descr">前端工程化</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-3-实现Tricks/&quot;);" href="javascript:void(0);">2.3-实现Tricks</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">功能实现积累</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/2-4-项目/&quot;);" href="javascript:void(0);">2.4-项目</a><span class="categoryBar-list-count">12</span><span class="categoryBar-list-descr">项目总结</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-1-记录/&quot;);" href="javascript:void(0);">3.1-记录</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">bidaoTalk</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-2-浏览器/&quot;);" href="javascript:void(0);">3.2-浏览器</a><span class="categoryBar-list-count">8</span><span class="categoryBar-list-descr">浏览器渲染</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-3-基础/&quot;);" href="javascript:void(0);">3.3-基础</a><span class="categoryBar-list-count">10</span><span class="categoryBar-list-descr">计算机基础</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/3-4-Tool/&quot;);" href="javascript:void(0);">3.4-Tool</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">小工具</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/react-virtualDom.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-13</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">React的虚拟DOM</a><div class="blog-slider__text">兄弟篇React的虚拟DOM，包括了栈调和</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/2621268747.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/React/hook1.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt="">React-Hook的出现</a><div class="blog-slider__text">为何Hooks是React的未来</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/ReactHooks.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://mynightwish.oss-cn-beijing.aliyuncs.com/CSS/浏览器异步.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">JS的EventLoop</a><div class="blog-slider__text">异步与同步、宏任务、微任务</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/656350506.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfnIl0f3oUJLgGFb7Qgi97y1hY9uIQsHizXQ&amp;usqp=CAU" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-12-11</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">JS的异步解决方案</a><div class="blog-slider__text">前端异步之路</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/3384747987.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="/js/swiper_init.js"></script><!-- hexo injector body_end end --><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
